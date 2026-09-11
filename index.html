@@ -38,7 +38,6 @@ tailwind.config = {
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
 
-
 <style>
 
 /* =========================================================
@@ -85,6 +84,12 @@ body {
     background: #f4f6f8;
     color: #1e293b;
     overflow-x: hidden;
+
+    /* IMPORTANTE:
+       evita cualquier estado visual extraño al cargar */
+    opacity: 1 !important;
+    filter: none !important;
+    backdrop-filter: none !important;
 }
 
 img {
@@ -214,6 +219,87 @@ button {
 
 
 /* =========================================================
+   PRODUCT QUANTITY DESKTOP
+========================================================= */
+
+.product-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+}
+
+.product-price {
+    white-space: nowrap;
+}
+
+.product-quantity {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    flex-shrink: 0;
+}
+
+.product-quantity button {
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #d9e2ec;
+    border-radius: 7px;
+
+    background: white;
+    color: var(--brand-blue);
+
+    font-size: 13px;
+    font-weight: 800;
+
+    line-height: 1;
+}
+
+.product-quantity button:hover {
+    background: var(--brand-wine);
+    color: white;
+    border-color: var(--brand-wine);
+}
+
+.product-quantity-value {
+    min-width: 20px;
+    text-align: center;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    color: var(--brand-blue);
+}
+
+
+/* =========================================================
+   MODAL / OVERLAY SAFETY
+========================================================= */
+
+/*
+   Evita que algún estado inicial deje la pantalla
+   oscurecida o desenfocada.
+*/
+
+#cartOverlay,
+#checkoutModal {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+#cartOverlay.hidden,
+#checkoutModal.hidden {
+    display: none !important;
+}
+
+
+/* =========================================================
    TABLET
 ========================================================= */
 
@@ -264,12 +350,6 @@ button {
     }
 
 
-    /*
-       EL HEADER AHORA TIENE:
-       FILA 1 = LOGO CENTRADO
-       FILA 2 = BUSCADOR
-    */
-
     .mobile-header {
 
         width: 100%;
@@ -299,7 +379,7 @@ button {
 
 
     /* =====================================================
-       LOGO CENTRADO Y MÁS GRANDE
+       LOGO
     ===================================================== */
 
     .mobile-logo {
@@ -340,7 +420,7 @@ button {
 
 
     /* =====================================================
-       OCULTAR COMPLETAMENTE CARRITO SUPERIOR
+       CART SUPERIOR
     ===================================================== */
 
     #cartTrigger {
@@ -349,7 +429,7 @@ button {
 
 
     /* =====================================================
-       BUSCADOR
+       SEARCH
     ===================================================== */
 
     .mobile-search {
@@ -504,11 +584,6 @@ button {
             #d9e2ec !important;
     }
 
-
-    /*
-       FOTO MÁS GRANDE Y SIN CORTAR LA CABEZA
-    */
-
     .mobile-hero-image {
 
         width:
@@ -539,11 +614,6 @@ button {
         height:
             100% !important;
 
-        /*
-           contain evita cortar personas.
-           La imagen conserva sus proporciones.
-        */
-
         object-fit:
             contain !important;
 
@@ -556,7 +626,7 @@ button {
 
 
     /* =====================================================
-       CATEGORÍAS
+       CATEGORIES
     ===================================================== */
 
     section.py-4 {
@@ -734,7 +804,7 @@ button {
             auto !important;
 
         min-height:
-            250px;
+            260px;
 
         padding:
             8px !important;
@@ -867,10 +937,10 @@ button {
 
 
     /* =====================================================
-       PRICE
+       PRICE + COUNTER
     ===================================================== */
 
-    .product-card > div:last-child {
+    .product-card .product-price-row {
 
         width:
             100% !important;
@@ -888,31 +958,19 @@ button {
             flex !important;
 
         flex-direction:
-            column !important;
+            row !important;
 
         align-items:
-            stretch !important;
+            center !important;
+
+        justify-content:
+            space-between !important;
 
         gap:
-            6px !important;
-    }
-
-    .product-card > div:last-child > div:first-child {
-
-        width:
-            100%;
-
-        display:
-            flex;
-
-        align-items:
-            baseline;
-
-        gap:
-            5px;
+            4px !important;
 
         min-height:
-            17px;
+            34px !important;
     }
 
     .product-price {
@@ -925,11 +983,104 @@ button {
 
         color:
             var(--brand-wine) !important;
+
+        white-space:
+            nowrap;
     }
 
-    .product-old-price {
+
+    /* =====================================================
+       COUNTER
+    ===================================================== */
+
+    .product-quantity {
+
+        display:
+            flex !important;
+
+        align-items:
+            center !important;
+
+        gap:
+            2px !important;
+
+        background:
+            #f8fafc;
+
+        border:
+            1px solid #dce5ec;
+
+        border-radius:
+            8px;
+
+        padding:
+            2px !important;
+
+        flex-shrink:
+            0;
+    }
+
+    .product-quantity button {
+
+        width:
+            23px !important;
+
+        height:
+            23px !important;
+
+        min-width:
+            23px !important;
+
+        border:
+            0 !important;
+
+        border-radius:
+            6px !important;
+
+        background:
+            white !important;
+
+        color:
+            var(--brand-blue) !important;
+
         font-size:
-            8px !important;
+            13px !important;
+
+        font-weight:
+            900 !important;
+
+        padding:
+            0 !important;
+
+        line-height:
+            1 !important;
+    }
+
+    .product-quantity button:active {
+
+        background:
+            var(--brand-wine) !important;
+
+        color:
+            white !important;
+    }
+
+    .product-quantity-value {
+
+        min-width:
+            19px !important;
+
+        font-size:
+            10px !important;
+
+        color:
+            var(--brand-blue) !important;
+
+        font-weight:
+            900 !important;
+
+        text-align:
+            center;
     }
 
 
@@ -980,7 +1131,7 @@ button {
 
 
     /* =====================================================
-       WHATSAPP FLOATING
+       WHATSAPP
     ===================================================== */
 
     body > a[href*="wa.me"] {
@@ -1081,6 +1232,9 @@ button {
         box-shadow:
             0 -6px 22px
             rgba(7,26,43,.25);
+
+        transition:
+            transform .25s ease;
     }
 
     #mobileBottomNav button {
@@ -1223,7 +1377,18 @@ button {
             rgba(7,26,43,.72) !important;
 
         backdrop-filter:
-            blur(5px);
+            none !important;
+
+        -webkit-backdrop-filter:
+            none !important;
+
+        display:
+            none;
+    }
+
+    #cartOverlay:not(.hidden) {
+        display:
+            block !important;
     }
 
 
@@ -1286,10 +1451,6 @@ button {
     }
 
 
-    /*
-       ESTA ES LA CLASE REAL QUE ABRE EL CARRITO
-    */
-
     #cartPanel.is-open {
 
         transform:
@@ -1312,10 +1473,10 @@ button {
             translateX(100%) !important;
 
         visibility:
-            hidden;
+            hidden !important;
 
         opacity:
-            0;
+            0 !important;
 
         pointer-events:
             none !important;
@@ -1595,45 +1756,6 @@ button {
        CHECKOUT
     ===================================================== */
 
-    #openCheckoutModalBtn {
-
-        width:
-            100%;
-
-        min-height:
-            46px;
-
-        border-radius:
-            12px !important;
-
-        background:
-            var(--brand-wine) !important;
-
-        color:
-            white !important;
-
-        font-size:
-            11px !important;
-
-        font-weight:
-            800;
-
-        box-shadow:
-            0 7px 15px
-            rgba(127,29,58,.20);
-    }
-
-    #openCheckoutModalBtn:active {
-
-        background:
-            var(--brand-wine-dark) !important;
-    }
-
-
-    /* =====================================================
-       CHECKOUT MODAL
-    ===================================================== */
-
     #checkoutModal {
 
         align-items:
@@ -1647,6 +1769,17 @@ button {
 
         background:
             rgba(7,26,43,.78) !important;
+
+        backdrop-filter:
+            none !important;
+
+        -webkit-backdrop-filter:
+            none !important;
+    }
+
+    #checkoutModal:not(.hidden) {
+        display:
+            flex !important;
     }
 
     .mobile-checkout {
@@ -1739,11 +1872,9 @@ button {
     }
 
 
-    /*
-       CUANDO EL CARRITO ESTÁ ABIERTO,
-       ESCONDEMOS EL MENÚ INFERIOR
-       PARA QUE NO QUEDE ENCIMA.
-    */
+    /* =====================================================
+       CART OPEN
+    ===================================================== */
 
     body.cart-is-open #mobileBottomNav {
 
@@ -1799,7 +1930,7 @@ button {
             7px !important;
 
         min-height:
-            235px;
+            245px;
     }
 
     .product-image {
@@ -1821,6 +1952,27 @@ button {
 
         font-size:
             11px !important;
+    }
+
+    .product-quantity button {
+
+        width:
+            21px !important;
+
+        min-width:
+            21px !important;
+
+        height:
+            21px !important;
+    }
+
+    .product-quantity-value {
+
+        min-width:
+            17px !important;
+
+        font-size:
+            9px !important;
     }
 
     .product-add {
@@ -1959,11 +2111,6 @@ body.cart-is-open {
 
         </div>
 
-
-        <!--
-            EL CARRITO SUPERIOR FUE ELIMINADO.
-            EL ÚNICO CARRITO EN MÓVIL ES EL DE ABAJO.
-        -->
 
         <button
             id="cartTrigger"
@@ -2296,8 +2443,6 @@ body.cart-is-open {
         class="mobile-cart-panel bg-white shadow-2xl flex flex-col">
 
 
-        <!-- CART HEADER -->
-
         <div
             class="p-3.5 border-b border-slate-100 flex items-center justify-between">
 
@@ -2337,15 +2482,11 @@ body.cart-is-open {
         </div>
 
 
-        <!-- PRODUCTS -->
-
         <div
             id="cartContent"
             class="flex-1 overflow-y-auto p-3 space-y-2">
         </div>
 
-
-        <!-- FOOTER -->
 
         <div
             class="p-3.5 border-t border-slate-100 space-y-2">
@@ -2597,12 +2738,69 @@ let searchQuery = "";
 
 
 /* =========================================================
+   PRODUCT SELECTED QUANTITY
+========================================================= */
+
+const selectedQuantities = {};
+
+
+/* =========================================================
    INITIALIZATION
 ========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
     function() {
+
+        /*
+           IMPORTANTE:
+           limpiamos cualquier estado visual extraño
+           antes de cargar los productos.
+        */
+
+        document.body.style.opacity = "1";
+        document.body.style.filter = "none";
+        document.body.style.backdropFilter = "none";
+
+        const overlay =
+            document.getElementById("cartOverlay");
+
+        const checkout =
+            document.getElementById("checkoutModal");
+
+        const panel =
+            document.getElementById("cartPanel");
+
+        if (overlay) {
+            overlay.classList.add("hidden");
+            overlay.style.display = "none";
+        }
+
+        if (checkout) {
+            checkout.classList.add("hidden");
+        }
+
+        if (panel) {
+
+            panel.classList.remove("is-open");
+            panel.classList.add("is-closed");
+
+            panel.style.transform =
+                "translateX(100%)";
+
+            panel.style.visibility =
+                "hidden";
+
+            panel.style.opacity =
+                "0";
+
+            panel.style.pointerEvents =
+                "none";
+        }
+
+        document.body.classList.remove(
+            "cart-is-open"
+        );
 
         loadCartFromLocalStorage();
 
@@ -2678,6 +2876,12 @@ async function fetchProductsFromSheet() {
                             .replace(/[^0-9]/g, "")
                         ) || 0,
 
+                    /*
+                       oldPrice SE CONSERVA EN LOS DATOS
+                       por compatibilidad con SheetDB,
+                       pero YA NO SE MUESTRA.
+                    */
+
                     oldPrice:
                         item.oldPrice
                             ? parseFloat(
@@ -2720,6 +2924,66 @@ async function fetchProductsFromSheet() {
             </p>
 
         `;
+
+    }
+
+}
+
+
+/* =========================================================
+   GET SELECTED QUANTITY
+========================================================= */
+
+function getSelectedQuantity(id) {
+
+    const quantity =
+        Number(selectedQuantities[id] || 1);
+
+    return Math.max(
+        1,
+        quantity
+    );
+
+}
+
+
+/* =========================================================
+   CHANGE PRODUCT QUANTITY
+========================================================= */
+
+function changeProductQuantity(id, delta) {
+
+    const current =
+        getSelectedQuantity(id);
+
+    let next =
+        current + Number(delta || 0);
+
+    if (next < 1) {
+        next = 1;
+    }
+
+    /*
+       Evitamos cantidades absurdamente grandes
+       por errores de toque.
+    */
+
+    if (next > 99) {
+        next = 99;
+    }
+
+    selectedQuantities[id] =
+        next;
+
+    const quantityElement =
+        document.getElementById(
+            `productQty-${id}`
+        );
+
+    if (quantityElement) {
+
+        quantityElement.textContent =
+            next;
 
     }
 
@@ -2818,6 +3082,9 @@ function renderProducts() {
     grid.innerHTML =
         filtered.map(function(p) {
 
+            const selected =
+                getSelectedQuantity(p.id);
+
             return `
 
                 <article
@@ -2888,6 +3155,10 @@ function renderProducts() {
                         </h3>
 
 
+                        <!-- =================================
+                             PRECIO + CONTADOR
+                        ================================== -->
+
                         <div
                             class="product-price-row">
 
@@ -2899,28 +3170,47 @@ function renderProducts() {
                             </span>
 
 
-                            ${
-                                p.oldPrice
-                                ? `
+                            <div
+                                class="product-quantity"
+                                aria-label="Cantidad">
 
-                                    <span
-                                        class="product-old-price text-slate-400 line-through">
+                                <button
+                                    type="button"
+                                    aria-label="Disminuir cantidad"
+                                    onclick="changeProductQuantity(${p.id}, -1)">
 
-                                        $${p.oldPrice.toLocaleString("es-CO")}
+                                    −
 
-                                    </span>
+                                </button>
 
-                                `
-                                : ""
-                            }
+
+                                <span
+                                    id="productQty-${p.id}"
+                                    class="product-quantity-value">
+
+                                    ${selected}
+
+                                </span>
+
+
+                                <button
+                                    type="button"
+                                    aria-label="Aumentar cantidad"
+                                    onclick="changeProductQuantity(${p.id}, 1)">
+
+                                    +
+
+                                </button>
+
+                            </div>
 
                         </div>
 
 
                         <button
                             type="button"
-                            onclick="addToCart(${p.id})"
-                            class="product-add w-full bg-red-50 hover:bg-red-600 text-red-600 hover:text-white font-bold rounded-xl transition-colors">
+                            onclick="addSelectedProductToCart(${p.id})"
+                            class="product-add w-full bg-red-50 hover:bg-red-600 text-red-600 hover:text-white font-bold rounded-xl transition-colors mt-1.5">
 
                             + Agregar
 
@@ -2933,6 +3223,23 @@ function renderProducts() {
             `;
 
         }).join("");
+
+}
+
+
+/* =========================================================
+   ADD SELECTED QUANTITY TO CART
+========================================================= */
+
+function addSelectedProductToCart(id) {
+
+    const quantity =
+        getSelectedQuantity(id);
+
+    addToCart(
+        id,
+        quantity
+    );
 
 }
 
@@ -3399,7 +3706,7 @@ function saveCart() {
    ADD TO CART
 ========================================================= */
 
-function addToCart(id) {
+function addToCart(id, quantity = 1) {
 
     const product =
         products.find(function(p) {
@@ -3410,6 +3717,13 @@ function addToCart(id) {
     if (!product) return;
 
 
+    quantity =
+        Math.max(
+            1,
+            Number(quantity || 1)
+        );
+
+
     const existing =
         cart.find(function(item) {
             return item.id === id;
@@ -3418,13 +3732,13 @@ function addToCart(id) {
 
     if (existing) {
 
-        existing.quantity++;
+        existing.quantity += quantity;
 
     } else {
 
         cart.push({
             ...product,
-            quantity: 1
+            quantity: quantity
         });
 
     }
@@ -3434,14 +3748,16 @@ function addToCart(id) {
 
 
     showToast(
-        `¡Agregado: ${product.name}!`
+        quantity === 1
+            ? `¡Agregado: ${product.name}!`
+            : `¡${quantity} unidades de ${product.name}!`
     );
 
 }
 
 
 /* =========================================================
-   UPDATE QUANTITY
+   UPDATE CART QUANTITY
 ========================================================= */
 
 function updateQty(id, delta) {
@@ -3777,21 +4093,14 @@ function openCart() {
     closeSearchResults();
 
 
-    /*
-       IMPORTANTE:
-       quitamos completamente is-closed
-       y ponemos is-open.
-    */
+    panel.classList.remove(
+        "is-closed"
+    );
 
-    panel.classList.remove("is-closed");
+    panel.classList.add(
+        "is-open"
+    );
 
-    panel.classList.add("is-open");
-
-
-    /*
-       También dejamos transform inline
-       como respaldo.
-    */
 
     panel.style.transform =
         "translateX(0)";
@@ -3809,7 +4118,9 @@ function openCart() {
         "9996";
 
 
-    overlay.classList.remove("hidden");
+    overlay.classList.remove(
+        "hidden"
+    );
 
     overlay.style.display =
         "block";
@@ -4230,12 +4541,21 @@ function setupEvents() {
                 }
 
 
+                /*
+                   Cerramos el carrito primero
+                   y luego abrimos el formulario.
+                */
+
                 closeCart();
 
 
                 checkoutModal.classList.remove(
                     "hidden"
                 );
+
+
+                checkoutModal.style.display =
+                    "flex";
 
 
                 document.body.classList.add(
@@ -4274,6 +4594,9 @@ function setupEvents() {
                     "hidden"
                 );
 
+                checkoutModal.style.display =
+                    "none";
+
                 document.body.classList.remove(
                     "cart-is-open"
                 );
@@ -4302,6 +4625,9 @@ function setupEvents() {
                     checkoutModal.classList.add(
                         "hidden"
                     );
+
+                    checkoutModal.style.display =
+                        "none";
 
                     document.body.classList.remove(
                         "cart-is-open"
@@ -4358,7 +4684,14 @@ function setupEvents() {
                         "hidden"
                     );
 
+                    checkoutModal.style.display =
+                        "none";
+
                 }
+
+                document.body.classList.remove(
+                    "cart-is-open"
+                );
 
             }
 
@@ -4375,6 +4708,17 @@ function setupEvents() {
 function submitOrder(event) {
 
     event.preventDefault();
+
+
+    if (cart.length === 0) {
+
+        showToast(
+            "El carrito está vacío"
+        );
+
+        return;
+
+    }
 
 
     const name =
@@ -4457,8 +4801,8 @@ function submitOrder(event) {
 
         message +=
             `${index + 1}. ${item.name} x${item.quantity} - $${(
-                item.price *
-                item.quantity
+                Number(item.price) *
+                Number(item.quantity)
             ).toLocaleString("es-CO")}\n`;
 
     });
@@ -4470,8 +4814,8 @@ function submitOrder(event) {
             return (
                 sum +
                 (
-                    item.price *
-                    item.quantity
+                    Number(item.price) *
+                    Number(item.quantity)
                 )
             );
 
@@ -4482,11 +4826,20 @@ function submitOrder(event) {
         `\n💰 *TOTAL: $${total.toLocaleString("es-CO")}*`;
 
 
+    /*
+       Abre WhatsApp con el pedido completo.
+    */
+
     window.open(
         `https://wa.me/573105500791?text=${encodeURIComponent(message)}`,
         "_blank"
     );
 
+
+    /*
+       Después de enviar:
+       limpiamos carrito y formulario.
+    */
 
     cart = [];
 
@@ -4499,6 +4852,14 @@ function submitOrder(event) {
         )
         .classList
         .add("hidden");
+
+
+    document
+        .getElementById(
+            "checkoutModal"
+        )
+        .style
+        .display = "none";
 
 
     document.body.classList.remove(
