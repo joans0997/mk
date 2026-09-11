@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supermercado MerkoMAX NIMAR - Tu Supermercado Digital en Cimitarra</title>
-    <!-- FAVICON -->
+    <title>Supermercado MerkoMAX NIMAR - Cimitarra</title>
     <link rel="icon" type="image/png" href="logo.png">
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -14,248 +12,168 @@
                 extend: {
                     colors: {
                         wine: {
-                            50: '#fdf2f4', 100: '#fbe6e9', 200: '#f7d0d8', 300: '#f0aab8',
-                            400: '#e5778f', 500: '#d54967', 600: '#be2d4e', 700: '#9f203c',
-                            800: '#851e36', 900: '#721d32', 950: '#400a17',
+                            50: '#fdf2f4', 600: '#be2d4e', 700: '#9f203c', 950: '#400a17',
                         }
                     }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-600 selection:text-white">
+<body class="text-slate-800 antialiased pb-20">
 
-    <!-- TOP ANNOUNCEMENT BAR -->
-    <div class="bg-blue-950 text-blue-100 text-xs py-2 px-4 flex justify-between items-center border-b border-blue-900 max-w-7xl mx-auto">
-        <div class="flex items-center gap-2">
-            <span class="inline-block w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-            <span>¡Envíos <strong>GRATIS</strong> en todo Cimitarra!</span>
-        </div>
-        <div id="storeStatusBadge" class="hidden sm:flex items-center gap-1.5 bg-blue-900/60 px-2.5 py-0.5 rounded-full border border-blue-700/50"></div>
-    </div>
-
-    <!-- HEADER & NAVBAR -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between gap-3">
-            
+    <!-- TOP APP BAR -->
+    <header class="sticky top-0 z-40 bg-white border-b border-slate-100 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-2">
             <!-- LOGO -->
-            <div id="logoContainer" class="flex items-center cursor-pointer py-1 shrink-0" onclick="resetToHomeWithAnimation()">
-                <img src="logo.png" alt="Supermercado MerkoMAX NIMAR" class="h-16 sm:h-20 w-auto object-contain">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="resetToHome()">
+                <img src="logo.png" alt="MerkoMAX" class="h-10 w-auto object-contain">
             </div>
 
-            <!-- SEARCH BAR DESKTOP -->
-            <div class="flex-1 max-w-2xl hidden md:block">
+            <!-- SEARCH BAR CENTRAL -->
+            <div class="flex-1 max-w-md mx-2">
                 <div class="relative">
-                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
-                    <input type="text" id="searchInput" placeholder="Buscar arroz, leche, aceite, frutas..." 
-                           class="w-full pl-11 pr-4 py-3 bg-slate-100 border-0 rounded-2xl text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 transition-all outline-none font-medium placeholder:text-slate-400" autocomplete="off">
+                    <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm">🔍</span>
+                    <input type="text" id="searchInput" placeholder="Buscar productos..." 
+                           class="w-full pl-10 pr-4 py-2 bg-slate-100 border-0 rounded-full text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-600 outline-none">
                 </div>
             </div>
 
-            <!-- CART BUTTON -->
-            <div class="flex items-center gap-3 shrink-0">
-                <button id="cartTrigger" class="relative bg-blue-50 hover:bg-blue-100 text-blue-800 px-4 py-3 rounded-2xl font-semibold text-sm transition-all flex items-center gap-2">
-                    <span>🛒</span>
-                    <span class="hidden sm:inline">Mi Carrito</span>
-                    <span id="cartCounter" class="bg-wine-700 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shadow-md">0</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- SEARCH BAR MOBILE -->
-        <div class="px-4 pb-3 md:hidden">
-            <div class="relative">
-                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
-                <input type="text" id="searchInputMobile" placeholder="Buscar productos..." 
-                       class="w-full pl-11 pr-4 py-2.5 bg-slate-100 border-0 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 transition-all outline-none font-medium" autocomplete="off">
-            </div>
+            <!-- CART ICON BUTTON -->
+            <button id="cartTrigger" class="relative bg-slate-100 p-2.5 rounded-full hover:bg-slate-200 transition-all flex items-center justify-center">
+                <span class="text-base">🛒</span>
+                <span id="cartCounter" class="absolute -top-1 -right-1 bg-wine-700 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-sm">0</span>
+            </button>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="relative overflow-hidden bg-gradient-to-br from-wine-950 via-slate-900 to-blue-950 text-white py-10 lg:py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-8 items-center">
-                <div class="space-y-5 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-3.5 py-1.5 rounded-full text-xs font-semibold">
-                        <span>⚡</span>
-                        <span>Entregas en menos de 2 horas en Cimitarra</span>
-                    </div>
-                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
-                        Mercado fresco y de calidad, <span class="text-wine-400 underline">directo a tu hogar.</span>
-                    </h1>
-                    <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto lg:mx-0">
-                        Haz tu mercado online con los mejores precios, ofertas exclusivas y combos ahorro listos para pedir.
-                    </p>
-                    <div class="flex flex-wrap gap-3 justify-center lg:justify-start pt-2">
-                        <a href="#productos" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3.5 rounded-2xl font-bold text-sm transition-all shadow-xl flex items-center gap-2">
-                            <span>Ver Catálogo ➔</span>
-                        </a>
-                        <a href="#productos" onclick="filterCategory('combos')" class="bg-wine-700 hover:bg-wine-600 text-white px-6 py-3.5 rounded-2xl font-semibold text-sm transition-all flex items-center gap-2">
-                            <span>📦 Combos Ahorro</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- BANNER IMAGE -->
-                <div class="relative">
-                    <div class="relative bg-slate-900/80 border border-slate-700/60 p-2.5 rounded-3xl shadow-2xl overflow-hidden">
-                        <img src="banner.jpeg" alt="Supermercado MerkoMAX NIMAR" class="w-full h-[260px] sm:h-[400px] object-cover rounded-2xl">
-                    </div>
-                </div>
+    <!-- BANNER HERO -->
+    <section class="bg-gradient-to-r from-wine-950 via-slate-900 to-blue-950 text-white py-8 px-4">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-6 items-center">
+            <div class="space-y-3 text-center md:text-left">
+                <span class="bg-white/10 text-wine-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">⚡ Cimitarra Express</span>
+                <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight">Todo lo que necesitas, directo a tu casa.</h1>
+                <p class="text-slate-300 text-xs md:text-sm">Calidad garantizada, precios bajos y entregas rápidas.</p>
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-lg border border-slate-700/50">
+                <img src="banner.jpeg" alt="Banner" class="w-full h-40 md:h-56 object-cover">
             </div>
         </div>
     </section>
 
-    <!-- MAIN CONTAINER -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <!-- CATEGORÍAS CÍRCULOS (Estilo App Moderna) -->
+    <section class="py-6 max-w-7xl mx-auto px-4">
+        <h3 class="text-sm font-bold text-slate-900 mb-4 flex items-center gap-1.5">
+            <span>✨</span> Categorías Populares
+        </h3>
+        <div class="flex gap-4 overflow-x-auto pb-3 hide-scrollbar">
+            <button onclick="filterCategory('todos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="w-16 h-16 rounded-full bg-slate-900 text-white flex items-center justify-center text-xl shadow-md group-hover:scale-105 transition-all">🌐</div>
+                <span class="text-[11px] font-semibold text-slate-700">Todos</span>
+            </button>
+            <button onclick="filterCategory('mas-vendidos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="w-16 h-16 rounded-full bg-amber-500 text-white flex items-center justify-center text-xl shadow-md group-hover:scale-105 transition-all">🔥</div>
+                <span class="text-[11px] font-semibold text-slate-700">Top Ventas</span>
+            </button>
+            <button onclick="filterCategory('combos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="w-16 h-16 rounded-full bg-wine-700 text-white flex items-center justify-center text-xl shadow-md group-hover:scale-105 transition-all">📦</div>
+                <span class="text-[11px] font-semibold text-slate-700">Combos</span>
+            </button>
+            <button onclick="filterCategory('despensa')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="w-16 h-16 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xl shadow-sm group-hover:scale-105 transition-all">🛒</div>
+                <span class="text-[11px] font-semibold text-slate-700">Despensa</span>
+            </button>
+            <button onclick="filterCategory('frescos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl shadow-sm group-hover:scale-105 transition-all">🍎</div>
+                <span class="text-[11px] font-semibold text-slate-700">Frutas</span>
+            </button>
+            <button onclick="filterCategory('lacteos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="w-16 h-16 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center text-xl shadow-sm group-hover:scale-105 transition-all">🥛</div>
+                <span class="text-[11px] font-semibold text-slate-700">Lácteos</span>
+            </button>
+            <button onclick="filterCategory('aseo')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="w-16 h-16 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-xl shadow-sm group-hover:scale-105 transition-all">✨</div>
+                <span class="text-[11px] font-semibold text-slate-700">Aseo</span>
+            </button>
+        </div>
+    </section>
 
-        <!-- CATEGORIES BAR -->
-        <section>
-            <div class="flex items-center justify-between mb-3">
-                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                    <span>🗂️</span> Categorías
-                </h3>
-            </div>
-            <div class="flex gap-2.5 overflow-x-auto pb-2 hide-scrollbar">
-                <button onclick="filterCategory('todos')" data-category="todos" class="category-btn bg-slate-900 text-white px-4 py-2.5 rounded-xl font-medium text-xs whitespace-nowrap transition-all shadow-sm">
-                    🌐 Todos
-                </button>
-                <button onclick="filterCategory('mas-vendidos')" data-category="mas-vendidos" class="category-btn bg-amber-500 text-white px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap transition-all shadow-sm">
-                    🔥 Lo más vendido
-                </button>
-                <button onclick="filterCategory('combos')" data-category="combos" class="category-btn bg-wine-700 text-white px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap transition-all shadow-sm">
-                    📦 Combos Ahorro
-                </button>
-                <button onclick="filterCategory('despensa')" data-category="despensa" class="category-btn bg-white text-slate-700 px-4 py-2.5 rounded-xl font-medium text-xs whitespace-nowrap transition-all border border-slate-200 shadow-sm">
-                    🛒 Despensa
-                </button>
-                <button onclick="filterCategory('frescos')" data-category="frescos" class="category-btn bg-white text-slate-700 px-4 py-2.5 rounded-xl font-medium text-xs whitespace-nowrap transition-all border border-slate-200 shadow-sm">
-                    🍎 Frutas y Verduras
-                </button>
-                <button onclick="filterCategory('lacteos')" data-category="lacteos" class="category-btn bg-white text-slate-700 px-4 py-2.5 rounded-xl font-medium text-xs whitespace-nowrap transition-all border border-slate-200 shadow-sm">
-                    🥛 Lácteos y Huevos
-                </button>
-                <button onclick="filterCategory('aseo')" data-category="aseo" class="category-btn bg-white text-slate-700 px-4 py-2.5 rounded-xl font-medium text-xs whitespace-nowrap transition-all border border-slate-200 shadow-sm">
-                    ✨ Aseo del Hogar
-                </button>
-            </div>
-        </section>
-
-        <!-- PRODUCTS GRID: Forzado a 2 columnas limpias en celular -->
-        <section id="productos" class="space-y-4 scroll-mt-28">
-            <div class="border-b border-slate-200 pb-3">
-                <h2 class="text-xl font-bold text-slate-900" id="sectionTitle">Nuestros Productos</h2>
-                <p class="text-slate-500 text-xs" id="sectionSubtitle">Cargando inventario...</p>
-            </div>
-
-            <!-- Grilla de 2 columnas en celulares y más en computadoras -->
-            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;" id="productsGrid" class="sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-6">
-                <div style="grid-column: span 2;" class="py-12 text-center space-y-2">
-                    <div class="w-8 h-8 border-3 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
-                    <p class="text-xs font-semibold text-slate-600">Cargando productos...</p>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- WHATSAPP FLOAT -->
-    <a href="https://wa.me/573105500791?text=Hola%20MerkoMAX,%20tengo%20una%20consulta" target="_blank" 
-       class="fixed bottom-5 left-5 z-40 bg-emerald-600 text-white p-3.5 rounded-full shadow-xl flex items-center gap-2 transition-transform hover:scale-110 border-2 border-white text-xs font-bold">
-        <span>💬</span>
-        <span class="hidden md:inline">¿Dudas? Chatea con nosotros</span>
-    </a>
-
-    <!-- FOOTER -->
-    <footer class="bg-slate-900 text-slate-400 mt-16 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-xs space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                    <h4 class="font-semibold text-white uppercase tracking-wider mb-2">Supermercado MerkoMAX NIMAR</h4>
-                    <p class="text-slate-400">Tu supermercado de confianza en Cimitarra, Santander.</p>
-                </div>
-                <div>
-                    <h4 class="font-semibold text-white uppercase tracking-wider mb-2">Contacto</h4>
-                    <p>📍 Cimitarra, Santander | 📞 +57 310 550 0791</p>
-                </div>
-                <div>
-                    <h4 class="font-semibold text-white uppercase tracking-wider mb-2">Método de Pago</h4>
-                    <p>Efectivo contra entrega, Nequi, Daviplata o Datáfono.</p>
-                </div>
-            </div>
-            <div class="border-t border-slate-800 pt-4 text-center text-slate-500">
-                &copy; 2026 Supermercado MerkoMAX NIMAR Cimitarra. Todos los derechos reservados.
+    <!-- SECCIÓN PRODUCTOS -->
+    <main class="max-w-7xl mx-auto px-4 pb-12 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+            <div>
+                <h2 id="sectionTitle" class="text-lg font-bold text-slate-900">Nuestros Productos</h2>
+                <p id="sectionSubtitle" class="text-slate-500 text-[11px]">Catálogo actualizado en tiempo real</p>
             </div>
         </div>
-    </footer>
+
+        <!-- GRILLA DE 2 COLUMNAS ESTILO TARJETA MODERNA -->
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;" id="productsGrid" class="sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-6">
+            <div style="grid-column: span 2;" class="py-12 text-center">
+                <div class="w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
+                <p class="text-xs text-slate-500 mt-2">Cargando productos...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/573105500791?text=Hola%20MerkoMAX,%20tengo%20una%20consulta" target="_blank" 
+       class="fixed bottom-6 left-6 z-40 bg-emerald-600 text-white p-3.5 rounded-full shadow-xl flex items-center justify-center hover:scale-110 transition-transform">
+        <span class="text-xl">💬</span>
+    </a>
 
     <!-- CART DRAWER -->
-    <div id="cartOverlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden"></div>
-    <div id="cartPanel" class="fixed inset-y-0 right-0 max-w-full flex pl-10 z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
+    <div id="cartOverlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden"></div>
+    <div id="cartPanel" class="fixed inset-y-0 right-0 max-w-full flex pl-10 z-50 transform translate-x-full transition-transform duration-300">
         <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
-            <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+            <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+                <h3 class="font-bold text-sm text-slate-900 flex items-center gap-1.5"><span>🛒</span> Tu Carrito</h3>
                 <div class="flex items-center gap-2">
-                    <span class="text-lg">🛒</span>
-                    <h3 class="font-bold text-slate-900">Tu Carrito</h3>
-                </div>
-                <div class="flex items-center gap-2">
-                    <button id="clearCartBtn" onclick="clearCart()" class="hidden text-red-500 bg-red-50 px-2.5 py-1 rounded-lg text-xs font-semibold">Vaciar</button>
-                    <button id="closeCart" class="p-2 text-slate-400 hover:text-slate-600 font-bold text-base">✕</button>
+                    <button id="clearCartBtn" onclick="clearCart()" class="hidden text-red-500 text-[11px] font-semibold bg-red-50 px-2 py-1 rounded-md">Vaciar</button>
+                    <button id="closeCart" class="text-slate-400 hover:text-slate-600 font-bold p-1">✕</button>
                 </div>
             </div>
 
             <div id="cartContent" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
 
-            <div class="p-5 border-t border-slate-100 bg-slate-50 space-y-3">
-                <div class="flex justify-between font-bold text-slate-900 text-sm">
+            <div class="p-4 border-t border-slate-100 bg-slate-50 space-y-3">
+                <div class="flex justify-between font-bold text-sm">
                     <span>Total a pagar</span>
                     <span id="cartTotal" class="text-blue-600 text-base">$0</span>
                 </div>
-                <button id="openCheckoutModalBtn" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all text-sm">
-                    Continuar Pedido ➔
+                <button id="openCheckoutModalBtn" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl shadow-md text-xs">
+                    Continuar Pedido por WhatsApp ➔
                 </button>
             </div>
         </div>
     </div>
 
     <!-- MODAL CHECKOUT -->
-    <div id="checkoutModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-            <button id="closeCheckoutModal" class="absolute top-4 right-4 text-slate-400 font-bold text-lg">✕</button>
-            
-            <div>
-                <h3 class="text-lg font-extrabold text-slate-900">📍 Datos para tu Entrega</h3>
-                <p class="text-xs text-slate-500">Completa tus datos para enviarte el pedido por WhatsApp.</p>
-            </div>
-
+    <div id="checkoutModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button id="closeCheckoutModal" class="absolute top-4 right-4 text-slate-400 font-bold text-sm">✕</button>
+            <h3 class="text-base font-extrabold text-slate-900">📍 Datos para tu Entrega</h3>
             <form id="checkoutForm" class="space-y-3 text-xs">
                 <div>
                     <label class="block font-bold text-slate-700 mb-1">Nombre Completo *</label>
-                    <input type="text" id="custName" required placeholder="Ej. Maria Perez" 
-                           class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600">
+                    <input type="text" id="custName" required placeholder="Ej. Maria Perez" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600">
                 </div>
-
                 <div class="grid grid-cols-2 gap-2">
                     <div>
                         <label class="block font-bold text-slate-700 mb-1">Barrio *</label>
-                        <input type="text" id="custNeighborhood" required placeholder="Ej. El Centro" 
-                               class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600">
+                        <input type="text" id="custNeighborhood" required placeholder="Ej. El Centro" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600">
                     </div>
                     <div>
-                        <label class="block font-bold text-slate-700 mb-1">Dirección / Casa *</label>
-                        <input type="text" id="custAddress" required placeholder="Ej. Cra 5 # 8-12" 
-                               class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600">
+                        <label class="block font-bold text-slate-700 mb-1">Dirección *</label>
+                        <input type="text" id="custAddress" required placeholder="Ej. Cra 5 # 8-12" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600">
                     </div>
                 </div>
-
                 <div>
                     <label class="block font-bold text-slate-700 mb-1">Método de Pago *</label>
                     <select id="custPayment" onchange="toggleCashDetail()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600">
@@ -264,20 +182,15 @@
                         <option value="Datáfono">Datáfono</option>
                     </select>
                 </div>
-
                 <div id="cashDetailBox">
                     <label class="block font-bold text-slate-700 mb-1">¿Con cuánto dinero cancelas?</label>
-                    <input type="text" id="custCashAmount" placeholder="Ej. Con $50.000 o Exacto" 
-                           class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600">
+                    <input type="text" id="custCashAmount" placeholder="Ej. Con $50.000 o Exacto" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600">
                 </div>
-
                 <div>
-                    <label class="block font-bold text-slate-700 mb-1">Notas adicionales (Opcional)</label>
-                    <textarea id="custNotes" rows="2" placeholder="Instrucciones de entrega..." 
-                              class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600"></textarea>
+                    <label class="block font-bold text-slate-700 mb-1">Notas (Opcional)</label>
+                    <textarea id="custNotes" rows="2" placeholder="Instrucciones adicionales..." class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600"></textarea>
                 </div>
-
-                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all text-sm mt-2">
+                <button type="submit" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-md text-xs mt-2">
                     💬 Enviar Pedido a WhatsApp
                 </button>
             </form>
@@ -287,245 +200,161 @@
     <!-- TOAST -->
     <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
-    <!-- JAVASCRIPT -->
+    <!-- SCRIPT -->
     <script>
         const SHEETDB_API = "https://sheetdb.io/api/v1/15hpacliqdaw2";
-        
         let products = [];
         let cart = [];
         let currentCategory = 'todos';
         let searchQuery = '';
 
-        const productsGrid = document.getElementById('productsGrid');
-        const cartTrigger = document.getElementById('cartTrigger');
-        const cartOverlay = document.getElementById('cartOverlay');
-        const cartPanel = document.getElementById('cartPanel');
-        const closeCart = document.getElementById('closeCart');
-        const cartCounter = document.getElementById('cartCounter');
-        const cartContent = document.getElementById('cartContent');
-        const cartTotal = document.getElementById('cartTotal');
-        const clearCartBtn = document.getElementById('clearCartBtn');
-        const searchInput = document.getElementById('searchInput');
-        const searchInputMobile = document.getElementById('searchInputMobile');
-        const openCheckoutModalBtn = document.getElementById('openCheckoutModalBtn');
-        const checkoutModal = document.getElementById('checkoutModal');
-        const closeCheckoutModal = document.getElementById('closeCheckoutModal');
-        const checkoutForm = document.getElementById('checkoutForm');
-
         document.addEventListener('DOMContentLoaded', () => {
             loadCartFromLocalStorage();
             fetchProductsFromSheet();
-            setupEventListeners();
-            checkStoreStatus();
+            setupEvents();
         });
-
-        function saveCartToLocalStorage() {
-            localStorage.setItem('merkomax_cart', JSON.stringify(cart));
-        }
-
-        function loadCartFromLocalStorage() {
-            const savedCart = localStorage.getItem('merkomax_cart');
-            if (savedCart) {
-                try { cart = JSON.parse(savedCart); } catch (e) { cart = []; }
-            }
-            updateCartUI();
-        }
 
         async function fetchProductsFromSheet() {
             try {
-                const response = await fetch(SHEETDB_API);
-                const data = await response.json();
-                
-                products = data.map(item => {
-                    let cleanPrice = parseFloat(String(item.price || '0').replace(/\./g, '').replace(/[^0-9]/g, '')) || 0;
-                    let cleanOldPrice = item.oldPrice ? parseFloat(String(item.oldPrice).replace(/\./g, '').replace(/[^0-9]/g, '')) : null;
-
-                    return {
-                        id: Number(item.id) || Math.random(),
-                        name: item.name || 'Producto sin nombre',
-                        category: item.category ? item.category.trim().toLowerCase() : 'despensa',
-                        price: cleanPrice,
-                        oldPrice: cleanOldPrice,
-                        isOffer: String(item.isOffer).toUpperCase() === 'TRUE',
-                        isBestSeller: String(item.isBestSeller).toUpperCase() === 'TRUE',
-                        image: item.image || 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80'
-                    };
-                });
+                const res = await fetch(SHEETDB_API);
+                const data = await res.json();
+                products = data.map(item => ({
+                    id: Number(item.id) || Math.random(),
+                    name: item.name || 'Producto',
+                    category: item.category ? item.category.trim().toLowerCase() : 'despensa',
+                    price: parseFloat(String(item.price || '0').replace(/\./g, '').replace(/[^0-9]/g, '')) || 0,
+                    oldPrice: item.oldPrice ? parseFloat(String(item.oldPrice).replace(/\./g, '').replace(/[^0-9]/g, '')) : null,
+                    isBestSeller: String(item.isBestSeller).toUpperCase() === 'TRUE',
+                    image: item.image || 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80'
+                }));
                 renderProducts();
-            } catch (error) {
-                productsGrid.innerHTML = `
-                    <div style="grid-column: span 2;" class="py-12 text-center space-y-2">
-                        <p class="text-sm font-bold text-red-600">Error al conectar con la base de datos.</p>
-                    </div>
-                `;
-            }
-        }
-
-        function checkStoreStatus() {
-            const badge = document.getElementById('storeStatusBadge');
-            const hour = new Date().getHours();
-            if (hour >= 7 && hour < 20) {
-                badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400"></span><span class="text-emerald-300 font-bold">Abierto</span>`;
-            } else {
-                badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-red-400"></span><span class="text-red-300 font-bold">Cerrado</span>`;
+            } catch (e) {
+                document.getElementById('productsGrid').innerHTML = `<p class="text-xs text-red-500 text-center col-span-2">Error cargando productos.</p>`;
             }
         }
 
         function renderProducts() {
-            const filtered = products.filter(product => {
-                const matchesCategory = 
-                    currentCategory === 'todos' ? true :
-                    currentCategory === 'mas-vendidos' ? product.isBestSeller :
-                    product.category === currentCategory;
-
-                const matchesSearch = product.name
-                    .toLowerCase()
-                    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-                    .includes(searchQuery.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
-
-                return matchesCategory && matchesSearch;
+            const grid = document.getElementById('productsGrid');
+            const filtered = products.filter(p => {
+                const matchCat = currentCategory === 'todos' ? true : currentCategory === 'mas-vendidos' ? p.isBestSeller : p.category === currentCategory;
+                const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchCat && matchSearch;
             });
 
             if (filtered.length === 0) {
-                productsGrid.innerHTML = `
-                    <div style="grid-column: span 2;" class="py-12 text-center space-y-2">
-                        <p class="text-sm font-bold text-slate-600">No se encontraron productos.</p>
-                    </div>
-                `;
+                grid.innerHTML = `<p class="text-xs text-slate-500 text-center col-span-2 py-8">No se encontraron productos.</p>`;
                 return;
             }
 
-            productsGrid.innerHTML = filtered.map(product => {
-                return `
-                    <div class="bg-white rounded-2xl p-3 border border-slate-200/80 shadow-sm flex flex-col justify-between relative">
-                        ${product.category === 'combos' ? `
-                            <span class="absolute top-3 left-3 z-10 bg-wine-700 text-white font-black text-[9px] px-2 py-0.5 rounded-full uppercase">COMBO</span>
-                        ` : product.isBestSeller ? `
-                            <span class="absolute top-3 left-3 z-10 bg-amber-500 text-white font-black text-[9px] px-2 py-0.5 rounded-full uppercase">TOP</span>
-                        ` : ''}
+            grid.innerHTML = filtered.map(p => `
+                <div class="bg-white rounded-2xl p-3 border border-slate-100 shadow-xs flex flex-col justify-between relative group hover:shadow-md transition-all">
+                    ${p.category === 'combos' ? '<span class="absolute top-2.5 left-2.5 z-10 bg-wine-700 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">COMBO</span>' : ''}
+                    ${p.isBestSeller && p.category !== 'combos' ? '<span class="absolute top-2.5 left-2.5 z-10 bg-amber-500 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">TOP</span>' : ''}
 
-                        <div>
-                            <!-- Altura de imagen controlada compacta para móvil -->
-                            <div class="h-28 sm:h-40 w-full rounded-xl overflow-hidden bg-slate-50 flex items-center justify-center mb-2.5">
-                                <img src="${product.image}" alt="${product.name}" class="object-cover h-full w-full">
-                            </div>
-                            <span class="text-[10px] font-bold text-blue-600 uppercase">${product.category}</span>
-                            <h3 class="font-bold text-slate-900 text-xs sm:text-sm leading-snug line-clamp-2 mt-0.5">${product.name}</h3>
+                    <div>
+                        <div class="h-32 w-full rounded-xl overflow-hidden bg-slate-50 mb-2.5 flex items-center justify-center">
+                            <img src="${p.image}" alt="${p.name}" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
                         </div>
-
-                        <div class="pt-3 border-t border-slate-100 mt-3 space-y-2">
-                            <div class="flex items-baseline gap-1.5">
-                                <span class="text-sm sm:text-base font-extrabold text-slate-900">$${product.price.toLocaleString('es-CO')}</span>
-                                ${product.oldPrice ? `<span class="text-[10px] text-slate-400 line-through">$${product.oldPrice.toLocaleString('es-CO')}</span>` : ''}
-                            </div>
-                            <button onclick="addToCart(${product.id})" class="w-full bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white font-bold py-2 px-3 rounded-xl transition-all flex items-center justify-center gap-1 text-xs">
-                                <span>+ Agregar al Carrito</span>
-                            </button>
-                        </div>
+                        <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wide">${p.category}</span>
+                        <h3 class="font-bold text-slate-900 text-xs line-clamp-2 mt-0.5">${p.name}</h3>
                     </div>
-                `;
-            }).join('');
+
+                    <div class="pt-2.5 border-t border-slate-50 mt-2.5 space-y-2">
+                        <div class="flex items-baseline gap-1.5">
+                            <span class="text-sm font-extrabold text-slate-900">$${p.price.toLocaleString('es-CO')}</span>
+                            ${p.oldPrice ? `<span class="text-[10px] text-slate-400 line-through">$${p.oldPrice.toLocaleString('es-CO')}</span>` : ''}
+                        </div>
+                        <button onclick="addToCart(${p.id})" class="w-full bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white font-bold py-2 rounded-xl text-xs transition-colors flex items-center justify-center gap-1">
+                            <span>+ Agregar</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
         }
 
-        function filterCategory(category) {
-            currentCategory = category;
-            document.querySelectorAll('.category-btn').forEach(btn => {
-                if (btn.getAttribute('data-category') === category) {
-                    btn.className = "category-btn bg-slate-900 text-white px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap shadow-sm";
-                } else {
-                    btn.className = "category-btn bg-white text-slate-700 px-4 py-2.5 rounded-xl font-medium text-xs whitespace-nowrap border border-slate-200 shadow-sm";
-                }
-            });
-
-            const titleEl = document.getElementById('sectionTitle');
-            const subtitleEl = document.getElementById('sectionSubtitle');
-            titleEl.textContent = category === 'todos' ? "Nuestros Productos" : category.toUpperCase();
-            subtitleEl.textContent = `Mostrando categoría ${category}`;
-
+        function filterCategory(cat) {
+            currentCategory = cat;
+            document.getElementById('sectionTitle').textContent = cat === 'todos' ? "Nuestros Productos" : cat.toUpperCase();
+            document.getElementById('sectionSubtitle').textContent = `Mostrando categoría: ${cat}`;
             renderProducts();
-            document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function handleLiveSearch(query, sourceInput) {
-            searchQuery = query;
-            renderProducts();
-            if(searchInput && searchInput !== sourceInput) searchInput.value = query;
-            if(searchInputMobile && searchInputMobile !== sourceInput) searchInputMobile.value = query;
-        }
-
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-            const existingItem = cart.find(item => item.id === productId);
-            if (existingItem) { existingItem.quantity += 1; } 
-            else { cart.push({ ...product, quantity: 1 }); }
-            saveCartToLocalStorage();
+        function loadCartFromLocalStorage() {
+            const saved = localStorage.getItem('merkomax_cart');
+            if (saved) { try { cart = JSON.parse(saved); } catch(e) { cart = []; } }
             updateCartUI();
-            showToast(`¡Agregado: ${product.name}!`);
         }
 
-        function updateQuantity(productId, delta) {
-            const item = cart.find(item => item.id === productId);
+        function saveCart() {
+            localStorage.setItem('merkomax_cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        function addToCart(id) {
+            const p = products.find(x => x.id === id);
+            if (!p) return;
+            const item = cart.find(x => x.id === id);
+            if (item) item.quantity++;
+            else cart.push({ ...p, quantity: 1 });
+            saveCart();
+            showToast(`¡Agregado: ${p.name}!`);
+        }
+
+        function updateQty(id, delta) {
+            const item = cart.find(x => x.id === id);
             if (!item) return;
             item.quantity += delta;
-            if (item.quantity <= 0) cart = cart.filter(i => i.id !== productId);
-            saveCartToLocalStorage();
-            updateCartUI();
+            if (item.quantity <= 0) cart = cart.filter(x => x.id !== id);
+            saveCart();
         }
 
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
-            saveCartToLocalStorage();
-            updateCartUI();
+        function removeFromCart(id) {
+            cart = cart.filter(x => x.id !== id);
+            saveCart();
         }
 
         function clearCart() {
-            if (cart.length === 0) return;
-            if (confirm("¿Vaciar carrito?")) {
-                cart = [];
-                saveCartToLocalStorage();
-                updateCartUI();
-            }
+            if (confirm("¿Vaciar carrito?")) { cart = []; saveCart(); }
         }
 
         function updateCartUI() {
-            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartCounter.textContent = totalCount;
-            clearCartBtn.style.display = cart.length > 0 ? 'block' : 'none';
-
+            document.getElementById('cartCounter').textContent = cart.reduce((a, b) => a + b.quantity, 0);
+            document.getElementById('clearCartBtn').style.display = cart.length > 0 ? 'block' : 'none';
+            
+            const content = document.getElementById('cartContent');
             if (cart.length === 0) {
-                cartContent.innerHTML = `<div class="text-center py-12 text-slate-400 text-xs">Tu carrito está vacío</div>`;
-                cartTotal.textContent = '$0';
+                content.innerHTML = `<div class="text-center py-12 text-slate-400 text-xs">Tu carrito está vacío</div>`;
+                document.getElementById('cartTotal').textContent = '$0';
                 return;
             }
 
-            cartContent.innerHTML = cart.map(item => `
-                <div class="flex items-center gap-3 bg-slate-50 p-2.5 rounded-xl border border-slate-100 relative">
-                    <img src="${item.image}" class="w-12 h-12 object-cover rounded-lg bg-white shrink-0">
+            content.innerHTML = cart.map(i => `
+                <div class="flex items-center gap-3 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                    <img src="${i.image}" class="w-12 h-12 object-cover rounded-lg bg-white shrink-0">
                     <div class="flex-1 min-w-0">
-                        <h5 class="font-bold text-slate-900 text-xs truncate">${item.name}</h5>
-                        <p class="text-blue-600 font-extrabold text-xs">$${(item.price * item.quantity).toLocaleString('es-CO')}</p>
+                        <h5 class="font-bold text-slate-900 text-xs truncate">${i.name}</h5>
+                        <p class="text-blue-600 font-extrabold text-xs">$${(i.price * i.quantity).toLocaleString('es-CO')}</p>
                         <div class="flex items-center gap-2 mt-1">
-                            <button onclick="updateQuantity(${item.id}, -1)" class="w-5 h-5 bg-white border rounded text-xs font-bold">-</button>
-                            <span class="text-xs font-bold">${item.quantity}</span>
-                            <button onclick="updateQuantity(${item.id}, 1)" class="w-5 h-5 bg-white border rounded text-xs font-bold">+</button>
+                            <button onclick="updateQty(${i.id}, -1)" class="w-5 h-5 bg-white border rounded text-xs font-bold">-</button>
+                            <span class="text-xs font-bold">${i.quantity}</span>
+                            <button onclick="updateQty(${i.id}, 1)" class="w-5 h-5 bg-white border rounded text-xs font-bold">+</button>
                         </div>
                     </div>
-                    <button onclick="removeFromCart(${item.id})" class="text-slate-400 hover:text-red-600 text-xs font-bold p-1">✕</button>
+                    <button onclick="removeFromCart(${i.id})" class="text-slate-400 hover:text-red-600 text-xs font-bold p-1">✕</button>
                 </div>
             `).join('');
 
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            cartTotal.textContent = `$${totalPrice.toLocaleString('es-CO')}`;
+            const total = cart.reduce((a, b) => a + (b.price * b.quantity), 0);
+            document.getElementById('cartTotal').textContent = `$${total.toLocaleString('es-CO')}`;
         }
 
-        function showToast(message) {
+        function showToast(msg) {
             const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = "bg-slate-900 text-white text-xs font-semibold px-3.5 py-2.5 rounded-xl shadow-lg";
-            toast.textContent = message;
-            container.appendChild(toast);
-            setTimeout(() => toast.remove(), 2500);
+            const t = document.createElement('div');
+            t.className = "bg-slate-900 text-white text-xs font-semibold px-3.5 py-2.5 rounded-xl shadow-lg";
+            t.textContent = msg;
+            container.appendChild(t);
+            setTimeout(() => t.remove(), 2500);
         }
 
         function toggleCashDetail() {
@@ -533,62 +362,66 @@
             document.getElementById('cashDetailBox').style.display = pay === 'Efectivo' ? 'block' : 'none';
         }
 
-        function resetToHomeWithAnimation() {
+        function resetToHome() {
             filterCategory('todos');
-            if (searchInput) searchInput.value = '';
-            if (searchInputMobile) searchInputMobile.value = '';
+            document.getElementById('searchInput').value = '';
             searchQuery = '';
-            renderProducts();
         }
 
-        function setupEventListeners() {
-            if (searchInput) searchInput.addEventListener('input', (e) => handleLiveSearch(e.target.value, searchInput));
-            if (searchInputMobile) searchInputMobile.addEventListener('input', (e) => handleLiveSearch(e.target.value, searchInputMobile));
-
-            cartTrigger.addEventListener('click', () => {
-                cartPanel.classList.remove('translate-x-full');
-                cartOverlay.classList.remove('hidden');
+        function setupEvents() {
+            const search = document.getElementById('searchInput');
+            search.addEventListener('input', (e) => {
+                searchQuery = e.target.value;
+                renderProducts();
             });
-            const closeCartDrawer = () => {
-                cartPanel.classList.add('translate-x-full');
-                cartOverlay.classList.add('hidden');
-            };
-            closeCart.addEventListener('click', closeCartDrawer);
-            cartOverlay.addEventListener('click', closeCartDrawer);
 
-            openCheckoutModalBtn.addEventListener('click', () => {
-                if (cart.length === 0) { showToast('Tu carrito está vacío'); return; }
-                closeCartDrawer();
+            const cartTrigger = document.getElementById('cartTrigger');
+            const cartPanel = document.getElementById('cartPanel');
+            const cartOverlay = document.getElementById('cartOverlay');
+            const closeCart = document.getElementById('closeCart');
+
+            const toggleCart = (open) => {
+                cartPanel.classList.toggle('translate-x-full', !open);
+                cartOverlay.classList.toggle('hidden', !open);
+            };
+
+            cartTrigger.addEventListener('click', () => toggleCart(true));
+            closeCart.addEventListener('click', () => toggleCart(false));
+            cartOverlay.addEventListener('click', () => toggleCart(false));
+
+            const checkoutModal = document.getElementById('checkoutModal');
+            document.getElementById('openCheckoutModalBtn').addEventListener('click', () => {
+                if (cart.length === 0) { showToast('El carrito está vacío'); return; }
+                toggleCart(false);
                 checkoutModal.classList.remove('hidden');
             });
-            closeCheckoutModal.addEventListener('click', () => checkoutModal.classList.add('hidden'));
+            document.getElementById('closeCheckoutModal').addEventListener('click', () => checkoutModal.classList.add('hidden'));
 
-            checkoutForm.addEventListener('submit', (e) => {
+            document.getElementById('checkoutForm').addEventListener('submit', (e) => {
                 e.preventDefault();
                 const name = document.getElementById('custName').value.trim();
                 const neighborhood = document.getElementById('custNeighborhood').value.trim();
                 const address = document.getElementById('custAddress').value.trim();
                 const payment = document.getElementById('custPayment').value;
-                const cashAmount = document.getElementById('custCashAmount').value.trim();
+                const cash = document.getElementById('custCashAmount').value.trim();
                 const notes = document.getElementById('custNotes').value.trim();
 
-                let message = `🛒 *NUEVO PEDIDO - MERKOMAX NIMAR*\n\n`;
-                message += `👤 *Cliente:* ${name}\n📍 *Barrio:* ${neighborhood}\n🏠 *Dirección:* ${address}\n💳 *Pago:* ${payment}\n`;
-                if (payment === 'Efectivo' && cashAmount) message += `💵 *Cambio para:* ${cashAmount}\n`;
-                if (notes) message += `📝 *Notas:* ${notes}\n`;
-                message += `\n📦 *DETALLE:*\n`;
+                let msg = `🛒 *PEDIDO - MERKOMAX NIMAR*\n\n`;
+                msg += `👤 *Cliente:* ${name}\n📍 *Barrio:* ${neighborhood}\n🏠 *Dirección:* ${address}\n💳 *Pago:* ${payment}\n`;
+                if (payment === 'Efectivo' && cash) msg += `💵 *Cambio para:* ${cash}\n`;
+                if (notes) msg += `📝 *Notas:* ${notes}\n`;
+                msg += `\n📦 *PRODUCTOS:*\n`;
 
-                cart.forEach((item, index) => {
-                    message += `${index + 1}. ${item.name} x${item.quantity} - $${(item.price * item.quantity).toLocaleString('es-CO')}\n`;
+                cart.forEach((i, idx) => {
+                    msg += `${idx + 1}. ${i.name} x${i.quantity} - $${(i.price * i.quantity).toLocaleString('es-CO')}\n`;
                 });
 
-                const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                message += `\n💰 *TOTAL: $${totalPrice.toLocaleString('es-CO')}*`;
+                const total = cart.reduce((a, b) => a + (b.price * b.quantity), 0);
+                msg += `\n💰 *TOTAL: $${total.toLocaleString('es-CO')}*`;
 
-                window.open(`https://wa.me/573105500791?text=${encodeURIComponent(message)}`, '_blank');
+                window.open(`https://wa.me/573105500791?text=${encodeURIComponent(msg)}`, '_blank');
                 cart = [];
-                saveCartToLocalStorage();
-                updateCartUI();
+                saveCart();
                 checkoutModal.classList.add('hidden');
             });
         }
