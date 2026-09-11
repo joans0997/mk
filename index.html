@@ -1,915 +1,2575 @@
 <!DOCTYPE html>
+
 <html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Supermercado MerkoMAX NIMAR - Cimitarra</title>
-    <link rel="icon" type="image/png" href="logo.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            red: '#e30613',
-                            dark: '#1e293b'
-                        }
+
+```
+<link rel="icon" type="image/png" href="logo.png">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    brand: {
+                        red: '#e30613',
+                        dark: '#1e293b'
                     }
                 }
             }
         }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * { box-sizing: border-box; }
-        html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
-        img { max-width: 100%; }
-        button, input, select, textarea { max-width: 100%; }
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    }
+</script>
 
-        /* Responsive fixes */
-        @media (max-width: 640px) {
-            body { padding-bottom: 70px; }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-            .mobile-header {
-                height: auto !important;
-                min-height: 64px;
-                padding-top: 10px !important;
-                padding-bottom: 10px !important;
-                flex-wrap: wrap;
-            }
+<style>
+    /* =========================================================
+       BASE
+    ========================================================= */
 
-            .mobile-logo { flex: 0 0 auto; }
-            .mobile-logo img { height: 34px !important; }
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
 
-            .mobile-cart { flex: 0 0 auto; }
-            .mobile-search {
-                order: 3;
-                flex: 1 0 100% !important;
-                max-width: none !important;
-                width: 100%;
-            }
+    html {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+    }
 
-            .mobile-hero {
-                padding-top: 18px !important;
-                padding-bottom: 18px !important;
-            }
+    body {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: #f8fafc;
+        color: #1e293b;
+        overflow-x: hidden;
+    }
 
-            .mobile-hero-grid { grid-template-columns: 1fr !important; }
-            .mobile-hero-image img { height: 150px !important; }
+    img {
+        display: block;
+        max-width: 100%;
+    }
 
-            .mobile-categories {
-                gap: 12px !important;
-                padding-left: 2px;
-                padding-right: 2px;
-            }
+    button,
+    input,
+    select,
+    textarea {
+        font: inherit;
+        max-width: 100%;
+    }
 
-            .mobile-category-button { min-width: 64px; }
-            .mobile-category-icon {
-                width: 52px !important;
-                height: 52px !important;
-                font-size: 16px !important;
-            }
+    button {
+        -webkit-tap-highlight-color: transparent;
+    }
 
-            .mobile-main { padding-left: 10px !important; padding-right: 10px !important; }
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
 
-            .mobile-products-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-                gap: 8px !important;
-            }
+    .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 
-            .product-card {
-                min-width: 0;
-                padding: 9px !important;
-                border-radius: 16px !important;
-            }
+    /* Evita que contenido largo rompa las tarjetas */
+    .product-card,
+    .product-card * {
+        min-width: 0;
+    }
 
-            .product-image { height: 118px !important; border-radius: 11px !important; }
-            .product-name {
-                font-size: 11px !important;
-                height: 32px !important;
-                overflow: hidden;
-            }
+    /* =========================================================
+       DESKTOP
+    ========================================================= */
 
-            .product-price { font-size: 12px !important; }
-            .product-old-price { font-size: 8px !important; }
-            .product-add { padding-top: 9px !important; padding-bottom: 9px !important; font-size: 10px !important; }
+    .mobileBottomNav {
+        display: none;
+    }
 
-            .mobile-cart-panel {
-                width: min(92vw, 390px) !important;
-                max-width: 92vw !important;
-            }
+    /* =========================================================
+       TABLET
+    ========================================================= */
 
-            .mobile-cart-wrapper {
-                padding-left: 0 !important;
-                width: min(92vw, 390px) !important;
-            }
+    @media (min-width: 641px) and (max-width: 1024px) {
 
-            .mobile-checkout {
-                width: 100% !important;
-                max-width: 100% !important;
-                max-height: 94vh !important;
-                padding: 16px !important;
-                border-radius: 18px !important;
-            }
-
-            .mobile-checkout-grid { grid-template-columns: 1fr !important; }
-
-            #toastContainer {
-                left: 10px !important;
-                right: 10px !important;
-                bottom: 12px !important;
-                align-items: center;
-            }
-
-            #toastContainer > div { max-width: calc(100vw - 20px); text-align: center; }
-
-            #cartOverlay { width: 100vw; }
+        #productsGrid {
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
         }
 
-        @media (min-width: 641px) and (max-width: 900px) {
-            .mobile-products-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-            }
+        .product-image {
+            height: 170px !important;
         }
-            @supports (padding-bottom: env(safe-area-inset-bottom)) {
-            body { padding-bottom: calc(70px + env(safe-area-inset-bottom)); }
-        }
+    }
 
-        /* =========================================================
-           MERKOMAX — MOBILE APP EXPERIENCE
-           ========================================================= */
-        @media (max-width: 640px) {
-            body {
-                background: #f4f6f8;
-                padding-bottom: calc(82px + env(safe-area-inset-bottom));
-            }
+    /* =========================================================
+       MOBILE — EXPERIENCIA TIPO APP
+    ========================================================= */
 
-            /* App-like top bar */
-            header {
-                background: rgba(255,255,255,.96) !important;
-                backdrop-filter: blur(14px);
-                -webkit-backdrop-filter: blur(14px);
-                box-shadow: 0 1px 10px rgba(15,23,42,.06) !important;
-            }
+    @media (max-width: 640px) {
 
-            .mobile-header {
-                min-height: 62px;
-                padding: 9px 12px !important;
-                gap: 8px !important;
-            }
-
-            .mobile-logo img {
-                height: 32px !important;
-            }
-
-            .mobile-search {
-                margin-top: 3px;
-            }
-
-            .mobile-search input {
-                height: 42px;
-                padding-left: 40px !important;
-                padding-right: 14px !important;
-                border: 1px solid #e2e8f0 !important;
-                background: #f1f5f9 !important;
-                font-size: 13px !important;
-                border-radius: 13px !important;
-            }
-
-            .mobile-search input:focus {
-                background: #fff !important;
-                border-color: #e30613 !important;
-                box-shadow: 0 0 0 3px rgba(227,6,19,.08);
-            }
-
-            #cartTrigger {
-                min-width: 44px;
-                height: 42px;
-                padding: 0 10px !important;
-                border-radius: 13px !important;
-                justify-content: center;
-                box-shadow: 0 2px 7px rgba(227,6,19,.08);
-            }
-
-            #cartTrigger > span:first-child {
-                font-size: 18px;
-            }
-
-            /* Compact hero */
-            .mobile-hero {
-                padding: 16px 12px 14px !important;
-                background: linear-gradient(145deg,#0f172a 0%,#1e293b 58%,#7f1d1d 100%) !important;
-            }
-
-            .mobile-hero-grid {
-                gap: 12px !important;
-            }
-
-            .mobile-hero-grid > div:first-child {
-                text-align: left !important;
-            }
-
-            .mobile-hero h1 {
-                font-size: 20px !important;
-                line-height: 1.18 !important;
-                max-width: 330px;
-            }
-
-            .mobile-hero p {
-                font-size: 11px !important;
-                line-height: 1.45;
-                max-width: 330px;
-            }
-
-            .mobile-hero-image {
-                border-radius: 14px !important;
-            }
-
-            .mobile-hero-image img {
-                height: 118px !important;
-            }
-
-            /* Category rail */
-            section.py-4 {
-                padding-top: 12px !important;
-                padding-bottom: 9px !important;
-                background: #fff;
-                border-bottom: 1px solid #eef2f7;
-            }
-
-            .mobile-categories {
-                gap: 15px !important;
-                padding: 0 3px 4px !important;
-            }
-
-            .mobile-category-button {
-                min-width: 58px;
-            }
-
-            .mobile-category-icon {
-                width: 48px !important;
-                height: 48px !important;
-                font-size: 15px !important;
-                border: 1px solid rgba(15,23,42,.04);
-                box-shadow: 0 2px 7px rgba(15,23,42,.06) !important;
-            }
-
-            .mobile-category-button span:last-child {
-                font-size: 9px !important;
-                white-space: nowrap;
-            }
-
-            /* Products header */
-            .mobile-main {
-                padding: 13px 10px 20px !important;
-            }
-
-            .mobile-main > div:first-child {
-                padding-bottom: 9px !important;
-                margin-bottom: 2px;
-            }
-
-            #sectionTitle {
-                font-size: 15px !important;
-            }
-
-            #sectionSubtitle {
-                font-size: 9px !important;
-            }
-
-            /* App product cards */
-            .mobile-products-grid {
-                grid-template-columns: repeat(2,minmax(0,1fr)) !important;
-                gap: 9px !important;
-            }
-
-            .product-card {
-                padding: 9px !important;
-                border-radius: 15px !important;
-                border: 1px solid #e9edf2 !important;
-                box-shadow: 0 2px 9px rgba(15,23,42,.055) !important;
-                overflow: hidden;
-            }
-
-            .product-card:active {
-                transform: scale(.985);
-            }
-
-            .product-image {
-                height: 128px !important;
-                margin-bottom: 8px !important;
-                border-radius: 11px !important;
-                background: #f8fafc !important;
-            }
-
-            .product-image img {
-                object-fit: contain !important;
-                padding: 5px;
-            }
-
-            .product-name {
-                font-size: 11px !important;
-                line-height: 1.25 !important;
-                height: 29px !important;
-                margin-top: 2px !important;
-            }
-
-            .product-price {
-                font-size: 13px !important;
-                letter-spacing: -.2px;
-            }
-
-            .product-old-price {
-                font-size: 8px !important;
-            }
-
-            .product-add {
-                min-height: 34px;
-                padding: 7px 5px !important;
-                border-radius: 10px !important;
-                font-size: 10px !important;
-            }
-
-            .product-card .absolute.top-2\.5.right-2\.5 {
-                top: 8px !important;
-                right: 8px !important;
-                width: 21px !important;
-                height: 21px !important;
-            }
-
-            /* Floating WhatsApp */
-            body > a[href*="wa.me"] {
-                left: auto !important;
-                right: 14px !important;
-                bottom: 79px !important;
-                width: 50px;
-                height: 50px;
-                padding: 0 !important;
-                border-radius: 16px !important;
-                box-shadow: 0 7px 18px rgba(5,150,105,.25) !important;
-            }
-
-            body > a[href*="wa.me"] span {
-                font-size: 19px !important;
-            }
-
-            /* Mobile bottom navigation */
-            #mobileBottomNav {
-                position: fixed;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                z-index: 45;
-                height: calc(64px + env(safe-area-inset-bottom));
-                padding: 7px 20px env(safe-area-inset-bottom);
-                display: flex;
-                align-items: flex-start;
-                justify-content: space-around;
-                background: rgba(255,255,255,.97);
-                backdrop-filter: blur(15px);
-                -webkit-backdrop-filter: blur(15px);
-                border-top: 1px solid #e5e7eb;
-                box-shadow: 0 -5px 18px rgba(15,23,42,.06);
-            }
-
-            #mobileBottomNav button {
-                width: 76px;
-                height: 52px;
-                border: 0;
-                background: transparent;
-                color: #64748b;
-                font-size: 9px;
-                font-weight: 700;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 2px;
-            }
-
-            #mobileBottomNav button .nav-icon {
-                font-size: 18px;
-                line-height: 20px;
-            }
-
-            #mobileBottomNav button.active {
-                color: #e30613;
-            }
-
-            #mobileBottomNav .nav-cart-wrap {
-                position: relative;
-            }
-
-            #mobileBottomNav .nav-cart-count {
-                position: absolute;
-                top: -1px;
-                right: 12px;
-                min-width: 15px;
-                height: 15px;
-                padding: 0 4px;
-                border-radius: 99px;
-                background: #e30613;
-                color: white;
-                font-size: 8px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            /* Cart drawer */
-            .mobile-cart-wrapper {
-                padding-left: 0 !important;
-                width: min(100vw,410px) !important;
-            }
-
-            .mobile-cart-panel {
-                width: 100% !important;
-                max-width: 100% !important;
-                border-radius: 20px 0 0 20px;
-            }
-
-            #cartContent {
-                padding: 12px !important;
-            }
-
-            /* Checkout sheet */
-            #checkoutModal {
-                align-items: flex-end !important;
-                padding: 0 !important;
-            }
-
-            .mobile-checkout {
-                width: 100% !important;
-                max-width: 100% !important;
-                max-height: 94vh !important;
-                border-radius: 22px 22px 0 0 !important;
-                padding: 18px 15px calc(18px + env(safe-area-inset-bottom)) !important;
-            }
-
-            .mobile-checkout-grid {
-                grid-template-columns: 1fr !important;
-            }
-
-            /* Toast */
-            #toastContainer {
-                left: 12px !important;
-                right: 12px !important;
-                bottom: 76px !important;
-                align-items: center;
-            }
-
-            #toastContainer > div {
-                max-width: calc(100vw - 24px);
-                text-align: center;
-                border-radius: 12px;
-                padding: 10px 13px;
-            }
+        html,
+        body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
-        @media (min-width: 641px) {
-            #mobileBottomNav { display: none !important; }
+        body {
+            background: #f4f6f8;
+            padding-bottom: calc(76px + env(safe-area-inset-bottom));
         }
 
-    </style>
+        /* -----------------------------------------------------
+           HEADER
+        ----------------------------------------------------- */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+
+            background: rgba(255,255,255,.97) !important;
+
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+
+            border-bottom: 1px solid #e5e7eb !important;
+
+            box-shadow:
+                0 2px 12px rgba(15,23,42,.06) !important;
+        }
+
+        .mobile-header {
+            width: 100%;
+            max-width: 100%;
+
+            height: auto !important;
+            min-height: 60px;
+
+            padding:
+                9px 12px
+                10px 12px !important;
+
+            display: grid !important;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                auto;
+
+            grid-template-rows:
+                40px
+                42px;
+
+            gap: 8px 10px !important;
+        }
+
+        .mobile-logo {
+            min-width: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .mobile-logo img {
+            width: auto;
+            height: 34px !important;
+            max-width: 145px;
+            object-fit: contain;
+        }
+
+        .mobile-cart {
+            grid-column: 2;
+            grid-row: 1;
+
+            width: 44px;
+            height: 40px;
+
+            padding: 0 !important;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px !important;
+        }
+
+        #cartTrigger > span:first-child {
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        #cartCounter {
+            position: absolute;
+            top: -3px;
+            right: -3px;
+        }
+
+        /* BUSCADOR */
+        .mobile-search {
+            grid-column: 1 / -1;
+            grid-row: 2;
+
+            width: 100% !important;
+            max-width: none !important;
+
+            margin: 0 !important;
+        }
+
+        .mobile-search > div {
+            width: 100%;
+        }
+
+        .mobile-search input {
+            width: 100%;
+            height: 42px;
+
+            padding-left: 40px !important;
+            padding-right: 12px !important;
+
+            background: #f1f5f9 !important;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 12px !important;
+
+            font-size: 13px !important;
+        }
+
+        .mobile-search input:focus {
+            background: #ffffff !important;
+            border-color: #e30613 !important;
+
+            box-shadow:
+                0 0 0 3px rgba(227,6,19,.08);
+        }
+
+        /* -----------------------------------------------------
+           HERO
+        ----------------------------------------------------- */
+
+        .mobile-hero {
+            width: 100%;
+            max-width: 100%;
+
+            padding: 16px 12px !important;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #0f172a 0%,
+                    #1e293b 60%,
+                    #7f1d1d 100%
+                ) !important;
+        }
+
+        .mobile-hero-grid {
+            width: 100%;
+            max-width: 100%;
+
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+
+            gap: 12px !important;
+        }
+
+        .mobile-hero-grid > div {
+            min-width: 0;
+        }
+
+        .mobile-hero-grid > div:first-child {
+            text-align: left !important;
+        }
+
+        .mobile-hero h1 {
+            max-width: 340px;
+
+            font-size: 20px !important;
+            line-height: 1.2 !important;
+
+            letter-spacing: -.4px;
+        }
+
+        .mobile-hero p {
+            max-width: 320px;
+
+            font-size: 11px !important;
+            line-height: 1.45 !important;
+        }
+
+        .mobile-hero-image {
+            width: 100%;
+            height: 120px;
+
+            border-radius: 14px !important;
+
+            overflow: hidden;
+        }
+
+        .mobile-hero-image img {
+            width: 100%;
+            height: 100% !important;
+
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* -----------------------------------------------------
+           CATEGORÍAS
+        ----------------------------------------------------- */
+
+        section.py-4 {
+            width: 100%;
+            max-width: 100%;
+
+            padding: 11px 0 9px !important;
+
+            background: #ffffff;
+
+            border-bottom:
+                1px solid #edf1f5;
+        }
+
+        .mobile-categories {
+            width: 100%;
+            max-width: 100%;
+
+            display: flex;
+
+            gap: 14px !important;
+
+            padding:
+                0 12px 4px !important;
+
+            overflow-x: auto;
+            overflow-y: hidden;
+
+            scroll-snap-type: x proximity;
+        }
+
+        .mobile-category-button {
+            flex: 0 0 58px;
+
+            width: 58px;
+            min-width: 58px;
+
+            padding: 0;
+            margin: 0;
+
+            border: 0;
+            background: transparent;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+
+            scroll-snap-align: start;
+        }
+
+        .mobile-category-icon {
+            width: 48px !important;
+            height: 48px !important;
+
+            flex: 0 0 48px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 15px !important;
+
+            box-shadow:
+                0 2px 8px rgba(15,23,42,.07) !important;
+        }
+
+        .mobile-category-button span:last-child {
+            width: 100%;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            white-space: nowrap;
+
+            text-align: center;
+
+            font-size: 9px !important;
+            line-height: 1.1;
+        }
+
+        /* -----------------------------------------------------
+           MAIN
+        ----------------------------------------------------- */
+
+        .mobile-main {
+            width: 100%;
+            max-width: 100%;
+
+            padding:
+                13px 10px 22px !important;
+        }
+
+        .mobile-main > div:first-child {
+            width: 100%;
+
+            padding-bottom: 9px !important;
+            margin-bottom: 2px;
+
+            border-color: #e2e8f0;
+        }
+
+        #sectionTitle {
+            font-size: 15px !important;
+            line-height: 1.2;
+        }
+
+        #sectionSubtitle {
+            font-size: 9px !important;
+            line-height: 1.3;
+        }
+
+        /* -----------------------------------------------------
+           PRODUCT GRID
+        ----------------------------------------------------- */
+
+        #productsGrid {
+            width: 100%;
+            max-width: 100%;
+
+            display: grid !important;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr)) !important;
+
+            gap: 9px !important;
+
+            align-items: stretch;
+        }
+
+        /* -----------------------------------------------------
+           PRODUCT CARD
+        ----------------------------------------------------- */
+
+        .product-card {
+            width: 100%;
+            max-width: 100%;
+
+            min-width: 0;
+
+            padding: 8px !important;
+
+            border-radius: 14px !important;
+
+            border:
+                1px solid #e7ebef !important;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 2px 8px rgba(15,23,42,.045) !important;
+
+            overflow: hidden;
+
+            transform: translateZ(0);
+        }
+
+        .product-card:active {
+            transform: scale(.985);
+        }
+
+        /* -----------------------------------------------------
+           PRODUCT IMAGE
+        ----------------------------------------------------- */
+
+        .product-image {
+            width: 100% !important;
+
+            height: 135px !important;
+
+            margin-bottom: 8px !important;
+
+            border-radius: 10px !important;
+
+            background: #f8fafc !important;
+
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image img {
+            width: 100% !important;
+            height: 100% !important;
+
+            /*
+             * IMPORTANTE:
+             * contain evita que los productos se vean
+             * gigantes o recortados en celulares.
+             */
+            object-fit: contain !important;
+
+            object-position: center;
+
+            padding: 7px;
+
+            transition: transform .2s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: none;
+        }
+
+        /* -----------------------------------------------------
+           PRODUCT NAME
+        ----------------------------------------------------- */
+
+        .product-name {
+            width: 100%;
+
+            height: 30px !important;
+
+            margin-top: 2px !important;
+
+            font-size: 11px !important;
+
+            line-height: 1.3 !important;
+
+            overflow: hidden;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        /* -----------------------------------------------------
+           PRICE
+        ----------------------------------------------------- */
+
+        .product-card > div:last-child {
+            width: 100%;
+
+            margin-top: 7px !important;
+            padding-top: 7px !important;
+
+            gap: 6px !important;
+        }
+
+        .product-price {
+            font-size: 13px !important;
+            line-height: 1;
+        }
+
+        .product-old-price {
+            font-size: 8px !important;
+            line-height: 1;
+        }
+
+        /* -----------------------------------------------------
+           ADD BUTTON
+        ----------------------------------------------------- */
+
+        .product-add {
+            width: 100% !important;
+
+            min-height: 34px;
+
+            padding:
+                7px 4px !important;
+
+            border-radius: 9px !important;
+
+            font-size: 10px !important;
+
+            line-height: 1.1;
+
+            white-space: nowrap;
+        }
+
+        /* -----------------------------------------------------
+           BADGES
+        ----------------------------------------------------- */
+
+        .product-card .absolute.top-2\.5.right-2\.5 {
+            top: 7px !important;
+            right: 7px !important;
+
+            width: 20px !important;
+            height: 20px !important;
+
+            font-size: 9px !important;
+        }
+
+        .product-card .absolute.top-2\.5.left-2\.5 {
+            top: 7px !important;
+            left: 7px !important;
+
+            font-size: 8px !important;
+
+            padding:
+                3px 6px !important;
+        }
+
+        /* -----------------------------------------------------
+           WHATSAPP
+        ----------------------------------------------------- */
+
+        body > a[href*="wa.me"] {
+            position: fixed !important;
+
+            right: 14px !important;
+            left: auto !important;
+
+            bottom:
+                calc(78px + env(safe-area-inset-bottom)) !important;
+
+            width: 50px !important;
+            height: 50px !important;
+
+            padding: 0 !important;
+
+            border-radius: 15px !important;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            z-index: 35;
+        }
+
+        body > a[href*="wa.me"] span {
+            font-size: 19px !important;
+        }
+
+        /* -----------------------------------------------------
+           BOTTOM NAVIGATION
+        ----------------------------------------------------- */
+
+        #mobileBottomNav {
+            position: fixed;
+
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            width: 100%;
+            height:
+                calc(64px + env(safe-area-inset-bottom));
+
+            padding:
+                5px 16px
+                env(safe-area-inset-bottom);
+
+            z-index: 45;
+
+            display: flex !important;
+
+            align-items: flex-start;
+            justify-content: space-around;
+
+            background:
+                rgba(255,255,255,.97);
+
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            border-top:
+                1px solid #e5e7eb;
+
+            box-shadow:
+                0 -5px 18px rgba(15,23,42,.07);
+        }
+
+        #mobileBottomNav button {
+            position: relative;
+
+            width: 70px;
+            height: 53px;
+
+            padding: 4px 5px;
+
+            border: 0;
+
+            background: transparent;
+
+            color: #64748b;
+
+            font-size: 9px;
+            font-weight: 700;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 2px;
+        }
+
+        #mobileBottomNav button .nav-icon {
+            font-size: 18px;
+            line-height: 20px;
+        }
+
+        #mobileBottomNav button.active {
+            color: #e30613;
+        }
+
+        #mobileBottomNav .nav-cart-wrap {
+            position: relative;
+        }
+
+        #mobileBottomNav .nav-cart-count {
+            position: absolute;
+
+            top: 1px;
+            right: 8px;
+
+            min-width: 15px;
+            height: 15px;
+
+            padding: 0 4px;
+
+            border-radius: 99px;
+
+            background: #e30613;
+            color: #ffffff;
+
+            font-size: 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* -----------------------------------------------------
+           CART
+        ----------------------------------------------------- */
+
+        .mobile-cart-wrapper {
+            width: 100% !important;
+
+            max-width: 100% !important;
+
+            padding-left: 18px !important;
+        }
+
+        .mobile-cart-panel {
+            width: 100% !important;
+
+            max-width: 410px !important;
+
+            border-radius:
+                20px 0 0 20px;
+        }
+
+        #cartContent {
+            padding: 12px !important;
+        }
+
+        /* -----------------------------------------------------
+           CHECKOUT
+        ----------------------------------------------------- */
+
+        #checkoutModal {
+            align-items: flex-end !important;
+
+            padding: 0 !important;
+        }
+
+        .mobile-checkout {
+            width: 100% !important;
+
+            max-width: 100% !important;
+
+            max-height: 94vh !important;
+
+            padding:
+                18px
+                15px
+                calc(18px + env(safe-area-inset-bottom)) !important;
+
+            border-radius:
+                22px 22px 0 0 !important;
+        }
+
+        .mobile-checkout-grid {
+            grid-template-columns: 1fr !important;
+        }
+
+        /* -----------------------------------------------------
+           TOAST
+        ----------------------------------------------------- */
+
+        #toastContainer {
+            left: 12px !important;
+            right: 12px !important;
+
+            bottom:
+                calc(76px + env(safe-area-inset-bottom)) !important;
+
+            align-items: center;
+        }
+
+        #toastContainer > div {
+            width: auto;
+            max-width:
+                calc(100vw - 24px);
+
+            text-align: center;
+
+            border-radius: 12px;
+
+            padding:
+                10px 13px;
+        }
+
+        /* -----------------------------------------------------
+           CART OVERLAY
+        ----------------------------------------------------- */
+
+        #cartOverlay {
+            width: 100vw;
+            height: 100vh;
+        }
+    }
+
+    /* =========================================================
+       CELULARES MUY PEQUEÑOS
+    ========================================================= */
+
+    @media (max-width: 360px) {
+
+        .mobile-header {
+            padding-left: 9px !important;
+            padding-right: 9px !important;
+        }
+
+        .mobile-logo img {
+            max-width: 125px;
+            height: 30px !important;
+        }
+
+        .mobile-categories {
+            gap: 11px !important;
+        }
+
+        .mobile-category-button {
+            flex-basis: 54px;
+            width: 54px;
+            min-width: 54px;
+        }
+
+        .mobile-category-icon {
+            width: 44px !important;
+            height: 44px !important;
+            flex-basis: 44px;
+        }
+
+        .mobile-main {
+            padding-left: 7px !important;
+            padding-right: 7px !important;
+        }
+
+        #productsGrid {
+            gap: 7px !important;
+        }
+
+        .product-card {
+            padding: 7px !important;
+        }
+
+        .product-image {
+            height: 118px !important;
+        }
+
+        .product-name {
+            font-size: 10px !important;
+        }
+
+        .product-price {
+            font-size: 12px !important;
+        }
+
+        .product-add {
+            font-size: 9px !important;
+        }
+    }
+
+    /* =========================================================
+       SAFE AREA
+    ========================================================= */
+
+    @supports (padding-bottom: env(safe-area-inset-bottom)) {
+
+        body {
+            padding-bottom:
+                calc(76px + env(safe-area-inset-bottom));
+        }
+    }
+</style>
+```
+
 </head>
-<body class="text-slate-800 antialiased pb-24">
-    <!-- NAVEGACIÓN INFERIOR — SOLO MÓVIL -->
-    <nav id="mobileBottomNav" class="md:hidden">
-        <button id="mobileHomeBtn" class="active" onclick="resetToHome(); setMobileNav('home')">
-            <span class="nav-icon">⌂</span>
-            <span>Inicio</span>
-        </button>
-        <button onclick="document.getElementById('searchInput').focus(); setMobileNav('search')">
-            <span class="nav-icon">⌕</span>
-            <span>Buscar</span>
-        </button>
-        <button class="nav-cart-wrap" onclick="document.getElementById('cartTrigger').click(); setMobileNav('cart')">
-            <span class="nav-icon">🛒</span>
-            <span>Carrito</span>
-            <span id="mobileNavCartCounter" class="nav-cart-count">0</span>
-        </button>
-    </nav>
+
+<body class="text-slate-800 antialiased">
+
+```
+<!-- =========================================================
+     NAVEGACIÓN MÓVIL
+========================================================= -->
+
+<nav id="mobileBottomNav" class="md:hidden">
+
+    <button
+        id="mobileHomeBtn"
+        class="active"
+        onclick="resetToHome(); setMobileNav('home')">
+
+        <span class="nav-icon">⌂</span>
+        <span>Inicio</span>
+
+    </button>
+
+    <button
+        onclick="document.getElementById('searchInput').focus(); setMobileNav('search')">
+
+        <span class="nav-icon">⌕</span>
+        <span>Buscar</span>
+
+    </button>
+
+    <button
+        class="nav-cart-wrap"
+        onclick="document.getElementById('cartTrigger').click(); setMobileNav('cart')">
+
+        <span class="nav-icon">🛒</span>
+        <span>Carrito</span>
+
+        <span
+            id="mobileNavCartCounter"
+            class="nav-cart-count"
+            style="display:none;">
+            0
+        </span>
+
+    </button>
+
+</nav>
 
 
-    <!-- TOP BAR ESTILO D1 -->
-    <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-xs">
-        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3 mobile-header">
-            <div class="flex items-center gap-2 cursor-pointer mobile-logo" onclick="resetToHome()">
-                <img src="logo.png" alt="MerkoMAX" class="h-9 w-auto object-contain">
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-xs">
+
+    <div
+        class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3 mobile-header">
+
+        <div
+            class="flex items-center gap-2 cursor-pointer mobile-logo"
+            onclick="resetToHome()">
+
+            <img
+                src="logo.png"
+                alt="MerkoMAX"
+                class="h-9 w-auto object-contain">
+
+        </div>
+
+
+        <div class="flex-1 max-w-xl mobile-search">
+
+            <div class="relative">
+
+                <span
+                    class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm">
+                    🔍
+                </span>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="¿Qué estás buscando?"
+                    autocomplete="off"
+                    class="w-full pl-10 pr-4 py-2 bg-slate-100 border border-transparent rounded-full text-xs font-medium focus:bg-white focus:border-red-600 outline-none transition-all">
+
             </div>
 
-            <div class="flex-1 max-w-xl mobile-search">
-                <div class="relative">
-                    <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm">🔍</span>
-                    <input type="text" id="searchInput" placeholder="¿Qué estás buscando?" 
-                           class="w-full pl-10 pr-4 py-2 bg-slate-100 border border-transparent rounded-full text-xs font-medium focus:bg-white focus:border-red-600 outline-none transition-all">
-                </div>
+        </div>
+
+
+        <button
+            id="cartTrigger"
+            class="mobile-cart relative bg-red-50 text-red-600 px-3 py-2 rounded-full hover:bg-red-100 transition-all flex items-center gap-1.5 font-bold text-xs">
+
+            <span>🛒</span>
+
+            <span
+                id="cartCounter"
+                class="bg-red-600 text-white text-[10px] px-1.5 py-0.5 rounded-full">
+                0
+            </span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section
+    class="mobile-hero bg-gradient-to-r from-slate-900 via-slate-800 to-red-950 text-white py-6 px-4">
+
+    <div
+        class="max-w-7xl mx-auto grid md:grid-cols-2 gap-4 items-center mobile-hero-grid">
+
+        <div class="space-y-2 text-center md:text-left">
+
+            <span
+                class="bg-red-600/30 text-red-300 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider">
+
+                ⚡ Cimitarra Express
+
+            </span>
+
+            <h1 class="text-xl md:text-3xl font-extrabold tracking-tight">
+
+                Todo lo que necesitas, directo a tu casa.
+
+            </h1>
+
+            <p class="text-slate-300 text-xs">
+
+                Calidad garantizada, precios bajos y entregas rápidas.
+
+            </p>
+
+        </div>
+
+
+        <div class="mobile-hero-image rounded-2xl overflow-hidden shadow-lg border border-slate-700">
+
+            <img
+                src="banner.jpeg"
+                alt="MerkoMAX Cimitarra"
+                class="w-full h-36 md:h-48 object-cover">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CATEGORÍAS
+========================================================= -->
+
+<section class="py-4 max-w-7xl mx-auto px-4">
+
+    <div
+        class="flex gap-4 overflow-x-auto pb-2 hide-scrollbar mobile-categories">
+
+
+        <button
+            class="mobile-category-button flex flex-col items-center gap-1.5 shrink-0 group"
+            onclick="filterCategory('todos')">
+
+            <div
+                class="mobile-category-icon w-14 h-14 rounded-full bg-slate-900 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">
+
+                🌐
+
             </div>
 
-            <button id="cartTrigger" class="mobile-cart relative bg-red-50 text-red-600 px-3 py-2 rounded-full hover:bg-red-100 transition-all flex items-center gap-1.5 font-bold text-xs">
+            <span class="text-[11px] font-semibold text-slate-700">
+                Todos
+            </span>
+
+        </button>
+
+
+        <button
+            class="mobile-category-button flex flex-col items-center gap-1.5 shrink-0 group"
+            onclick="filterCategory('mas-vendidos')">
+
+            <div
+                class="mobile-category-icon w-14 h-14 rounded-full bg-amber-500 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">
+
+                🔥
+
+            </div>
+
+            <span class="text-[11px] font-semibold text-slate-700">
+                Top Ventas
+            </span>
+
+        </button>
+
+
+        <button
+            class="mobile-category-button flex flex-col items-center gap-1.5 shrink-0 group"
+            onclick="filterCategory('combos')">
+
+            <div
+                class="mobile-category-icon w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">
+
+                📦
+
+            </div>
+
+            <span class="text-[11px] font-semibold text-slate-700">
+                Combos
+            </span>
+
+        </button>
+
+
+        <button
+            class="mobile-category-button flex flex-col items-center gap-1.5 shrink-0 group"
+            onclick="filterCategory('despensa')">
+
+            <div
+                class="mobile-category-icon w-14 h-14 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">
+
+                🛒
+
+            </div>
+
+            <span class="text-[11px] font-semibold text-slate-700">
+                Despensa
+            </span>
+
+        </button>
+
+
+        <button
+            class="mobile-category-button flex flex-col items-center gap-1.5 shrink-0 group"
+            onclick="filterCategory('frescos')">
+
+            <div
+                class="mobile-category-icon w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">
+
+                🍎
+
+            </div>
+
+            <span class="text-[11px] font-semibold text-slate-700">
+                Frutas
+            </span>
+
+        </button>
+
+
+        <button
+            class="mobile-category-button flex flex-col items-center gap-1.5 shrink-0 group"
+            onclick="filterCategory('lacteos')">
+
+            <div
+                class="mobile-category-icon w-14 h-14 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">
+
+                🥛
+
+            </div>
+
+            <span class="text-[11px] font-semibold text-slate-700">
+                Lácteos
+            </span>
+
+        </button>
+
+
+        <button
+            class="mobile-category-button flex flex-col items-center gap-1.5 shrink-0 group"
+            onclick="filterCategory('aseo')">
+
+            <div
+                class="mobile-category-icon w-14 h-14 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">
+
+                ✨
+
+            </div>
+
+            <span class="text-[11px] font-semibold text-slate-700">
+                Aseo
+            </span>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PRODUCTOS
+========================================================= -->
+
+<main
+    class="max-w-7xl mx-auto px-3 pb-12 space-y-3 mobile-main">
+
+    <div
+        class="flex items-center justify-between border-b border-slate-200 pb-2">
+
+        <div>
+
+            <h2
+                id="sectionTitle"
+                class="text-sm font-extrabold text-slate-900">
+
+                Nuestros Productos
+
+            </h2>
+
+            <p
+                id="sectionSubtitle"
+                class="text-slate-500 text-[10px]">
+
+                Catálogo en tiempo real
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="productsGrid"
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mobile-products-grid">
+
+        <div class="col-span-2 py-12 text-center">
+
+            <div
+                class="w-6 h-6 border-2 border-red-600 border-t-transparent rounded-full animate-spin mx-auto">
+            </div>
+
+            <p class="text-xs text-slate-500 mt-2">
+                Cargando productos...
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- =========================================================
+     WHATSAPP
+========================================================= -->
+
+<a
+    href="https://wa.me/573105500791?text=Hola%20MerkoMAX,%20tengo%20una%20consulta"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="fixed bottom-5 left-5 z-40 bg-emerald-600 text-white p-3.5 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform">
+
+    <span class="text-lg">💬</span>
+
+</a>
+
+
+<!-- =========================================================
+     CART DRAWER
+========================================================= -->
+
+<div
+    id="cartOverlay"
+    class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden">
+</div>
+
+
+<div
+    id="cartPanel"
+    class="mobile-cart-wrapper fixed inset-y-0 right-0 max-w-full flex pl-10 z-50 transform translate-x-full transition-transform duration-300">
+
+    <div
+        class="mobile-cart-panel w-screen max-w-md bg-white shadow-2xl flex flex-col">
+
+
+        <div
+            class="p-3.5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+
+            <h3
+                class="font-bold text-xs text-slate-900 flex items-center gap-1">
+
                 <span>🛒</span>
-                <span id="cartCounter" class="bg-red-600 text-white text-[10px] px-1.5 py-0.2 rounded-full">0</span>
-            </button>
-        </div>
-    </header>
+                Tu Carrito
 
-    <!-- BANNER HERO -->
-    <section class="mobile-hero bg-gradient-to-r from-slate-900 via-slate-800 to-red-950 text-white py-6 px-4">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-4 items-center mobile-hero-grid">
-            <div class="space-y-2 text-center md:text-left">
-                <span class="bg-red-600/30 text-red-300 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider">⚡ Cimitarra Express</span>
-                <h1 class="text-xl md:text-3xl font-extrabold tracking-tight">Todo lo que necesitas, directo a tu casa.</h1>
-                <p class="text-slate-300 text-xs">Calidad garantizada, precios bajos y entregas rápidas.</p>
+            </h3>
+
+
+            <div class="flex items-center gap-2">
+
+                <button
+                    id="clearCartBtn"
+                    onclick="clearCart()"
+                    class="hidden text-red-500 text-[10px] font-semibold bg-red-50 px-2 py-0.5 rounded-md">
+
+                    Vaciar
+
+                </button>
+
+
+                <button
+                    id="closeCart"
+                    class="text-slate-400 hover:text-slate-600 font-bold p-1">
+
+                    ✕
+
+                </button>
+
             </div>
-            <div class="mobile-hero-image rounded-2xl overflow-hidden shadow-lg border border-slate-700">
-                <img src="banner.jpeg" alt="Banner" class="w-full h-36 md:h-48 object-cover">
+
+        </div>
+
+
+        <div
+            id="cartContent"
+            class="flex-1 overflow-y-auto p-3 space-y-2">
+        </div>
+
+
+        <div
+            class="p-3.5 border-t border-slate-100 bg-slate-50 space-y-2">
+
+            <div
+                class="flex justify-between font-bold text-xs">
+
+                <span>
+                    Total a pagar
+                </span>
+
+                <span
+                    id="cartTotal"
+                    class="text-red-600 text-sm">
+
+                    $0
+
+                </span>
+
             </div>
-        </div>
-    </section>
 
-    <!-- CATEGORÍAS CÍRCULOS -->
-    <section class="py-4 max-w-7xl mx-auto px-4">
-        <div class="flex gap-4 overflow-x-auto pb-2 hide-scrollbar mobile-categories">
-            <button class="mobile-category-button" onclick="filterCategory('todos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
-                <div class="mobile-category-icon w-14 h-14 rounded-full bg-slate-900 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🌐</div>
-                <span class="text-[11px] font-semibold text-slate-700">Todos</span>
-            </button>
-            <button class="mobile-category-button" onclick="filterCategory('mas-vendidos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
-                <div class="mobile-category-icon w-14 h-14 rounded-full bg-amber-500 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🔥</div>
-                <span class="text-[11px] font-semibold text-slate-700">Top Ventas</span>
-            </button>
-            <button class="mobile-category-button" onclick="filterCategory('combos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
-                <div class="mobile-category-icon w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">📦</div>
-                <span class="text-[11px] font-semibold text-slate-700">Combos</span>
-            </button>
-            <button class="mobile-category-button" onclick="filterCategory('despensa')" class="flex flex-col items-center gap-1.5 shrink-0 group">
-                <div class="mobile-category-icon w-14 h-14 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🛒</div>
-                <span class="text-[11px] font-semibold text-slate-700">Despensa</span>
-            </button>
-            <button class="mobile-category-button" onclick="filterCategory('frescos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
-                <div class="mobile-category-icon w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🍎</div>
-                <span class="text-[11px] font-semibold text-slate-700">Frutas</span>
-            </button>
-            <button class="mobile-category-button" onclick="filterCategory('lacteos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
-                <div class="mobile-category-icon w-14 h-14 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🥛</div>
-                <span class="text-[11px] font-semibold text-slate-700">Lácteos</span>
-            </button>
-            <button class="mobile-category-button" onclick="filterCategory('aseo')" class="flex flex-col items-center gap-1.5 shrink-0 group">
-                <div class="mobile-category-icon w-14 h-14 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">✨</div>
-                <span class="text-[11px] font-semibold text-slate-700">Aseo</span>
-            </button>
-        </div>
-    </section>
 
-    <!-- GRILLA DE PRODUCTOS ESTILO D1 (2 Columnas estrictas en móvil) -->
-    <main class="max-w-7xl mx-auto px-3 pb-12 space-y-3 mobile-main">
-        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+            <button
+                id="openCheckoutModalBtn"
+                class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl shadow-xs text-xs">
+
+                Continuar Pedido por WhatsApp ➔
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     CHECKOUT
+========================================================= -->
+
+<div
+    id="checkoutModal"
+    class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3">
+
+    <div
+        class="mobile-checkout bg-white rounded-2xl max-w-md w-full p-4 space-y-3 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+
+
+        <button
+            id="closeCheckoutModal"
+            class="absolute top-3 right-3 text-slate-500 hover:text-slate-800 font-bold text-sm p-2">
+
+            ✕
+
+        </button>
+
+
+        <h3
+            class="text-xs font-extrabold text-slate-900">
+
+            📍 Datos para tu Entrega
+
+        </h3>
+
+
+        <form
+            id="checkoutForm"
+            class="space-y-2.5 text-xs">
+
+
             <div>
-                <h2 id="sectionTitle" class="text-sm font-extrabold text-slate-900">Nuestros Productos</h2>
-                <p id="sectionSubtitle" class="text-slate-500 text-[10px]">Catálogo en tiempo real</p>
+
+                <label
+                    class="block font-bold text-slate-700 mb-0.5">
+
+                    Nombre Completo *
+
+                </label>
+
+                <input
+                    type="text"
+                    id="custName"
+                    required
+                    placeholder="Ej. Maria Perez"
+                    class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
+
             </div>
-        </div>
 
-        <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mobile-products-grid">
-            <div class="col-span-2 py-12 text-center">
-                <div class="w-6 h-6 border-2 border-red-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
-                <p class="text-xs text-slate-500 mt-2">Cargando productos...</p>
-            </div>
-        </div>
-    </main>
 
-    <!-- BOTÓN WHATSAPP FLOTANTE -->
-    <a href="https://wa.me/573105500791?text=Hola%20MerkoMAX,%20tengo%20una%20consulta" target="_blank" 
-       class="fixed bottom-5 left-5 z-40 bg-emerald-600 text-white p-3.5 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform">
-        <span class="text-lg">💬</span>
-    </a>
+            <div
+                class="grid grid-cols-2 gap-2 mobile-checkout-grid">
 
-    <!-- CART DRAWER -->
-    <div id="cartOverlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden"></div>
-    <div id="cartPanel" class="mobile-cart-wrapper fixed inset-y-0 right-0 max-w-full flex pl-10 z-50 transform translate-x-full transition-transform duration-300">
-        <div class="mobile-cart-panel w-screen max-w-md bg-white shadow-2xl flex flex-col">
-            <div class="p-3.5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
-                <h3 class="font-bold text-xs text-slate-900 flex items-center gap-1"><span>🛒</span> Tu Carrito</h3>
-                <div class="flex items-center gap-2">
-                    <button id="clearCartBtn" onclick="clearCart()" class="hidden text-red-500 text-[10px] font-semibold bg-red-50 px-2 py-0.5 rounded-md">Vaciar</button>
-                    <button id="closeCart" class="text-slate-400 hover:text-slate-600 font-bold p-1">✕</button>
+                <div>
+
+                    <label
+                        class="block font-bold text-slate-700 mb-0.5">
+
+                        Barrio *
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="custNeighborhood"
+                        required
+                        placeholder="Ej. El Centro"
+                        class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
+
                 </div>
-            </div>
 
-            <div id="cartContent" class="flex-1 overflow-y-auto p-3 space-y-2"></div>
 
-            <div class="p-3.5 border-t border-slate-100 bg-slate-50 space-y-2">
-                <div class="flex justify-between font-bold text-xs">
-                    <span>Total a pagar</span>
-                    <span id="cartTotal" class="text-red-600 text-sm">$0</span>
+                <div>
+
+                    <label
+                        class="block font-bold text-slate-700 mb-0.5">
+
+                        Dirección *
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="custAddress"
+                        required
+                        placeholder="Ej. Cra 5 # 8-12"
+                        class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
+
                 </div>
-                <button id="openCheckoutModalBtn" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl shadow-xs text-xs">
-                    Continuar Pedido por WhatsApp ➔
-                </button>
+
             </div>
-        </div>
+
+
+            <div>
+
+                <label
+                    class="block font-bold text-slate-700 mb-0.5">
+
+                    Método de Pago *
+
+                </label>
+
+                <select
+                    id="custPayment"
+                    onchange="toggleCashDetail()"
+                    class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
+
+                    <option value="Efectivo">
+                        Efectivo contra entrega
+                    </option>
+
+                    <option value="Nequi / Daviplata">
+                        Nequi / Daviplata
+                    </option>
+
+                    <option value="Datáfono">
+                        Datáfono
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div id="cashDetailBox">
+
+                <label
+                    class="block font-bold text-slate-700 mb-0.5">
+
+                    ¿Con cuánto dinero cancelas?
+
+                </label>
+
+                <input
+                    type="text"
+                    id="custCashAmount"
+                    placeholder="Ej. Con $50.000 o Exacto"
+                    class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
+
+            </div>
+
+
+            <div>
+
+                <label
+                    class="block font-bold text-slate-700 mb-0.5">
+
+                    Notas (Opcional)
+
+                </label>
+
+                <textarea
+                    id="custNotes"
+                    rows="2"
+                    placeholder="Instrucciones adicionales..."
+                    class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600"></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-xs text-xs mt-1">
+
+                💬 Enviar Pedido a WhatsApp
+
+            </button>
+
+        </form>
+
     </div>
 
-    <!-- MODAL CHECKOUT -->
-    <div id="checkoutModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3">
-        <div class="mobile-checkout bg-white rounded-2xl max-w-md w-full p-4 space-y-3 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-            <button id="closeCheckoutModal" class="absolute top-3 right-3 text-slate-500 hover:text-slate-800 font-bold text-sm p-2">✕</button>
-            <h3 class="text-xs font-extrabold text-slate-900">📍 Datos para tu Entrega</h3>
-            <form id="checkoutForm" class="space-y-2.5 text-xs">
-                <div>
-                    <label class="block font-bold text-slate-700 mb-0.5">Nombre Completo *</label>
-                    <input type="text" id="custName" required placeholder="Ej. Maria Perez" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
-                </div>
-                <div class="grid grid-cols-2 gap-2 mobile-checkout-grid">
-                    <div>
-                        <label class="block font-bold text-slate-700 mb-0.5">Barrio *</label>
-                        <input type="text" id="custNeighborhood" required placeholder="Ej. El Centro" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
-                    </div>
-                    <div>
-                        <label class="block font-bold text-slate-700 mb-0.5">Dirección *</label>
-                        <input type="text" id="custAddress" required placeholder="Ej. Cra 5 # 8-12" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
-                    </div>
-                </div>
-                <div>
-                    <label class="block font-bold text-slate-700 mb-0.5">Método de Pago *</label>
-                    <select id="custPayment" onchange="toggleCashDetail()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
-                        <option value="Efectivo">Efectivo contra entrega</option>
-                        <option value="Nequi / Daviplata">Nequi / Daviplata</option>
-                        <option value="Datáfono">Datáfono</option>
-                    </select>
-                </div>
-                <div id="cashDetailBox">
-                    <label class="block font-bold text-slate-700 mb-0.5">¿Con cuánto dinero cancelas?</label>
-                    <input type="text" id="custCashAmount" placeholder="Ej. Con $50.000 o Exacto" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
-                </div>
-                <div>
-                    <label class="block font-bold text-slate-700 mb-0.5">Notas (Opcional)</label>
-                    <textarea id="custNotes" rows="2" placeholder="Instrucciones adicionales..." class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600"></textarea>
-                </div>
-                <button type="submit" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-xs text-xs mt-1">
-                    💬 Enviar Pedido a WhatsApp
-                </button>
-            </form>
-        </div>
-    </div>
+</div>
 
-    <!-- TOAST -->
-    <div id="toastContainer" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
-    <!-- SCRIPT -->
-    <script>
-        const SHEETDB_API = "https://sheetdb.io/api/v1/15hpacliqdaw2";
-        let products = [];
-        let cart = [];
-        let currentCategory = 'todos';
-        let searchQuery = '';
+<!-- =========================================================
+     TOAST
+========================================================= -->
 
-        document.addEventListener('DOMContentLoaded', () => {
-            loadCartFromLocalStorage();
-            fetchProductsFromSheet();
-            setupEvents();
-        });
+<div
+    id="toastContainer"
+    class="fixed bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none">
+</div>
 
-        async function fetchProductsFromSheet() {
-            try {
-                const res = await fetch(SHEETDB_API);
-                const data = await res.json();
-                products = data.map(item => ({
-                    id: Number(item.id) || Math.random(),
-                    name: item.name || 'Producto',
-                    category: item.category ? item.category.trim().toLowerCase() : 'despensa',
-                    price: parseFloat(String(item.price || '0').replace(/\./g, '').replace(/[^0-9]/g, '')) || 0,
-                    oldPrice: item.oldPrice ? parseFloat(String(item.oldPrice).replace(/\./g, '').replace(/[^0-9]/g, '')) : null,
-                    isBestSeller: String(item.isBestSeller).toUpperCase() === 'TRUE',
-                    image: item.image || 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80'
-                }));
-                renderProducts();
-            } catch (e) {
-                document.getElementById('productsGrid').innerHTML = `<p class="text-xs text-red-500 text-center col-span-2">Error cargando productos.</p>`;
-            }
-        }
 
-        function renderProducts() {
-            const grid = document.getElementById('productsGrid');
-            const filtered = products.filter(p => {
-                const matchCat = currentCategory === 'todos' ? true : currentCategory === 'mas-vendidos' ? p.isBestSeller : p.category === currentCategory;
-                const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase());
-                return matchCat && matchSearch;
-            });
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
 
-            if (filtered.length === 0) {
-                grid.innerHTML = `<p class="text-xs text-slate-500 text-center col-span-2 py-8">No se encontraron productos.</p>`;
-                return;
-            }
+<script>
 
-            grid.innerHTML = filtered.map(p => `
-                <div class="product-card bg-white rounded-2xl p-3 border border-slate-100 shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-all">
-                    <!-- Icono de check verde superior derecho estilo D1 -->
-                    <div class="absolute top-2.5 right-2.5 z-10 bg-emerald-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shadow-xs">✓</div>
-                    
-                    ${p.category === 'combos' ? '<span class="absolute top-2.5 left-2.5 z-10 bg-red-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">COMBO</span>' : ''}
-                    ${p.isBestSeller && p.category !== 'combos' ? '<span class="absolute top-2.5 left-2.5 z-10 bg-amber-500 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">TOP</span>' : ''}
+    const SHEETDB_API =
+        "https://sheetdb.io/api/v1/15hpacliqdaw2";
 
-                    <div>
-                        <div class="product-image h-32 w-full rounded-xl overflow-hidden bg-slate-50 mb-2 flex items-center justify-center">
-                            <img src="${p.image}" alt="${p.name}" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
-                        </div>
-                        <h3 class="product-name font-bold text-slate-900 text-xs line-clamp-2 mt-1 h-8 leading-tight">${p.name}</h3>
-                    </div>
+    let products = [];
+    let cart = [];
+    let currentCategory = 'todos';
+    let searchQuery = '';
 
-                    <div class="pt-2 border-t border-slate-50 mt-2 space-y-2">
-                        <div class="flex items-baseline gap-1">
-                            <span class="product-price text-xs font-extrabold text-slate-900">$${p.price.toLocaleString('es-CO')}</span>
-                            ${p.oldPrice ? `<span class="product-old-price text-[9px] text-slate-400 line-through">$${p.oldPrice.toLocaleString('es-CO')}</span>` : ''}
-                        </div>
-                        <button onclick="addToCart(${p.id})" class="product-add w-full bg-red-50 hover:bg-red-600 text-red-600 hover:text-white font-bold py-2 rounded-xl text-[11px] transition-colors flex items-center justify-center gap-1">
-                            <span>+ Agregar</span>
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        }
 
-        function filterCategory(cat) {
-            currentCategory = cat;
-            document.getElementById('sectionTitle').textContent = cat === 'todos' ? "Nuestros Productos" : cat.toUpperCase();
-            document.getElementById('sectionSubtitle').textContent = `Mostrando categoría: ${cat}`;
+    /* =========================================================
+       INIT
+    ========================================================= */
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        loadCartFromLocalStorage();
+
+        fetchProductsFromSheet();
+
+        setupEvents();
+
+    });
+
+
+    /* =========================================================
+       LOAD PRODUCTS
+    ========================================================= */
+
+    async function fetchProductsFromSheet() {
+
+        try {
+
+            const res =
+                await fetch(SHEETDB_API);
+
+            const data =
+                await res.json();
+
+            products = data.map(item => ({
+
+                id:
+                    Number(item.id) ||
+                    Math.random(),
+
+                name:
+                    item.name ||
+                    'Producto',
+
+                category:
+                    item.category
+                        ? item.category.trim().toLowerCase()
+                        : 'despensa',
+
+                price:
+                    parseFloat(
+                        String(item.price || '0')
+                            .replace(/\./g, '')
+                            .replace(/[^0-9]/g, '')
+                    ) || 0,
+
+                oldPrice:
+                    item.oldPrice
+                        ? parseFloat(
+                            String(item.oldPrice)
+                                .replace(/\./g, '')
+                                .replace(/[^0-9]/g, '')
+                        )
+                        : null,
+
+                isBestSeller:
+                    String(item.isBestSeller)
+                        .toUpperCase() === 'TRUE',
+
+                image:
+                    item.image ||
+                    'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80'
+
+            }));
+
             renderProducts();
+
+        } catch (e) {
+
+            document.getElementById('productsGrid').innerHTML = `
+
+                <p class="text-xs text-red-500 text-center col-span-2 py-8">
+
+                    Error cargando productos.
+
+                </p>
+
+            `;
+
         }
 
-        function loadCartFromLocalStorage() {
-            const saved = localStorage.getItem('merkomax_cart');
-            if (saved) { try { cart = JSON.parse(saved); } catch(e) { cart = []; } }
-            updateCartUI();
+    }
+
+
+    /* =========================================================
+       RENDER PRODUCTS
+    ========================================================= */
+
+    function renderProducts() {
+
+        const grid =
+            document.getElementById('productsGrid');
+
+        const filtered =
+            products.filter(p => {
+
+                const matchCat =
+                    currentCategory === 'todos'
+                        ? true
+                        : currentCategory === 'mas-vendidos'
+                            ? p.isBestSeller
+                            : p.category === currentCategory;
+
+                const matchSearch =
+                    p.name
+                        .toLowerCase()
+                        .includes(
+                            searchQuery.toLowerCase()
+                        );
+
+                return matchCat && matchSearch;
+
+            });
+
+
+        if (filtered.length === 0) {
+
+            grid.innerHTML = `
+
+                <p class="text-xs text-slate-500 text-center col-span-2 py-8">
+
+                    No se encontraron productos.
+
+                </p>
+
+            `;
+
+            return;
+
         }
 
-        function saveCart() {
-            localStorage.setItem('merkomax_cart', JSON.stringify(cart));
-            updateCartUI();
-        }
 
-        function addToCart(id) {
-            const p = products.find(x => x.id === id);
-            if (!p) return;
-            const item = cart.find(x => x.id === id);
-            if (item) item.quantity++;
-            else cart.push({ ...p, quantity: 1 });
-            saveCart();
-            showToast(`¡Agregado: ${p.name}!`);
-        }
+        grid.innerHTML =
+            filtered.map(p => `
 
-        function updateQty(id, delta) {
-            const item = cart.find(x => x.id === id);
-            if (!item) return;
-            item.quantity += delta;
-            if (item.quantity <= 0) cart = cart.filter(x => x.id !== id);
-            saveCart();
-        }
+                <div
+                    class="product-card bg-white rounded-2xl p-3 border border-slate-100 shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-all">
 
-        function removeFromCart(id) {
-            cart = cart.filter(x => x.id !== id);
-            saveCart();
-        }
+                    <div
+                        class="absolute top-2.5 right-2.5 z-10 bg-emerald-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shadow-xs">
 
-        function clearCart() {
-            if (confirm("¿Vaciar carrito?")) { cart = []; saveCart(); }
-        }
+                        ✓
 
-
-        function setMobileNav(active) {
-            document.querySelectorAll('#mobileBottomNav button').forEach(btn => btn.classList.remove('active'));
-            const map = {
-                home: 'mobileHomeBtn',
-                search: '#mobileBottomNav button:nth-child(2)',
-                cart: '#mobileBottomNav button:nth-child(3)'
-            };
-            const target = document.querySelector(
-                active === 'home' ? '#mobileHomeBtn' :
-                active === 'search' ? '#mobileBottomNav button:nth-child(2)' :
-                '#mobileBottomNav button:nth-child(3)'
-            );
-            if (target) target.classList.add('active');
-        }
-
-        function updateCartUI() {
-            const cartCount = cart.reduce((a, b) => a + b.quantity, 0);
-            document.getElementById('cartCounter').textContent = cartCount;
-            const mobileCounter = document.getElementById('mobileNavCartCounter');
-            if (mobileCounter) {
-                mobileCounter.textContent = cartCount;
-                mobileCounter.style.display = cartCount > 0 ? 'flex' : 'none';
-            }
-            document.getElementById('clearCartBtn').style.display = cart.length > 0 ? 'block' : 'none';
-            
-            const content = document.getElementById('cartContent');
-            if (cart.length === 0) {
-                content.innerHTML = `<div class="text-center py-12 text-slate-400 text-xs">Tu carrito está vacío</div>`;
-                document.getElementById('cartTotal').textContent = '$0';
-                return;
-            }
-
-            content.innerHTML = cart.map(i => `
-                <div class="flex items-center gap-2.5 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                    <img src="${i.image}" class="w-10 h-10 object-cover rounded-lg bg-white shrink-0">
-                    <div class="flex-1 min-w-0">
-                        <h5 class="font-bold text-slate-900 text-[11px] truncate">${i.name}</h5>
-                        <p class="text-red-600 font-extrabold text-[11px]">$${(i.price * i.quantity).toLocaleString('es-CO')}</p>
-                        <div class="flex items-center gap-2 mt-1">
-                            <button onclick="updateQty(${i.id}, -1)" class="w-5 h-5 bg-white border rounded text-[10px] font-bold">-</button>
-                            <span class="text-[11px] font-bold">${i.quantity}</span>
-                            <button onclick="updateQty(${i.id}, 1)" class="w-5 h-5 bg-white border rounded text-[10px] font-bold">+</button>
-                        </div>
                     </div>
-                    <button onclick="removeFromCart(${i.id})" class="text-slate-400 hover:text-red-600 text-xs font-bold p-1">✕</button>
+
+
+                    ${
+                        p.category === 'combos'
+                            ? `
+                                <span
+                                    class="absolute top-2.5 left-2.5 z-10 bg-red-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">
+
+                                    COMBO
+
+                                </span>
+                            `
+                            : ''
+                    }
+
+
+                    ${
+                        p.isBestSeller &&
+                        p.category !== 'combos'
+                            ? `
+                                <span
+                                    class="absolute top-2.5 left-2.5 z-10 bg-amber-500 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">
+
+                                    TOP
+
+                                </span>
+                            `
+                            : ''
+                    }
+
+
+                    <div>
+
+                        <div
+                            class="product-image h-32 w-full rounded-xl overflow-hidden bg-slate-50 mb-2 flex items-center justify-center">
+
+                            <img
+                                src="${p.image}"
+                                alt="${p.name}"
+                                loading="lazy"
+                                class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-300">
+
+                        </div>
+
+
+                        <h3
+                            class="product-name font-bold text-slate-900 text-xs line-clamp-2 mt-1 h-8 leading-tight">
+
+                            ${p.name}
+
+                        </h3>
+
+                    </div>
+
+
+                    <div
+                        class="pt-2 border-t border-slate-50 mt-2 space-y-2">
+
+                        <div
+                            class="flex items-baseline gap-1 flex-wrap">
+
+                            <span
+                                class="product-price text-xs font-extrabold text-slate-900">
+
+                                $${p.price.toLocaleString('es-CO')}
+
+                            </span>
+
+
+                            ${
+                                p.oldPrice
+                                    ? `
+                                        <span
+                                            class="product-old-price text-[9px] text-slate-400 line-through">
+
+                                            $${p.oldPrice.toLocaleString('es-CO')}
+
+                                        </span>
+                                    `
+                                    : ''
+                            }
+
+                        </div>
+
+
+                        <button
+                            onclick="addToCart(${p.id})"
+                            class="product-add w-full bg-red-50 hover:bg-red-600 text-red-600 hover:text-white font-bold py-2 rounded-xl text-[11px] transition-colors flex items-center justify-center gap-1">
+
+                            <span>
+                                + Agregar
+                            </span>
+
+                        </button>
+
+                    </div>
+
                 </div>
+
             `).join('');
 
-            const total = cart.reduce((a, b) => a + (b.price * b.quantity), 0);
-            document.getElementById('cartTotal').textContent = `$${total.toLocaleString('es-CO')}`;
-        }
+    }
 
-        function showToast(msg) {
-            const container = document.getElementById('toastContainer');
-            const t = document.createElement('div');
-            t.className = "bg-slate-900 text-white text-[11px] font-semibold px-3 py-2 rounded-xl shadow-lg";
-            t.textContent = msg;
-            container.appendChild(t);
-            setTimeout(() => t.remove(), 2500);
-        }
 
-        function toggleCashDetail() {
-            const pay = document.getElementById('custPayment').value;
-            document.getElementById('cashDetailBox').style.display = pay === 'Efectivo' ? 'block' : 'none';
-        }
+    /* =========================================================
+       CATEGORY
+    ========================================================= */
 
-        function resetToHome() {
-            filterCategory('todos');
-            document.getElementById('searchInput').value = '';
-            searchQuery = '';
-        }
+    function filterCategory(cat) {
 
-        function setupEvents() {
-            const search = document.getElementById('searchInput');
-            search.addEventListener('input', (e) => {
-                searchQuery = e.target.value;
-                renderProducts();
-                setMobileNav('search');
-            });
+        currentCategory = cat;
 
-            const cartTrigger = document.getElementById('cartTrigger');
-            const cartPanel = document.getElementById('cartPanel');
-            const cartOverlay = document.getElementById('cartOverlay');
-            const closeCart = document.getElementById('closeCart');
+        document.getElementById('sectionTitle').textContent =
+            cat === 'todos'
+                ? "Nuestros Productos"
+                : cat === 'mas-vendidos'
+                    ? "Top Ventas"
+                    : cat.charAt(0).toUpperCase() + cat.slice(1);
 
-            const toggleCart = (open) => {
-                cartPanel.classList.toggle('translate-x-full', !open);
-                cartOverlay.classList.toggle('hidden', !open);
-            };
+        document.getElementById('sectionSubtitle').textContent =
+            cat === 'todos'
+                ? "Catálogo en tiempo real"
+                : `Mostrando categoría: ${cat}`;
 
-            cartTrigger.addEventListener('click', () => toggleCart(true));
-            closeCart.addEventListener('click', () => toggleCart(false));
-            cartOverlay.addEventListener('click', () => toggleCart(false));
+        renderProducts();
 
-            const checkoutModal = document.getElementById('checkoutModal');
-            document.getElementById('openCheckoutModalBtn').addEventListener('click', () => {
-                if (cart.length === 0) { showToast('El carrito está vacío'); return; }
-                toggleCart(false);
-                checkoutModal.classList.remove('hidden');
-            });
-            document.getElementById('closeCheckoutModal').addEventListener('click', () => checkoutModal.classList.add('hidden'));
+    }
 
-            document.getElementById('checkoutForm').addEventListener('submit', (e) => {
-                e.preventDefault();
-                const name = document.getElementById('custName').value.trim();
-                const neighborhood = document.getElementById('custNeighborhood').value.trim();
-                const address = document.getElementById('custAddress').value.trim();
-                const payment = document.getElementById('custPayment').value;
-                const cash = document.getElementById('custCashAmount').value.trim();
-                const notes = document.getElementById('custNotes').value.trim();
 
-                let msg = `🛒 *PEDIDO - MERKOMAX NIMAR*\n\n`;
-                msg += `👤 *Cliente:* ${name}\n📍 *Barrio:* ${neighborhood}\n🏠 *Dirección:* ${address}\n💳 *Pago:* ${payment}\n`;
-                if (payment === 'Efectivo' && cash) msg += `💵 *Cambio para:* ${cash}\n`;
-                if (notes) msg += `📝 *Notas:* ${notes}\n`;
-                msg += `\n📦 *PRODUCTOS:*\n`;
+    /* =========================================================
+       CART STORAGE
+    ========================================================= */
 
-                cart.forEach((i, idx) => {
-                    msg += `${idx + 1}. ${i.name} x${i.quantity} - $${(i.price * i.quantity).toLocaleString('es-CO')}\n`;
-                });
+    function loadCartFromLocalStorage() {
 
-                const total = cart.reduce((a, b) => a + (b.price * b.quantity), 0);
-                msg += `\n💰 *TOTAL: $${total.toLocaleString('es-CO')}*`;
+        const saved =
+            localStorage.getItem('merkomax_cart');
 
-                window.open(`https://wa.me/573105500791?text=${encodeURIComponent(msg)}`, '_blank');
+        if (saved) {
+
+            try {
+
+                cart = JSON.parse(saved);
+
+            } catch (e) {
+
                 cart = [];
-                saveCart();
-                checkoutModal.classList.add('hidden');
-            });
+
+            }
+
         }
-    </script>
+
+        updateCartUI();
+
+    }
+
+
+    function saveCart() {
+
+        localStorage.setItem(
+            'merkomax_cart',
+            JSON.stringify(cart)
+        );
+
+        updateCartUI();
+
+    }
+
+
+    /* =========================================================
+       CART
+    ========================================================= */
+
+    function addToCart(id) {
+
+        const p =
+            products.find(x => x.id === id);
+
+        if (!p) return;
+
+        const item =
+            cart.find(x => x.id === id);
+
+        if (item) {
+
+            item.quantity++;
+
+        } else {
+
+            cart.push({
+                ...p,
+                quantity: 1
+            });
+
+        }
+
+        saveCart();
+
+        showToast(`¡Agregado: ${p.name}!`);
+
+    }
+
+
+    function updateQty(id, delta) {
+
+        const item =
+            cart.find(x => x.id === id);
+
+        if (!item) return;
+
+        item.quantity += delta;
+
+        if (item.quantity <= 0) {
+
+            cart =
+                cart.filter(x => x.id !== id);
+
+        }
+
+        saveCart();
+
+    }
+
+
+    function removeFromCart(id) {
+
+        cart =
+            cart.filter(x => x.id !== id);
+
+        saveCart();
+
+    }
+
+
+    function clearCart() {
+
+        if (confirm("¿Vaciar carrito?")) {
+
+            cart = [];
+
+            saveCart();
+
+        }
+
+    }
+
+
+    /* =========================================================
+       MOBILE NAV
+    ========================================================= */
+
+    function setMobileNav(active) {
+
+        document
+            .querySelectorAll('#mobileBottomNav button')
+            .forEach(btn =>
+                btn.classList.remove('active')
+            );
+
+
+        let target = null;
+
+
+        if (active === 'home') {
+
+            target =
+                document.getElementById('mobileHomeBtn');
+
+        } else if (active === 'search') {
+
+            target =
+                document.querySelector(
+                    '#mobileBottomNav button:nth-child(2)'
+                );
+
+        } else if (active === 'cart') {
+
+            target =
+                document.querySelector(
+                    '#mobileBottomNav button:nth-child(3)'
+                );
+
+        }
+
+
+        if (target) {
+
+            target.classList.add('active');
+
+        }
+
+    }
+
+
+    /* =========================================================
+       CART UI
+    ========================================================= */
+
+    function updateCartUI() {
+
+        const cartCount =
+            cart.reduce(
+                (a, b) => a + b.quantity,
+                0
+            );
+
+
+        document.getElementById(
+            'cartCounter'
+        ).textContent = cartCount;
+
+
+        const mobileCounter =
+            document.getElementById(
+                'mobileNavCartCounter'
+            );
+
+
+        if (mobileCounter) {
+
+            mobileCounter.textContent =
+                cartCount;
+
+            mobileCounter.style.display =
+                cartCount > 0
+                    ? 'flex'
+                    : 'none';
+
+        }
+
+
+        document.getElementById(
+            'clearCartBtn'
+        ).style.display =
+            cart.length > 0
+                ? 'block'
+                : 'none';
+
+
+        const content =
+            document.getElementById(
+                'cartContent'
+            );
+
+
+        if (cart.length === 0) {
+
+            content.innerHTML = `
+
+                <div class="text-center py-12 text-slate-400 text-xs">
+
+                    Tu carrito está vacío
+
+                </div>
+
+            `;
+
+            document.getElementById(
+                'cartTotal'
+            ).textContent = '$0';
+
+            return;
+
+        }
+
+
+        content.innerHTML =
+            cart.map(i => `
+
+                <div
+                    class="flex items-center gap-2.5 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+
+                    <img
+                        src="${i.image}"
+                        loading="lazy"
+                        class="w-10 h-10 object-contain rounded-lg bg-white shrink-0 p-1">
+
+
+                    <div class="flex-1 min-w-0">
+
+                        <h5
+                            class="font-bold text-slate-900 text-[11px] truncate">
+
+                            ${i.name}
+
+                        </h5>
+
+
+                        <p
+                            class="text-red-600 font-extrabold text-[11px]">
+
+                            $${(
+                                i.price *
+                                i.quantity
+                            ).toLocaleString('es-CO')}
+
+                        </p>
+
+
+                        <div
+                            class="flex items-center gap-2 mt-1">
+
+                            <button
+                                onclick="updateQty(${i.id}, -1)"
+                                class="w-5 h-5 bg-white border rounded text-[10px] font-bold">
+
+                                -
+
+                            </button>
+
+
+                            <span
+                                class="text-[11px] font-bold">
+
+                                ${i.quantity}
+
+                            </span>
+
+
+                            <button
+                                onclick="updateQty(${i.id}, 1)"
+                                class="w-5 h-5 bg-white border rounded text-[10px] font-bold">
+
+                                +
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        onclick="removeFromCart(${i.id})"
+                        class="text-slate-400 hover:text-red-600 text-xs font-bold p-1">
+
+                        ✕
+
+                    </button>
+
+                </div>
+
+            `).join('');
+
+
+        const total =
+            cart.reduce(
+                (a, b) =>
+                    a +
+                    (b.price * b.quantity),
+                0
+            );
+
+
+        document.getElementById(
+            'cartTotal'
+        ).textContent =
+            `$${total.toLocaleString('es-CO')}`;
+
+    }
+
+
+    /* =========================================================
+       TOAST
+    ========================================================= */
+
+    function showToast(msg) {
+
+        const container =
+            document.getElementById(
+                'toastContainer'
+            );
+
+
+        const t =
+            document.createElement('div');
+
+
+        t.className =
+            "bg-slate-900 text-white text-[11px] font-semibold px-3 py-2 rounded-xl shadow-lg";
+
+
+        t.textContent = msg;
+
+
+        container.appendChild(t);
+
+
+        setTimeout(
+            () => t.remove(),
+            2500
+        );
+
+    }
+
+
+    /* =========================================================
+       PAYMENT
+    ========================================================= */
+
+    function toggleCashDetail() {
+
+        const pay =
+            document.getElementById(
+                'custPayment'
+            ).value;
+
+
+        document.getElementById(
+            'cashDetailBox'
+        ).style.display =
+            pay === 'Efectivo'
+                ? 'block'
+                : 'none';
+
+    }
+
+
+    /* =========================================================
+       HOME
+    ========================================================= */
+
+    function resetToHome() {
+
+        filterCategory('todos');
+
+        document.getElementById(
+            'searchInput'
+        ).value = '';
+
+        searchQuery = '';
+
+    }
+
+
+    /* =========================================================
+       EVENTS
+    ========================================================= */
+
+    function setupEvents() {
+
+        const search =
+            document.getElementById(
+                'searchInput'
+            );
+
+
+        search.addEventListener(
+            'input',
+            (e) => {
+
+                searchQuery =
+                    e.target.value;
+
+                renderProducts();
+
+                setMobileNav('search');
+
+            }
+        );
+
+
+        const cartTrigger =
+            document.getElementById(
+                'cartTrigger'
+            );
+
+        const cartPanel =
+            document.getElementById(
+                'cartPanel'
+            );
+
+        const cartOverlay =
+            document.getElementById(
+                'cartOverlay'
+            );
+
+        const closeCart =
+            document.getElementById(
+                'closeCart'
+            );
+
+
+        const toggleCart = (open) => {
+
+            cartPanel.classList.toggle(
+                'translate-x-full',
+                !open
+            );
+
+            cartOverlay.classList.toggle(
+                'hidden',
+                !open
+            );
+
+            document.body.style.overflow =
+                open ? 'hidden' : '';
+
+        };
+
+
+        cartTrigger.addEventListener(
+            'click',
+            () => {
+
+                toggleCart(true);
+
+                setMobileNav('cart');
+
+            }
+        );
+
+
+        closeCart.addEventListener(
+            'click',
+            () => toggleCart(false)
+        );
+
+
+        cartOverlay.addEventListener(
+            'click',
+            () => toggleCart(false)
+        );
+
+
+        /* CHECKOUT */
+
+        const checkoutModal =
+            document.getElementById(
+                'checkoutModal'
+            );
+
+
+        document
+            .getElementById(
+                'openCheckoutModalBtn'
+            )
+            .addEventListener(
+                'click',
+                () => {
+
+                    if (cart.length === 0) {
+
+                        showToast(
+                            'El carrito está vacío'
+                        );
+
+                        return;
+
+                    }
+
+                    toggleCart(false);
+
+                    checkoutModal.classList.remove(
+                        'hidden'
+                    );
+
+                    document.body.style.overflow =
+                        'hidden';
+
+                }
+            );
+
+
+        document
+            .getElementById(
+                'closeCheckoutModal'
+            )
+            .addEventListener(
+                'click',
+                () => {
+
+                    checkoutModal.classList.add(
+                        'hidden'
+                    );
+
+                    document.body.style.overflow =
+                        '';
+
+                }
+            );
+
+
+        /* FORMULARIO */
+
+        document
+            .getElementById(
+                'checkoutForm'
+            )
+            .addEventListener(
+                'submit',
+                (e) => {
+
+                    e.preventDefault();
+
+
+                    const name =
+                        document
+                            .getElementById(
+                                'custName'
+                            )
+                            .value
+                            .trim();
+
+
+                    const neighborhood =
+                        document
+                            .getElementById(
+                                'custNeighborhood'
+                            )
+                            .value
+                            .trim();
+
+
+                    const address =
+                        document
+                            .getElementById(
+                                'custAddress'
+                            )
+                            .value
+                            .trim();
+
+
+                    const payment =
+                        document
+                            .getElementById(
+                                'custPayment'
+                            )
+                            .value;
+
+
+                    const cash =
+                        document
+                            .getElementById(
+                                'custCashAmount'
+                            )
+                            .value
+                            .trim();
+
+
+                    const notes =
+                        document
+                            .getElementById(
+                                'custNotes'
+                            )
+                            .value
+                            .trim();
+
+
+                    let msg =
+                        `🛒 *PEDIDO - MERKOMAX NIMAR*\n\n`;
+
+
+                    msg +=
+                        `👤 *Cliente:* ${name}\n` +
+                        `📍 *Barrio:* ${neighborhood}\n` +
+                        `🏠 *Dirección:* ${address}\n` +
+                        `💳 *Pago:* ${payment}\n`;
+
+
+                    if (
+                        payment === 'Efectivo' &&
+                        cash
+                    ) {
+
+                        msg +=
+                            `💵 *Cambio para:* ${cash}\n`;
+
+                    }
+
+
+                    if (notes) {
+
+                        msg +=
+                            `📝 *Notas:* ${notes}\n`;
+
+                    }
+
+
+                    msg +=
+                        `\n📦 *PRODUCTOS:*\n`;
+
+
+                    cart.forEach(
+                        (i, idx) => {
+
+                            msg +=
+                                `${idx + 1}. ${i.name} x${i.quantity} - $${(
+                                    i.price *
+                                    i.quantity
+                                ).toLocaleString('es-CO')}\n`;
+
+                        }
+                    );
+
+
+                    const total =
+                        cart.reduce(
+                            (a, b) =>
+                                a +
+                                (b.price *
+                                    b.quantity),
+                            0
+                        );
+
+
+                    msg +=
+                        `\n💰 *TOTAL: $${total.toLocaleString('es-CO')}*`;
+
+
+                    window.open(
+                        `https://wa.me/573105500791?text=${encodeURIComponent(msg)}`,
+                        '_blank'
+                    );
+
+
+                    cart = [];
+
+                    saveCart();
+
+
+                    checkoutModal.classList.add(
+                        'hidden'
+                    );
+
+                    document.body.style.overflow =
+                        '';
+
+                }
+            );
+
+    }
+
+</script>
+```
+
 </body>
 </html>
