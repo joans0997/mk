@@ -3149,6 +3149,16 @@ body.checkout-is-open {
 </a>
 
 
+<script>
+    // Número oficial de WhatsApp de MerkoMAX
+    const MERKOMAX_WHATSAPP_NUMBER = "573157666771";
+    const floatingWhatsApp = document.querySelector('body > a[href*="wa.me"]');
+    if (floatingWhatsApp) {
+        const currentText = encodeURIComponent("Hola MerkoMAX, tengo una consulta");
+        floatingWhatsApp.href = `https://wa.me/${MERKOMAX_WHATSAPP_NUMBER}?text=${currentText}`;
+    }
+</script>
+
 <!-- =========================================================
      CART OVERLAY
 ========================================================= -->
@@ -5476,8 +5486,10 @@ function submitOrder(event) {
         `\n💰 *TOTAL: $${total.toLocaleString("es-CO")}*`;
 
 
+    const WHATSAPP_NUMBER = "573157666771";
+
     const whatsappUrl =
-        `https://wa.me/573157666771?text=${encodeURIComponent(message)}`;
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
 
     const orderUrl =
