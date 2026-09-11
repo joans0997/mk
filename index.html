@@ -4,6 +4,10 @@
 <head>
 
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
 
 <meta
     name="viewport"
@@ -3129,7 +3133,7 @@ body.checkout-is-open {
 ========================================================= -->
 
 <a
-    href="https://wa.me/573157666771?text=Hola%20MerkoMAX,%20tengo%20una%20consulta"
+    href="https://api.whatsapp.com/send?phone=573157666771&text=Hola%20MerkoMAX%2C%20tengo%20una%20consulta"
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Contactar por WhatsApp"
@@ -5489,7 +5493,7 @@ function submitOrder(event) {
     const WHATSAPP_NUMBER = "573157666771";
 
     const whatsappUrl =
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+        `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`;
 
 
     const orderUrl =
@@ -5523,38 +5527,51 @@ function submitOrder(event) {
 (function () {
   const MERKOMAX_WHATSAPP = '573157666771';
 
+  function buildWhatsAppUrl(text) {
+    return 'https://api.whatsapp.com/send?phone=' +
+      MERKOMAX_WHATSAPP +
+      '&text=' +
+      encodeURIComponent(text || 'Hola MerkoMAX, tengo una consulta');
+  }
+
   function forceWhatsAppNumber() {
-    document.querySelectorAll('a[href*="wa.me"]').forEach(function (link) {
+    document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]').forEach(function (link) {
+      let text = 'Hola MerkoMAX, tengo una consulta';
       try {
-        const url = new URL(link.href);
-        const text = url.searchParams.get('text') || 'Hola MerkoMAX, tengo una consulta';
-        link.href = 'https://wa.me/' + MERKOMAX_WHATSAPP + '?text=' + encodeURIComponent(text);
-      } catch (e) {
-        link.href = 'https://wa.me/' + MERKOMAX_WHATSAPP + '?text=' + encodeURIComponent('Hola MerkoMAX, tengo una consulta');
-      }
+        const url = new URL(link.href, window.location.href);
+        text = url.searchParams.get('text') || text;
+      } catch (e) {}
+      link.href = buildWhatsAppUrl(text);
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
     });
   }
 
   document.addEventListener('DOMContentLoaded', forceWhatsAppNumber);
   window.addEventListener('load', forceWhatsAppNumber);
+  setTimeout(forceWhatsAppNumber, 50);
   setTimeout(forceWhatsAppNumber, 300);
   setTimeout(forceWhatsAppNumber, 1500);
 
-  // Fuerza el número correcto incluso si otro script o enlace intenta usar uno antiguo.
   document.addEventListener('click', function (event) {
     const link = event.target.closest('a');
     if (!link) return;
 
     const href = link.getAttribute('href') || '';
-    if (href.includes('wa.me') || href.includes('api.whatsapp.com')) {
+    if (
+      href.includes('wa.me') ||
+      href.includes('api.whatsapp.com')
+    ) {
       event.preventDefault();
-      let text = 'Hola MerkoMAX, tengo una consulta';
+
+      let message = 'Hola MerkoMAX, tengo una consulta';
       try {
         const parsed = new URL(href, window.location.href);
-        text = parsed.searchParams.get('text') || text;
+        message = parsed.searchParams.get('text') || message;
       } catch (e) {}
+
       window.open(
-        'https://wa.me/' + MERKOMAX_WHATSAPP + '?text=' + encodeURIComponent(text),
+        buildWhatsAppUrl(message),
         '_blank',
         'noopener,noreferrer'
       );
