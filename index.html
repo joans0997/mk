@@ -89,7 +89,7 @@
             </div>
         </div>
 
-        <!-- MOBILE SEARCH BAR QUE HACE SCROLL AUTOMÁTICO AL ESCRIBIR -->
+        <!-- MOBILE SEARCH BAR -->
         <div class="px-4 pb-4 md:hidden">
             <div class="relative">
                 <i data-lucide="search" class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
@@ -99,7 +99,7 @@
         </div>
     </header>
 
-    <!-- HERO SECTION CON FONDO MEJORADO Y LLAMATIVO -->
+    <!-- HERO SECTION -->
     <section class="relative overflow-hidden bg-gradient-to-br from-wine-950 via-slate-900 to-blue-950 text-white py-12 lg:py-16">
         <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -127,7 +127,7 @@
                     </div>
                 </div>
                 
-                <!-- FOTO DEL EQUIPO (BANNER.JPEG) CON ENCUADRE AJUSTADO Y RESPONSIVE -->
+                <!-- FOTO DEL EQUIPO (BANNER.JPEG) -->
                 <div class="relative group">
                     <div class="w-full h-full bg-gradient-to-tr from-wine-600 to-blue-600 rounded-3xl opacity-30 blur-2xl absolute inset-0 group-hover:opacity-50 transition-opacity"></div>
                     <div class="relative bg-slate-900/80 border border-slate-700/60 p-3 rounded-3xl backdrop-blur-xl shadow-2xl overflow-hidden">
@@ -183,7 +183,7 @@
             </div>
         </section>
 
-        <!-- PRODUCTS GRID -->
+        <!-- PRODUCTS GRID CON ESTILO SEGURO DE 2 COLUMNAS EN CELULAR -->
         <section id="productos" class="space-y-6 scroll-mt-32 transition-all">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200/60 pb-4">
                 <div>
@@ -192,9 +192,10 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="productsGrid">
+            <!-- Grilla adaptada para forzar 2 columnas en celulares y evitar errores -->
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;" id="productsGrid" class="sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-6">
                 <!-- Skeleton Loader -->
-                <div class="col-span-full py-16 text-center space-y-3">
+                <div style="grid-column: span 2;" class="py-16 text-center space-y-3">
                     <div class="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
                     <p class="text-sm font-semibold text-slate-600">Actualizando productos en vivo...</p>
                 </div>
@@ -270,7 +271,6 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-2">
-                    <!-- BOTÓN PARA VACIAR TODO EL CARRITO -->
                     <button id="clearCartBtn" onclick="clearCart()" title="Vaciar carrito" class="hidden text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 p-2 rounded-xl transition-colors text-xs font-semibold flex items-center gap-1">
                         <i data-lucide="trash-2" class="w-4 h-4"></i>
                         <span class="hidden sm:inline">Vaciar</span>
@@ -439,7 +439,7 @@
             } catch (error) {
                 console.error("Error al cargar productos:", error);
                 productsGrid.innerHTML = `
-                    <div class="col-span-full py-16 text-center space-y-3">
+                    <div style="grid-column: span 2;" class="py-16 text-center space-y-3">
                         <div class="bg-red-50 text-red-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
                             <i data-lucide="alert-triangle" class="w-8 h-8"></i>
                         </div>
@@ -492,7 +492,7 @@
 
             if (filtered.length === 0) {
                 productsGrid.innerHTML = `
-                    <div class="col-span-full py-16 text-center space-y-3">
+                    <div style="grid-column: span 2;" class="py-16 text-center space-y-3">
                         <div class="bg-slate-100 text-slate-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
                             <i data-lucide="search-x" class="w-8 h-8"></i>
                         </div>
@@ -506,37 +506,38 @@
 
             productsGrid.innerHTML = filtered.map(product => {
                 return `
-                    <div class="bg-white rounded-3xl p-4 border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between relative group">
+                    <div class="bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-4 border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between relative group">
                         
                         ${product.category === 'combos' ? `
-                            <span class="absolute top-6 left-6 z-10 bg-wine-700 text-white font-black text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider shadow-md">
-                                COMBO AHORRO
+                            <span class="absolute top-4 left-4 z-10 bg-wine-700 text-white font-black text-[9px] sm:text-[10px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full uppercase tracking-wider shadow-md">
+                                COMBO
                             </span>
                         ` : product.isBestSeller ? `
-                            <span class="absolute top-6 left-6 z-10 bg-amber-500 text-white font-black text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider shadow-md">
-                                TOP VENDIDO
+                            <span class="absolute top-4 left-4 z-10 bg-amber-500 text-white font-black text-[9px] sm:text-[10px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full uppercase tracking-wider shadow-md">
+                                TOP
                             </span>
                         ` : ''}
 
                         <div>
-                            <div class="h-44 w-full rounded-2xl overflow-hidden bg-slate-50 flex items-center justify-center mb-4 relative">
+                            <!-- Altura de imagen controlada para que no sea gigante en celulares -->
+                            <div class="h-32 sm:h-44 w-full rounded-xl sm:rounded-2xl overflow-hidden bg-slate-50 flex items-center justify-center mb-3 sm:mb-4 relative">
                                 <img src="${product.image}" alt="${product.name}" class="object-cover h-full w-full group-hover:scale-105 transition-transform duration-500">
                             </div>
 
                             <div class="space-y-1">
-                                <span class="text-[11px] font-bold text-blue-600 uppercase tracking-wider">${product.category}</span>
-                                <h3 class="font-bold text-slate-900 text-base leading-snug line-clamp-2">${product.name}</h3>
+                                <span class="text-[10px] sm:text-[11px] font-bold text-blue-600 uppercase tracking-wider">${product.category}</span>
+                                <h3 class="font-bold text-slate-900 text-xs sm:text-base leading-snug line-clamp-2">${product.name}</h3>
                             </div>
                         </div>
 
-                        <div class="pt-4 border-t border-slate-100 mt-4 space-y-3">
-                            <div class="flex items-baseline gap-2">
-                                <span class="text-lg font-extrabold text-slate-900">$${product.price.toLocaleString('es-CO')}</span>
-                                ${product.oldPrice ? `<span class="text-xs text-slate-400 line-through">$${product.oldPrice.toLocaleString('es-CO')}</span>` : ''}
+                        <div class="pt-3 sm:pt-4 border-t border-slate-100 mt-3 sm:mt-4 space-y-2 sm:space-y-3">
+                            <div class="flex items-baseline gap-1.5 sm:gap-2">
+                                <span class="text-sm sm:text-lg font-extrabold text-slate-900">$${product.price.toLocaleString('es-CO')}</span>
+                                ${product.oldPrice ? `<span class="text-[10px] sm:text-xs text-slate-400 line-through">$${product.oldPrice.toLocaleString('es-CO')}</span>` : ''}
                             </div>
-                            <button onclick="addToCart(${product.id})" class="w-full bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white font-bold py-3 px-4 rounded-2xl transition-all flex items-center justify-center gap-2 text-sm shadow-sm">
-                                <i data-lucide="plus" class="w-4 h-4"></i>
-                                <span>Agregar al Carrito</span>
+                            <button onclick="addToCart(${product.id})" class="w-full bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white font-bold py-2 sm:py-3 px-2 sm:px-4 rounded-xl sm:rounded-2xl transition-all flex items-center justify-center gap-1.5 text-xs sm:text-sm shadow-sm">
+                                <i data-lucide="plus" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+                                <span class="truncate">Agregar</span>
                             </button>
                         </div>
                     </div>
@@ -593,7 +594,6 @@
             }, 500);
         }
 
-        // BÚSQUEDA EN TIEMPO REAL CON SCROLL AUTOMÁTICO HACIA LOS PRODUCTOS
         function handleLiveSearch(query, sourceInput) {
             searchQuery = query;
             renderProducts();
@@ -620,7 +620,7 @@
 
             saveCartToLocalStorage();
             updateCartUI();
-            showToast(`¡Agregado al carrito: ${product.name}!`);
+            showToast(`¡Agregado: ${product.name}!`);
         }
 
         function updateQuantity(productId, delta) {
