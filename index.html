@@ -5539,6 +5539,27 @@ function submitOrder(event) {
   window.addEventListener('load', forceWhatsAppNumber);
   setTimeout(forceWhatsAppNumber, 300);
   setTimeout(forceWhatsAppNumber, 1500);
+
+  // Fuerza el número correcto incluso si otro script o enlace intenta usar uno antiguo.
+  document.addEventListener('click', function (event) {
+    const link = event.target.closest('a');
+    if (!link) return;
+
+    const href = link.getAttribute('href') || '';
+    if (href.includes('wa.me') || href.includes('api.whatsapp.com')) {
+      event.preventDefault();
+      let text = 'Hola MerkoMAX, tengo una consulta';
+      try {
+        const parsed = new URL(href, window.location.href);
+        text = parsed.searchParams.get('text') || text;
+      } catch (e) {}
+      window.open(
+        'https://wa.me/' + MERKOMAX_WHATSAPP + '?text=' + encodeURIComponent(text),
+        '_blank',
+        'noopener,noreferrer'
+      );
+    }
+  }, true);
 })();
 </script>
 
