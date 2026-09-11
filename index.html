@@ -352,31 +352,18 @@ button {
 
     /* =====================================================
        HEADER
-       LOGO Y BUSCADOR EN LA MISMA FILA
     ===================================================== */
 
     .mobile-header {
         width: 100%;
         min-height: 72px;
         height: auto !important;
-
-        padding:
-            10px 12px !important;
-
-        display:
-            flex !important;
-
-        flex-direction:
-            row !important;
-
-        align-items:
-            center !important;
-
-        justify-content:
-            center !important;
-
-        gap:
-            8px !important;
+        padding: 10px 12px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
     }
 
 
@@ -389,14 +376,9 @@ button {
         min-width: 0;
         flex: 0 0 auto;
 
-        display:
-            flex !important;
-
-        align-items:
-            center !important;
-
-        justify-content:
-            center !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
 
         cursor: pointer;
     }
@@ -405,12 +387,8 @@ button {
         width: auto !important;
         max-width: 140px !important;
         height: 40px !important;
-
-        object-fit:
-            contain !important;
-
-        object-position:
-            center !important;
+        object-fit: contain !important;
+        object-position: center !important;
     }
 
 
@@ -515,8 +493,7 @@ button {
     }
 
     .mobile-hero-grid {
-        display:
-            grid !important;
+        display: grid !important;
 
         grid-template-columns:
             1fr !important;
@@ -1486,7 +1463,6 @@ button {
 
     /* =====================================================
        CART CONTENT
-       DISTRIBUCIÓN COMPACTA
     ===================================================== */
 
     #cartContent {
@@ -1597,6 +1573,12 @@ button {
             0 !important;
     }
 
+
+    /* =====================================================
+       CART PRICE + QUANTITY + TRASH
+       TODO SIEMPRE HORIZONTAL
+    ===================================================== */
+
     #cartContent > div > div > div {
         margin-top:
             4px !important;
@@ -1607,8 +1589,23 @@ button {
         display:
             flex !important;
 
+        flex-direction:
+            row !important;
+
         align-items:
             center !important;
+
+        justify-content:
+            flex-start !important;
+
+        flex-wrap:
+            nowrap !important;
+
+        white-space:
+            nowrap !important;
+
+        width:
+            100% !important;
     }
 
     #cartContent button {
@@ -1617,6 +1614,44 @@ button {
 
         color:
             var(--brand-blue) !important;
+    }
+
+
+    /* CONTROLES − 1 + */
+
+    #cartContent > div > div > div.flex.items-center.gap-1 {
+        display:
+            flex !important;
+
+        flex-direction:
+            row !important;
+
+        align-items:
+            center !important;
+
+        justify-content:
+            center !important;
+
+        flex-wrap:
+            nowrap !important;
+
+        gap:
+            4px !important;
+
+        width:
+            auto !important;
+
+        flex:
+            0 0 auto !important;
+    }
+
+    #cartContent > div > div > div.flex.items-center.gap-1 button,
+    #cartContent > div > div > div.flex.items-center.gap-1 span {
+        flex:
+            0 0 auto !important;
+
+        float:
+            none !important;
     }
 
     #cartContent > div > div button {
@@ -1639,13 +1674,19 @@ button {
             10px !important;
 
         display:
-            flex;
+            flex !important;
+
+        flex-direction:
+            row !important;
 
         align-items:
-            center;
+            center !important;
 
         justify-content:
-            center;
+            center !important;
+
+        flex-shrink:
+            0 !important;
     }
 
     #cartContent > div > div span {
@@ -1660,7 +1701,13 @@ button {
 
         color:
             var(--brand-blue);
+
+        flex:
+            0 0 auto !important;
     }
+
+
+    /* PAPELERA */
 
     .cart-trash-btn {
         width:
@@ -1672,17 +1719,29 @@ button {
         min-width:
             25px !important;
 
+        max-width:
+            25px !important;
+
         padding:
+            0 !important;
+
+        margin:
             0 !important;
 
         display:
             flex !important;
+
+        flex-direction:
+            row !important;
 
         align-items:
             center !important;
 
         justify-content:
             center !important;
+
+        flex:
+            0 0 25px !important;
 
         border:
             0 !important;
@@ -1698,6 +1757,14 @@ button {
 
         transition:
             .15s ease;
+    }
+
+    .cart-trash-btn svg {
+        display:
+            block;
+
+        flex:
+            0 0 auto;
     }
 
     .cart-trash-btn:hover {
@@ -1819,7 +1886,6 @@ button {
 
     /* =====================================================
        CHECKOUT MOBILE
-       AHORA ES PARTE NORMAL DE LA PÁGINA
     ===================================================== */
 
     #checkoutModal {
@@ -2116,6 +2182,12 @@ button {
 
         min-width:
             22px !important;
+
+        max-width:
+            22px !important;
+
+        flex:
+            0 0 22px !important;
     }
 
     .cart-trash-btn svg {
@@ -2124,6 +2196,17 @@ button {
 
         height:
             12px;
+    }
+
+    #cartContent > div > div > div.flex.items-center.gap-1 {
+        flex-direction:
+            row !important;
+
+        flex-wrap:
+            nowrap !important;
+
+        gap:
+            3px !important;
     }
 }
 
@@ -4025,6 +4108,7 @@ function updateCartUI() {
                         class="w-12 h-12 object-contain rounded-lg bg-white shrink-0 p-1"
                         onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}'">
 
+
                     <div
                         class="flex-1 min-w-0">
 
@@ -4051,12 +4135,26 @@ function updateCartUI() {
 
 
                             <div
-                                class="flex items-center gap-1">
+                                class="flex items-center gap-1"
+                                style="
+                                    display:flex;
+                                    flex-direction:row;
+                                    align-items:center;
+                                    justify-content:center;
+                                    flex-wrap:nowrap;
+                                    white-space:nowrap;
+                                ">
 
                                 <button
                                     type="button"
                                     onclick="updateQty(${item.id},-1)"
-                                    class="w-6 h-6 bg-white border rounded text-[10px] font-bold">
+                                    class="w-6 h-6 bg-white border rounded text-[10px] font-bold"
+                                    style="
+                                        flex:0 0 auto;
+                                        display:flex;
+                                        align-items:center;
+                                        justify-content:center;
+                                    ">
 
                                     −
 
@@ -4064,7 +4162,12 @@ function updateCartUI() {
 
 
                                 <span
-                                    class="text-[11px] font-bold">
+                                    class="text-[11px] font-bold"
+                                    style="
+                                        flex:0 0 auto;
+                                        min-width:17px;
+                                        text-align:center;
+                                    ">
 
                                     ${item.quantity}
 
@@ -4074,7 +4177,13 @@ function updateCartUI() {
                                 <button
                                     type="button"
                                     onclick="updateQty(${item.id},1)"
-                                    class="w-6 h-6 bg-white border rounded text-[10px] font-bold">
+                                    class="w-6 h-6 bg-white border rounded text-[10px] font-bold"
+                                    style="
+                                        flex:0 0 auto;
+                                        display:flex;
+                                        align-items:center;
+                                        justify-content:center;
+                                    ">
 
                                     +
 
