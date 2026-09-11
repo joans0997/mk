@@ -1,5191 +1,930 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="es" class="scroll-smooth">
 <head>
-
-<meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-<title>Supermercado MerkoMAX NIMAR - Cimitarra</title>
-
-<link rel="icon" type="image/png" href="logo.png">
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<script>
-tailwind.config = {
-    theme: {
-        extend: {
-            colors: {
-                brand: {
-                    blue: '#102A43',
-                    blueDark: '#071A2B',
-                    wine: '#7F1D3A',
-                    wineDark: '#5A1028',
-                    red: '#7F1D3A',
-                    dark: '#102A43'
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermercado MerkoMAX NIMAR - Cimitarra</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#e30613',
+                            dark: '#1e293b'
+                        }
+                    }
                 }
             }
         }
-    }
-};
-</script>
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet">
-
-<style>
-
-:root {
-    --brand-blue: #102A43;
-    --brand-blue-dark: #071A2B;
-    --brand-blue-light: #EAF2F8;
-
-    --brand-wine: #7F1D3A;
-    --brand-wine-dark: #5A1028;
-    --brand-wine-light: #F8EAF0;
-
-    --brand-white: #FFFFFF;
-    --brand-bg: #F4F6F8;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-html {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-}
-
-body {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: #f4f6f8;
-    color: #1e293b;
-    overflow-x: hidden;
-    opacity: 1 !important;
-    filter: none !important;
-    backdrop-filter: none !important;
-}
-
-img {
-    display: block;
-    max-width: 100%;
-}
-
-button,
-input,
-select,
-textarea {
-    font: inherit;
-}
-
-button {
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-
-.hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-.mobile-search {
-    position: relative;
-    z-index: 200;
-}
-
-.mobile-search > div {
-    position: relative;
-    z-index: 201;
-}
-
-#searchResults {
-    position: absolute;
-    top: calc(100% + 7px);
-    left: 0;
-    right: 0;
-    z-index: 99999;
-    background: white;
-    border: 1px solid #d9e2ec;
-    border-radius: 16px;
-    box-shadow: 0 18px 40px rgba(7,26,43,.18);
-    overflow-y: auto;
-    max-height: 320px;
-    display: none;
-}
-
-#searchResults.show {
-    display: block !important;
-}
-
-.search-result-item {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 9px 11px;
-    min-height: 58px;
-    background: white;
-    border: 0;
-    text-align: left;
-}
-
-.search-result-item:hover {
-    background: #f6f8fa;
-}
-
-.search-result-image {
-    width: 42px;
-    height: 42px;
-    flex: 0 0 42px;
-    object-fit: contain;
-    border-radius: 9px;
-    background: #f8fafc;
-    padding: 4px;
-}
-
-.search-result-name {
-    flex: 1;
-    min-width: 0;
-    font-size: 11px;
-    font-weight: 700;
-    color: #0f172a;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.search-result-price {
-    font-size: 10px;
-    font-weight: 800;
-    color: var(--brand-wine);
-    white-space: nowrap;
-}
-
-
-/* =========================================================
-   DESKTOP
-========================================================= */
-
-#mobileBottomNav {
-    display: none;
-}
-
-.product-price-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    width: 100%;
-}
-
-.product-price {
-    white-space: nowrap;
-}
-
-.product-quantity {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    flex-shrink: 0;
-}
-
-.product-quantity button {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #d9e2ec;
-    border-radius: 7px;
-    background: white;
-    color: var(--brand-blue);
-    font-size: 13px;
-    font-weight: 800;
-    line-height: 1;
-}
-
-.product-quantity button:hover {
-    background: var(--brand-wine);
-    color: white;
-    border-color: var(--brand-wine);
-}
-
-.product-quantity-value {
-    min-width: 20px;
-    text-align: center;
-    font-size: 11px;
-    font-weight: 800;
-    color: var(--brand-blue);
-}
-
-
-/* =========================================================
-   MODAL / OVERLAY SAFETY
-========================================================= */
-
-#cartOverlay,
-#checkoutModal {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-}
-
-#cartOverlay.hidden,
-#checkoutModal.hidden {
-    display: none !important;
-}
-
-
-/* =========================================================
-   CHECKOUT GLOBAL
-========================================================= */
-
-#checkoutModal {
-    z-index: 9997 !important;
-}
-
-#checkoutModal:not(.hidden) {
-    display: flex !important;
-}
-
-#checkoutModal .mobile-checkout {
-    position: relative;
-}
-
-#openCheckoutModalBtn {
-    width: 100%;
-    min-height: 43px;
-    border: 0;
-    border-radius: 12px;
-    background: var(--brand-wine);
-    color: white;
-    font-size: 11px;
-    font-weight: 800;
-    box-shadow: 0 6px 14px rgba(127,29,58,.18);
-    transition: .2s ease;
-}
-
-#openCheckoutModalBtn:hover {
-    background: var(--brand-wine-dark);
-}
-
-#openCheckoutModalBtn:active {
-    transform: scale(.98);
-}
-
-.mobile-checkout form button[type="submit"] {
-    background: var(--brand-wine);
-}
-
-.mobile-checkout form button[type="submit"]:hover {
-    background: var(--brand-wine-dark);
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (min-width: 641px) and (max-width: 1024px) {
-
-    #productsGrid {
-        grid-template-columns:
-            repeat(3, minmax(0, 1fr)) !important;
-    }
-
-    .product-image {
-        height: 155px !important;
-    }
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 640px) {
-
-    body {
-        padding-bottom:
-            calc(76px + env(safe-area-inset-bottom));
-
-        background: #f3f7fb;
-    }
-
-    header {
-        background:
-            linear-gradient(
-                135deg,
-                var(--brand-blue-dark),
-                var(--brand-blue)
-            ) !important;
-
-        box-shadow:
-            0 4px 18px rgba(7,26,43,.22) !important;
-
-        border-bottom:
-            1px solid rgba(255,255,255,.08) !important;
-    }
-
-
-    /* =====================================================
-       HEADER
-    ===================================================== */
-
-    .mobile-header {
-        width: 100%;
-        min-height: 72px;
-        height: auto !important;
-        padding: 10px 12px !important;
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: center !important;
-        gap: 8px !important;
-    }
-
-
-    /* =====================================================
-       LOGO
-    ===================================================== */
-
-    .mobile-logo {
-        width: auto;
-        min-width: 0;
-        flex: 0 0 auto;
-
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-
-        cursor: pointer;
-    }
-
-    .mobile-logo img {
-        width: auto !important;
-        max-width: 140px !important;
-        height: 40px !important;
-        object-fit: contain !important;
-        object-position: center !important;
-    }
-
-
-    /* =====================================================
-       CART SUPERIOR
-    ===================================================== */
-
-    #cartTrigger {
-        display: none !important;
-    }
-
-
-    /* =====================================================
-       SEARCH
-    ===================================================== */
-
-    .mobile-search {
-        width: auto !important;
-        max-width: none !important;
-        flex: 1 1 auto;
-        min-width: 0;
-        margin: 0 !important;
-        position: relative !important;
-    }
-
-    .mobile-search > div {
-        width: 100%;
-    }
-
-    .mobile-search input {
-        width: 100%;
-        height: 42px;
-
-        padding:
-            0 13px !important;
-
-        background:
-            rgba(255,255,255,.97) !important;
-
-        border:
-            1px solid rgba(255,255,255,.35) !important;
-
-        border-radius:
-            12px !important;
-
-        font-size:
-            13px !important;
-
-        color:
-            var(--brand-blue) !important;
-
-        box-shadow:
-            0 4px 12px rgba(0,0,0,.08);
-    }
-
-    .mobile-search input::placeholder {
-        color: #7b8794;
-    }
-
-    .mobile-search input:focus {
-        background: #fff !important;
-
-        border-color:
-            var(--brand-wine) !important;
-
-        box-shadow:
-            0 0 0 3px
-            rgba(127,29,58,.20);
-    }
-
-    #searchResults {
-        position: absolute !important;
-        top: calc(100% + 7px) !important;
-        left: 0 !important;
-        right: 0 !important;
-
-        width: 100% !important;
-        max-height: 300px;
-
-        border-radius: 14px !important;
-        z-index: 99999 !important;
-    }
-
-
-    /* =====================================================
-       HERO
-    ===================================================== */
-
-    .mobile-hero {
-        width: 100%;
-
-        padding:
-            14px 12px !important;
-
-        background:
-            linear-gradient(
-                135deg,
-                var(--brand-blue-dark) 0%,
-                var(--brand-blue) 52%,
-                var(--brand-wine-dark) 100%
-            ) !important;
-    }
-
-    .mobile-hero-grid {
-        display: grid !important;
-
-        grid-template-columns:
-            1fr !important;
-
-        gap:
-            11px !important;
-    }
-
-    .mobile-hero h1 {
-        font-size: 19px !important;
-        line-height: 1.2 !important;
-        max-width: 340px;
-    }
-
-    .mobile-hero p {
-        font-size: 11px !important;
-        line-height: 1.4 !important;
-        color: #d9e2ec !important;
-    }
-
-    .mobile-hero-image {
-        width: 100%;
-        height: 176px !important;
-
-        border-radius:
-            14px !important;
-
-        overflow: hidden;
-
-        border:
-            1px solid
-            rgba(255,255,255,.18) !important;
-
-        background:
-            #102A43;
-    }
-
-    .mobile-hero-image img {
-        width: 100% !important;
-        height: 100% !important;
-
-        object-fit:
-            cover !important;
-
-        object-position:
-            center 20% !important;
-
-        background:
-            #102A43;
-    }
-
-
-    /* =====================================================
-       CATEGORIES
-    ===================================================== */
-
-    section.py-4 {
-        width: 100%;
-
-        padding:
-            10px 0 8px !important;
-
-        background:
-            #ffffff;
-
-        border-bottom:
-            1px solid #e6ebef;
-    }
-
-    .mobile-categories {
-        display: flex;
-
-        gap:
-            12px !important;
-
-        padding:
-            0 12px 3px !important;
-
-        overflow-x:
-            auto;
-    }
-
-    .mobile-category-button {
-        flex:
-            0 0 57px;
-
-        width:
-            57px;
-
-        min-width:
-            57px;
-
-        display:
-            flex;
-
-        flex-direction:
-            column;
-
-        align-items:
-            center;
-
-        gap:
-            4px;
-
-        border:
-            0;
-
-        background:
-            transparent;
-    }
-
-    .mobile-category-icon {
-        width:
-            45px !important;
-
-        height:
-            45px !important;
-
-        flex:
-            0 0 45px;
-
-        font-size:
-            14px !important;
-
-        box-shadow:
-            0 4px 10px
-            rgba(15,23,42,.08) !important;
-    }
-
-    .mobile-category-button span:last-child {
-        width: 100%;
-
-        font-size:
-            8px !important;
-
-        text-align:
-            center;
-
-        white-space:
-            nowrap;
-
-        overflow:
-            hidden;
-
-        text-overflow:
-            ellipsis;
-
-        color:
-            #34495E !important;
-    }
-
-
-    /* =====================================================
-       MAIN
-    ===================================================== */
-
-    .mobile-main {
-        width: 100%;
-
-        padding:
-            12px 9px 20px !important;
-    }
-
-    #sectionTitle {
-        font-size:
-            15px !important;
-
-        color:
-            var(--brand-blue) !important;
-    }
-
-    #sectionSubtitle {
-        font-size:
-            9px !important;
-
-        color:
-            #718096 !important;
-    }
-
-
-    /* =====================================================
-       PRODUCT GRID
-    ===================================================== */
-
-    #productsGrid {
-        width: 100%;
-
-        display:
-            grid !important;
-
-        grid-template-columns:
-            repeat(2,minmax(0,1fr)) !important;
-
-        gap:
-            8px !important;
-
-        align-items:
-            stretch;
-    }
-
-
-    /* =====================================================
-       PRODUCT CARD
-    ===================================================== */
-
-    .product-card {
-        width:
-            100% !important;
-
-        min-width:
-            0 !important;
-
-        height:
-            auto !important;
-
-        min-height:
-            260px;
-
-        padding:
-            8px !important;
-
-        display:
-            flex !important;
-
-        flex-direction:
-            column !important;
-
-        justify-content:
-            space-between !important;
-
-        border-radius:
-            13px !important;
-
-        border:
-            1px solid #dce7f0 !important;
-
-        background:
-            #fff;
-
-        overflow:
-            hidden !important;
-
-        box-shadow:
-            0 3px 10px
-            rgba(16,42,67,.07) !important;
-    }
-
-
-    /* =====================================================
-       PRODUCT IMAGE
-    ===================================================== */
-
-    .product-image {
-        width:
-            100% !important;
-
-        height:
-            100px !important;
-
-        flex:
-            0 0 100px !important;
-
-        margin:
-            0 0 7px 0 !important;
-
-        border-radius:
-            9px !important;
-
-        background:
-            #f5f8fa !important;
-
-        overflow:
-            hidden !important;
-
-        display:
-            flex !important;
-
-        align-items:
-            center !important;
-
-        justify-content:
-            center !important;
-    }
-
-    .product-image img {
-        width:
-            100% !important;
-
-        height:
-            100% !important;
-
-        object-fit:
-            contain !important;
-
-        object-position:
-            center !important;
-
-        padding:
-            10px !important;
-    }
-
-
-    /* =====================================================
-       PRODUCT INFO
-    ===================================================== */
-
-    .product-card > div:not(.product-image) {
-        min-width: 0;
-    }
-
-    .product-name {
-        display:
-            -webkit-box !important;
-
-        -webkit-line-clamp:
-            2 !important;
-
-        -webkit-box-orient:
-            vertical !important;
-
-        width:
-            100% !important;
-
-        height:
-            29px !important;
-
-        margin:
-            0 !important;
-
-        overflow:
-            hidden !important;
-
-        font-size:
-            10px !important;
-
-        line-height:
-            1.35 !important;
-
-        color:
-            var(--brand-blue) !important;
-    }
-
-
-    /* =====================================================
-       PRICE + COUNTER
-    ===================================================== */
-
-    .product-card .product-price-row {
-        width:
-            100% !important;
-
-        margin-top:
-            7px !important;
-
-        padding-top:
-            7px !important;
-
-        border-top:
-            1px solid #edf1f4 !important;
-
-        display:
-            flex !important;
-
-        flex-direction:
-            row !important;
-
-        align-items:
-            center !important;
-
-        justify-content:
-            space-between !important;
-
-        gap:
-            4px !important;
-
-        min-height:
-            34px !important;
-    }
-
-    .product-price {
-        font-size:
-            12px !important;
-
-        line-height:
-            1 !important;
-
-        color:
-            var(--brand-wine) !important;
-
-        white-space:
-            nowrap;
-    }
-
-
-    /* =====================================================
-       COUNTER
-    ===================================================== */
-
-    .product-quantity {
-        display:
-            flex !important;
-
-        align-items:
-            center !important;
-
-        gap:
-            2px !important;
-
-        background:
-            #f8fafc;
-
-        border:
-            1px solid #dce5ec;
-
-        border-radius:
-            8px;
-
-        padding:
-            2px !important;
-
-        flex-shrink:
-            0;
-    }
-
-    .product-quantity button {
-        width:
-            23px !important;
-
-        height:
-            23px !important;
-
-        min-width:
-            23px !important;
-
-        border:
-            0 !important;
-
-        border-radius:
-            6px !important;
-
-        background:
-            white !important;
-
-        color:
-            var(--brand-blue) !important;
-
-        font-size:
-            13px !important;
-
-        font-weight:
-            900 !important;
-
-        padding:
-            0 !important;
-
-        line-height:
-            1 !important;
-    }
-
-    .product-quantity button:active {
-        background:
-            var(--brand-wine) !important;
-
-        color:
-            white !important;
-    }
-
-    .product-quantity-value {
-        min-width:
-            19px !important;
-
-        font-size:
-            10px !important;
-
-        color:
-            var(--brand-blue) !important;
-
-        font-weight:
-            900 !important;
-
-        text-align:
-            center;
-    }
-
-
-    /* =====================================================
-       ADD BUTTON
-    ===================================================== */
-
-    .product-add {
-        width:
-            100% !important;
-
-        min-height:
-            31px !important;
-
-        height:
-            31px !important;
-
-        padding:
-            5px 3px !important;
-
-        border-radius:
-            8px !important;
-
-        font-size:
-            9px !important;
-
-        background:
-            var(--brand-wine-light) !important;
-
-        color:
-            var(--brand-wine) !important;
-
-        border:
-            1px solid
-            rgba(127,29,58,.08);
-    }
-
-    .product-add:hover,
-    .product-add:active {
-        background:
-            var(--brand-wine) !important;
-
-        color:
-            white !important;
-    }
-
-
-    /* =====================================================
-       WHATSAPP
-    ===================================================== */
-
-    body > a[href*="wa.me"] {
-        left:
-            auto !important;
-
-        right:
-            13px !important;
-
-        bottom:
-            calc(
-                77px +
-                env(safe-area-inset-bottom)
-            ) !important;
-
-        width:
-            48px !important;
-
-        height:
-            48px !important;
-
-        padding:
-            0 !important;
-
-        border-radius:
-            14px !important;
-
-        display:
-            flex;
-
-        align-items:
-            center;
-
-        justify-content:
-            center;
-
-        box-shadow:
-            0 7px 18px
-            rgba(15,23,42,.22) !important;
-    }
-
-
-    /* =====================================================
-       BOTTOM NAV
-    ===================================================== */
-
-    #mobileBottomNav {
-        position:
-            fixed;
-
-        left:
-            0;
-
-        right:
-            0;
-
-        bottom:
-            0;
-
-        width:
-            100%;
-
-        height:
-            calc(
-                64px +
-                env(safe-area-inset-bottom)
-            );
-
-        padding:
-            4px 14px
-            env(safe-area-inset-bottom);
-
-        z-index:
-            9990;
-
-        display:
-            flex !important;
-
-        align-items:
-            flex-start;
-
-        justify-content:
-            space-around;
-
-        background:
-            linear-gradient(
-                135deg,
-                var(--brand-blue-dark),
-                var(--brand-blue)
-            );
-
-        border-top:
-            1px solid
-            rgba(255,255,255,.08);
-
-        box-shadow:
-            0 -6px 22px
-            rgba(7,26,43,.25);
-
-        transition:
-            transform .25s ease;
-    }
-
-    #mobileBottomNav button {
-        position:
-            relative;
-
-        width:
-            72px;
-
-        height:
-            54px;
-
-        padding:
-            3px 5px;
-
-        border:
-            0;
-
-        background:
-            transparent;
-
-        color:
-            #b8c7d6;
-
-        display:
-            flex;
-
-        flex-direction:
-            column;
-
-        align-items:
-            center;
-
-        justify-content:
-            center;
-
-        gap:
-            2px;
-
-        font-size:
-            9px;
-
-        font-weight:
-            700;
-    }
-
-    #mobileBottomNav button .nav-icon {
-        font-size:
-            18px;
-
-        line-height:
-            20px;
-    }
-
-    #mobileBottomNav button.active {
-        color:
-            white;
-    }
-
-    #mobileBottomNav button.active .nav-icon {
-        color:
-            white;
-
-        filter:
-            drop-shadow(
-                0 2px 5px
-                rgba(127,29,58,.65)
-            );
-    }
-
-    .nav-cart-wrap {
-        position:
-            relative;
-    }
-
-    .nav-cart-count {
-        position:
-            absolute;
-
-        top:
-            0;
-
-        right:
-            7px;
-
-        min-width:
-            15px;
-
-        height:
-            15px;
-
-        padding:
-            0 4px;
-
-        border-radius:
-            99px;
-
-        background:
-            var(--brand-wine);
-
-        color:
-            white;
-
-        font-size:
-            8px;
-
-        align-items:
-            center;
-
-        justify-content:
-            center;
-
-        border:
-            1px solid
-            rgba(255,255,255,.4);
-    }
-
-
-    /* =====================================================
-       CART OVERLAY
-    ===================================================== */
-
-    #cartOverlay {
-        position:
-            fixed !important;
-
-        inset:
-            0 !important;
-
-        z-index:
-            9995 !important;
-
-        background:
-            rgba(7,26,43,.72) !important;
-
-        backdrop-filter:
-            none !important;
-
-        -webkit-backdrop-filter:
-            none !important;
-
-        display:
-            none;
-    }
-
-    #cartOverlay:not(.hidden) {
-        display:
-            block !important;
-    }
-
-
-    /* =====================================================
-       CART PANEL
-    ===================================================== */
-
-    #cartPanel {
-        position:
-            fixed !important;
-
-        top:
-            0 !important;
-
-        right:
-            0 !important;
-
-        bottom:
-            0 !important;
-
-        left:
-            auto !important;
-
-        width:
-            100% !important;
-
-        max-width:
-            100% !important;
-
-        padding:
-            0 0 0 8px !important;
-
-        display:
-            flex !important;
-
-        justify-content:
-            flex-end !important;
-
-        z-index:
-            9996 !important;
-
-        pointer-events:
-            none !important;
-
-        transform:
-            translateX(100%) !important;
-
-        transition:
-            transform .30s ease !important;
-
-        visibility:
-            hidden;
-
-        opacity:
-            0;
-
-        will-change:
-            transform;
-    }
-
-    #cartPanel.is-open {
-        transform:
-            translateX(0) !important;
-
-        visibility:
-            visible !important;
-
-        opacity:
-            1 !important;
-
-        pointer-events:
-            auto !important;
-    }
-
-    #cartPanel.is-closed {
-        transform:
-            translateX(100%) !important;
-
-        visibility:
-            hidden !important;
-
-        opacity:
-            0 !important;
-
-        pointer-events:
-            none !important;
-    }
-
-    .mobile-cart-panel {
-        width:
-            calc(100vw - 8px) !important;
-
-        max-width:
-            430px !important;
-
-        height:
-            100% !important;
-
-        margin:
-            0 !important;
-
-        border-radius:
-            22px 0 0 22px !important;
-
-        overflow:
-            hidden;
-
-        background:
-            white;
-
-        box-shadow:
-            -12px 0 40px
-            rgba(7,26,43,.35);
-
-        display:
-            flex !important;
-
-        flex-direction:
-            column !important;
-    }
-
-
-    /* =====================================================
-       CART HEADER
-    ===================================================== */
-
-    #cartPanel .mobile-cart-panel > div:first-child {
-        flex:
-            0 0 auto;
-
-        background:
-            linear-gradient(
-                135deg,
-                var(--brand-blue-dark),
-                var(--brand-blue)
-            ) !important;
-
-        color:
-            white !important;
-
-        border:
-            0 !important;
-
-        padding:
-            16px !important;
-    }
-
-    #cartPanel .mobile-cart-panel > div:first-child h3 {
-        color:
-            white !important;
-
-        font-size:
-            14px !important;
-    }
-
-    #cartPanel #closeCart {
-        color:
-            white !important;
-
-        font-size:
-            17px !important;
-
-        background:
-            rgba(255,255,255,.10);
-
-        border-radius:
-            9px;
-
-        width:
-            34px;
-
-        height:
-            34px;
-    }
-
-    #clearCartBtn {
-        background:
-            rgba(255,255,255,.12) !important;
-
-        color:
-            white !important;
-
-        border:
-            1px solid rgba(255,255,255,.15);
-    }
-
-
-    /* =====================================================
-       CART CONTENT
-    ===================================================== */
-
-    #cartContent {
-        flex:
-            1 1 auto !important;
-
-        min-height:
-            0 !important;
-
-        background:
-            #ffffff;
-
-        padding:
-            10px !important;
-
-        overflow-y:
-            auto !important;
-    }
-
-    #cartContent > div {
-        background:
-            #f7f9fb !important;
-
-        border:
-            1px solid #e4eaf0 !important;
-
-        border-radius:
-            12px !important;
-
-        margin-bottom:
-            7px;
-
-        padding:
-            8px !important;
-
-        gap:
-            9px !important;
-
-        min-height:
-            68px;
-    }
-
-    #cartContent img {
-        width:
-            52px !important;
-
-        height:
-            52px !important;
-
-        flex:
-            0 0 52px !important;
-
-        background:
-            white !important;
-
-        border:
-            1px solid #edf1f4;
-
-        border-radius:
-            9px !important;
-
-        padding:
-            3px !important;
-    }
-
-    #cartContent > div > div {
-        min-width:
-            0 !important;
-
-        flex:
-            1 1 auto !important;
-    }
-
-    #cartContent h5 {
-        color:
-            var(--brand-blue) !important;
-
-        font-size:
-            10px !important;
-
-        line-height:
-            1.25 !important;
-
-        margin:
-            0 !important;
-
-        overflow:
-            hidden;
-
-        text-overflow:
-            ellipsis;
-
-        white-space:
-            nowrap;
-    }
-
-    #cartContent p {
-        color:
-            var(--brand-wine) !important;
-
-        font-size:
-            11px !important;
-
-        line-height:
-            1.2 !important;
-
-        margin:
-            0 !important;
-    }
-
-
-    /* =====================================================
-       CART PRICE + QUANTITY + TRASH
-       TODO SIEMPRE HORIZONTAL
-    ===================================================== */
-
-    #cartContent > div > div > div {
-        margin-top:
-            4px !important;
-
-        gap:
-            4px !important;
-
-        display:
-            flex !important;
-
-        flex-direction:
-            row !important;
-
-        align-items:
-            center !important;
-
-        justify-content:
-            flex-start !important;
-
-        flex-wrap:
-            nowrap !important;
-
-        white-space:
-            nowrap !important;
-
-        width:
-            100% !important;
-    }
-
-    #cartContent button {
-        border-color:
-            #d7e0e8 !important;
-
-        color:
-            var(--brand-blue) !important;
-    }
-
-
-    /* CONTROLES − 1 + */
-
-    #cartContent > div > div > div.flex.items-center.gap-1 {
-        display:
-            flex !important;
-
-        flex-direction:
-            row !important;
-
-        align-items:
-            center !important;
-
-        justify-content:
-            center !important;
-
-        flex-wrap:
-            nowrap !important;
-
-        gap:
-            4px !important;
-
-        width:
-            auto !important;
-
-        flex:
-            0 0 auto !important;
-    }
-
-    #cartContent > div > div > div.flex.items-center.gap-1 button,
-    #cartContent > div > div > div.flex.items-center.gap-1 span {
-        flex:
-            0 0 auto !important;
-
-        float:
-            none !important;
-    }
-
-    #cartContent > div > div button {
-        width:
-            23px !important;
-
-        height:
-            23px !important;
-
-        min-width:
-            23px !important;
-
-        padding:
-            0 !important;
-
-        border-radius:
-            6px !important;
-
-        font-size:
-            10px !important;
-
-        display:
-            flex !important;
-
-        flex-direction:
-            row !important;
-
-        align-items:
-            center !important;
-
-        justify-content:
-            center !important;
-
-        flex-shrink:
-            0 !important;
-    }
-
-    #cartContent > div > div span {
-        min-width:
-            17px;
-
-        text-align:
-            center;
-
-        font-size:
-            10px !important;
-
-        color:
-            var(--brand-blue);
-
-        flex:
-            0 0 auto !important;
-    }
-
-
-    /* PAPELERA */
-
-    .cart-trash-btn {
-        width:
-            25px !important;
-
-        height:
-            25px !important;
-
-        min-width:
-            25px !important;
-
-        max-width:
-            25px !important;
-
-        padding:
-            0 !important;
-
-        margin:
-            0 !important;
-
-        display:
-            flex !important;
-
-        flex-direction:
-            row !important;
-
-        align-items:
-            center !important;
-
-        justify-content:
-            center !important;
-
-        flex:
-            0 0 25px !important;
-
-        border:
-            0 !important;
-
-        background:
-            transparent !important;
-
-        color:
-            #94a3b8 !important;
-
-        border-radius:
-            7px !important;
-
-        transition:
-            .15s ease;
-    }
-
-    .cart-trash-btn svg {
-        display:
-            block;
-
-        flex:
-            0 0 auto;
-    }
-
-    .cart-trash-btn:hover {
-        background:
-            #fef2f2 !important;
-
-        color:
-            #dc2626 !important;
-    }
-
-    .cart-trash-btn:active {
-        background:
-            #fee2e2 !important;
-
-        color:
-            #dc2626 !important;
-    }
-
-    #cartContent button:hover,
-    #cartContent button:active {
-        background:
-            var(--brand-wine) !important;
-
-        color:
-            white !important;
-    }
-
-    .cart-trash-btn:hover,
-    .cart-trash-btn:active {
-        background:
-            #fef2f2 !important;
-
-        color:
-            #dc2626 !important;
-    }
-
-
-    /* =====================================================
-       CART FOOTER
-    ===================================================== */
-
-    #cartPanel .mobile-cart-panel > div:last-child {
-        flex:
-            0 0 auto;
-
-        background:
-            linear-gradient(
-                180deg,
-                #f8fafc,
-                #eef3f7
-            ) !important;
-
-        border-top:
-            1px solid #dfe6ec !important;
-
-        padding:
-            14px !important;
-
-        padding-bottom:
-            calc(
-                14px +
-                env(safe-area-inset-bottom)
-            ) !important;
-    }
-
-    #cartPanel .mobile-cart-panel > div:last-child > .flex {
-        color:
-            var(--brand-blue);
-    }
-
-    #cartTotal {
-        color:
-            var(--brand-wine) !important;
-
-        font-size:
-            17px !important;
-    }
-
-
-    /* =====================================================
-       CONTINUAR COMPRANDO
-    ===================================================== */
-
-    #continueShoppingBtn {
-        width:
-            100%;
-
-        min-height:
-            43px;
-
-        border:
-            1px solid
-            var(--brand-blue);
-
-        border-radius:
-            12px;
-
-        background:
-            white;
-
-        color:
-            var(--brand-blue);
-
-        font-size:
-            11px;
-
-        font-weight:
-            800;
-    }
-
-    #continueShoppingBtn:active {
-        background:
-            var(--brand-blue);
-
-        color:
-            white;
-    }
-
-
-    /* =====================================================
-       CHECKOUT MOBILE
-    ===================================================== */
-
-    #checkoutModal {
-        position:
-            relative !important;
-
-        inset:
-            auto !important;
-
-        width:
-            100% !important;
-
-        padding:
-            12px !important;
-
-        margin:
-            0 !important;
-
-        background:
-            transparent !important;
-
-        z-index:
-            auto !important;
-
-        display:
-            block !important;
-
-        align-items:
-            initial !important;
-
-        justify-content:
-            initial !important;
-    }
-
-    #checkoutModal.hidden {
-        display:
-            none !important;
-    }
-
-    #checkoutModal:not(.hidden) {
-        display:
-            block !important;
-    }
-
-    .mobile-checkout {
-        width:
-            100% !important;
-
-        max-width:
-            430px !important;
-
-        max-height:
-            none !important;
-
-        margin:
-            0 auto !important;
-
-        padding:
-            18px
-            15px
-            calc(
-                18px +
-                env(safe-area-inset-bottom)
-            ) !important;
-
-        border-radius:
-            18px !important;
-
-        box-shadow:
-            0 5px 22px
-            rgba(16,42,67,.10) !important;
-    }
-
-    .mobile-checkout-grid {
-        grid-template-columns:
-            1fr !important;
-    }
-
-    .mobile-checkout h3 {
-        color:
-            var(--brand-blue) !important;
-    }
-
-    .mobile-checkout input:focus,
-    .mobile-checkout select:focus,
-    .mobile-checkout textarea:focus {
-        border-color:
-            var(--brand-wine) !important;
-
-        box-shadow:
-            0 0 0 2px
-            rgba(127,29,58,.12) !important;
-    }
-
-    .mobile-checkout form button[type="submit"] {
-        background:
-            var(--brand-wine) !important;
-    }
-
-
-    /* =====================================================
-       TOAST
-    ===================================================== */
-
-    #toastContainer {
-        left:
-            12px !important;
-
-        right:
-            12px !important;
-
-        bottom:
-            calc(
-                75px +
-                env(safe-area-inset-bottom)
-            ) !important;
-
-        align-items:
-            center;
-
-        z-index:
-            10000;
-    }
-
-    #toastContainer > div {
-        background:
-            var(--brand-blue-dark) !important;
-
-        border-left:
-            3px solid
-            var(--brand-wine);
-    }
-
-
-    /* =====================================================
-       CART OPEN
-    ===================================================== */
-
-    body.cart-is-open #mobileBottomNav {
-        transform:
-            translateY(100%);
-
-        transition:
-            transform .25s ease;
-    }
-
-}
-
-
-/* =========================================================
-   VERY SMALL PHONES
-========================================================= */
-
-@media (max-width: 360px) {
-
-    .mobile-logo img {
-        max-width:
-            115px !important;
-
-        height:
-            34px !important;
-    }
-
-    .mobile-hero-image {
-        height:
-            150px !important;
-    }
-
-    .mobile-main {
-        padding-left:
-            7px !important;
-
-        padding-right:
-            7px !important;
-    }
-
-    #productsGrid {
-        gap:
-            6px !important;
-    }
-
-    .product-card {
-        padding:
-            7px !important;
-
-        min-height:
-            245px;
-    }
-
-    .product-image {
-        height:
-            88px !important;
-
-        flex-basis:
-            88px !important;
-    }
-
-    .product-name {
-        font-size:
-            9px !important;
-    }
-
-    .product-price {
-        font-size:
-            11px !important;
-    }
-
-    .product-quantity button {
-        width:
-            21px !important;
-
-        min-width:
-            21px !important;
-
-        height:
-            21px !important;
-    }
-
-    .product-quantity-value {
-        min-width:
-            17px !important;
-
-        font-size:
-            9px !important;
-    }
-
-    .product-add {
-        font-size:
-            8px !important;
-    }
-
-
-    /* CARRITO MUY PEQUEÑO */
-
-    #cartContent {
-        padding:
-            8px !important;
-    }
-
-    #cartContent > div {
-        padding:
-            7px !important;
-
-        gap:
-            7px !important;
-
-        min-height:
-            62px;
-    }
-
-    #cartContent img {
-        width:
-            46px !important;
-
-        height:
-            46px !important;
-
-        flex-basis:
-            46px !important;
-    }
-
-    #cartContent h5 {
-        font-size:
-            9px !important;
-    }
-
-    #cartContent p {
-        font-size:
-            10px !important;
-    }
-
-    #cartContent > div > div > div {
-        margin-top:
-            3px !important;
-    }
-
-    #cartContent > div > div button {
-        width:
-            21px !important;
-
-        height:
-            21px !important;
-
-        min-width:
-            21px !important;
-    }
-
-    .cart-trash-btn {
-        width:
-            22px !important;
-
-        height:
-            22px !important;
-
-        min-width:
-            22px !important;
-
-        max-width:
-            22px !important;
-
-        flex:
-            0 0 22px !important;
-    }
-
-    .cart-trash-btn svg {
-        width:
-            12px;
-
-        height:
-            12px;
-    }
-
-    #cartContent > div > div > div.flex.items-center.gap-1 {
-        flex-direction:
-            row !important;
-
-        flex-wrap:
-            nowrap !important;
-
-        gap:
-            3px !important;
-    }
-}
-
-
-body.cart-is-open {
-    overflow:
-        hidden !important;
-}
-
-body.checkout-is-open {
-    overflow:
-        hidden !important;
-}
-
-</style>
-
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        img { max-width: 100%; }
+        button, input, select, textarea { max-width: 100%; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Responsive fixes */
+        @media (max-width: 640px) {
+            body { padding-bottom: 70px; }
+
+            .mobile-header {
+                height: auto !important;
+                min-height: 64px;
+                padding-top: 10px !important;
+                padding-bottom: 10px !important;
+                flex-wrap: wrap;
+            }
+
+            .mobile-logo { flex: 0 0 auto; }
+            .mobile-logo img { height: 34px !important; }
+
+            .mobile-cart { flex: 0 0 auto; }
+            .mobile-search {
+                order: 3;
+                flex: 1 0 100% !important;
+                max-width: none !important;
+                width: 100%;
+            }
+
+            .mobile-hero {
+                padding-top: 18px !important;
+                padding-bottom: 18px !important;
+            }
+
+            .mobile-hero-grid { grid-template-columns: 1fr !important; }
+            .mobile-hero-image img { height: 150px !important; }
+
+            .mobile-categories {
+                gap: 12px !important;
+                padding-left: 2px;
+                padding-right: 2px;
+            }
+
+            .mobile-category-button { min-width: 64px; }
+            .mobile-category-icon {
+                width: 52px !important;
+                height: 52px !important;
+                font-size: 16px !important;
+            }
+
+            .mobile-main { padding-left: 10px !important; padding-right: 10px !important; }
+
+            .mobile-products-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 8px !important;
+            }
+
+            .product-card {
+                min-width: 0;
+                padding: 9px !important;
+                border-radius: 16px !important;
+            }
+
+            .product-image { height: 118px !important; border-radius: 11px !important; }
+            .product-name {
+                font-size: 11px !important;
+                height: 32px !important;
+                overflow: hidden;
+            }
+
+            .product-price { font-size: 12px !important; }
+            .product-old-price { font-size: 8px !important; }
+            .product-add { padding-top: 9px !important; padding-bottom: 9px !important; font-size: 10px !important; }
+
+            .mobile-cart-panel {
+                width: min(92vw, 390px) !important;
+                max-width: 92vw !important;
+            }
+
+            .mobile-cart-wrapper {
+                padding-left: 0 !important;
+                width: min(92vw, 390px) !important;
+            }
+
+            .mobile-checkout {
+                width: 100% !important;
+                max-width: 100% !important;
+                max-height: 94vh !important;
+                padding: 16px !important;
+                border-radius: 18px !important;
+            }
+
+            .mobile-checkout-grid { grid-template-columns: 1fr !important; }
+
+            #toastContainer {
+                left: 10px !important;
+                right: 10px !important;
+                bottom: 12px !important;
+                align-items: center;
+            }
+
+            #toastContainer > div { max-width: calc(100vw - 20px); text-align: center; }
+
+            #cartOverlay { width: 100vw; }
+        }
+
+        @media (min-width: 641px) and (max-width: 900px) {
+            .mobile-products-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            }
+        }
+            @supports (padding-bottom: env(safe-area-inset-bottom)) {
+            body { padding-bottom: calc(70px + env(safe-area-inset-bottom)); }
+        }
+
+        /* =========================================================
+           MERKOMAX — MOBILE APP EXPERIENCE
+           ========================================================= */
+        @media (max-width: 640px) {
+            body {
+                background: #f4f6f8;
+                padding-bottom: calc(82px + env(safe-area-inset-bottom));
+            }
+
+            /* App-like top bar */
+            header {
+                background: rgba(255,255,255,.96) !important;
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+                box-shadow: 0 1px 10px rgba(15,23,42,.06) !important;
+            }
+
+            .mobile-header {
+                min-height: 62px;
+                padding: 9px 12px !important;
+                gap: 8px !important;
+            }
+
+            .mobile-logo img {
+                height: 32px !important;
+            }
+
+            .mobile-search {
+                margin-top: 3px;
+            }
+
+            .mobile-search input {
+                height: 42px;
+                padding-left: 40px !important;
+                padding-right: 14px !important;
+                border: 1px solid #e2e8f0 !important;
+                background: #f1f5f9 !important;
+                font-size: 13px !important;
+                border-radius: 13px !important;
+            }
+
+            .mobile-search input:focus {
+                background: #fff !important;
+                border-color: #e30613 !important;
+                box-shadow: 0 0 0 3px rgba(227,6,19,.08);
+            }
+
+            #cartTrigger {
+                min-width: 44px;
+                height: 42px;
+                padding: 0 10px !important;
+                border-radius: 13px !important;
+                justify-content: center;
+                box-shadow: 0 2px 7px rgba(227,6,19,.08);
+            }
+
+            #cartTrigger > span:first-child {
+                font-size: 18px;
+            }
+
+            /* Compact hero */
+            .mobile-hero {
+                width: 100%;
+                padding: 14px 12px !important;
+                background: linear-gradient(to right,#0f172a 0%,#1e293b 50%,#450a0a 100%) !important;
+                color: white !important;
+            }
+
+            .mobile-hero h1 {
+                color: white !important;
+            }
+
+            .mobile-hero p {
+                color: #cbd5e1 !important;
+            }
+
+            .mobile-hero span {
+                background: rgba(220, 38, 38, .30) !important;
+                color: #fca5a5 !important;
+            }
+
+            .mobile-hero-grid {
+                gap: 12px !important;
+            }
+
+            .mobile-hero-grid > div:first-child {
+                text-align: left !important;
+            }
+
+            .mobile-hero h1 {
+                font-size: 20px !important;
+                line-height: 1.18 !important;
+                max-width: 330px;
+            }
+
+            .mobile-hero p {
+                font-size: 11px !important;
+                line-height: 1.45;
+                max-width: 330px;
+            }
+
+            .mobile-hero-image {
+                border-radius: 14px !important;
+            }
+
+            .mobile-hero-image img {
+                height: 118px !important;
+            }
+
+            /* Category rail */
+            section.py-4 {
+                padding-top: 12px !important;
+                padding-bottom: 9px !important;
+                background: #fff;
+                border-bottom: 1px solid #eef2f7;
+            }
+
+            .mobile-categories {
+                gap: 15px !important;
+                padding: 0 3px 4px !important;
+            }
+
+            .mobile-category-button {
+                min-width: 58px;
+            }
+
+            .mobile-category-icon {
+                width: 48px !important;
+                height: 48px !important;
+                font-size: 15px !important;
+                border: 1px solid rgba(15,23,42,.04);
+                box-shadow: 0 2px 7px rgba(15,23,42,.06) !important;
+            }
+
+            .mobile-category-button span:last-child {
+                font-size: 9px !important;
+                white-space: nowrap;
+            }
+
+            /* Products header */
+            .mobile-main {
+                padding: 13px 10px 20px !important;
+            }
+
+            .mobile-main > div:first-child {
+                padding-bottom: 9px !important;
+                margin-bottom: 2px;
+            }
+
+            #sectionTitle {
+                font-size: 15px !important;
+            }
+
+            #sectionSubtitle {
+                font-size: 9px !important;
+            }
+
+            /* App product cards */
+            .mobile-products-grid {
+                grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+                gap: 9px !important;
+            }
+
+            .product-card {
+                padding: 9px !important;
+                border-radius: 15px !important;
+                border: 1px solid #e9edf2 !important;
+                box-shadow: 0 2px 9px rgba(15,23,42,.055) !important;
+                overflow: hidden;
+            }
+
+            .product-card:active {
+                transform: scale(.985);
+            }
+
+            .product-image {
+                height: 128px !important;
+                margin-bottom: 8px !important;
+                border-radius: 11px !important;
+                background: #f8fafc !important;
+            }
+
+            .product-image img {
+                object-fit: contain !important;
+                padding: 5px;
+            }
+
+            .product-name {
+                font-size: 11px !important;
+                line-height: 1.25 !important;
+                height: 29px !important;
+                margin-top: 2px !important;
+            }
+
+            .product-price {
+                font-size: 13px !important;
+                letter-spacing: -.2px;
+            }
+
+            .product-old-price {
+                font-size: 8px !important;
+            }
+
+            .product-add {
+                min-height: 34px;
+                padding: 7px 5px !important;
+                border-radius: 10px !important;
+                font-size: 10px !important;
+            }
+
+            .product-card .absolute.top-2\.5.right-2\.5 {
+                top: 8px !important;
+                right: 8px !important;
+                width: 21px !important;
+                height: 21px !important;
+            }
+
+            /* Floating WhatsApp */
+            body > a[href*="wa.me"] {
+                left: auto !important;
+                right: 14px !important;
+                bottom: 79px !important;
+                width: 50px;
+                height: 50px;
+                padding: 0 !important;
+                border-radius: 16px !important;
+                box-shadow: 0 7px 18px rgba(5,150,105,.25) !important;
+            }
+
+            body > a[href*="wa.me"] span {
+                font-size: 19px !important;
+            }
+
+            /* Mobile bottom navigation */
+            #mobileBottomNav {
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 45;
+                height: calc(64px + env(safe-area-inset-bottom));
+                padding: 7px 20px env(safe-area-inset-bottom);
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-around;
+                background: rgba(255,255,255,.97);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                border-top: 1px solid #e5e7eb;
+                box-shadow: 0 -5px 18px rgba(15,23,42,.06);
+            }
+
+            #mobileBottomNav button {
+                width: 76px;
+                height: 52px;
+                border: 0;
+                background: transparent;
+                color: #64748b;
+                font-size: 9px;
+                font-weight: 700;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2px;
+            }
+
+            #mobileBottomNav button .nav-icon {
+                font-size: 18px;
+                line-height: 20px;
+            }
+
+            #mobileBottomNav button.active {
+                color: #e30613;
+            }
+
+            #mobileBottomNav .nav-cart-wrap {
+                position: relative;
+            }
+
+            #mobileBottomNav .nav-cart-count {
+                position: absolute;
+                top: -1px;
+                right: 12px;
+                min-width: 15px;
+                height: 15px;
+                padding: 0 4px;
+                border-radius: 99px;
+                background: #e30613;
+                color: white;
+                font-size: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Cart drawer */
+            .mobile-cart-wrapper {
+                padding-left: 0 !important;
+                width: min(100vw,410px) !important;
+            }
+
+            .mobile-cart-panel {
+                width: 100% !important;
+                max-width: 100% !important;
+                border-radius: 20px 0 0 20px;
+            }
+
+            #cartContent {
+                padding: 12px !important;
+            }
+
+            /* Checkout sheet */
+            #checkoutModal {
+                align-items: flex-end !important;
+                padding: 0 !important;
+            }
+
+            .mobile-checkout {
+                width: 100% !important;
+                max-width: 100% !important;
+                max-height: 94vh !important;
+                border-radius: 22px 22px 0 0 !important;
+                padding: 18px 15px calc(18px + env(safe-area-inset-bottom)) !important;
+            }
+
+            .mobile-checkout-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Toast */
+            #toastContainer {
+                left: 12px !important;
+                right: 12px !important;
+                bottom: 76px !important;
+                align-items: center;
+            }
+
+            #toastContainer > div {
+                max-width: calc(100vw - 24px);
+                text-align: center;
+                border-radius: 12px;
+                padding: 10px 13px;
+            }
+        }
+
+        @media (min-width: 641px) {
+            #mobileBottomNav { display: none !important; }
+        }
+
+    </style>
 </head>
+<body class="text-slate-800 antialiased pb-24">
+    <!-- NAVEGACIÓN INFERIOR — SOLO MÓVIL -->
+    <nav id="mobileBottomNav" class="md:hidden">
+        <button id="mobileHomeBtn" class="active" onclick="resetToHome(); setMobileNav('home')">
+            <span class="nav-icon">⌂</span>
+            <span>Inicio</span>
+        </button>
+        <button onclick="document.getElementById('searchInput').focus(); setMobileNav('search')">
+            <span class="nav-icon">⌕</span>
+            <span>Buscar</span>
+        </button>
+        <button class="nav-cart-wrap" onclick="document.getElementById('cartTrigger').click(); setMobileNav('cart')">
+            <span class="nav-icon">🛒</span>
+            <span>Carrito</span>
+            <span id="mobileNavCartCounter" class="nav-cart-count">0</span>
+        </button>
+    </nav>
 
 
-<body>
+    <!-- TOP BAR ESTILO D1 -->
+    <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3 mobile-header">
+            <div class="flex items-center gap-2 cursor-pointer mobile-logo" onclick="resetToHome()">
+                <img src="logo.png" alt="MerkoMAX" class="h-9 w-auto object-contain">
+            </div>
 
-
-<!-- =========================================================
-     MOBILE NAV
-========================================================= -->
-
-<nav id="mobileBottomNav">
-
-    <button
-        id="mobileHomeBtn"
-        class="active"
-        type="button"
-        onclick="goHome()">
-
-        <span class="nav-icon">⌂</span>
-
-        <span>Inicio</span>
-
-    </button>
-
-
-    <button
-        id="mobileSearchBtn"
-        type="button"
-        onclick="openMobileSearch()">
-
-        <span class="nav-icon">⌕</span>
-
-        <span>Buscar</span>
-
-    </button>
-
-
-    <button
-        id="mobileCartBtn"
-        class="nav-cart-wrap"
-        type="button"
-        onclick="openMobileCart()">
-
-        <span class="nav-icon">🛒</span>
-
-        <span>Carrito</span>
-
-        <span
-            id="mobileNavCartCounter"
-            class="nav-cart-count"
-            style="display:none;">
-
-            0
-
-        </span>
-
-    </button>
-
-</nav>
-
-
-<!-- =========================================================
-     HEADER
-========================================================= -->
-
-<header
-    id="top"
-    class="sticky top-0 z-40 bg-white border-b border-slate-200">
-
-    <div
-        class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3 mobile-header">
-
-
-        <!-- LOGO -->
-
-        <div
-            class="flex items-center gap-2 cursor-pointer mobile-logo"
-            onclick="goHome()">
-
-            <img
-                src="logo.png"
-                alt="MerkoMAX"
-                class="h-9 w-auto object-contain">
-
-        </div>
-
-
-        <!-- BUSCADOR -->
-
-        <div
-            class="flex-1 max-w-xl mobile-search">
-
-            <div
-                class="relative">
-
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="¿Qué estás buscando?"
-                    autocomplete="off"
-                    class="w-full pl-4 pr-4 py-2 bg-slate-100 border border-transparent rounded-full text-xs font-medium focus:bg-white outline-none transition-all">
-
-                <div
-                    id="searchResults">
+            <div class="flex-1 max-w-xl mobile-search">
+                <div class="relative">
+                    <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm">🔍</span>
+                    <input type="text" id="searchInput" placeholder="¿Qué estás buscando?" 
+                           class="w-full pl-10 pr-4 py-2 bg-slate-100 border border-transparent rounded-full text-xs font-medium focus:bg-white focus:border-red-600 outline-none transition-all">
                 </div>
-
             </div>
 
+            <button id="cartTrigger" class="mobile-cart relative bg-red-50 text-red-600 px-3 py-2 rounded-full hover:bg-red-100 transition-all flex items-center gap-1.5 font-bold text-xs">
+                <span>🛒</span>
+                <span id="cartCounter" class="bg-red-600 text-white text-[10px] px-1.5 py-0.2 rounded-full">0</span>
+            </button>
         </div>
+    </header>
 
-
-        <button
-            id="cartTrigger"
-            type="button"
-            style="display:none;">
-        </button>
-
-    </div>
-
-</header>
-
-
-<!-- =========================================================
-     HERO
-========================================================= -->
-
-<section
-    class="mobile-hero bg-gradient-to-r from-slate-900 via-slate-800 to-red-950 text-white py-6 px-4">
-
-    <div
-        class="max-w-7xl mx-auto grid md:grid-cols-2 gap-4 items-center mobile-hero-grid">
-
-        <div
-            class="space-y-2 text-center md:text-left">
-
-            <span
-                class="bg-red-600/30 text-red-300 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider">
-
-                ⚡ Cimitarra Express
-
-            </span>
-
-            <h1
-                class="text-xl md:text-3xl font-extrabold tracking-tight">
-
-                Todo lo que necesitas, directo a tu casa.
-
-            </h1>
-
-            <p
-                class="text-slate-300 text-xs">
-
-                Calidad garantizada, precios bajos y entregas rápidas.
-
-            </p>
-
+    <!-- BANNER HERO -->
+    <section class="mobile-hero bg-gradient-to-r from-slate-900 via-slate-800 to-red-950 text-white py-6 px-4">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-4 items-center mobile-hero-grid">
+            <div class="space-y-2 text-center md:text-left">
+                <span class="bg-red-600/30 text-red-300 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider">⚡ Cimitarra Express</span>
+                <h1 class="text-xl md:text-3xl font-extrabold tracking-tight">Todo lo que necesitas, directo a tu casa.</h1>
+                <p class="text-slate-300 text-xs">Calidad garantizada, precios bajos y entregas rápidas.</p>
+            </div>
+            <div class="mobile-hero-image rounded-2xl overflow-hidden shadow-lg border border-slate-700">
+                <img src="banner.jpeg" alt="Banner" class="w-full h-36 md:h-48 object-cover">
+            </div>
         </div>
+    </section>
 
-
-        <div
-            class="mobile-hero-image rounded-2xl overflow-hidden shadow-lg border border-slate-700">
-
-            <img
-                src="banner.jpeg"
-                alt="MerkoMAX"
-                class="w-full h-36 md:h-48 object-cover">
-
+    <!-- CATEGORÍAS CÍRCULOS -->
+    <section class="py-4 max-w-7xl mx-auto px-4">
+        <div class="flex gap-4 overflow-x-auto pb-2 hide-scrollbar mobile-categories">
+            <button class="mobile-category-button" onclick="filterCategory('todos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="mobile-category-icon w-14 h-14 rounded-full bg-slate-900 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🌐</div>
+                <span class="text-[11px] font-semibold text-slate-700">Todos</span>
+            </button>
+            <button class="mobile-category-button" onclick="filterCategory('mas-vendidos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="mobile-category-icon w-14 h-14 rounded-full bg-amber-500 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🔥</div>
+                <span class="text-[11px] font-semibold text-slate-700">Top Ventas</span>
+            </button>
+            <button class="mobile-category-button" onclick="filterCategory('combos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="mobile-category-icon w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">📦</div>
+                <span class="text-[11px] font-semibold text-slate-700">Combos</span>
+            </button>
+            <button class="mobile-category-button" onclick="filterCategory('despensa')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="mobile-category-icon w-14 h-14 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🛒</div>
+                <span class="text-[11px] font-semibold text-slate-700">Despensa</span>
+            </button>
+            <button class="mobile-category-button" onclick="filterCategory('frescos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="mobile-category-icon w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🍎</div>
+                <span class="text-[11px] font-semibold text-slate-700">Frutas</span>
+            </button>
+            <button class="mobile-category-button" onclick="filterCategory('lacteos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="mobile-category-icon w-14 h-14 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🥛</div>
+                <span class="text-[11px] font-semibold text-slate-700">Lácteos</span>
+            </button>
+            <button class="mobile-category-button" onclick="filterCategory('aseo')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="mobile-category-icon w-14 h-14 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">✨</div>
+                <span class="text-[11px] font-semibold text-slate-700">Aseo</span>
+            </button>
         </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     CATEGORIES
-========================================================= -->
-
-<section
-    class="py-4 max-w-7xl mx-auto px-4">
-
-    <div
-        class="flex gap-4 overflow-x-auto pb-2 hide-scrollbar mobile-categories">
-
-        <button
-            class="mobile-category-button flex flex-col items-center gap-1.5 shrink-0 group"
-            type="button"
-            onclick="filterCategory('todos')">
-
-            <div
-                class="mobile-category-icon w-14 h-14 rounded-full bg-slate-900 text-white flex items-center justify-center text-lg shadow-sm">
-
-                🌐
-
-            </div>
-
-            <span
-                class="text-[11px] font-semibold text-slate-700">
-
-                Todos
-
-            </span>
-
-        </button>
-
-
-        <button
-            class="mobile-category-button flex flex-col items-center gap-1.5 shrink-0 group"
-            type="button"
-            onclick="filterCategory('mas-vendidos')">
-
-            <div
-                class="mobile-category-icon w-14 h-14 rounded-full bg-amber-500 text-white flex items-center justify-center text-lg shadow-sm">
-
-                🔥
-
-            </div>
-
-            <span
-                class="text-[11px] font-semibold text-slate-700">
-
-                Top Ventas
-
-            </span>
-
-        </button>
-
-
-        <button
-            class="mobile-category-button flex flex-col items-center gap-1.5 shrink-0 group"
-            type="button"
-            onclick="filterCategory('combos')">
-
-            <div
-                class="mobile-category-icon w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center text-lg shadow-sm">
-
-                📦
-
-            </div>
-
-            <span
-                class="text-[11px] font-semibold text-slate-700">
-
-                Combos
-
-            </span>
-
-        </button>
-
-
-        <button
-            class="mobile-category-button flex flex-col items-center gap-1.5 shrink-0 group"
-            type="button"
-            onclick="filterCategory('despensa')">
-
-            <div
-                class="mobile-category-icon w-14 h-14 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-lg shadow-sm">
-
-                🛒
-
-            </div>
-
-            <span
-                class="text-[11px] font-semibold text-slate-700">
-
-                Despensa
-
-            </span>
-
-        </button>
-
-
-        <button
-            class="mobile-category-button flex flex-col items-center gap-1.5 shrink-0 group"
-            type="button"
-            onclick="filterCategory('frescos')">
-
-            <div
-                class="mobile-category-icon w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg shadow-sm">
-
-                🍎
-
-            </div>
-
-            <span
-                class="text-[11px] font-semibold text-slate-700">
-
-                Frutas
-
-            </span>
-
-        </button>
-
-
-        <button
-            class="mobile-category-button flex flex-col items-center gap-1.5 shrink-0 group"
-            type="button"
-            onclick="filterCategory('lacteos')">
-
-            <div
-                class="mobile-category-icon w-14 h-14 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center text-lg shadow-sm">
-
-                🥛
-
-            </div>
-
-            <span
-                class="text-[11px] font-semibold text-slate-700">
-
-                Lácteos
-
-            </span>
-
-        </button>
-
-
-        <button
-            class="mobile-category-button flex flex-col items-center gap-1.5 shrink-0 group"
-            type="button"
-            onclick="filterCategory('aseo')">
-
-            <div
-                class="mobile-category-icon w-14 h-14 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-lg shadow-sm">
-
-                ✨
-
-            </div>
-
-            <span
-                class="text-[11px] font-semibold text-slate-700">
-
-                Aseo
-
-            </span>
-
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     PRODUCTS
-========================================================= -->
-
-<main
-    class="max-w-7xl mx-auto px-3 pb-12 space-y-3 mobile-main"
-    id="productsSection">
-
-    <div
-        class="flex items-center justify-between border-b border-slate-200 pb-2">
-
-        <div>
-
-            <h2
-                id="sectionTitle"
-                class="text-sm font-extrabold text-slate-900">
-
-                Nuestros Productos
-
-            </h2>
-
-            <p
-                id="sectionSubtitle"
-                class="text-slate-500 text-[10px]">
-
-                Catálogo en tiempo real
-
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div
-        id="productsGrid"
-        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-
-        <div
-            class="col-span-2 py-12 text-center">
-
-            <div
-                class="w-6 h-6 border-2 border-red-600 border-t-transparent rounded-full animate-spin mx-auto">
-            </div>
-
-            <p
-                class="text-xs text-slate-500 mt-2">
-
-                Cargando productos...
-
-            </p>
-
-        </div>
-
-    </div>
-
-</main>
-
-
-<!-- =========================================================
-     CHECKOUT
-========================================================= -->
-
-<div
-    id="checkoutModal"
-    class="fixed inset-0 bg-slate-900/70 z-50 hidden flex items-center justify-center p-3">
-
-    <div
-        class="mobile-checkout bg-white rounded-2xl max-w-md w-full p-4 space-y-3 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-
-        <button
-            id="closeCheckoutModal"
-            type="button"
-            class="absolute top-3 right-3 text-slate-500 hover:text-slate-800 font-bold text-sm p-2">
-
-            ✕
-
-        </button>
-
-
-        <h3
-            class="text-xs font-extrabold text-slate-900">
-
-            📍 Datos para tu Entrega
-
-        </h3>
-
-
-        <form
-            id="checkoutForm"
-            class="space-y-2.5 text-xs">
-
+    </section>
+
+    <!-- GRILLA DE PRODUCTOS ESTILO D1 (2 Columnas estrictas en móvil) -->
+    <main class="max-w-7xl mx-auto px-3 pb-12 space-y-3 mobile-main">
+        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
             <div>
+                <h2 id="sectionTitle" class="text-sm font-extrabold text-slate-900">Nuestros Productos</h2>
+                <p id="sectionSubtitle" class="text-slate-500 text-[10px]">Catálogo en tiempo real</p>
+            </div>
+        </div>
 
-                <label
-                    class="block font-bold text-slate-700 mb-0.5">
+        <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mobile-products-grid">
+            <div class="col-span-2 py-12 text-center">
+                <div class="w-6 h-6 border-2 border-red-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
+                <p class="text-xs text-slate-500 mt-2">Cargando productos...</p>
+            </div>
+        </div>
+    </main>
 
-                    Nombre Completo *
+    <!-- BOTÓN WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/573105500791?text=Hola%20MerkoMAX,%20tengo%20una%20consulta" target="_blank" 
+       class="fixed bottom-5 left-5 z-40 bg-emerald-600 text-white p-3.5 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform">
+        <span class="text-lg">💬</span>
+    </a>
 
-                </label>
-
-                <input
-                    type="text"
-                    id="custName"
-                    required
-                    placeholder="Ej. Maria Perez"
-                    class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none">
-
+    <!-- CART DRAWER -->
+    <div id="cartOverlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden"></div>
+    <div id="cartPanel" class="mobile-cart-wrapper fixed inset-y-0 right-0 max-w-full flex pl-10 z-50 transform translate-x-full transition-transform duration-300">
+        <div class="mobile-cart-panel w-screen max-w-md bg-white shadow-2xl flex flex-col">
+            <div class="p-3.5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+                <h3 class="font-bold text-xs text-slate-900 flex items-center gap-1"><span>🛒</span> Tu Carrito</h3>
+                <div class="flex items-center gap-2">
+                    <button id="clearCartBtn" onclick="clearCart()" class="hidden text-red-500 text-[10px] font-semibold bg-red-50 px-2 py-0.5 rounded-md">Vaciar</button>
+                    <button id="closeCart" class="text-slate-400 hover:text-slate-600 font-bold p-1">✕</button>
+                </div>
             </div>
 
+            <div id="cartContent" class="flex-1 overflow-y-auto p-3 space-y-2"></div>
 
-            <div
-                class="grid grid-cols-2 gap-2 mobile-checkout-grid">
+            <div class="p-3.5 border-t border-slate-100 bg-slate-50 space-y-2">
+                <div class="flex justify-between font-bold text-xs">
+                    <span>Total a pagar</span>
+                    <span id="cartTotal" class="text-red-600 text-sm">$0</span>
+                </div>
+                <button id="openCheckoutModalBtn" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl shadow-xs text-xs">
+                    Continuar Pedido por WhatsApp ➔
+                </button>
+            </div>
+        </div>
+    </div>
 
+    <!-- MODAL CHECKOUT -->
+    <div id="checkoutModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3">
+        <div class="mobile-checkout bg-white rounded-2xl max-w-md w-full p-4 space-y-3 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button id="closeCheckoutModal" class="absolute top-3 right-3 text-slate-500 hover:text-slate-800 font-bold text-sm p-2">✕</button>
+            <h3 class="text-xs font-extrabold text-slate-900">📍 Datos para tu Entrega</h3>
+            <form id="checkoutForm" class="space-y-2.5 text-xs">
                 <div>
-
-                    <label
-                        class="block font-bold text-slate-700 mb-0.5">
-
-                        Barrio *
-
-                    </label>
-
-                    <input
-                        type="text"
-                        id="custNeighborhood"
-                        required
-                        placeholder="Ej. El Centro"
-                        class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none">
-
+                    <label class="block font-bold text-slate-700 mb-0.5">Nombre Completo *</label>
+                    <input type="text" id="custName" required placeholder="Ej. Maria Perez" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
                 </div>
-
-
+                <div class="grid grid-cols-2 gap-2 mobile-checkout-grid">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-0.5">Barrio *</label>
+                        <input type="text" id="custNeighborhood" required placeholder="Ej. El Centro" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-0.5">Dirección *</label>
+                        <input type="text" id="custAddress" required placeholder="Ej. Cra 5 # 8-12" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
+                    </div>
+                </div>
                 <div>
-
-                    <label
-                        class="block font-bold text-slate-700 mb-0.5">
-
-                        Dirección *
-
-                    </label>
-
-                    <input
-                        type="text"
-                        id="custAddress"
-                        required
-                        placeholder="Ej. Cra 5 # 8-12"
-                        class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none">
-
+                    <label class="block font-bold text-slate-700 mb-0.5">Método de Pago *</label>
+                    <select id="custPayment" onchange="toggleCashDetail()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
+                        <option value="Efectivo">Efectivo contra entrega</option>
+                        <option value="Nequi / Daviplata">Nequi / Daviplata</option>
+                        <option value="Datáfono">Datáfono</option>
+                    </select>
                 </div>
-
-            </div>
-
-
-            <div>
-
-                <label
-                    class="block font-bold text-slate-700 mb-0.5">
-
-                    Método de Pago *
-
-                </label>
-
-                <select
-                    id="custPayment"
-                    onchange="toggleCashDetail()"
-                    class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none">
-
-                    <option value="Efectivo">
-                        Efectivo contra entrega
-                    </option>
-
-                    <option value="Nequi / Daviplata">
-                        Nequi / Daviplata
-                    </option>
-
-                    <option value="Datáfono">
-                        Datáfono
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div id="cashDetailBox">
-
-                <label
-                    class="block font-bold text-slate-700 mb-0.5">
-
-                    ¿Con cuánto dinero cancelas?
-
-                </label>
-
-                <input
-                    type="text"
-                    id="custCashAmount"
-                    placeholder="Ej. Con $50.000 o Exacto"
-                    class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none">
-
-            </div>
-
-
-            <div>
-
-                <label
-                    class="block font-bold text-slate-700 mb-0.5">
-
-                    Notas (Opcional)
-
-                </label>
-
-                <textarea
-                    id="custNotes"
-                    rows="2"
-                    placeholder="Instrucciones adicionales..."
-                    class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none"></textarea>
-
-            </div>
-
-
-            <button
-                type="submit"
-                class="w-full text-white font-bold py-3 rounded-xl shadow-xs text-xs mt-1">
-
-                💬 Enviar Pedido a WhatsApp
-
-            </button>
-
-        </form>
-
+                <div id="cashDetailBox">
+                    <label class="block font-bold text-slate-700 mb-0.5">¿Con cuánto dinero cancelas?</label>
+                    <input type="text" id="custCashAmount" placeholder="Ej. Con $50.000 o Exacto" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 mb-0.5">Notas (Opcional)</label>
+                    <textarea id="custNotes" rows="2" placeholder="Instrucciones adicionales..." class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-xs text-xs mt-1">
+                    💬 Enviar Pedido a WhatsApp
+                </button>
+            </form>
+        </div>
     </div>
 
-</div>
-
-
-<!-- =========================================================
-     WHATSAPP
-========================================================= -->
-
-<a
-    href="https://wa.me/573105500791?text=Hola%20MerkoMAX,%20tengo%20una%20consulta"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="fixed bottom-5 left-5 z-40 bg-emerald-600 text-white p-3.5 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform">
-
-    <span class="text-lg">
-        💬
-    </span>
-
-</a>
-
-
-<!-- =========================================================
-     CART OVERLAY
-========================================================= -->
-
-<div
-    id="cartOverlay"
-    class="fixed inset-0 bg-slate-900/60 z-50 hidden">
-</div>
-
-
-<!-- =========================================================
-     CART PANEL
-========================================================= -->
-
-<div
-    id="cartPanel"
-    class="mobile-cart-wrapper fixed inset-y-0 right-0 z-50 is-closed">
-
-    <div
-        class="mobile-cart-panel bg-white shadow-2xl flex flex-col">
-
-        <div
-            class="p-3.5 border-b border-slate-100 flex items-center justify-between">
-
-            <h3
-                class="font-bold text-xs flex items-center gap-1">
-
-                🛒 Tu Carrito
-
-            </h3>
-
-            <div
-                class="flex items-center gap-2">
-
-                <button
-                    id="clearCartBtn"
-                    type="button"
-                    onclick="clearCart()"
-                    class="hidden text-red-500 text-[10px] font-semibold bg-red-50 px-2 py-0.5 rounded-md">
-
-                    Vaciar
-
-                </button>
-
-                <button
-                    id="closeCart"
-                    type="button"
-                    class="font-bold p-1">
-
-                    ✕
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div
-            id="cartContent"
-            class="flex-1 overflow-y-auto p-3 space-y-2">
-        </div>
-
-
-        <div
-            class="p-3.5 border-t border-slate-100 space-y-2">
-
-            <div
-                class="flex justify-between font-bold text-xs">
-
-                <span>
-                    Total a pagar
-                </span>
-
-                <span
-                    id="cartTotal"
-                    class="text-sm">
-
-                    $0
-
-                </span>
-
-            </div>
-
-
-            <button
-                id="continueShoppingBtn"
-                type="button">
-
-                ← Seguir comprando
-
-            </button>
-
-
-            <button
-                id="openCheckoutModalBtn"
-                type="button"
-                onclick="goToCheckoutForm(); return false;">
-
-                💬 Continuar pedido por WhatsApp
-
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     TOAST
-========================================================= -->
-
-<div
-    id="toastContainer"
-    class="fixed bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none">
-</div>
-
-
-<script>
-
-const SHEETDB_API =
-    "https://sheetdb.io/api/v1/15hpacliqdaw2";
-
-const FALLBACK_IMAGE =
-    "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80";
-
-
-let products = [];
-let cart = [];
-let currentCategory = "todos";
-let searchQuery = "";
-
-
-const selectedQuantities = {};
-
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
-
-        document.body.style.opacity = "1";
-        document.body.style.filter = "none";
-        document.body.style.backdropFilter = "none";
-
-        const overlay =
-            document.getElementById("cartOverlay");
-
-        const checkout =
-            document.getElementById("checkoutModal");
-
-        const panel =
-            document.getElementById("cartPanel");
-
-
-        if (overlay) {
-
-            overlay.classList.add("hidden");
-
-            overlay.style.display =
-                "none";
-
+    <!-- TOAST -->
+    <div id="toastContainer" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- SCRIPT -->
+    <script>
+        const SHEETDB_API = "https://sheetdb.io/api/v1/15hpacliqdaw2";
+        let products = [];
+        let cart = [];
+        let currentCategory = 'todos';
+        let searchQuery = '';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCartFromLocalStorage();
+            fetchProductsFromSheet();
+            setupEvents();
+        });
+
+        async function fetchProductsFromSheet() {
+            try {
+                const res = await fetch(SHEETDB_API);
+                const data = await res.json();
+                products = data.map(item => ({
+                    id: Number(item.id) || Math.random(),
+                    name: item.name || 'Producto',
+                    category: item.category ? item.category.trim().toLowerCase() : 'despensa',
+                    price: parseFloat(String(item.price || '0').replace(/\./g, '').replace(/[^0-9]/g, '')) || 0,
+                    oldPrice: item.oldPrice ? parseFloat(String(item.oldPrice).replace(/\./g, '').replace(/[^0-9]/g, '')) : null,
+                    isBestSeller: String(item.isBestSeller).toUpperCase() === 'TRUE',
+                    image: item.image || 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80'
+                }));
+                renderProducts();
+            } catch (e) {
+                document.getElementById('productsGrid').innerHTML = `<p class="text-xs text-red-500 text-center col-span-2">Error cargando productos.</p>`;
+            }
         }
 
-
-        if (checkout) {
-
-            checkout.classList.add("hidden");
-
-            checkout.style.display =
-                "none";
-
-        }
-
-
-        if (panel) {
-
-            panel.classList.remove("is-open");
-            panel.classList.add("is-closed");
-
-            panel.style.transform =
-                "translateX(100%)";
-
-            panel.style.visibility =
-                "hidden";
-
-            panel.style.opacity =
-                "0";
-
-            panel.style.pointerEvents =
-                "none";
-
-        }
-
-
-        document.body.classList.remove(
-            "cart-is-open",
-            "checkout-is-open"
-        );
-
-
-        loadCartFromLocalStorage();
-
-        setupEvents();
-
-        fetchProductsFromSheet();
-
-    }
-);
-
-
-function normalizeText(text) {
-
-    return String(text || "")
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .toLowerCase()
-        .trim();
-
-}
-
-
-async function fetchProductsFromSheet() {
-
-    try {
-
-        const response =
-            await fetch(SHEETDB_API);
-
-        if (!response.ok) {
-
-            throw new Error(
-                "Error conectando con SheetDB"
-            );
-
-        }
-
-        const data =
-            await response.json();
-
-
-        products =
-            data.map(function(item) {
-
-                return {
-
-                    id:
-                        Number(item.id) ||
-                        Math.floor(
-                            Math.random() * 999999
-                        ),
-
-                    name:
-                        item.name ||
-                        "Producto",
-
-                    category:
-                        item.category
-                            ? normalizeText(item.category)
-                            : "despensa",
-
-                    price:
-                        parseFloat(
-                            String(
-                                item.price || "0"
-                            )
-                            .replace(/\./g, "")
-                            .replace(/[^0-9]/g, "")
-                        ) || 0,
-
-                    oldPrice:
-                        item.oldPrice
-                            ? parseFloat(
-                                String(item.oldPrice)
-                                    .replace(/\./g, "")
-                                    .replace(/[^0-9]/g, "")
-                            )
-                            : null,
-
-                    isBestSeller:
-                        String(
-                            item.isBestSeller
-                        ).toUpperCase() === "TRUE",
-
-                    image:
-                        item.image ||
-                        FALLBACK_IMAGE
-
-                };
-
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            const filtered = products.filter(p => {
+                const matchCat = currentCategory === 'todos' ? true : currentCategory === 'mas-vendidos' ? p.isBestSeller : p.category === currentCategory;
+                const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchCat && matchSearch;
             });
 
-
-        renderProducts();
-
-    } catch(error) {
-
-        console.error(
-            "Error cargando productos:",
-            error
-        );
-
-
-        document.getElementById(
-            "productsGrid"
-        ).innerHTML = `
-
-            <p class="text-xs text-red-500 text-center col-span-2 py-8">
-
-                No se pudieron cargar los productos.
-
-            </p>
-
-        `;
-
-    }
-
-}
-
-
-function getSelectedQuantity(id) {
-
-    const quantity =
-        Number(selectedQuantities[id] || 1);
-
-    return Math.max(
-        1,
-        quantity
-    );
-
-}
-
-
-function changeProductQuantity(id, delta) {
-
-    const current =
-        getSelectedQuantity(id);
-
-    let next =
-        current + Number(delta || 0);
-
-
-    if (next < 1) {
-        next = 1;
-    }
-
-    if (next > 99) {
-        next = 99;
-    }
-
-
-    selectedQuantities[id] =
-        next;
-
-
-    const quantityElement =
-        document.getElementById(
-            `productQty-${id}`
-        );
-
-
-    if (quantityElement) {
-
-        quantityElement.textContent =
-            next;
-
-    }
-
-}
-
-
-function renderProducts() {
-
-    const grid =
-        document.getElementById(
-            "productsGrid"
-        );
-
-    if (!grid) return;
-
-
-    const normalizedSearch =
-        normalizeText(searchQuery);
-
-
-    const filtered =
-        products.filter(function(product) {
-
-            let matchesCategory = true;
-
-
-            if (
-                currentCategory !== "todos"
-            ) {
-
-                if (
-                    currentCategory ===
-                    "mas-vendidos"
-                ) {
-
-                    matchesCategory =
-                        product.isBestSeller;
-
-                } else {
-
-                    matchesCategory =
-                        product.category ===
-                        normalizeText(
-                            currentCategory
-                        );
-
-                }
-
-            }
-
-
-            const matchesSearch =
-                !normalizedSearch ||
-                normalizeText(
-                    product.name
-                ).includes(
-                    normalizedSearch
-                );
-
-
-            return (
-                matchesCategory &&
-                matchesSearch
-            );
-
-        });
-
-
-    if (filtered.length === 0) {
-
-        grid.innerHTML = `
-
-            <div class="col-span-2 py-10 text-center">
-
-                <div class="text-3xl mb-2">
-                    🔎
-                </div>
-
-                <p class="text-xs font-semibold text-slate-500">
-                    No encontramos productos.
-                </p>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    grid.innerHTML =
-        filtered.map(function(p) {
-
-            const selected =
-                getSelectedQuantity(p.id);
-
-
-            return `
-
-                <article
-                    class="product-card bg-white rounded-2xl p-3 border border-slate-100 shadow-sm flex flex-col justify-between relative group">
-
-
-                    ${
-                        p.category === "combos"
-                        ? `
-
-                            <span
-                                class="absolute top-2.5 left-2.5 z-10 bg-red-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">
-
-                                COMBO
-
-                            </span>
-
-                        `
-                        : ""
-                    }
-
-
-                    ${
-                        p.isBestSeller &&
-                        p.category !== "combos"
-                        ? `
-
-                            <span
-                                class="absolute top-2.5 left-2.5 z-10 bg-amber-500 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">
-
-                                TOP
-
-                            </span>
-
-                        `
-                        : ""
-                    }
-
-
-                    <div
-                        class="absolute top-2.5 right-2.5 z-10 bg-emerald-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold">
-
-                        ✓
-
-                    </div>
-
-
-                    <div
-                        class="product-image w-full rounded-xl overflow-hidden bg-slate-50 flex items-center justify-center">
-
-                        <img
-                            src="${p.image}"
-                            alt="${p.name}"
-                            loading="lazy"
-                            onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}'"
-                            class="w-full h-full object-contain">
-
-                    </div>
-
-
-                    <div class="product-info">
-
-                        <h3
-                            class="product-name font-bold text-slate-900 text-xs">
-
-                            ${p.name}
-
-                        </h3>
-
-
-                        <div
-                            class="product-price-row">
-
-                            <span
-                                class="product-price font-extrabold text-slate-900">
-
-                                $${p.price.toLocaleString("es-CO")}
-
-                            </span>
-
-
-                            <div
-                                class="product-quantity"
-                                aria-label="Cantidad">
-
-                                <button
-                                    type="button"
-                                    aria-label="Disminuir cantidad"
-                                    onclick="changeProductQuantity(${p.id}, -1)">
-
-                                    −
-
-                                </button>
-
-
-                                <span
-                                    id="productQty-${p.id}"
-                                    class="product-quantity-value">
-
-                                    ${selected}
-
-                                </span>
-
-
-                                <button
-                                    type="button"
-                                    aria-label="Aumentar cantidad"
-                                    onclick="changeProductQuantity(${p.id}, 1)">
-
-                                    +
-
-                                </button>
-
-                            </div>
-
-                        </div>
-
-
-                        <button
-                            type="button"
-                            onclick="addSelectedProductToCart(${p.id})"
-                            class="product-add w-full bg-red-50 hover:bg-red-600 text-red-600 hover:text-white font-bold rounded-xl transition-colors mt-1.5">
-
-                            + Agregar
-
-                        </button>
-
-                    </div>
-
-                </article>
-
-            `;
-
-        }).join("");
-
-}
-
-
-function addSelectedProductToCart(id) {
-
-    const quantity =
-        getSelectedQuantity(id);
-
-    addToCart(
-        id,
-        quantity
-    );
-
-}
-
-
-function filterCategory(category) {
-
-    currentCategory =
-        category;
-
-    searchQuery = "";
-
-
-    const input =
-        document.getElementById(
-            "searchInput"
-        );
-
-
-    if (input) {
-        input.value = "";
-    }
-
-
-    closeSearchResults();
-
-
-    const title =
-        document.getElementById(
-            "sectionTitle"
-        );
-
-    const subtitle =
-        document.getElementById(
-            "sectionSubtitle"
-        );
-
-
-    if (title) {
-
-        title.textContent =
-            category === "todos"
-                ? "Nuestros Productos"
-                : category === "mas-vendidos"
-                    ? "Top Ventas"
-                    : category
-                        .charAt(0)
-                        .toUpperCase() +
-                      category.slice(1);
-
-    }
-
-
-    if (subtitle) {
-
-        subtitle.textContent =
-            category === "todos"
-                ? "Catálogo en tiempo real"
-                : `Mostrando categoría: ${category}`;
-
-    }
-
-
-    renderProducts();
-
-}
-
-
-function goHome() {
-
-    currentCategory = "todos";
-
-    searchQuery = "";
-
-
-    const input =
-        document.getElementById(
-            "searchInput"
-        );
-
-
-    if (input) {
-        input.value = "";
-    }
-
-
-    closeSearchResults();
-
-    closeCart();
-
-    closeCheckout();
-
-
-    const title =
-        document.getElementById(
-            "sectionTitle"
-        );
-
-    const subtitle =
-        document.getElementById(
-            "sectionSubtitle"
-        );
-
-
-    if (title) {
-        title.textContent =
-            "Nuestros Productos";
-    }
-
-
-    if (subtitle) {
-        subtitle.textContent =
-            "Catálogo en tiempo real";
-    }
-
-
-    renderProducts();
-
-    setMobileNav("home");
-
-
-    window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth"
-    });
-
-}
-
-
-function openMobileSearch() {
-
-    setMobileNav("search");
-
-    closeCart();
-
-    closeCheckout();
-
-
-    const header =
-        document.getElementById("top");
-
-    const input =
-        document.getElementById(
-            "searchInput"
-        );
-
-
-    if (header) {
-
-        header.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-    }
-
-
-    setTimeout(function() {
-
-        if (input) {
-
-            input.focus();
-
-
-            if (input.value.trim()) {
-
-                updateSearchResults();
-
-            }
-
-        }
-
-    }, 350);
-
-}
-
-
-function updateSearchResults() {
-
-    const input =
-        document.getElementById(
-            "searchInput"
-        );
-
-    const resultsBox =
-        document.getElementById(
-            "searchResults"
-        );
-
-
-    if (!input || !resultsBox) {
-        return;
-    }
-
-
-    const query =
-        normalizeText(input.value);
-
-
-    searchQuery = query;
-
-
-    if (query) {
-        currentCategory = "todos";
-    }
-
-
-    renderProducts();
-
-
-    if (!query) {
-
-        closeSearchResults();
-
-        return;
-
-    }
-
-
-    const results =
-        products
-            .filter(function(product) {
-
-                return normalizeText(
-                    product.name
-                ).includes(query);
-
-            })
-            .slice(0, 7);
-
-
-    if (results.length === 0) {
-
-        resultsBox.innerHTML = `
-
-            <div class="p-4 text-center">
-
-                <div class="text-xl mb-1">
-                    🔎
-                </div>
-
-                <p class="text-xs font-semibold text-slate-600">
-
-                    No encontramos "${input.value}"
-
-                </p>
-
-                <p class="text-[10px] text-slate-400 mt-1">
-
-                    Intenta con otro producto
-
-                </p>
-
-            </div>
-
-        `;
-
-        resultsBox.classList.add("show");
-
-        return;
-
-    }
-
-
-    resultsBox.innerHTML =
-        results.map(function(product) {
-
-            return `
-
-                <button
-                    type="button"
-                    class="search-result-item"
-                    onclick="selectSearchProduct(${product.id})">
-
-                    <img
-                        src="${product.image}"
-                        alt="${product.name}"
-                        class="search-result-image"
-                        onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}'">
-
-                    <span
-                        class="search-result-name">
-
-                        ${product.name}
-
-                    </span>
-
-                    <span
-                        class="search-result-price">
-
-                        $${product.price.toLocaleString("es-CO")}
-
-                    </span>
-
-                </button>
-
-            `;
-
-        }).join("");
-
-
-    resultsBox.classList.add("show");
-
-}
-
-
-function selectSearchProduct(id) {
-
-    const product =
-        products.find(function(p) {
-            return p.id === id;
-        });
-
-
-    if (!product) return;
-
-
-    const input =
-        document.getElementById(
-            "searchInput"
-        );
-
-
-    if (input) {
-        input.value = product.name;
-    }
-
-
-    searchQuery =
-        normalizeText(product.name);
-
-    currentCategory = "todos";
-
-    closeSearchResults();
-
-    setMobileNav("search");
-
-    renderProducts();
-
-
-    setTimeout(function() {
-
-        const cards =
-            document.querySelectorAll(
-                ".product-card"
-            );
-
-
-        const target =
-            Array.from(cards).find(
-                function(card) {
-
-                    const name =
-                        card.querySelector(
-                            ".product-name"
-                        );
-
-
-                    return (
-                        name &&
-                        normalizeText(
-                            name.textContent
-                        ) ===
-                        normalizeText(
-                            product.name
-                        )
-                    );
-
-                }
-            );
-
-
-        if (target) {
-
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
-
-        }
-
-    }, 100);
-
-}
-
-
-function closeSearchResults() {
-
-    const results =
-        document.getElementById(
-            "searchResults"
-        );
-
-
-    if (!results) return;
-
-
-    results.classList.remove("show");
-
-    results.innerHTML = "";
-
-}
-
-
-function loadCartFromLocalStorage() {
-
-    const saved =
-        localStorage.getItem(
-            "merkomax_cart"
-        );
-
-
-    if (saved) {
-
-        try {
-
-            cart =
-                JSON.parse(saved);
-
-
-            if (!Array.isArray(cart)) {
-                cart = [];
-            }
-
-        } catch(error) {
-
-            cart = [];
-
-        }
-
-    }
-
-
-    updateCartUI();
-
-}
-
-
-function saveCart() {
-
-    localStorage.setItem(
-        "merkomax_cart",
-        JSON.stringify(cart)
-    );
-
-
-    updateCartUI();
-
-}
-
-
-function addToCart(id, quantity = 1) {
-
-    const product =
-        products.find(function(p) {
-            return p.id === id;
-        });
-
-
-    if (!product) return;
-
-
-    quantity =
-        Math.max(
-            1,
-            Number(quantity || 1)
-        );
-
-
-    const existing =
-        cart.find(function(item) {
-            return item.id === id;
-        });
-
-
-    if (existing) {
-
-        existing.quantity += quantity;
-
-    } else {
-
-        cart.push({
-            ...product,
-            quantity: quantity
-        });
-
-    }
-
-
-    saveCart();
-
-
-    showToast(
-        quantity === 1
-            ? `¡Agregado: ${product.name}!`
-            : `¡${quantity} unidades de ${product.name}!`
-    );
-
-}
-
-
-function updateQty(id, delta) {
-
-    const item =
-        cart.find(function(x) {
-            return x.id === id;
-        });
-
-
-    if (!item) return;
-
-
-    item.quantity += delta;
-
-
-    if (item.quantity <= 0) {
-
-        cart =
-            cart.filter(function(x) {
-                return x.id !== id;
-            });
-
-    }
-
-
-    saveCart();
-
-}
-
-
-function removeFromCart(id) {
-
-    cart =
-        cart.filter(function(item) {
-            return item.id !== id;
-        });
-
-
-    saveCart();
-
-}
-
-
-function clearCart() {
-
-    if (!confirm("¿Vaciar carrito?")) {
-        return;
-    }
-
-
-    cart = [];
-
-    saveCart();
-
-}
-
-
-function updateCartUI() {
-
-    const count =
-        cart.reduce(function(total, item) {
-
-            return (
-                total +
-                Number(item.quantity || 0)
-            );
-
-        }, 0);
-
-
-    const cartCounter =
-        document.getElementById(
-            "cartCounter"
-        );
-
-
-    if (cartCounter) {
-        cartCounter.textContent = count;
-    }
-
-
-    const mobileCounter =
-        document.getElementById(
-            "mobileNavCartCounter"
-        );
-
-
-    if (mobileCounter) {
-
-        mobileCounter.textContent =
-            count;
-
-        mobileCounter.style.display =
-            count > 0
-                ? "flex"
-                : "none";
-
-    }
-
-
-    const clearButton =
-        document.getElementById(
-            "clearCartBtn"
-        );
-
-
-    if (clearButton) {
-
-        clearButton.style.display =
-            cart.length > 0
-                ? "block"
-                : "none";
-
-    }
-
-
-    const content =
-        document.getElementById(
-            "cartContent"
-        );
-
-    const totalElement =
-        document.getElementById(
-            "cartTotal"
-        );
-
-
-    if (!content) return;
-
-
-    if (cart.length === 0) {
-
-        content.innerHTML = `
-
-            <div
-                class="text-center py-12 text-slate-400 text-xs">
-
-                <div class="text-4xl mb-3">
-                    🛒
-                </div>
-
-                <p>
-                    Tu carrito está vacío
-                </p>
-
-                <p class="text-[10px] mt-1">
-
-                    Agrega productos para comenzar
-
-                </p>
-
-            </div>
-
-        `;
-
-
-        if (totalElement) {
-            totalElement.textContent = "$0";
-        }
-
-
-        return;
-
-    }
-
-
-    content.innerHTML =
-        cart.map(function(item) {
-
-            return `
-
-                <div
-                    class="flex items-center gap-2.5 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-
-                    <img
-                        src="${item.image}"
-                        class="w-12 h-12 object-contain rounded-lg bg-white shrink-0 p-1"
-                        onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}'">
-
-
-                    <div
-                        class="flex-1 min-w-0">
-
-                        <h5
-                            class="font-bold text-slate-900 text-[11px] truncate">
-
-                            ${item.name}
-
-                        </h5>
-
-
-                        <div
-                            class="flex items-center gap-2 mt-2">
-
-                            <p
-                                class="font-extrabold text-[11px]">
-
-                                $${(
-                                    item.price *
-                                    item.quantity
-                                ).toLocaleString("es-CO")}
-
-                            </p>
-
-
-                            <div
-                                class="flex items-center gap-1"
-                                style="
-                                    display:flex;
-                                    flex-direction:row;
-                                    align-items:center;
-                                    justify-content:center;
-                                    flex-wrap:nowrap;
-                                    white-space:nowrap;
-                                ">
-
-                                <button
-                                    type="button"
-                                    onclick="updateQty(${item.id},-1)"
-                                    class="w-6 h-6 bg-white border rounded text-[10px] font-bold"
-                                    style="
-                                        flex:0 0 auto;
-                                        display:flex;
-                                        align-items:center;
-                                        justify-content:center;
-                                    ">
-
-                                    −
-
-                                </button>
-
-
-                                <span
-                                    class="text-[11px] font-bold"
-                                    style="
-                                        flex:0 0 auto;
-                                        min-width:17px;
-                                        text-align:center;
-                                    ">
-
-                                    ${item.quantity}
-
-                                </span>
-
-
-                                <button
-                                    type="button"
-                                    onclick="updateQty(${item.id},1)"
-                                    class="w-6 h-6 bg-white border rounded text-[10px] font-bold"
-                                    style="
-                                        flex:0 0 auto;
-                                        display:flex;
-                                        align-items:center;
-                                        justify-content:center;
-                                    ">
-
-                                    +
-
-                                </button>
-
-                            </div>
-
-
-                            <button
-                                type="button"
-                                onclick="removeFromCart(${item.id})"
-                                aria-label="Eliminar producto"
-                                class="cart-trash-btn">
-
-                                <svg
-                                    width="14"
-                                    height="14"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round">
-
-                                    <path d="M3 6h18"></path>
-                                    <path d="M8 6V4h8v2"></path>
-                                    <path d="M19 6l-1 14H6L5 6"></path>
-                                    <path d="M10 11v5"></path>
-                                    <path d="M14 11v5"></path>
-
-                                </svg>
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            `;
-
-        }).join("");
-
-
-    const total =
-        cart.reduce(function(sum, item) {
-
-            return (
-                sum +
-                (
-                    Number(item.price) *
-                    Number(item.quantity)
-                )
-            );
-
-        }, 0);
-
-
-    if (totalElement) {
-
-        totalElement.textContent =
-            `$${total.toLocaleString("es-CO")}`;
-
-    }
-
-}
-
-
-function openMobileCart() {
-
-    closeCheckout();
-
-    setMobileNav("cart");
-
-    closeSearchResults();
-
-    openCart();
-
-}
-
-
-function openCart() {
-
-    const panel =
-        document.getElementById(
-            "cartPanel"
-        );
-
-    const overlay =
-        document.getElementById(
-            "cartOverlay"
-        );
-
-
-    if (!panel || !overlay) {
-
-        console.error(
-            "No se encontró cartPanel o cartOverlay"
-        );
-
-        return;
-
-    }
-
-
-    updateCartUI();
-
-    closeSearchResults();
-
-
-    panel.classList.remove(
-        "is-closed"
-    );
-
-    panel.classList.add(
-        "is-open"
-    );
-
-
-    panel.style.transform =
-        "translateX(0)";
-
-    panel.style.visibility =
-        "visible";
-
-    panel.style.opacity =
-        "1";
-
-    panel.style.pointerEvents =
-        "auto";
-
-    panel.style.zIndex =
-        "9996";
-
-
-    overlay.classList.remove(
-        "hidden"
-    );
-
-    overlay.style.display =
-        "block";
-
-    overlay.style.zIndex =
-        "9995";
-
-
-    document.body.classList.add(
-        "cart-is-open"
-    );
-
-}
-
-
-function closeCart() {
-
-    const panel =
-        document.getElementById(
-            "cartPanel"
-        );
-
-    const overlay =
-        document.getElementById(
-            "cartOverlay"
-        );
-
-
-    if (panel) {
-
-        panel.classList.remove(
-            "is-open"
-        );
-
-        panel.classList.add(
-            "is-closed"
-        );
-
-
-        panel.style.transform =
-            "translateX(100%)";
-
-        panel.style.visibility =
-            "hidden";
-
-        panel.style.opacity =
-            "0";
-
-        panel.style.pointerEvents =
-            "none";
-
-    }
-
-
-    if (overlay) {
-
-        overlay.classList.add(
-            "hidden"
-        );
-
-        overlay.style.display =
-            "none";
-
-    }
-
-
-    document.body.classList.remove(
-        "cart-is-open"
-    );
-
-}
-
-
-function continueShopping() {
-
-    closeCart();
-
-    closeCheckout();
-
-    setMobileNav("home");
-
-    showToast(
-        "Puedes seguir comprando 🛒"
-    );
-
-}
-
-
-function setMobileNav(active) {
-
-    document
-        .querySelectorAll(
-            "#mobileBottomNav button"
-        )
-        .forEach(function(button) {
-
-            button.classList.remove(
-                "active"
-            );
-
-        });
-
-
-    const ids = {
-
-        home:
-            "mobileHomeBtn",
-
-        search:
-            "mobileSearchBtn",
-
-        cart:
-            "mobileCartBtn"
-
-    };
-
-
-    const button =
-        document.getElementById(
-            ids[active]
-        );
-
-
-    if (button) {
-
-        button.classList.add(
-            "active"
-        );
-
-    }
-
-}
-
-
-function showToast(message) {
-
-    const container =
-        document.getElementById(
-            "toastContainer"
-        );
-
-
-    if (!container) return;
-
-
-    const toast =
-        document.createElement(
-            "div"
-        );
-
-
-    toast.className =
-        "bg-slate-900 text-white text-[11px] font-semibold px-3 py-2 rounded-xl shadow-lg";
-
-
-    toast.textContent =
-        message;
-
-
-    container.appendChild(toast);
-
-
-    setTimeout(function() {
-
-        toast.remove();
-
-    }, 2500);
-
-}
-
-
-function toggleCashDetail() {
-
-    const payment =
-        document.getElementById(
-            "custPayment"
-        );
-
-    const box =
-        document.getElementById(
-            "cashDetailBox"
-        );
-
-
-    if (!payment || !box) {
-        return;
-    }
-
-
-    box.style.display =
-        payment.value === "Efectivo"
-            ? "block"
-            : "none";
-
-}
-
-
-/* =========================================================
-   NUEVO:
-   EN CELULAR LLEVA AL FORMULARIO DE ABAJO.
-   EN PC CONSERVA EL MODAL.
-========================================================= */
-
-function goToCheckoutForm() {
-
-    if (!cart || cart.length === 0) {
-
-        showToast(
-            "El carrito está vacío"
-        );
-
-        return;
-
-    }
-
-
-    /* SOLO CELULAR */
-
-    if (window.innerWidth <= 640) {
-
-        closeCart();
-
-        setMobileNav("home");
-
-
-        const checkoutModal =
-            document.getElementById(
-                "checkoutModal"
-            );
-
-
-        if (!checkoutModal) {
-            return;
-        }
-
-
-        checkoutModal.classList.remove(
-            "hidden"
-        );
-
-
-        checkoutModal.style.display =
-            "block";
-
-        checkoutModal.style.visibility =
-            "visible";
-
-        checkoutModal.style.opacity =
-            "1";
-
-
-        document.body.classList.remove(
-            "cart-is-open",
-            "checkout-is-open"
-        );
-
-
-        toggleCashDetail();
-
-
-        setTimeout(function() {
-
-            checkoutModal.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-
-            setTimeout(function() {
-
-                const nameInput =
-                    document.getElementById(
-                        "custName"
-                    );
-
-                if (nameInput) {
-
-                    nameInput.focus();
-
-                }
-
-            }, 450);
-
-        }, 100);
-
-
-        return;
-
-    }
-
-
-    /* =====================================================
-       PC:
-       MANTIENE EL MODAL ORIGINAL
-    ===================================================== */
-
-    openCheckoutModal();
-
-}
-
-
-function openCheckoutModal() {
-
-    const checkoutModal =
-        document.getElementById(
-            "checkoutModal"
-        );
-
-
-    if (!checkoutModal) {
-
-        console.error(
-            "No se encontró checkoutModal"
-        );
-
-        return;
-
-    }
-
-
-    if (!cart || cart.length === 0) {
-
-        showToast(
-            "El carrito está vacío"
-        );
-
-        return;
-
-    }
-
-
-    closeCart();
-
-
-    checkoutModal.classList.remove(
-        "hidden"
-    );
-
-
-    checkoutModal.style.display =
-        "flex";
-
-    checkoutModal.style.visibility =
-        "visible";
-
-    checkoutModal.style.opacity =
-        "1";
-
-    checkoutModal.style.zIndex =
-        "9997";
-
-
-    document.body.classList.add(
-        "checkout-is-open"
-    );
-
-
-    toggleCashDetail();
-
-
-    setTimeout(function() {
-
-        const nameInput =
-            document.getElementById(
-                "custName"
-            );
-
-        if (nameInput) {
-            nameInput.focus();
-        }
-
-    }, 150);
-
-}
-
-
-function closeCheckout() {
-
-    const checkoutModal =
-        document.getElementById(
-            "checkoutModal"
-        );
-
-
-    if (!checkoutModal) return;
-
-
-    checkoutModal.classList.add(
-        "hidden"
-    );
-
-
-    checkoutModal.style.display =
-        "none";
-
-    checkoutModal.style.visibility =
-        "hidden";
-
-    checkoutModal.style.opacity =
-        "0";
-
-
-    document.body.classList.remove(
-        "checkout-is-open"
-    );
-
-
-    if (cart.length > 0) {
-
-        setMobileNav("cart");
-
-    } else {
-
-        setMobileNav("home");
-
-    }
-
-}
-
-
-function setupEvents() {
-
-    const searchInput =
-        document.getElementById(
-            "searchInput"
-        );
-
-
-    if (searchInput) {
-
-        searchInput.addEventListener(
-            "input",
-            function() {
-
-                updateSearchResults();
-
-                setMobileNav("search");
-
-            }
-        );
-
-
-        searchInput.addEventListener(
-            "focus",
-            function() {
-
-                setMobileNav("search");
-
-
-                if (
-                    searchInput.value.trim()
-                ) {
-
-                    updateSearchResults();
-
-                }
-
-            }
-        );
-
-
-        searchInput.addEventListener(
-            "keydown",
-            function(event) {
-
-                if (
-                    event.key === "Escape"
-                ) {
-
-                    closeSearchResults();
-
-                    searchInput.blur();
-
-                }
-
-            }
-        );
-
-    }
-
-
-    document.addEventListener(
-        "click",
-        function(event) {
-
-            const searchBox =
-                document.querySelector(
-                    ".mobile-search"
-                );
-
-
-            if (
-                searchBox &&
-                !searchBox.contains(
-                    event.target
-                )
-            ) {
-
-                closeSearchResults();
-
-            }
-
-        }
-    );
-
-
-    const closeCartButton =
-        document.getElementById(
-            "closeCart"
-        );
-
-
-    if (closeCartButton) {
-
-        closeCartButton.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                closeCart();
-
-                if (cart.length > 0) {
-                    setMobileNav("cart");
-                } else {
-                    setMobileNav("home");
-                }
-
-            }
-        );
-
-    }
-
-
-    const overlay =
-        document.getElementById(
-            "cartOverlay"
-        );
-
-
-    if (overlay) {
-
-        overlay.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                closeCart();
-
-                if (cart.length > 0) {
-                    setMobileNav("cart");
-                } else {
-                    setMobileNav("home");
-                }
-
-            }
-        );
-
-    }
-
-
-    const continueButton =
-        document.getElementById(
-            "continueShoppingBtn"
-        );
-
-
-    if (continueButton) {
-
-        continueButton.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                continueShopping();
-
-            }
-        );
-
-    }
-
-
-    const checkoutButton =
-        document.getElementById(
-            "openCheckoutModalBtn"
-        );
-
-
-    if (checkoutButton) {
-
-        checkoutButton.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-                event.stopPropagation();
-
-                goToCheckoutForm();
-
-            }
-        );
-
-    }
-
-
-    const closeCheckoutButton =
-        document.getElementById(
-            "closeCheckoutModal"
-        );
-
-
-    if (closeCheckoutButton) {
-
-        closeCheckoutButton.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                closeCheckout();
-
-            }
-        );
-
-    }
-
-
-    const checkoutModal =
-        document.getElementById(
-            "checkoutModal"
-        );
-
-
-    if (checkoutModal) {
-
-        checkoutModal.addEventListener(
-            "click",
-            function(event) {
-
-                if (
-                    window.innerWidth > 640 &&
-                    event.target ===
-                    checkoutModal
-                ) {
-
-                    closeCheckout();
-
-                }
-
-            }
-        );
-
-    }
-
-
-    const checkoutForm =
-        document.getElementById(
-            "checkoutForm"
-        );
-
-
-    if (checkoutForm) {
-
-        checkoutForm.addEventListener(
-            "submit",
-            submitOrder
-        );
-
-    }
-
-
-    document.addEventListener(
-        "keydown",
-        function(event) {
-
-            if (
-                event.key !== "Escape"
-            ) {
+            if (filtered.length === 0) {
+                grid.innerHTML = `<p class="text-xs text-slate-500 text-center col-span-2 py-8">No se encontraron productos.</p>`;
                 return;
             }
 
+            grid.innerHTML = filtered.map(p => `
+                <div class="product-card bg-white rounded-2xl p-3 border border-slate-100 shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-all">
+                    <!-- Icono de check verde superior derecho estilo D1 -->
+                    <div class="absolute top-2.5 right-2.5 z-10 bg-emerald-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shadow-xs">✓</div>
+                    
+                    ${p.category === 'combos' ? '<span class="absolute top-2.5 left-2.5 z-10 bg-red-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">COMBO</span>' : ''}
+                    ${p.isBestSeller && p.category !== 'combos' ? '<span class="absolute top-2.5 left-2.5 z-10 bg-amber-500 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">TOP</span>' : ''}
 
-            closeSearchResults();
+                    <div>
+                        <div class="product-image h-32 w-full rounded-xl overflow-hidden bg-slate-50 mb-2 flex items-center justify-center">
+                            <img src="${p.image}" alt="${p.name}" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="product-name font-bold text-slate-900 text-xs line-clamp-2 mt-1 h-8 leading-tight">${p.name}</h3>
+                    </div>
 
-            closeCart();
-
-            closeCheckout();
-
+                    <div class="pt-2 border-t border-slate-50 mt-2 space-y-2">
+                        <div class="flex items-baseline gap-1">
+                            <span class="product-price text-xs font-extrabold text-slate-900">$${p.price.toLocaleString('es-CO')}</span>
+                            ${p.oldPrice ? `<span class="product-old-price text-[9px] text-slate-400 line-through">$${p.oldPrice.toLocaleString('es-CO')}</span>` : ''}
+                        </div>
+                        <button onclick="addToCart(${p.id})" class="product-add w-full bg-red-50 hover:bg-red-600 text-red-600 hover:text-white font-bold py-2 rounded-xl text-[11px] transition-colors flex items-center justify-center gap-1">
+                            <span>+ Agregar</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
         }
-    );
 
-}
+        function filterCategory(cat) {
+            currentCategory = cat;
+            document.getElementById('sectionTitle').textContent = cat === 'todos' ? "Nuestros Productos" : cat.toUpperCase();
+            document.getElementById('sectionSubtitle').textContent = `Mostrando categoría: ${cat}`;
+            renderProducts();
+        }
 
+        function loadCartFromLocalStorage() {
+            const saved = localStorage.getItem('merkomax_cart');
+            if (saved) { try { cart = JSON.parse(saved); } catch(e) { cart = []; } }
+            updateCartUI();
+        }
 
-function submitOrder(event) {
+        function saveCart() {
+            localStorage.setItem('merkomax_cart', JSON.stringify(cart));
+            updateCartUI();
+        }
 
-    event.preventDefault();
+        function addToCart(id) {
+            const p = products.find(x => x.id === id);
+            if (!p) return;
+            const item = cart.find(x => x.id === id);
+            if (item) item.quantity++;
+            else cart.push({ ...p, quantity: 1 });
+            saveCart();
+            showToast(`¡Agregado: ${p.name}!`);
+        }
 
+        function updateQty(id, delta) {
+            const item = cart.find(x => x.id === id);
+            if (!item) return;
+            item.quantity += delta;
+            if (item.quantity <= 0) cart = cart.filter(x => x.id !== id);
+            saveCart();
+        }
 
-    if (!cart || cart.length === 0) {
+        function removeFromCart(id) {
+            cart = cart.filter(x => x.id !== id);
+            saveCart();
+        }
 
-        showToast(
-            "El carrito está vacío"
-        );
-
-        return;
-
-    }
-
-
-    const form =
-        document.getElementById(
-            "checkoutForm"
-        );
-
-
-    if (
-        form &&
-        !form.checkValidity()
-    ) {
-
-        form.reportValidity();
-
-        return;
-
-    }
-
-
-    const name =
-        document.getElementById(
-            "custName"
-        ).value.trim();
-
-
-    const neighborhood =
-        document.getElementById(
-            "custNeighborhood"
-        ).value.trim();
+        function clearCart() {
+            if (confirm("¿Vaciar carrito?")) { cart = []; saveCart(); }
+        }
 
 
-    const address =
-        document.getElementById(
-            "custAddress"
-        ).value.trim();
-
-
-    const payment =
-        document.getElementById(
-            "custPayment"
-        ).value;
-
-
-    const cash =
-        document.getElementById(
-            "custCashAmount"
-        ).value.trim();
-
-
-    const notes =
-        document.getElementById(
-            "custNotes"
-        ).value.trim();
-
-
-    let message =
-        "🛒 *PEDIDO - MERKOMAX NIMAR*\n\n";
-
-
-    message +=
-        `👤 *Cliente:* ${name}\n`;
-
-    message +=
-        `📍 *Barrio:* ${neighborhood}\n`;
-
-    message +=
-        `🏠 *Dirección:* ${address}\n`;
-
-    message +=
-        `💳 *Pago:* ${payment}\n`;
-
-
-    if (
-        payment === "Efectivo" &&
-        cash
-    ) {
-
-        message +=
-            `💵 *Cambio para:* ${cash}\n`;
-
-    }
-
-
-    if (notes) {
-
-        message +=
-            `📝 *Notas:* ${notes}\n`;
-
-    }
-
-
-    message +=
-        "\n📦 *PRODUCTOS:*\n";
-
-
-    cart.forEach(function(item, index) {
-
-        message +=
-            `${index + 1}. ${item.name} x${item.quantity} - $${(
-                Number(item.price) *
-                Number(item.quantity)
-            ).toLocaleString("es-CO")}\n`;
-
-    });
-
-
-    const total =
-        cart.reduce(function(sum, item) {
-
-            return (
-                sum +
-                (
-                    Number(item.price) *
-                    Number(item.quantity)
-                )
+        function setMobileNav(active) {
+            document.querySelectorAll('#mobileBottomNav button').forEach(btn => btn.classList.remove('active'));
+            const map = {
+                home: 'mobileHomeBtn',
+                search: '#mobileBottomNav button:nth-child(2)',
+                cart: '#mobileBottomNav button:nth-child(3)'
+            };
+            const target = document.querySelector(
+                active === 'home' ? '#mobileHomeBtn' :
+                active === 'search' ? '#mobileBottomNav button:nth-child(2)' :
+                '#mobileBottomNav button:nth-child(3)'
             );
+            if (target) target.classList.add('active');
+        }
 
-        }, 0);
+        function updateCartUI() {
+            const cartCount = cart.reduce((a, b) => a + b.quantity, 0);
+            document.getElementById('cartCounter').textContent = cartCount;
+            const mobileCounter = document.getElementById('mobileNavCartCounter');
+            if (mobileCounter) {
+                mobileCounter.textContent = cartCount;
+                mobileCounter.style.display = cartCount > 0 ? 'flex' : 'none';
+            }
+            document.getElementById('clearCartBtn').style.display = cart.length > 0 ? 'block' : 'none';
+            
+            const content = document.getElementById('cartContent');
+            if (cart.length === 0) {
+                content.innerHTML = `<div class="text-center py-12 text-slate-400 text-xs">Tu carrito está vacío</div>`;
+                document.getElementById('cartTotal').textContent = '$0';
+                return;
+            }
 
+            content.innerHTML = cart.map(i => `
+                <div class="flex items-center gap-2.5 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                    <img src="${i.image}" class="w-10 h-10 object-cover rounded-lg bg-white shrink-0">
+                    <div class="flex-1 min-w-0">
+                        <h5 class="font-bold text-slate-900 text-[11px] truncate">${i.name}</h5>
+                        <p class="text-red-600 font-extrabold text-[11px]">$${(i.price * i.quantity).toLocaleString('es-CO')}</p>
+                        <div class="flex items-center gap-2 mt-1">
+                            <button onclick="updateQty(${i.id}, -1)" class="w-5 h-5 bg-white border rounded text-[10px] font-bold">-</button>
+                            <span class="text-[11px] font-bold">${i.quantity}</span>
+                            <button onclick="updateQty(${i.id}, 1)" class="w-5 h-5 bg-white border rounded text-[10px] font-bold">+</button>
+                        </div>
+                    </div>
+                    <button onclick="removeFromCart(${i.id})" class="text-slate-400 hover:text-red-600 text-xs font-bold p-1">✕</button>
+                </div>
+            `).join('');
 
-    message +=
-        `\n💰 *TOTAL: $${total.toLocaleString("es-CO")}*`;
+            const total = cart.reduce((a, b) => a + (b.price * b.quantity), 0);
+            document.getElementById('cartTotal').textContent = `$${total.toLocaleString('es-CO')}`;
+        }
 
+        function showToast(msg) {
+            const container = document.getElementById('toastContainer');
+            const t = document.createElement('div');
+            t.className = "bg-slate-900 text-white text-[11px] font-semibold px-3 py-2 rounded-xl shadow-lg";
+            t.textContent = msg;
+            container.appendChild(t);
+            setTimeout(() => t.remove(), 2500);
+        }
 
-    const whatsappUrl =
-        `https://wa.me/573105500791?text=${encodeURIComponent(message)}`;
+        function toggleCashDetail() {
+            const pay = document.getElementById('custPayment').value;
+            document.getElementById('cashDetailBox').style.display = pay === 'Efectivo' ? 'block' : 'none';
+        }
 
+        function resetToHome() {
+            filterCategory('todos');
+            document.getElementById('searchInput').value = '';
+            searchQuery = '';
+        }
 
-    const orderUrl =
-        whatsappUrl;
+        function setupEvents() {
+            const search = document.getElementById('searchInput');
+            search.addEventListener('input', (e) => {
+                searchQuery = e.target.value;
+                renderProducts();
+                setMobileNav('search');
+            });
 
+            const cartTrigger = document.getElementById('cartTrigger');
+            const cartPanel = document.getElementById('cartPanel');
+            const cartOverlay = document.getElementById('cartOverlay');
+            const closeCart = document.getElementById('closeCart');
 
-    cart = [];
+            const toggleCart = (open) => {
+                cartPanel.classList.toggle('translate-x-full', !open);
+                cartOverlay.classList.toggle('hidden', !open);
+            };
 
-    saveCart();
+            cartTrigger.addEventListener('click', () => toggleCart(true));
+            closeCart.addEventListener('click', () => toggleCart(false));
+            cartOverlay.addEventListener('click', () => toggleCart(false));
 
+            const checkoutModal = document.getElementById('checkoutModal');
+            document.getElementById('openCheckoutModalBtn').addEventListener('click', () => {
+                if (cart.length === 0) { showToast('El carrito está vacío'); return; }
+                toggleCart(false);
+                checkoutModal.classList.remove('hidden');
+            });
+            document.getElementById('closeCheckoutModal').addEventListener('click', () => checkoutModal.classList.add('hidden'));
 
-    closeCheckout();
+            document.getElementById('checkoutForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('custName').value.trim();
+                const neighborhood = document.getElementById('custNeighborhood').value.trim();
+                const address = document.getElementById('custAddress').value.trim();
+                const payment = document.getElementById('custPayment').value;
+                const cash = document.getElementById('custCashAmount').value.trim();
+                const notes = document.getElementById('custNotes').value.trim();
 
+                let msg = `🛒 *PEDIDO - MERKOMAX NIMAR*\n\n`;
+                msg += `👤 *Cliente:* ${name}\n📍 *Barrio:* ${neighborhood}\n🏠 *Dirección:* ${address}\n💳 *Pago:* ${payment}\n`;
+                if (payment === 'Efectivo' && cash) msg += `💵 *Cambio para:* ${cash}\n`;
+                if (notes) msg += `📝 *Notas:* ${notes}\n`;
+                msg += `\n📦 *PRODUCTOS:*\n`;
 
-    document.body.classList.remove(
-        "cart-is-open",
-        "checkout-is-open"
-    );
+                cart.forEach((i, idx) => {
+                    msg += `${idx + 1}. ${i.name} x${i.quantity} - $${(i.price * i.quantity).toLocaleString('es-CO')}\n`;
+                });
 
+                const total = cart.reduce((a, b) => a + (b.price * b.quantity), 0);
+                msg += `\n💰 *TOTAL: $${total.toLocaleString('es-CO')}*`;
 
-    window.location.href =
-        orderUrl;
-
-}
-
-</script>
-
+                window.open(`https://wa.me/573105500791?text=${encodeURIComponent(msg)}`, '_blank');
+                cart = [];
+                saveCart();
+                checkoutModal.classList.add('hidden');
+            });
+        }
+    </script>
 </body>
 </html>
