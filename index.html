@@ -149,13 +149,21 @@
 
 
         /* ========================================================= */
+        /* MOBILE GENERAL */
+        /* ========================================================= */
+
+        #mobileHeaderSearch,
+        #mobileBottomNav {
+            display: none;
+        }
+
+
+        /* ========================================================= */
         /* BOTÓN CARRITO FLOTANTE PC */
         /* ========================================================= */
 
         #desktopFloatingCart {
-
             display: none;
-
         }
 
 
@@ -284,7 +292,7 @@
 
 
         /* ========================================================= */
-        /* CARRITO PC - ESTILO MINIMALISTA */
+        /* CARRITO PC - MINIMALISTA */
         /* ========================================================= */
 
         @media (min-width: 640px) {
@@ -481,14 +489,12 @@
 
 
             #cartContent {
-
                 gap: 10px !important;
-
             }
 
 
             /* ===================================================== */
-            /* PRODUCTO PC - PRECIO + CONTADOR EN LA MISMA LÍNEA */
+            /* PRODUCTO PC - PRECIO + CONTADOR */
             /* ===================================================== */
 
             .product-price-row {
@@ -591,7 +597,7 @@
 
 
         /* ========================================================= */
-        /* SOLO CELULAR */
+        /* CELULAR */
         /* ========================================================= */
 
         @media (max-width: 639px) {
@@ -610,21 +616,10 @@
             }
 
 
-            /* ----------------------------------------------------- */
-            /* QUITAR BARRA SUPERIOR */
-            /* ----------------------------------------------------- */
-
             #topAnnouncement {
-
-                display:
-                    none !important;
-
+                display: none !important;
             }
 
-
-            /* ----------------------------------------------------- */
-            /* HEADER */
-            /* ----------------------------------------------------- */
 
             header {
 
@@ -641,10 +636,7 @@
 
 
             header > div {
-
-                position:
-                    relative;
-
+                position: relative;
             }
 
 
@@ -670,10 +662,6 @@
 
             }
 
-
-            /* ----------------------------------------------------- */
-            /* LOGO */
-            /* ----------------------------------------------------- */
 
             #logoContainer {
 
@@ -721,27 +709,13 @@
             }
 
 
-            /* ----------------------------------------------------- */
-            /* OCULTAR CARRITO DEL HEADER */
-            /* ----------------------------------------------------- */
-
             #cartTrigger {
-
-                display:
-                    none !important;
-
+                display: none !important;
             }
 
 
-            /* ----------------------------------------------------- */
-            /* BUSCADOR MOBILE */
-            /* ----------------------------------------------------- */
-
             header .pb-3 {
-
-                display:
-                    none !important;
-
+                display: none !important;
             }
 
 
@@ -810,30 +784,21 @@
 
 
             #searchInputMobile::placeholder {
-
-                color:
-                    #64748b !important;
-
+                color: #64748b !important;
             }
 
 
             #searchInputMobile:focus {
 
-                background:
-                    #ffffff !important;
+                background: #ffffff !important;
 
-                border-color:
-                    #2563eb !important;
+                border-color: #2563eb !important;
 
                 box-shadow:
                     0 0 0 3px rgba(37,99,235,.10) !important;
 
             }
 
-
-            /* ----------------------------------------------------- */
-            /* RESULTADOS BUSCADOR */
-            /* ----------------------------------------------------- */
 
             #mobileSearchResults {
 
@@ -880,32 +845,23 @@
 
 
             #mobileSearchResults.active {
-
-                display:
-                    block !important;
-
+                display: block !important;
             }
 
 
             .mobile-search-item {
 
-                display:
-                    flex !important;
+                display: flex !important;
 
-                align-items:
-                    center !important;
+                align-items: center !important;
 
-                gap:
-                    9px !important;
+                gap: 9px !important;
 
-                min-height:
-                    62px !important;
+                min-height: 62px !important;
 
-                padding:
-                    9px 10px !important;
+                padding: 9px 10px !important;
 
-                background:
-                    #ffffff !important;
+                background: #ffffff !important;
 
                 border-bottom:
                     1px solid #eef2f7 !important;
@@ -981,9 +937,9 @@
             }
 
 
-            /* ----------------------------------------------------- */
+            /* ===================================================== */
             /* HERO */
-            /* ----------------------------------------------------- */
+            /* ===================================================== */
 
             .mobile-hero {
 
@@ -1005,24 +961,8 @@
 
 
             .mobile-hero h1,
-            .mobile-hero h1 span {
-
-                color:
-                    #ffffff !important;
-
-            }
-
-
+            .mobile-hero h1 span,
             .mobile-hero p {
-
-                color:
-                    #ffffff !important;
-
-            }
-
-
-            .mobile-hero .text-wine-400,
-            .mobile-hero .text-wine-200 {
 
                 color:
                     #ffffff !important;
@@ -1039,24 +979,14 @@
 
 
             .mobile-hero .hero-buttons {
-
-                display:
-                    none !important;
-
+                display: none !important;
             }
 
 
             .mobile-hero > div.relative.z-10 > div.grid {
-
-                gap:
-                    26px !important;
-
+                gap: 26px !important;
             }
 
-
-            /* ----------------------------------------------------- */
-            /* FOTO PERSONAS */
-            /* ----------------------------------------------------- */
 
             #heroBannerCard {
 
@@ -1143,24 +1073,18 @@
 
 
             #heroBannerCard p {
-
-                color:
-                    #ffffff !important;
-
+                color: #ffffff !important;
             }
 
 
             #heroBannerCard span {
-
-                background:
-                    #2563eb !important;
-
+                background: #2563eb !important;
             }
 
 
-            /* ----------------------------------------------------- */
+            /* ===================================================== */
             /* CATEGORÍAS */
-            /* ----------------------------------------------------- */
+            /* ===================================================== */
 
             #categoriesContainer {
 
@@ -1199,17 +1123,11 @@
                 box-shadow:
                     none !important;
 
-                transition:
-                    all .2s ease !important;
-
             }
 
 
             #categoriesContainer .category-btn i {
-
-                display:
-                    none !important;
-
+                display: none !important;
             }
 
 
@@ -1227,9 +1145,9 @@
             }
 
 
-            /* ----------------------------------------------------- */
+            /* ===================================================== */
             /* PRODUCTOS */
-            /* ----------------------------------------------------- */
+            /* ===================================================== */
 
             #productsGrid {
 
@@ -1396,10 +1314,6 @@
             }
 
 
-            /* ----------------------------------------------------- */
-            /* PRECIO + SELECTOR */
-            /* ----------------------------------------------------- */
-
             .product-card-mobile .product-bottom {
 
                 display:
@@ -1553,10 +1467,6 @@
             }
 
 
-            /* ----------------------------------------------------- */
-            /* BOTÓN AGREGAR */
-            /* ----------------------------------------------------- */
-
             .product-card-mobile .add-product-btn {
 
                 width:
@@ -1618,9 +1528,9 @@
             }
 
 
-            /* ----------------------------------------------------- */
+            /* ===================================================== */
             /* WHATSAPP */
-            /* ----------------------------------------------------- */
+            /* ===================================================== */
 
             .whatsapp-float {
 
@@ -1660,9 +1570,9 @@
             }
 
 
-            /* ----------------------------------------------------- */
-            /* OVERLAY CARRITO */
-            /* ----------------------------------------------------- */
+            /* ===================================================== */
+            /* CARRITO */
+            /* ===================================================== */
 
             #cartOverlay {
 
@@ -1680,10 +1590,6 @@
 
             }
 
-
-            /* ----------------------------------------------------- */
-            /* CARRITO VENTANA FLOTANTE */
-            /* ----------------------------------------------------- */
 
             #cartPanel {
 
@@ -2005,10 +1911,7 @@
 
 
             #cartTotal {
-
-                color:
-                    #2563eb !important;
-
+                color: #2563eb !important;
             }
 
 
@@ -2061,9 +1964,9 @@
             }
 
 
-            /* ----------------------------------------------------- */
+            /* ===================================================== */
             /* MENÚ INFERIOR */
-            /* ----------------------------------------------------- */
+            /* ===================================================== */
 
             #mobileBottomNav {
 
@@ -2168,10 +2071,7 @@
 
 
             .mobile-nav-button.active {
-
-                color:
-                    #2563eb !important;
-
+                color: #2563eb !important;
             }
 
 
@@ -2301,18 +2201,12 @@
 
 
             #productsGrid {
-
-                gap:
-                    8px !important;
-
+                gap: 8px !important;
             }
 
 
             .product-card-mobile {
-
-                padding:
-                    7px !important;
-
+                padding: 7px !important;
             }
 
 
@@ -2331,18 +2225,12 @@
 
 
             .product-card-title {
-
-                font-size:
-                    10px !important;
-
+                font-size: 10px !important;
             }
 
 
             .product-card-mobile .product-price {
-
-                font-size:
-                    12px !important;
-
+                font-size: 12px !important;
             }
 
         }
@@ -2443,7 +2331,7 @@
                 </div>
 
 
-                <!-- CARRITO DESKTOP -->
+                <!-- CARRITO PC -->
 
                 <div class="flex items-center shrink-0">
 
@@ -2573,9 +2461,7 @@
     <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8 sm:space-y-10">
 
 
-        <!-- ========================================================= -->
         <!-- CATEGORÍAS -->
-        <!-- ========================================================= -->
 
         <section>
 
@@ -2693,9 +2579,7 @@
         </section>
 
 
-        <!-- ========================================================= -->
         <!-- PRODUCTOS -->
-        <!-- ========================================================= -->
 
         <section id="productos"
                  class="space-y-5 sm:space-y-6 scroll-mt-32">
@@ -2791,6 +2675,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+
 
                 <div class="space-y-4">
 
@@ -2965,6 +2850,9 @@
 
         <div class="w-full bg-white shadow-2xl flex flex-col min-h-0">
 
+
+            <!-- CABECERA -->
+
             <div class="p-4 sm:p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50/50 shrink-0">
 
                 <div class="flex items-center gap-3 min-w-0">
@@ -3027,10 +2915,14 @@
             </div>
 
 
+            <!-- CONTENIDO -->
+
             <div id="cartContent"
                  class="flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 space-y-4">
             </div>
 
+
+            <!-- FOOTER -->
 
             <div class="p-4 sm:p-6 border-t border-slate-100 bg-slate-50/50 space-y-3 shrink-0">
 
@@ -3123,6 +3015,9 @@
             <form id="checkoutForm"
                   class="space-y-4 text-xs">
 
+
+                <!-- NOMBRE -->
+
                 <div>
 
                     <label class="block font-bold text-slate-700 mb-1">
@@ -3137,6 +3032,8 @@
 
                 </div>
 
+
+                <!-- DIRECCIÓN -->
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
 
@@ -3172,6 +3069,8 @@
                 </div>
 
 
+                <!-- PAGO -->
+
                 <div>
 
                     <label class="block font-bold text-slate-700 mb-1">
@@ -3199,19 +3098,52 @@
                 </div>
 
 
+                <!-- ================================================= -->
+                <!-- EFECTIVO + DEVUELTA -->
+                <!-- ================================================= -->
+
                 <div id="cashDetailBox">
 
                     <label class="block font-bold text-slate-700 mb-1">
-                        ¿Con cuánto dinero cancelas?
+                        ¿Con cuánto dinero vas a pagar?
                     </label>
 
                     <input type="text"
                            id="custCashAmount"
-                           placeholder="Ej. Con $50.000 o Exacto"
+                           inputmode="numeric"
+                           placeholder="Ej. 100000"
                            class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600 font-medium">
+
+
+                    <!-- DEVUELTA -->
+
+                    <div id="cashChangeBox"
+                         class="hidden mt-3 bg-blue-50 border border-blue-200 rounded-xl p-3">
+
+                        <div class="flex items-center justify-between gap-3">
+
+                            <span class="text-xs font-bold text-slate-600">
+                                Tu devuelta:
+                            </span>
+
+                            <span id="cashChangeAmount"
+                                  class="text-base font-extrabold text-blue-700">
+                                $0
+                            </span>
+
+                        </div>
+
+
+                        <p id="cashChangeMessage"
+                           class="text-[10px] text-slate-500 mt-1">
+                        </p>
+
+                    </div>
 
                 </div>
 
+
+                <!-- NOTAS -->
 
                 <div>
 
@@ -3226,6 +3158,8 @@
 
                 </div>
 
+
+                <!-- ENVIAR -->
 
                 <button type="submit"
                         class="w-full bg-emerald-600 hover:bg-emerald-500 active:scale-[.98] text-white font-extrabold py-4 rounded-2xl shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-2 text-sm">
@@ -3341,7 +3275,7 @@
 
         /*
            Cantidad seleccionada en la tarjeta.
-           NO entra al carrito hasta pulsar "Agregar".
+           NO entra al carrito hasta pulsar Agregar.
         */
 
         const selectedQuantities = {};
@@ -3479,7 +3413,7 @@
 
 
         /* ========================================================= */
-        /* NORMALIZAR */
+        /* NORMALIZAR TEXTO */
         /* ========================================================= */
 
         function normalizeText(text) {
@@ -3508,7 +3442,8 @@
                 selectedQuantities[id] < 1
             ) {
 
-                selectedQuantities[id] = 1;
+                selectedQuantities[id] =
+                    1;
 
             }
 
@@ -4065,8 +4000,6 @@
 
                                 <div class="product-bottom pt-3 sm:pt-4 border-t border-slate-100 mt-3 sm:mt-4">
 
-                                    <!-- PRECIO + CONTADOR EN UNA SOLA LÍNEA -->
-
                                     <div class="product-price-row">
 
                                         <span class="product-price text-xs min-[400px]:text-sm sm:text-lg font-extrabold text-slate-900">
@@ -4487,7 +4420,10 @@
 
         function openCartDrawer() {
 
-            if (!cartPanel || !cartOverlay) {
+            if (
+                !cartPanel ||
+                !cartOverlay
+            ) {
                 return;
             }
 
@@ -4538,7 +4474,10 @@
 
         function closeCartDrawer() {
 
-            if (!cartPanel || !cartOverlay) {
+            if (
+                !cartPanel ||
+                !cartOverlay
+            ) {
                 return;
             }
 
@@ -4597,7 +4536,7 @@
 
 
         /* ========================================================= */
-        /* CANTIDAD DIRECTA DEL CARRITO */
+        /* ACTUALIZAR CANTIDAD DEL CARRITO */
         /* ========================================================= */
 
         function updateQuantity(
@@ -4643,6 +4582,23 @@
 
             renderProducts();
 
+
+            /*
+               Si el checkout ya estaba abierto,
+               actualizamos también la devuelta.
+            */
+
+            if (
+                checkoutModal &&
+                !checkoutModal.classList.contains(
+                    'hidden'
+                )
+            ) {
+
+                updateCashChange();
+
+            }
+
         }
 
 
@@ -4667,6 +4623,18 @@
             updateCartUI();
 
             renderProducts();
+
+
+            if (
+                checkoutModal &&
+                !checkoutModal.classList.contains(
+                    'hidden'
+                )
+            ) {
+
+                updateCashChange();
+
+            }
 
         }
 
@@ -4706,7 +4674,7 @@
 
 
         /* ========================================================= */
-        /* ACTUALIZAR CARRITO */
+        /* ACTUALIZAR INTERFAZ CARRITO */
         /* ========================================================= */
 
         function updateCartUI() {
@@ -4903,18 +4871,7 @@
 
 
             const total =
-                cart.reduce(
-                    (
-                        sum,
-                        item
-                    ) =>
-                        sum +
-                        (
-                            Number(item.price) *
-                            Number(item.quantity)
-                        ),
-                    0
-                );
+                calculateCartTotal();
 
 
             cartTotal.textContent =
@@ -4929,7 +4886,258 @@
 
 
         /* ========================================================= */
-        /* BOTÓN FLOTANTE PC */
+        /* TOTAL CARRITO */
+        /* ========================================================= */
+
+        function calculateCartTotal() {
+
+            return cart.reduce(
+                (
+                    sum,
+                    item
+                ) =>
+                    sum +
+                    (
+                        Number(item.price) *
+                        Number(item.quantity)
+                    ),
+                0
+            );
+
+        }
+
+
+        /* ========================================================= */
+        /* EFECTIVO */
+        /* ========================================================= */
+
+        function parseCashAmount(value) {
+
+            return Number(
+                String(value || '')
+                    .replace(/\./g, '')
+                    .replace(/,/g, '')
+                    .replace(/[^0-9]/g, '')
+            ) || 0;
+
+        }
+
+
+        function updateCashChange() {
+
+            const payment =
+                document.getElementById(
+                    'custPayment'
+                )?.value;
+
+
+            const cashInput =
+                document.getElementById(
+                    'custCashAmount'
+                );
+
+
+            const changeBox =
+                document.getElementById(
+                    'cashChangeBox'
+                );
+
+
+            const changeAmount =
+                document.getElementById(
+                    'cashChangeAmount'
+                );
+
+
+            const changeMessage =
+                document.getElementById(
+                    'cashChangeMessage'
+                );
+
+
+            if (
+                !cashInput ||
+                !changeBox ||
+                !changeAmount ||
+                !changeMessage
+            ) {
+                return;
+            }
+
+
+            if (
+                payment !==
+                'Efectivo'
+            ) {
+
+                changeBox.classList.add(
+                    'hidden'
+                );
+
+                return;
+
+            }
+
+
+            const cashGiven =
+                parseCashAmount(
+                    cashInput.value
+                );
+
+
+            const total =
+                calculateCartTotal();
+
+
+            if (
+                cashGiven <= 0
+            ) {
+
+                changeBox.classList.add(
+                    'hidden'
+                );
+
+                return;
+
+            }
+
+
+            /*
+               Dinero insuficiente.
+            */
+
+            if (
+                cashGiven < total
+            ) {
+
+                const missing =
+                    total -
+                    cashGiven;
+
+
+                changeBox.classList.remove(
+                    'hidden'
+                );
+
+
+                changeAmount.textContent =
+                    '$0';
+
+
+                changeAmount.classList.remove(
+                    'text-blue-700'
+                );
+
+
+                changeAmount.classList.add(
+                    'text-red-600'
+                );
+
+
+                changeMessage.textContent =
+                    `Te faltan $${missing.toLocaleString('es-CO')} para completar el pago.`;
+
+
+                return;
+
+            }
+
+
+            /*
+               Pago exacto o con devuelta.
+            */
+
+            const change =
+                cashGiven -
+                total;
+
+
+            changeBox.classList.remove(
+                'hidden'
+            );
+
+
+            changeAmount.textContent =
+                `$${change.toLocaleString('es-CO')}`;
+
+
+            changeAmount.classList.remove(
+                'text-red-600'
+            );
+
+
+            changeAmount.classList.add(
+                'text-blue-700'
+            );
+
+
+            if (
+                change === 0
+            ) {
+
+                changeMessage.textContent =
+                    'Pago exacto. No debes recibir devuelta.';
+
+            }
+
+            else {
+
+                changeMessage.textContent =
+                    `El cliente recibirá $${change.toLocaleString('es-CO')} de devuelta.`;
+
+            }
+
+        }
+
+
+        /* ========================================================= */
+        /* MOSTRAR / OCULTAR EFECTIVO */
+        /* ========================================================= */
+
+        function toggleCashDetail() {
+
+            const payment =
+                document.getElementById(
+                    'custPayment'
+                )?.value;
+
+
+            const box =
+                document.getElementById(
+                    'cashDetailBox'
+                );
+
+
+            if (!box) {
+                return;
+            }
+
+
+            if (
+                payment ===
+                'Efectivo'
+            ) {
+
+                box.style.display =
+                    'block';
+
+
+                updateCashChange();
+
+            }
+
+            else {
+
+                box.style.display =
+                    'none';
+
+            }
+
+        }
+
+
+        /* ========================================================= */
+        /* BOTÓN CARRITO FLOTANTE PC */
         /* ========================================================= */
 
         function updateDesktopFloatingCart() {
@@ -5193,44 +5401,6 @@
 
 
         /* ========================================================= */
-        /* EFECTIVO */
-        /* ========================================================= */
-
-        function toggleCashDetail() {
-
-            const payment =
-                document.getElementById(
-                    'custPayment'
-                ).value;
-
-
-            const box =
-                document.getElementById(
-                    'cashDetailBox'
-                );
-
-
-            if (
-                payment ===
-                'Efectivo'
-            ) {
-
-                box.style.display =
-                    'block';
-
-            }
-
-            else {
-
-                box.style.display =
-                    'none';
-
-            }
-
-        }
-
-
-        /* ========================================================= */
         /* EVENTOS */
         /* ========================================================= */
 
@@ -5238,7 +5408,7 @@
 
 
             /* ----------------------------------------------------- */
-            /* BUSCADOR DESKTOP */
+            /* BUSCADOR PC */
             /* ----------------------------------------------------- */
 
             if (searchInput) {
@@ -5257,12 +5427,6 @@
 
                         renderProducts();
 
-
-                        /*
-                           Actualiza el subtítulo
-                           mostrando cuántos productos
-                           coinciden.
-                        */
 
                         const subtitle =
                             document.getElementById(
@@ -5300,11 +5464,6 @@
 
                             }
 
-
-                            /*
-                               Pequeño scroll hacia la zona
-                               de productos.
-                            */
 
                             const productsSection =
                                 document.getElementById(
@@ -5385,7 +5544,6 @@
 
                         renderProducts();
 
-
                         renderMobileSearchResults(
                             value
                         );
@@ -5420,7 +5578,7 @@
 
 
             /* ----------------------------------------------------- */
-            /* CARRITO HEADER */
+            /* CARRITO PC */
             /* ----------------------------------------------------- */
 
             if (cartTrigger) {
@@ -5458,15 +5616,14 @@
 
 
             /* ----------------------------------------------------- */
-            /* SCROLL PARA BOTÓN FLOTANTE */
+            /* SCROLL */
             /* ----------------------------------------------------- */
 
             window.addEventListener(
                 'scroll',
                 updateDesktopFloatingCart,
                 {
-                    passive:
-                        true
+                    passive: true
                 }
             );
 
@@ -5552,6 +5709,53 @@
                         document.body.classList.add(
                             'overflow-hidden'
                         );
+
+
+                        toggleCashDetail();
+
+                    }
+                );
+
+            }
+
+
+            /* ----------------------------------------------------- */
+            /* EFECTIVO EN TIEMPO REAL */
+            /* ----------------------------------------------------- */
+
+            const custCashAmount =
+                document.getElementById(
+                    'custCashAmount'
+                );
+
+
+            if (custCashAmount) {
+
+                custCashAmount.addEventListener(
+                    'input',
+                    updateCashChange
+                );
+
+            }
+
+
+            /* ----------------------------------------------------- */
+            /* CAMBIO DE MÉTODO DE PAGO */
+            /* ----------------------------------------------------- */
+
+            const custPayment =
+                document.getElementById(
+                    'custPayment'
+                );
+
+
+            if (custPayment) {
+
+                custPayment.addEventListener(
+                    'change',
+                    () => {
+
+                        toggleCashDetail();
 
                     }
                 );
@@ -5709,7 +5913,7 @@
 
 
             /* ----------------------------------------------------- */
-            /* FORMULARIO WHATSAPP */
+            /* WHATSAPP */
             /* ----------------------------------------------------- */
 
             if (checkoutForm) {
@@ -5756,13 +5960,17 @@
                                 .value;
 
 
-                        const cashAmount =
+                        const cashAmountInput =
                             document
                                 .getElementById(
                                     'custCashAmount'
-                                )
-                                .value
-                                .trim();
+                                );
+
+
+                        const cashAmount =
+                            cashAmountInput
+                                ? cashAmountInput.value.trim()
+                                : '';
 
 
                         const notes =
@@ -5773,6 +5981,86 @@
                                 .value
                                 .trim();
 
+
+                        /*
+                           TOTAL DEL PEDIDO
+                        */
+
+                        const total =
+                            calculateCartTotal();
+
+
+                        /*
+                           VALIDACIÓN EFECTIVO
+                        */
+
+                        let cashGiven =
+                            0;
+
+                        let change =
+                            0;
+
+
+                        if (
+                            payment ===
+                            'Efectivo'
+                        ) {
+
+                            cashGiven =
+                                parseCashAmount(
+                                    cashAmount
+                                );
+
+
+                            if (
+                                cashGiven <= 0
+                            ) {
+
+                                showToast(
+                                    'Indica con cuánto dinero vas a pagar'
+                                );
+
+                                if (cashAmountInput) {
+                                    cashAmountInput.focus();
+                                }
+
+                                return;
+
+                            }
+
+
+                            if (
+                                cashGiven <
+                                total
+                            ) {
+
+                                const missing =
+                                    total -
+                                    cashGiven;
+
+
+                                showToast(
+                                    `Faltan $${missing.toLocaleString('es-CO')} para completar el pago`
+                                );
+
+
+                                updateCashChange();
+
+                                return;
+
+                            }
+
+
+                            change =
+                                cashGiven -
+                                total;
+
+                        }
+
+
+                        /* ================================================= */
+                        /* MENSAJE WHATSAPP */
+                        /* ================================================= */
 
                         let message =
                             `🛒 *NUEVO PEDIDO - MERKOMAX NIMAR*\n\n`;
@@ -5796,17 +6084,22 @@
 
                         if (
                             payment ===
-                            'Efectivo' &&
-                            cashAmount
+                            'Efectivo'
                         ) {
 
                             message +=
-                                `💵 *Cambio para:* ${cashAmount}\n`;
+                                `💵 *Paga con:* $${cashGiven.toLocaleString('es-CO')}\n`;
+
+
+                            message +=
+                                `💰 *Devuelta:* $${change.toLocaleString('es-CO')}\n`;
 
                         }
 
 
-                        if (notes) {
+                        if (
+                            notes
+                        ) {
 
                             message +=
                                 `📝 *Notas:* ${notes}\n`;
@@ -5821,38 +6114,36 @@
                         cart.forEach(
                             (item, index) => {
 
+                                const subtotal =
+                                    Number(item.price) *
+                                    Number(item.quantity);
+
+
                                 message +=
-                                    `${index + 1}. ${item.name} x${item.quantity} - $${(
-                                        item.price *
-                                        item.quantity
-                                    ).toLocaleString('es-CO')}\n`;
+                                    `${index + 1}. ${item.name} x${item.quantity} - $${subtotal.toLocaleString('es-CO')}\n`;
 
                             }
                         );
-
-
-                        const total =
-                            cart.reduce(
-                                (
-                                    sum,
-                                    item
-                                ) =>
-                                    sum +
-                                    (
-                                        Number(item.price) *
-                                        Number(item.quantity)
-                                    ),
-                                0
-                            );
 
 
                         message +=
                             `\n💰 *TOTAL A PAGAR: $${total.toLocaleString('es-CO')}*`;
 
 
+                        /*
+                           NUEVO WHATSAPP:
+                           +57 315 766 6771
+                        */
+
                         const url =
                             `https://wa.me/573157666771?text=${encodeURIComponent(message)}`;
 
+
+                        /*
+                           Vaciar carrito después
+                           de generar correctamente
+                           el pedido.
+                        */
 
                         cart = [];
 
