@@ -138,9 +138,362 @@
             @supports (padding-bottom: env(safe-area-inset-bottom)) {
             body { padding-bottom: calc(70px + env(safe-area-inset-bottom)); }
         }
+
+        /* =========================================================
+           MERKOMAX — MOBILE APP EXPERIENCE
+           ========================================================= */
+        @media (max-width: 640px) {
+            body {
+                background: #f4f6f8;
+                padding-bottom: calc(82px + env(safe-area-inset-bottom));
+            }
+
+            /* App-like top bar */
+            header {
+                background: rgba(255,255,255,.96) !important;
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+                box-shadow: 0 1px 10px rgba(15,23,42,.06) !important;
+            }
+
+            .mobile-header {
+                min-height: 62px;
+                padding: 9px 12px !important;
+                gap: 8px !important;
+            }
+
+            .mobile-logo img {
+                height: 32px !important;
+            }
+
+            .mobile-search {
+                margin-top: 3px;
+            }
+
+            .mobile-search input {
+                height: 42px;
+                padding-left: 40px !important;
+                padding-right: 14px !important;
+                border: 1px solid #e2e8f0 !important;
+                background: #f1f5f9 !important;
+                font-size: 13px !important;
+                border-radius: 13px !important;
+            }
+
+            .mobile-search input:focus {
+                background: #fff !important;
+                border-color: #e30613 !important;
+                box-shadow: 0 0 0 3px rgba(227,6,19,.08);
+            }
+
+            #cartTrigger {
+                min-width: 44px;
+                height: 42px;
+                padding: 0 10px !important;
+                border-radius: 13px !important;
+                justify-content: center;
+                box-shadow: 0 2px 7px rgba(227,6,19,.08);
+            }
+
+            #cartTrigger > span:first-child {
+                font-size: 18px;
+            }
+
+            /* Compact hero */
+            .mobile-hero {
+                padding: 16px 12px 14px !important;
+                background: linear-gradient(145deg,#0f172a 0%,#1e293b 58%,#7f1d1d 100%) !important;
+            }
+
+            .mobile-hero-grid {
+                gap: 12px !important;
+            }
+
+            .mobile-hero-grid > div:first-child {
+                text-align: left !important;
+            }
+
+            .mobile-hero h1 {
+                font-size: 20px !important;
+                line-height: 1.18 !important;
+                max-width: 330px;
+            }
+
+            .mobile-hero p {
+                font-size: 11px !important;
+                line-height: 1.45;
+                max-width: 330px;
+            }
+
+            .mobile-hero-image {
+                border-radius: 14px !important;
+            }
+
+            .mobile-hero-image img {
+                height: 118px !important;
+            }
+
+            /* Category rail */
+            section.py-4 {
+                padding-top: 12px !important;
+                padding-bottom: 9px !important;
+                background: #fff;
+                border-bottom: 1px solid #eef2f7;
+            }
+
+            .mobile-categories {
+                gap: 15px !important;
+                padding: 0 3px 4px !important;
+            }
+
+            .mobile-category-button {
+                min-width: 58px;
+            }
+
+            .mobile-category-icon {
+                width: 48px !important;
+                height: 48px !important;
+                font-size: 15px !important;
+                border: 1px solid rgba(15,23,42,.04);
+                box-shadow: 0 2px 7px rgba(15,23,42,.06) !important;
+            }
+
+            .mobile-category-button span:last-child {
+                font-size: 9px !important;
+                white-space: nowrap;
+            }
+
+            /* Products header */
+            .mobile-main {
+                padding: 13px 10px 20px !important;
+            }
+
+            .mobile-main > div:first-child {
+                padding-bottom: 9px !important;
+                margin-bottom: 2px;
+            }
+
+            #sectionTitle {
+                font-size: 15px !important;
+            }
+
+            #sectionSubtitle {
+                font-size: 9px !important;
+            }
+
+            /* App product cards */
+            .mobile-products-grid {
+                grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+                gap: 9px !important;
+            }
+
+            .product-card {
+                padding: 9px !important;
+                border-radius: 15px !important;
+                border: 1px solid #e9edf2 !important;
+                box-shadow: 0 2px 9px rgba(15,23,42,.055) !important;
+                overflow: hidden;
+            }
+
+            .product-card:active {
+                transform: scale(.985);
+            }
+
+            .product-image {
+                height: 128px !important;
+                margin-bottom: 8px !important;
+                border-radius: 11px !important;
+                background: #f8fafc !important;
+            }
+
+            .product-image img {
+                object-fit: contain !important;
+                padding: 5px;
+            }
+
+            .product-name {
+                font-size: 11px !important;
+                line-height: 1.25 !important;
+                height: 29px !important;
+                margin-top: 2px !important;
+            }
+
+            .product-price {
+                font-size: 13px !important;
+                letter-spacing: -.2px;
+            }
+
+            .product-old-price {
+                font-size: 8px !important;
+            }
+
+            .product-add {
+                min-height: 34px;
+                padding: 7px 5px !important;
+                border-radius: 10px !important;
+                font-size: 10px !important;
+            }
+
+            .product-card .absolute.top-2\.5.right-2\.5 {
+                top: 8px !important;
+                right: 8px !important;
+                width: 21px !important;
+                height: 21px !important;
+            }
+
+            /* Floating WhatsApp */
+            body > a[href*="wa.me"] {
+                left: auto !important;
+                right: 14px !important;
+                bottom: 79px !important;
+                width: 50px;
+                height: 50px;
+                padding: 0 !important;
+                border-radius: 16px !important;
+                box-shadow: 0 7px 18px rgba(5,150,105,.25) !important;
+            }
+
+            body > a[href*="wa.me"] span {
+                font-size: 19px !important;
+            }
+
+            /* Mobile bottom navigation */
+            #mobileBottomNav {
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 45;
+                height: calc(64px + env(safe-area-inset-bottom));
+                padding: 7px 20px env(safe-area-inset-bottom);
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-around;
+                background: rgba(255,255,255,.97);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                border-top: 1px solid #e5e7eb;
+                box-shadow: 0 -5px 18px rgba(15,23,42,.06);
+            }
+
+            #mobileBottomNav button {
+                width: 76px;
+                height: 52px;
+                border: 0;
+                background: transparent;
+                color: #64748b;
+                font-size: 9px;
+                font-weight: 700;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2px;
+            }
+
+            #mobileBottomNav button .nav-icon {
+                font-size: 18px;
+                line-height: 20px;
+            }
+
+            #mobileBottomNav button.active {
+                color: #e30613;
+            }
+
+            #mobileBottomNav .nav-cart-wrap {
+                position: relative;
+            }
+
+            #mobileBottomNav .nav-cart-count {
+                position: absolute;
+                top: -1px;
+                right: 12px;
+                min-width: 15px;
+                height: 15px;
+                padding: 0 4px;
+                border-radius: 99px;
+                background: #e30613;
+                color: white;
+                font-size: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Cart drawer */
+            .mobile-cart-wrapper {
+                padding-left: 0 !important;
+                width: min(100vw,410px) !important;
+            }
+
+            .mobile-cart-panel {
+                width: 100% !important;
+                max-width: 100% !important;
+                border-radius: 20px 0 0 20px;
+            }
+
+            #cartContent {
+                padding: 12px !important;
+            }
+
+            /* Checkout sheet */
+            #checkoutModal {
+                align-items: flex-end !important;
+                padding: 0 !important;
+            }
+
+            .mobile-checkout {
+                width: 100% !important;
+                max-width: 100% !important;
+                max-height: 94vh !important;
+                border-radius: 22px 22px 0 0 !important;
+                padding: 18px 15px calc(18px + env(safe-area-inset-bottom)) !important;
+            }
+
+            .mobile-checkout-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Toast */
+            #toastContainer {
+                left: 12px !important;
+                right: 12px !important;
+                bottom: 76px !important;
+                align-items: center;
+            }
+
+            #toastContainer > div {
+                max-width: calc(100vw - 24px);
+                text-align: center;
+                border-radius: 12px;
+                padding: 10px 13px;
+            }
+        }
+
+        @media (min-width: 641px) {
+            #mobileBottomNav { display: none !important; }
+        }
+
     </style>
 </head>
 <body class="text-slate-800 antialiased pb-24">
+    <!-- NAVEGACIÓN INFERIOR — SOLO MÓVIL -->
+    <nav id="mobileBottomNav" class="md:hidden">
+        <button id="mobileHomeBtn" class="active" onclick="resetToHome(); setMobileNav('home')">
+            <span class="nav-icon">⌂</span>
+            <span>Inicio</span>
+        </button>
+        <button onclick="document.getElementById('searchInput').focus(); setMobileNav('search')">
+            <span class="nav-icon">⌕</span>
+            <span>Buscar</span>
+        </button>
+        <button class="nav-cart-wrap" onclick="document.getElementById('cartTrigger').click(); setMobileNav('cart')">
+            <span class="nav-icon">🛒</span>
+            <span>Carrito</span>
+            <span id="mobileNavCartCounter" class="nav-cart-count">0</span>
+        </button>
+    </nav>
+
 
     <!-- TOP BAR ESTILO D1 -->
     <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-xs">
@@ -426,8 +779,30 @@
             if (confirm("¿Vaciar carrito?")) { cart = []; saveCart(); }
         }
 
+
+        function setMobileNav(active) {
+            document.querySelectorAll('#mobileBottomNav button').forEach(btn => btn.classList.remove('active'));
+            const map = {
+                home: 'mobileHomeBtn',
+                search: '#mobileBottomNav button:nth-child(2)',
+                cart: '#mobileBottomNav button:nth-child(3)'
+            };
+            const target = document.querySelector(
+                active === 'home' ? '#mobileHomeBtn' :
+                active === 'search' ? '#mobileBottomNav button:nth-child(2)' :
+                '#mobileBottomNav button:nth-child(3)'
+            );
+            if (target) target.classList.add('active');
+        }
+
         function updateCartUI() {
-            document.getElementById('cartCounter').textContent = cart.reduce((a, b) => a + b.quantity, 0);
+            const cartCount = cart.reduce((a, b) => a + b.quantity, 0);
+            document.getElementById('cartCounter').textContent = cartCount;
+            const mobileCounter = document.getElementById('mobileNavCartCounter');
+            if (mobileCounter) {
+                mobileCounter.textContent = cartCount;
+                mobileCounter.style.display = cartCount > 0 ? 'flex' : 'none';
+            }
             document.getElementById('clearCartBtn').style.display = cart.length > 0 ? 'block' : 'none';
             
             const content = document.getElementById('cartContent');
@@ -482,6 +857,7 @@
             search.addEventListener('input', (e) => {
                 searchQuery = e.target.value;
                 renderProducts();
+                setMobileNav('search');
             });
 
             const cartTrigger = document.getElementById('cartTrigger');
