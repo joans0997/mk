@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 
@@ -314,7 +315,7 @@
 
 
             /* ----------------------------------------------------- */
-            /* NUEVO BUSCADOR ÚNICO AL LADO DEL LOGO */
+            /* BUSCADOR ÚNICO AL LADO DEL LOGO */
             /* ----------------------------------------------------- */
 
             #mobileHeaderSearch {
@@ -602,11 +603,6 @@
             }
 
 
-            /*
-               Quitar completamente la pastilla superior
-               con el icono de rayo.
-            */
-
             .mobile-hero > div.relative.z-10 > div.grid > div:first-child > div:first-child {
 
                 display:
@@ -615,10 +611,6 @@
             }
 
 
-            /*
-               Texto sin botones.
-            */
-
             .mobile-hero .hero-buttons {
 
                 display:
@@ -626,10 +618,6 @@
 
             }
 
-
-            /*
-               Más espacio entre texto e imagen.
-            */
 
             .mobile-hero > div.relative.z-10 > div.grid {
 
@@ -715,10 +703,6 @@
             }
 
 
-            /*
-               Texto inferior de la foto totalmente blanco.
-            */
-
             #heroBannerCard .absolute.bottom-4,
             #heroBannerCard .absolute.bottom-6 {
 
@@ -748,7 +732,7 @@
 
 
             /* ----------------------------------------------------- */
-            /* CATEGORÍAS MINIMALISTAS */
+            /* CATEGORÍAS */
             /* ----------------------------------------------------- */
 
             #categoriesContainer {
@@ -802,7 +786,7 @@
             }
 
 
-            #categoriesContainer .category-btn:first-child {
+            #categoriesContainer .category-selected {
 
                 background:
                     #2563eb !important;
@@ -869,8 +853,6 @@
             }
 
 
-            /* FOTO */
-
             .product-image-mobile {
 
                 width:
@@ -919,8 +901,6 @@
 
             }
 
-
-            /* INFORMACIÓN */
 
             .product-category-mobile {
 
@@ -989,9 +969,9 @@
             }
 
 
-            /*
-               PRECIO + CONTADOR HORIZONTAL
-            */
+            /* ----------------------------------------------------- */
+            /* PRECIO + SELECTOR DE CANTIDAD */
+            /* ----------------------------------------------------- */
 
             .product-card-mobile .product-bottom {
 
@@ -1049,10 +1029,6 @@
 
             }
 
-
-            /*
-               CONTADOR DE PRODUCTO
-            */
 
             .product-quantity-control {
 
@@ -1150,7 +1126,9 @@
             }
 
 
+            /* ----------------------------------------------------- */
             /* BOTÓN AGREGAR */
+            /* ----------------------------------------------------- */
 
             .product-card-mobile .add-product-btn {
 
@@ -1256,7 +1234,7 @@
 
 
             /* ----------------------------------------------------- */
-            /* OVERLAY DEL CARRITO */
+            /* OVERLAY CARRITO */
             /* ----------------------------------------------------- */
 
             #cartOverlay {
@@ -1277,7 +1255,7 @@
 
 
             /* ----------------------------------------------------- */
-            /* CARRITO = VENTANA FLOTANTE */
+            /* CARRITO VENTANA FLOTANTE */
             /* ----------------------------------------------------- */
 
             #cartPanel {
@@ -1355,8 +1333,6 @@
             }
 
 
-            /* CABECERA DEL CARRITO */
-
             #cartPanel > div > div:first-child {
 
                 padding:
@@ -1371,24 +1347,6 @@
             }
 
 
-            #cartPanel > div > div:first-child h3 {
-
-                color:
-                    #0f172a !important;
-
-            }
-
-
-            #cartPanel > div > div:first-child p {
-
-                color:
-                    #64748b !important;
-
-            }
-
-
-            /* CONTENIDO */
-
             #cartContent {
 
                 padding:
@@ -1399,8 +1357,6 @@
 
             }
 
-
-            /* PRODUCTOS DEL CARRITO */
 
             .mobile-cart-item {
 
@@ -1603,8 +1559,6 @@
 
             }
 
-
-            /* FOOTER DEL CARRITO */
 
             #cartPanel > div > div:last-child {
 
@@ -2028,7 +1982,7 @@
 
 
                 <!-- ================================================= -->
-                <!-- BUSCADOR MOBILE ÚNICO -->
+                <!-- BUSCADOR MOBILE -->
                 <!-- ================================================= -->
 
                 <div id="mobileHeaderSearch">
@@ -2095,11 +2049,6 @@
 
             </div>
 
-
-            <!-- ESTABA AQUÍ EL SEGUNDO BUSCADOR -->
-            <!-- ELIMINADO COMPLETAMENTE -->
-
-
         </div>
 
     </header>
@@ -2141,14 +2090,10 @@
 
                     </p>
 
-
-                    <!-- BOTONES ELIMINADOS -->
-
-
                 </div>
 
 
-                <!-- FOTO -->
+                <!-- FOTO PERSONAS -->
 
                 <div id="heroBannerCard"
                      class="relative group">
@@ -2234,7 +2179,7 @@
 
                 <button onclick="filterCategory('todos')"
                         data-category="todos"
-                        class="category-btn whitespace-nowrap bg-slate-900 text-white px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl font-medium text-xs sm:text-sm transition-all shadow-sm flex items-center gap-2 shrink-0">
+                        class="category-btn category-selected whitespace-nowrap bg-slate-900 text-white px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl font-medium text-xs sm:text-sm transition-all shadow-sm flex items-center gap-2 shrink-0">
 
                     <i data-lucide="layers"
                        class="w-4 h-4">
@@ -2383,7 +2328,7 @@
     <!-- WHATSAPP -->
     <!-- ========================================================= -->
 
-    <a href="https://wa.me/573105500791?text=Hola%20MerkoMAX,%20tengo%20una%20consulta%20sobre%20un%20producto"
+    <a href="https://wa.me/573157666771?text=Hola%20MerkoMAX,%20tengo%20una%20consulta%20sobre%20un%20producto"
        target="_blank"
        rel="noopener noreferrer"
        class="whatsapp-float fixed bottom-6 left-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white p-3.5 rounded-full shadow-2xl flex items-center gap-2 transition-all hover:scale-110 border-2 border-white">
@@ -2503,7 +2448,7 @@
                                class="w-4 h-4 text-blue-500 shrink-0">
                             </i>
 
-                            +57 310 550 0791
+                            +57 315 766 6771
 
                         </li>
 
@@ -2582,8 +2527,6 @@
 
         <div class="w-full bg-white shadow-2xl flex flex-col min-h-0">
 
-            <!-- CABECERA -->
-
             <div class="p-4 sm:p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50/50 shrink-0">
 
                 <div class="flex items-center gap-3 min-w-0">
@@ -2646,14 +2589,10 @@
             </div>
 
 
-            <!-- CONTENIDO -->
-
             <div id="cartContent"
                  class="flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 space-y-4">
             </div>
 
-
-            <!-- FOOTER -->
 
             <div class="p-4 sm:p-6 border-t border-slate-100 bg-slate-50/50 space-y-3 shrink-0">
 
@@ -2962,6 +2901,15 @@
             '';
 
 
+        /*
+           Guarda la cantidad que el usuario
+           está seleccionando EN LA TARJETA,
+           sin agregarla todavía al carrito.
+        */
+
+        const selectedQuantities = {};
+
+
         /* ========================================================= */
         /* ELEMENTOS */
         /* ========================================================= */
@@ -3097,6 +3045,157 @@
 
 
         /* ========================================================= */
+        /* CANTIDAD SELECCIONADA EN PRODUCTO */
+        /* ========================================================= */
+
+        function getSelectedQuantity(productId) {
+
+            const id =
+                Number(productId);
+
+            if (
+                !selectedQuantities[id] ||
+                selectedQuantities[id] < 1
+            ) {
+
+                selectedQuantities[id] =
+                    1;
+
+            }
+
+            return selectedQuantities[id];
+
+        }
+
+
+        function changeSelectedQuantity(
+            productId,
+            delta
+        ) {
+
+            const id =
+                Number(productId);
+
+
+            const current =
+                getSelectedQuantity(id);
+
+
+            const newQuantity =
+                Math.max(
+                    1,
+                    current + Number(delta)
+                );
+
+
+            selectedQuantities[id] =
+                newQuantity;
+
+
+            const quantityElement =
+                document.getElementById(
+                    `selectedQty-${id}`
+                );
+
+
+            if (quantityElement) {
+
+                quantityElement.textContent =
+                    newQuantity;
+
+            }
+
+        }
+
+
+        /*
+           Esta función es la ÚNICA que agrega
+           al carrito desde la tarjeta.
+        */
+
+        function addSelectedQuantityToCart(
+            productId
+        ) {
+
+            const product =
+                products.find(
+                    p =>
+                        Number(p.id) ===
+                        Number(productId)
+                );
+
+
+            if (!product) {
+                return;
+            }
+
+
+            const quantity =
+                getSelectedQuantity(
+                    productId
+                );
+
+
+            const existing =
+                cart.find(
+                    item =>
+                        Number(item.id) ===
+                        Number(productId)
+                );
+
+
+            if (existing) {
+
+                existing.quantity =
+                    Number(existing.quantity || 0) +
+                    quantity;
+
+            }
+
+            else {
+
+                cart.push({
+
+                    ...product,
+
+                    quantity:
+                        quantity
+
+                });
+
+            }
+
+
+            saveCartToLocalStorage();
+
+            updateCartUI();
+
+
+            /*
+               Solo después de pulsar AGREGAR
+               volvemos la selección a 1.
+            */
+
+            selectedQuantities[
+                Number(productId)
+            ] = 1;
+
+
+            renderProducts();
+
+
+            showToast(
+                `${quantity} ${
+                    quantity === 1
+                        ? 'unidad agregada'
+                        : 'unidades agregadas'
+                }: ${product.name}`
+            );
+
+        }
+
+
+        /* ========================================================= */
         /* CARRITO LOCAL */
         /* ========================================================= */
 
@@ -3127,7 +3226,10 @@
                             savedCart
                         );
 
-                    if (!Array.isArray(cart)) {
+
+                    if (
+                        !Array.isArray(cart)
+                    ) {
 
                         cart = [];
 
@@ -3329,27 +3431,6 @@
 
 
         /* ========================================================= */
-        /* OBTENER CANTIDAD EN CARRITO */
-        /* ========================================================= */
-
-        function getCartQuantity(productId) {
-
-            const item =
-                cart.find(
-                    item =>
-                        Number(item.id) ===
-                        Number(productId)
-                );
-
-
-            return item
-                ? Number(item.quantity || 0)
-                : 0;
-
-        }
-
-
-        /* ========================================================= */
         /* RENDER PRODUCTOS */
         /* ========================================================= */
 
@@ -3462,8 +3543,8 @@
                 filtered.map(
                     product => {
 
-                        const quantity =
-                            getCartQuantity(
+                        const selectedQuantity =
+                            getSelectedQuantity(
                                 product.id
                             );
 
@@ -3538,7 +3619,7 @@
                                 </div>
 
 
-                                <!-- PRECIO + CONTADOR -->
+                                <!-- PRECIO + SELECTOR -->
 
                                 <div class="product-bottom pt-3 sm:pt-4 border-t border-slate-100 mt-3 sm:mt-4">
 
@@ -3555,7 +3636,7 @@
 
                                             <button
                                                 type="button"
-                                                onclick="updateQuantity(${product.id}, -1)"
+                                                onclick="changeSelectedQuantity(${product.id}, -1)"
                                                 aria-label="Disminuir cantidad">
 
                                                 −
@@ -3563,14 +3644,16 @@
                                             </button>
 
 
-                                            <span>
-                                                ${quantity}
+                                            <span id="selectedQty-${product.id}">
+
+                                                ${selectedQuantity}
+
                                             </span>
 
 
                                             <button
                                                 type="button"
-                                                onclick="addToCart(${product.id})"
+                                                onclick="changeSelectedQuantity(${product.id}, 1)"
                                                 aria-label="Aumentar cantidad">
 
                                                 +
@@ -3586,8 +3669,8 @@
 
                                     <button
                                         type="button"
-                                        onclick="addToCart(${product.id})"
-                                        class="add-product-btn w-full bg-blue-50 hover:bg-blue-600 active:scale-95 text-blue-700 hover:text-white font-bold py-2.5 sm:py-3 px-2 sm:px-4 rounded-xl sm:rounded-2xl transition-all flex items-center justify-center gap-1.5 text-[10px] sm:text-sm shadow-sm">
+                                        onclick="addSelectedQuantityToCart(${product.id})"
+                                        class="add-product-btn w-full bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold py-2.5 sm:py-3 px-2 sm:px-4 rounded-xl sm:rounded-2xl transition-all flex items-center justify-center gap-1.5 text-[10px] sm:text-sm shadow-sm">
 
                                         <i data-lucide="plus"
                                            class="w-3.5 h-3.5 sm:w-4 sm:h-4">
@@ -3852,31 +3935,27 @@
                 .forEach(
                     btn => {
 
-                        const cat =
-                            btn.dataset.category;
-
-
-                        if (
-                            cat ===
-                            category
-                        ) {
-
-                            btn.classList.add(
-                                'category-selected'
-                            );
-
-                        }
-
-                        else {
-
-                            btn.classList.remove(
-                                'category-selected'
-                            );
-
-                        }
+                        btn.classList.remove(
+                            'category-selected'
+                        );
 
                     }
                 );
+
+
+            const selectedButton =
+                document.querySelector(
+                    `.category-btn[data-category="${category}"]`
+                );
+
+
+            if (selectedButton) {
+
+                selectedButton.classList.add(
+                    'category-selected'
+                );
+
+            }
 
 
             const title =
@@ -3963,7 +4042,7 @@
 
 
         /* ========================================================= */
-        /* ABRIR CARRITO */
+        /* CARRITO ABRIR */
         /* ========================================================= */
 
         function openCartDrawer() {
@@ -4014,7 +4093,7 @@
 
 
         /* ========================================================= */
-        /* CERRAR CARRITO */
+        /* CARRITO CERRAR */
         /* ========================================================= */
 
         function closeCartDrawer() {
@@ -4078,71 +4157,7 @@
 
 
         /* ========================================================= */
-        /* AGREGAR */
-        /* ========================================================= */
-
-        function addToCart(
-            productId
-        ) {
-
-            const product =
-                products.find(
-                    p =>
-                        Number(p.id) ===
-                        Number(productId)
-                );
-
-
-            if (!product) {
-                return;
-            }
-
-
-            const existing =
-                cart.find(
-                    item =>
-                        Number(item.id) ===
-                        Number(productId)
-                );
-
-
-            if (existing) {
-
-                existing.quantity =
-                    Number(existing.quantity || 0) + 1;
-
-            }
-
-            else {
-
-                cart.push({
-
-                    ...product,
-
-                    quantity:
-                        1
-
-                });
-
-            }
-
-
-            saveCartToLocalStorage();
-
-            updateCartUI();
-
-            renderProducts();
-
-
-            showToast(
-                `Agregado: ${product.name}`
-            );
-
-        }
-
-
-        /* ========================================================= */
-        /* ACTUALIZAR CANTIDAD */
+        /* CANTIDAD DIRECTA DEL CARRITO */
         /* ========================================================= */
 
         function updateQuantity(
@@ -4158,24 +4173,10 @@
                 );
 
 
-            /*
-               Si todavía no existe y se presiona +
-            */
-
-            if (
-                !item &&
-                delta > 0
-            ) {
-
-                addToCart(productId);
-
-                return;
-
-            }
-
-
             if (!item) {
+
                 return;
+
             }
 
 
@@ -4267,7 +4268,7 @@
 
 
         /* ========================================================= */
-        /* ACTUALIZAR INTERFAZ CARRITO */
+        /* ACTUALIZAR CARRITO */
         /* ========================================================= */
 
         function updateCartUI() {
@@ -4475,17 +4476,6 @@
             if (window.lucide) {
                 lucide.createIcons();
             }
-
-        }
-
-
-        /* ========================================================= */
-        /* SEGUIR COMPRANDO */
-        /* ========================================================= */
-
-        function continueShopping() {
-
-            closeCartDrawer();
 
         }
 
@@ -4834,7 +4824,7 @@
 
 
             /* ----------------------------------------------------- */
-            /* CARRITO DESKTOP */
+            /* CARRITO */
             /* ----------------------------------------------------- */
 
             if (cartTrigger) {
@@ -4852,10 +4842,6 @@
 
             }
 
-
-            /* ----------------------------------------------------- */
-            /* CERRAR */
-            /* ----------------------------------------------------- */
 
             if (closeCart) {
 
@@ -5091,7 +5077,7 @@
 
 
             /* ----------------------------------------------------- */
-            /* WHATSAPP */
+            /* FORMULARIO WHATSAPP */
             /* ----------------------------------------------------- */
 
             if (checkoutForm) {
@@ -5233,7 +5219,7 @@
 
 
                         const url =
-                            `https://wa.me/573105500791?text=${encodeURIComponent(message)}`;
+                            `https://wa.me/573157666771?text=${encodeURIComponent(message)}`;
 
 
                         cart = [];
@@ -5278,3 +5264,4 @@
 </body>
 
 </html>
+```
