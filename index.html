@@ -199,13 +199,13 @@
 
 
             /* ----------------------------------------------------- */
-            /* BARRA SUPERIOR */
+            /* OCULTAR BARRA DE ENVÍO SOLO EN CELULAR */
             /* ----------------------------------------------------- */
 
-            body > div:first-child {
+            #topAnnouncement {
 
-                padding-top: 6px;
-                padding-bottom: 6px;
+                display:
+                    none !important;
 
             }
 
@@ -220,19 +220,16 @@
                     #ffffff !important;
 
                 border-bottom:
-                    1px solid #e5e7eb !important;
+                    1px solid #dbeafe !important;
 
                 box-shadow:
-                    0 2px 12px rgba(15, 23, 42, .05) !important;
+                    0 3px 14px rgba(30, 64, 175, .08) !important;
+
+                z-index:
+                    40 !important;
 
             }
 
-
-            /*
-               El contenedor principal del header queda como
-               referencia para poder poner logo y buscador
-               uno al lado del otro.
-            */
 
             header > div {
 
@@ -243,16 +240,17 @@
 
 
             /*
-               Fila principal del header
+               Fila principal del header.
+               Logo + buscador en la misma línea.
             */
 
             header .min-h-\[76px\] {
 
                 min-height:
-                    74px !important;
+                    78px !important;
 
                 height:
-                    74px !important;
+                    78px !important;
 
                 padding:
                     0 !important;
@@ -273,7 +271,7 @@
                     125px !important;
 
                 height:
-                    74px !important;
+                    78px !important;
 
                 display:
                     flex !important;
@@ -285,7 +283,7 @@
                     flex-start !important;
 
                 z-index:
-                    3;
+                    5;
 
             }
 
@@ -293,7 +291,7 @@
             #logoContainer img {
 
                 height:
-                    68px !important;
+                    70px !important;
 
                 width:
                     auto !important;
@@ -308,7 +306,7 @@
 
 
             /* ----------------------------------------------------- */
-            /* OCULTAR MI CARRITO DEL HEADER */
+            /* OCULTAR CARRITO DEL HEADER EN MOBILE */
             /* ----------------------------------------------------- */
 
             #cartTrigger {
@@ -320,7 +318,10 @@
 
 
             /* ----------------------------------------------------- */
-            /* BUSCADOR MOBILE AL LADO DEL LOGO */
+            /*
+               BUSCADOR MOBILE JUNTO AL LOGO
+               SIN LUPA
+            */
             /* ----------------------------------------------------- */
 
             header .pb-3 {
@@ -344,7 +345,7 @@
                     0 !important;
 
                 z-index:
-                    2;
+                    4;
 
             }
 
@@ -358,16 +359,16 @@
                     43px !important;
 
                 padding-left:
-                    39px !important;
+                    13px !important;
 
                 padding-right:
                     10px !important;
 
                 background:
-                    #f1f5f9 !important;
+                    #f8fbff !important;
 
                 border:
-                    1px solid #dbe3ee !important;
+                    1px solid #bfdbfe !important;
 
                 border-radius:
                     13px !important;
@@ -385,7 +386,15 @@
                     none !important;
 
                 box-shadow:
-                    none !important;
+                    0 2px 8px rgba(37,99,235,.05) !important;
+
+            }
+
+
+            #searchInputMobile::placeholder {
+
+                color:
+                    #64748b !important;
 
             }
 
@@ -404,19 +413,15 @@
             }
 
 
+            /*
+               La lupa que estaba dentro de Buscar productos
+               queda completamente oculta en mobile.
+            */
+
             header .pb-3 > .relative > i {
 
-                width:
-                    17px !important;
-
-                height:
-                    17px !important;
-
-                left:
-                    13px !important;
-
-                color:
-                    #2563eb !important;
+                display:
+                    none !important;
 
             }
 
@@ -431,7 +436,7 @@
                     absolute !important;
 
                 top:
-                    48px !important;
+                    49px !important;
 
                 left:
                     0 !important;
@@ -446,7 +451,7 @@
                     #ffffff !important;
 
                 border:
-                    1px solid #dbe3ee !important;
+                    1px solid #bfdbfe !important;
 
                 border-radius:
                     16px !important;
@@ -586,7 +591,7 @@
 
 
             /* ----------------------------------------------------- */
-            /* HERO */
+            /* HERO MOBILE */
             /* ----------------------------------------------------- */
 
             .mobile-hero {
@@ -595,7 +600,16 @@
                     25px !important;
 
                 padding-bottom:
-                    28px !important;
+                    24px !important;
+
+                background:
+                    linear-gradient(
+                        135deg,
+                        #0f2f75 0%,
+                        #1d4ed8 48%,
+                        #2563eb 75%,
+                        #0f172a 100%
+                    ) !important;
 
             }
 
@@ -616,13 +630,127 @@
                 font-size:
                     13px !important;
 
+                color:
+                    #dbeafe !important;
+
             }
 
 
-            .mobile-hero img {
+            /*
+               En móvil usamos principalmente azul.
+               Se conserva el layout de PC sin tocarlo.
+            */
+
+            .mobile-hero .bg-wine-700 {
+
+                background:
+                    #1d4ed8 !important;
+
+            }
+
+
+            .mobile-hero .text-wine-400 {
+
+                color:
+                    #93c5fd !important;
+
+            }
+
+
+            .mobile-hero .text-wine-200 {
+
+                color:
+                    #dbeafe !important;
+
+            }
+
+
+            .mobile-hero .border-wine-500\/50 {
+
+                border-color:
+                    rgba(147,197,253,.45) !important;
+
+            }
+
+
+            /*
+               Tarjeta de la foto más ancha que el contenedor normal.
+            */
+
+            #heroBannerCard {
+
+                width:
+                    100vw !important;
+
+                margin-left:
+                    calc(50% - 50vw) !important;
+
+                margin-right:
+                    calc(50% - 50vw) !important;
+
+            }
+
+
+            #heroBannerCard > div:first-child {
+
+                background:
+                    linear-gradient(
+                        135deg,
+                        rgba(30,64,175,.80),
+                        rgba(37,99,235,.55)
+                    ) !important;
+
+                opacity:
+                    .55 !important;
+
+            }
+
+
+            #heroBannerCard > div:nth-child(2) {
+
+                background:
+                    #0f172a !important;
+
+                border:
+                    1px solid rgba(147,197,253,.35) !important;
+
+                padding:
+                    5px !important;
+
+                border-radius:
+                    20px !important;
+
+            }
+
+
+            /*
+               Foto más grande.
+               El encuadre se concentra en la parte superior
+               para conservar cabezas y mostrar el torso/cintura.
+            */
+
+            .mobile-hero-img {
+
+                width:
+                    100% !important;
 
                 height:
-                    205px !important;
+                    255px !important;
+
+                min-height:
+                    255px !important;
+
+                max-height:
+                    255px !important;
+
+                object-fit:
+                    cover !important;
+
+                object-position:
+                    center 22% !important;
+
+                border-radius:
+                    16px !important;
 
             }
 
@@ -680,13 +808,6 @@
             }
 
 
-            /*
-               Tarjeta.
-               Importantísimo:
-               overflow hidden + flex normal para que
-               nada pueda montarse encima de la foto.
-            */
-
             #productsGrid > div {
 
                 min-width:
@@ -728,13 +849,13 @@
                     #ffffff !important;
 
                 border:
-                    1px solid #e2e8f0 !important;
+                    1px solid #dbeafe !important;
 
                 border-radius:
                     15px !important;
 
                 box-shadow:
-                    0 3px 10px rgba(15,23,42,.06) !important;
+                    0 3px 12px rgba(30,64,175,.07) !important;
 
                 position:
                     relative !important;
@@ -743,7 +864,7 @@
 
 
             /*
-               CONTENEDOR DE FOTO
+               FOTO
             */
 
             .product-image-mobile {
@@ -796,12 +917,6 @@
             }
 
 
-            /*
-               FOTO DEL PRODUCTO
-               object-contain evita que la foto se coma
-               el texto.
-            */
-
             .product-image-mobile img {
 
                 position:
@@ -841,7 +956,7 @@
 
 
             /*
-               INFORMACIÓN DEL PRODUCTO
+               INFORMACIÓN
             */
 
             .product-card-mobile > div:not(.product-image-mobile) {
@@ -935,7 +1050,7 @@
 
 
             /*
-               PARTE INFERIOR
+               PRECIO + AGREGAR
             */
 
             .product-card-mobile .product-bottom {
@@ -966,10 +1081,6 @@
 
             }
 
-
-            /*
-               PRECIO
-            */
 
             .product-card-mobile .product-price {
 
@@ -1007,7 +1118,7 @@
 
 
             /*
-               BOTÓN AGREGAR
+               BOTÓN
             */
 
             .product-card-mobile .add-product-btn {
@@ -1083,8 +1194,7 @@
 
 
             /*
-               ETIQUETAS TOP / COMBO
-               No tapar las fotos.
+               ETIQUETAS
             */
 
             .product-card-mobile > span {
@@ -1161,8 +1271,25 @@
 
 
             /* ----------------------------------------------------- */
-            /* CARRITO */
+            /* CARRITO MOBILE */
             /* ----------------------------------------------------- */
+
+            #cartOverlay {
+
+                z-index:
+                    70 !important;
+
+                background:
+                    rgba(15,23,42,.68) !important;
+
+                backdrop-filter:
+                    blur(3px);
+
+                -webkit-backdrop-filter:
+                    blur(3px);
+
+            }
+
 
             #cartPanel {
 
@@ -1173,7 +1300,7 @@
                     100vw !important;
 
                 z-index:
-                    60 !important;
+                    75 !important;
 
             }
 
@@ -1186,8 +1313,17 @@
                 max-width:
                     100% !important;
 
+                height:
+                    100dvh !important;
+
+                min-height:
+                    100% !important;
+
                 border-radius:
-                    20px 20px 0 0 !important;
+                    20px 0 0 20px !important;
+
+                box-shadow:
+                    -15px 0 35px rgba(15,23,42,.20) !important;
 
             }
 
@@ -1200,16 +1336,239 @@
             }
 
 
+            /*
+               PRODUCTO DENTRO DEL CARRITO
+            */
+
             .mobile-cart-item {
+
+                display:
+                    flex !important;
+
+                align-items:
+                    flex-start !important;
+
+                gap:
+                    10px !important;
 
                 background:
                     #ffffff !important;
 
                 border:
-                    1px solid #e2e8f0 !important;
+                    1px solid #dbeafe !important;
 
                 border-radius:
                     14px !important;
+
+                padding:
+                    10px !important;
+
+                position:
+                    relative !important;
+
+                box-shadow:
+                    0 3px 10px rgba(30,64,175,.05) !important;
+
+            }
+
+
+            .mobile-cart-item img {
+
+                width:
+                    58px !important;
+
+                height:
+                    58px !important;
+
+                min-width:
+                    58px !important;
+
+                object-fit:
+                    contain !important;
+
+                border-radius:
+                    11px !important;
+
+                background:
+                    #f8fafc !important;
+
+            }
+
+
+            /*
+               Nombre
+            */
+
+            .mobile-cart-item h5 {
+
+                font-size:
+                    11px !important;
+
+                line-height:
+                    1.3 !important;
+
+                padding-right:
+                    18px !important;
+
+            }
+
+
+            /*
+               Precio
+            */
+
+            .mobile-cart-item p {
+
+                color:
+                    #2563eb !important;
+
+                font-size:
+                    11px !important;
+
+                margin-top:
+                    3px !important;
+
+            }
+
+
+            /*
+               CONTROL − CANTIDAD +
+               EN HORIZONTAL
+            */
+
+            .mobile-cart-item .flex.items-center {
+
+                display:
+                    flex !important;
+
+                flex-direction:
+                    row !important;
+
+                align-items:
+                    center !important;
+
+                gap:
+                    7px !important;
+
+                margin-top:
+                    7px !important;
+
+            }
+
+
+            .mobile-cart-item .flex.items-center button {
+
+                width:
+                    29px !important;
+
+                height:
+                    29px !important;
+
+                min-width:
+                    29px !important;
+
+                border:
+                    1px solid #bfdbfe !important;
+
+                background:
+                    #eff6ff !important;
+
+                color:
+                    #1d4ed8 !important;
+
+                border-radius:
+                    8px !important;
+
+                display:
+                    flex !important;
+
+                align-items:
+                    center !important;
+
+                justify-content:
+                    center !important;
+
+                font-size:
+                    16px !important;
+
+                font-weight:
+                    800 !important;
+
+            }
+
+
+            .mobile-cart-item .flex.items-center span {
+
+                min-width:
+                    26px !important;
+
+                text-align:
+                    center !important;
+
+                font-size:
+                    12px !important;
+
+                font-weight:
+                    900 !important;
+
+                color:
+                    #0f172a !important;
+
+            }
+
+
+            /*
+               PAPELERA
+            */
+
+            .mobile-cart-item > button {
+
+                position:
+                    absolute !important;
+
+                top:
+                    7px !important;
+
+                right:
+                    7px !important;
+
+                width:
+                    28px !important;
+
+                height:
+                    28px !important;
+
+                padding:
+                    0 !important;
+
+                border-radius:
+                    8px !important;
+
+                background:
+                    #fef2f2 !important;
+
+                color:
+                    #ef4444 !important;
+
+                display:
+                    flex !important;
+
+                align-items:
+                    center !important;
+
+                justify-content:
+                    center !important;
+
+            }
+
+
+            .mobile-cart-item > button i {
+
+                width:
+                    15px !important;
+
+                height:
+                    15px !important;
 
             }
 
@@ -1334,10 +1693,10 @@
                     rgba(255,255,255,.98) !important;
 
                 border-top:
-                    1px solid #dbe3ee !important;
+                    1px solid #dbeafe !important;
 
                 box-shadow:
-                    0 -5px 20px rgba(15,23,42,.08) !important;
+                    0 -5px 20px rgba(30,64,175,.10) !important;
 
                 backdrop-filter:
                     blur(15px);
@@ -1575,6 +1934,20 @@
 
             }
 
+
+            .mobile-hero-img {
+
+                height:
+                    225px !important;
+
+                min-height:
+                    225px !important;
+
+                max-height:
+                    225px !important;
+
+            }
+
         }
 
     </style>
@@ -1589,7 +1962,8 @@
     <!-- BARRA SUPERIOR -->
     <!-- ========================================================= -->
 
-    <div class="bg-blue-950 text-blue-100 text-[10px] sm:text-xs py-2 px-3 sm:px-4">
+    <div id="topAnnouncement"
+         class="bg-blue-950 text-blue-100 text-[10px] sm:text-xs py-2 px-3 sm:px-4">
 
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
 
@@ -1691,14 +2065,12 @@
 
                 <div class="relative">
 
-                    <i data-lucide="search"
-                       class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
-                    </i>
+                    <!-- LUPA MOBILE ELIMINADA -->
 
                     <input type="text"
                            id="searchInputMobile"
                            placeholder="Buscar productos..."
-                           class="w-full pl-12 pr-4 py-3 bg-slate-100 border-0 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 transition-all outline-none font-medium"
+                           class="w-full pl-3 pr-4 py-3 bg-slate-100 border-0 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 transition-all outline-none font-medium"
                            autocomplete="off">
 
                 </div>
@@ -1799,7 +2171,12 @@
                 </div>
 
 
-                <div class="relative group">
+                <!-- ================================================= -->
+                <!-- IMAGEN PERSONAS -->
+                <!-- ================================================= -->
+
+                <div id="heroBannerCard"
+                     class="relative group">
 
                     <div class="w-full h-full bg-gradient-to-tr from-wine-600 to-blue-600 rounded-3xl opacity-30 blur-2xl absolute inset-0">
                     </div>
@@ -2275,6 +2652,7 @@
 
 
                     <button id="closeCart"
+                            type="button"
                             class="p-2 text-slate-400 hover:text-slate-600 rounded-xl hover:bg-slate-100 transition-colors">
 
                         <i data-lucide="x"
@@ -2310,6 +2688,7 @@
 
 
                 <button id="openCheckoutModalBtn"
+                        type="button"
                         class="w-full bg-emerald-600 hover:bg-emerald-500 active:scale-[.98] text-white font-bold py-4 rounded-2xl shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-2">
 
                     <i data-lucide="clipboard-list"
@@ -2339,6 +2718,7 @@
         <div class="bg-white rounded-3xl max-w-lg w-full p-5 sm:p-8 space-y-5 sm:space-y-6 shadow-2xl relative overflow-y-auto">
 
             <button id="closeCheckoutModal"
+                    type="button"
                     class="absolute top-4 right-4 sm:top-5 sm:right-5 text-slate-400 hover:text-slate-600 p-1">
 
                 <i data-lucide="x"
@@ -2570,7 +2950,6 @@
 
     <script>
 
-
         /* ========================================================= */
         /* CONFIGURACIÓN */
         /* ========================================================= */
@@ -2696,7 +3075,9 @@
 
                 checkStoreStatus();
 
-                lucide.createIcons();
+                if (window.lucide) {
+                    lucide.createIcons();
+                }
 
             }
         );
@@ -2747,6 +3128,10 @@
                         JSON.parse(
                             savedCart
                         );
+
+                    if (!Array.isArray(cart)) {
+                        cart = [];
+                    }
 
                 }
 
@@ -2881,7 +3266,9 @@
                 `;
 
 
-                lucide.createIcons();
+                if (window.lucide) {
+                    lucide.createIcons();
+                }
 
             }
 
@@ -3040,7 +3427,9 @@
                 `;
 
 
-                lucide.createIcons();
+                if (window.lucide) {
+                    lucide.createIcons();
+                }
 
                 return;
 
@@ -3136,6 +3525,7 @@
 
 
                                 <button
+                                    type="button"
                                     onclick="addToCart(${product.id})"
                                     class="add-product-btn w-full bg-blue-50 hover:bg-blue-600 active:scale-95 text-blue-700 hover:text-white font-bold py-2.5 sm:py-3 px-2 sm:px-4 rounded-xl sm:rounded-2xl transition-all flex items-center justify-center gap-1.5 text-[10px] sm:text-sm shadow-sm">
 
@@ -3157,7 +3547,9 @@
                 ).join('');
 
 
-            lucide.createIcons();
+            if (window.lucide) {
+                lucide.createIcons();
+            }
 
         }
 
@@ -3166,9 +3558,7 @@
         /* BÚSQUEDA MOBILE */
         /* ========================================================= */
 
-        function renderMobileSearchResults(
-            query
-        ) {
+        function renderMobileSearchResults(query) {
 
             if (!mobileSearchResults) {
                 return;
@@ -3196,14 +3586,8 @@
 
 
             /*
-               Busca en TODOS los productos.
-               Ejemplo:
-               "mantequilla"
-               encontrará:
-               Mantequilla X
-               Mantequilla Y
-               Mantequilla Z
-               etc.
+               Busca por nombre y categoría
+               en TODOS los productos.
             */
 
             const results =
@@ -3257,46 +3641,57 @@
 
                 mobileSearchResults.innerHTML =
 
-                    results.map(
-                        product => `
+                    `
+                    <div class="px-4 py-2 text-[10px] font-extrabold uppercase tracking-wider text-blue-700 bg-blue-50 border-b border-blue-100">
+                        ${results.length}
+                        producto${results.length === 1 ? '' : 's'}
+                        encontrado${results.length === 1 ? '' : 's'}
+                    </div>
 
-                            <div
-                                class="mobile-search-item"
-                                onclick="selectSearchProduct(${product.id})">
+                    ${
+                        results.map(
+                            product => `
 
-                                <img
-                                    src="${product.image}"
-                                    alt="${product.name}"
-                                    onerror="this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80'"
-                                >
+                                <div
+                                    class="mobile-search-item"
+                                    onclick="selectSearchProduct(${product.id})">
+
+                                    <img
+                                        src="${product.image}"
+                                        alt="${product.name}"
+                                        onerror="this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80'"
+                                    >
 
 
-                                <div class="mobile-search-item-info">
+                                    <div class="mobile-search-item-info">
 
-                                    <div class="mobile-search-item-name">
+                                        <div class="mobile-search-item-name">
 
-                                        ${product.name}
+                                            ${product.name}
+
+                                        </div>
+
+
+                                        <div class="mobile-search-item-price">
+
+                                            $${product.price.toLocaleString('es-CO')}
+
+                                        </div>
 
                                     </div>
 
 
-                                    <div class="mobile-search-item-price">
-
-                                        $${product.price.toLocaleString('es-CO')}
-
-                                    </div>
+                                    <i data-lucide="chevron-right"
+                                       class="w-4 h-4 text-slate-300 shrink-0">
+                                    </i>
 
                                 </div>
 
+                            `
+                        ).join('')
+                    }
 
-                                <i data-lucide="chevron-right"
-                                   class="w-4 h-4 text-slate-300 shrink-0">
-                                </i>
-
-                            </div>
-
-                        `
-                    ).join('');
+                    `;
 
             }
 
@@ -3306,7 +3701,9 @@
             );
 
 
-            lucide.createIcons();
+            if (window.lucide) {
+                lucide.createIcons();
+            }
 
         }
 
@@ -3327,11 +3724,6 @@
                 return;
             }
 
-
-            /*
-               Al seleccionar un resultado,
-               dejamos el texto de búsqueda.
-            */
 
             searchQuery =
                 product.name;
@@ -3357,9 +3749,13 @@
             }
 
 
-            mobileSearchResults.classList.remove(
-                'active'
-            );
+            if (mobileSearchResults) {
+
+                mobileSearchResults.classList.remove(
+                    'active'
+                );
+
+            }
 
 
             renderProducts();
@@ -3520,8 +3916,22 @@
 
         function openCartDrawer() {
 
+            if (!cartPanel || !cartOverlay) {
+                return;
+            }
+
+
+            updateCartUI();
+
+
             cartPanel.classList.remove(
                 'translate-x-full'
+            );
+
+
+            cartPanel.setAttribute(
+                'aria-hidden',
+                'false'
             );
 
 
@@ -3539,8 +3949,19 @@
 
         function closeCartDrawer() {
 
+            if (!cartPanel || !cartOverlay) {
+                return;
+            }
+
+
             cartPanel.classList.add(
                 'translate-x-full'
+            );
+
+
+            cartPanel.setAttribute(
+                'aria-hidden',
+                'true'
             );
 
 
@@ -3556,18 +3977,17 @@
         }
 
 
+        /*
+           Apertura del carrito desde el menú inferior.
+           Es independiente del botón desktop.
+        */
+
         function openMobileCart() {
 
             setMobileNavActive(
                 'mobileCartButton'
             );
 
-
-            /*
-               Esta función ahora llama directamente
-               a una función global.
-               Así el carrito SÍ abre desde móvil.
-            */
 
             openCartDrawer();
 
@@ -3739,17 +4159,25 @@
                         item
                     ) =>
                         total +
-                        item.quantity,
+                        Number(item.quantity || 0),
                     0
                 );
 
 
-            cartCounter.textContent =
-                totalCount;
+            if (cartCounter) {
+
+                cartCounter.textContent =
+                    totalCount;
+
+            }
 
 
-            mobileCartCounter.textContent =
-                totalCount;
+            if (mobileCartCounter) {
+
+                mobileCartCounter.textContent =
+                    totalCount;
+
+            }
 
 
             if (
@@ -3812,7 +4240,9 @@
                     '$0';
 
 
-                lucide.createIcons();
+                if (window.lucide) {
+                    lucide.createIcons();
+                }
 
                 return;
 
@@ -3824,16 +4254,17 @@
                 cart.map(
                     item => `
 
-                        <div class="mobile-cart-item flex items-start gap-3 bg-slate-50 p-3 rounded-2xl border border-slate-100 relative">
+                        <div class="mobile-cart-item">
 
                             <img
                                 src="${item.image}"
                                 alt="${item.name}"
                                 class="w-14 h-14 sm:w-16 sm:h-16 object-contain rounded-xl bg-white shrink-0"
+                                onerror="this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80'"
                             >
 
 
-                            <div class="flex-1 min-w-0 pr-5">
+                            <div class="flex-1 min-w-0 pr-7">
 
                                 <h5 class="font-bold text-slate-900 text-xs leading-snug break-anywhere">
 
@@ -3852,10 +4283,14 @@
                                 </p>
 
 
+                                <!-- CONTADOR HORIZONTAL -->
+
                                 <div class="flex items-center gap-2 mt-2">
 
                                     <button
+                                        type="button"
                                         onclick="updateQuantity(${item.id}, -1)"
+                                        aria-label="Disminuir cantidad"
                                         class="w-7 h-7 bg-white border border-slate-200 rounded-lg flex items-center justify-center text-slate-600 font-bold">
 
                                         −
@@ -3871,7 +4306,9 @@
 
 
                                     <button
+                                        type="button"
                                         onclick="updateQuantity(${item.id}, 1)"
+                                        aria-label="Aumentar cantidad"
                                         class="w-7 h-7 bg-white border border-slate-200 rounded-lg flex items-center justify-center text-slate-600 font-bold">
 
                                         +
@@ -3883,8 +4320,13 @@
                             </div>
 
 
+                            <!-- PAPELERA -->
+
                             <button
+                                type="button"
                                 onclick="removeFromCart(${item.id})"
+                                title="Eliminar producto"
+                                aria-label="Eliminar ${item.name}"
                                 class="absolute top-2 right-2 text-slate-400 hover:text-red-600 p-1">
 
                                 <i data-lucide="trash-2"
@@ -3918,7 +4360,9 @@
                 `$${total.toLocaleString('es-CO')}`;
 
 
-            lucide.createIcons();
+            if (window.lucide) {
+                lucide.createIcons();
+            }
 
         }
 
@@ -3976,11 +4420,6 @@
             }
 
 
-            /*
-               Reinicia productos sin hacer
-               un scroll primero hacia productos.
-            */
-
             renderProducts();
 
 
@@ -4012,6 +4451,11 @@
                 document.getElementById(
                     'searchInputMobile'
                 );
+
+
+            if (!input) {
+                return;
+            }
 
 
             input.scrollIntoView({
@@ -4141,7 +4585,9 @@
             );
 
 
-            lucide.createIcons();
+            if (window.lucide) {
+                lucide.createIcons();
+            }
 
 
             setTimeout(
@@ -4236,19 +4682,23 @@
                             this.value;
 
 
-                        /*
-                           MUY IMPORTANTE:
-                           Actualiza la cuadrícula
-                           Y también la lista debajo
-                           del buscador.
-                        */
-
                         searchQuery =
                             value;
 
 
+                        /*
+                           Actualiza catálogo
+                           en tiempo real.
+                        */
+
                         renderProducts();
 
+
+                        /*
+                           También actualiza
+                           todos los resultados
+                           debajo del buscador.
+                        */
 
                         renderMobileSearchResults(
                             value
@@ -4284,14 +4734,20 @@
 
 
             /* ----------------------------------------------------- */
-            /* CARRITO */
+            /* CARRITO DESKTOP */
             /* ----------------------------------------------------- */
 
             if (cartTrigger) {
 
                 cartTrigger.addEventListener(
                     'click',
-                    openCartDrawer
+                    function (event) {
+
+                        event.preventDefault();
+
+                        openCartDrawer();
+
+                    }
                 );
 
             }
@@ -4301,94 +4757,89 @@
             /* CERRAR CARRITO */
             /* ----------------------------------------------------- */
 
-            closeCart.addEventListener(
-                'click',
-                closeCartDrawer
-            );
+            if (closeCart) {
+
+                closeCart.addEventListener(
+                    'click',
+                    function () {
+
+                        closeCartDrawer();
+
+                    }
+                );
+
+            }
 
 
-            cartOverlay.addEventListener(
-                'click',
-                closeCartDrawer
-            );
+            if (cartOverlay) {
+
+                cartOverlay.addEventListener(
+                    'click',
+                    function () {
+
+                        closeCartDrawer();
+
+                    }
+                );
+
+            }
 
 
             /* ----------------------------------------------------- */
             /* CHECKOUT */
             /* ----------------------------------------------------- */
 
-            openCheckoutModalBtn.addEventListener(
-                'click',
-                () => {
+            if (openCheckoutModalBtn) {
 
-                    if (
-                        cart.length === 0
-                    ) {
+                openCheckoutModalBtn.addEventListener(
+                    'click',
+                    () => {
 
-                        showToast(
-                            'Tu carrito está vacío'
+                        if (
+                            cart.length === 0
+                        ) {
+
+                            showToast(
+                                'Tu carrito está vacío'
+                            );
+
+                            return;
+
+                        }
+
+
+                        closeCartDrawer();
+
+
+                        checkoutModal.classList.remove(
+                            'hidden'
                         );
 
-                        return;
+
+                        checkoutModal.classList.add(
+                            'flex'
+                        );
+
+
+                        document.body.classList.add(
+                            'overflow-hidden'
+                        );
 
                     }
+                );
 
-
-                    closeCartDrawer();
-
-
-                    checkoutModal.classList.remove(
-                        'hidden'
-                    );
-
-
-                    checkoutModal.classList.add(
-                        'flex'
-                    );
-
-
-                    document.body.classList.add(
-                        'overflow-hidden'
-                    );
-
-                }
-            );
+            }
 
 
             /* ----------------------------------------------------- */
             /* CERRAR CHECKOUT */
             /* ----------------------------------------------------- */
 
-            closeCheckoutModal.addEventListener(
-                'click',
-                () => {
+            if (closeCheckoutModal) {
 
-                    checkoutModal.classList.add(
-                        'hidden'
-                    );
-
-
-                    checkoutModal.classList.remove(
-                        'flex'
-                    );
-
-
-                    document.body.classList.remove(
-                        'overflow-hidden'
-                    );
-
-                }
-            );
-
-
-            checkoutModal.addEventListener(
-                'click',
-                event => {
-
-                    if (
-                        event.target ===
-                        checkoutModal
-                    ) {
+                closeCheckoutModal.addEventListener(
+                    'click',
+                    () => {
 
                         checkoutModal.classList.add(
                             'hidden'
@@ -4405,9 +4856,42 @@
                         );
 
                     }
+                );
 
-                }
-            );
+            }
+
+
+            if (checkoutModal) {
+
+                checkoutModal.addEventListener(
+                    'click',
+                    event => {
+
+                        if (
+                            event.target ===
+                            checkoutModal
+                        ) {
+
+                            checkoutModal.classList.add(
+                                'hidden'
+                            );
+
+
+                            checkoutModal.classList.remove(
+                                'flex'
+                            );
+
+
+                            document.body.classList.remove(
+                                'overflow-hidden'
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
 
 
             /* ----------------------------------------------------- */
@@ -4466,17 +4950,21 @@
 
                         closeCartDrawer();
 
+
                         checkoutModal.classList.add(
                             'hidden'
                         );
+
 
                         checkoutModal.classList.remove(
                             'flex'
                         );
 
+
                         document.body.classList.remove(
                             'overflow-hidden'
                         );
+
 
                         if (
                             mobileSearchResults
@@ -4498,176 +4986,180 @@
             /* FORMULARIO WHATSAPP */
             /* ----------------------------------------------------- */
 
-            checkoutForm.addEventListener(
-                'submit',
-                event => {
+            if (checkoutForm) {
 
-                    event.preventDefault();
+                checkoutForm.addEventListener(
+                    'submit',
+                    event => {
 
-
-                    const name =
-                        document
-                            .getElementById(
-                                'custName'
-                            )
-                            .value
-                            .trim();
+                        event.preventDefault();
 
 
-                    const neighborhood =
-                        document
-                            .getElementById(
-                                'custNeighborhood'
-                            )
-                            .value
-                            .trim();
+                        const name =
+                            document
+                                .getElementById(
+                                    'custName'
+                                )
+                                .value
+                                .trim();
 
 
-                    const address =
-                        document
-                            .getElementById(
-                                'custAddress'
-                            )
-                            .value
-                            .trim();
+                        const neighborhood =
+                            document
+                                .getElementById(
+                                    'custNeighborhood'
+                                )
+                                .value
+                                .trim();
 
 
-                    const payment =
-                        document
-                            .getElementById(
-                                'custPayment'
-                            )
-                            .value;
+                        const address =
+                            document
+                                .getElementById(
+                                    'custAddress'
+                                )
+                                .value
+                                .trim();
 
 
-                    const cashAmount =
-                        document
-                            .getElementById(
-                                'custCashAmount'
-                            )
-                            .value
-                            .trim();
+                        const payment =
+                            document
+                                .getElementById(
+                                    'custPayment'
+                                )
+                                .value;
 
 
-                    const notes =
-                        document
-                            .getElementById(
-                                'custNotes'
-                            )
-                            .value
-                            .trim();
+                        const cashAmount =
+                            document
+                                .getElementById(
+                                    'custCashAmount'
+                                )
+                                .value
+                                .trim();
 
 
-                    let message =
-                        `🛒 *NUEVO PEDIDO - MERKOMAX NIMAR*\n\n`;
+                        const notes =
+                            document
+                                .getElementById(
+                                    'custNotes'
+                                )
+                                .value
+                                .trim();
 
 
-                    message +=
-                        `👤 *Cliente:* ${name}\n`;
+                        let message =
+                            `🛒 *NUEVO PEDIDO - MERKOMAX NIMAR*\n\n`;
 
-
-                    message +=
-                        `📍 *Barrio:* ${neighborhood}\n`;
-
-
-                    message +=
-                        `🏠 *Dirección:* ${address}\n`;
-
-
-                    message +=
-                        `💳 *Método de Pago:* ${payment}\n`;
-
-
-                    if (
-                        payment ===
-                        'Efectivo' &&
-                        cashAmount
-                    ) {
 
                         message +=
-                            `💵 *Cambio para:* ${cashAmount}\n`;
+                            `👤 *Cliente:* ${name}\n`;
 
-                    }
-
-
-                    if (notes) {
 
                         message +=
-                            `📝 *Notas:* ${notes}\n`;
-
-                    }
+                            `📍 *Barrio:* ${neighborhood}\n`;
 
 
-                    message +=
-                        `\n📦 *DETALLE DEL PEDIDO:*\n`;
+                        message +=
+                            `🏠 *Dirección:* ${address}\n`;
 
 
-                    cart.forEach(
-                        (item, index) => {
+                        message +=
+                            `💳 *Método de Pago:* ${payment}\n`;
+
+
+                        if (
+                            payment ===
+                            'Efectivo' &&
+                            cashAmount
+                        ) {
 
                             message +=
-                                `${index + 1}. ${item.name} x${item.quantity} - $${(
-                                    item.price *
-                                    item.quantity
-                                ).toLocaleString('es-CO')}\n`;
+                                `💵 *Cambio para:* ${cashAmount}\n`;
 
                         }
-                    );
 
 
-                    const total =
-                        cart.reduce(
-                            (
-                                sum,
-                                item
-                            ) =>
-                                sum +
-                                (
-                                    item.price *
-                                    item.quantity
-                                ),
-                            0
+                        if (notes) {
+
+                            message +=
+                                `📝 *Notas:* ${notes}\n`;
+
+                        }
+
+
+                        message +=
+                            `\n📦 *DETALLE DEL PEDIDO:*\n`;
+
+
+                        cart.forEach(
+                            (item, index) => {
+
+                                message +=
+                                    `${index + 1}. ${item.name} x${item.quantity} - $${(
+                                        item.price *
+                                        item.quantity
+                                    ).toLocaleString('es-CO')}\n`;
+
+                            }
                         );
 
 
-                    message +=
-                        `\n💰 *TOTAL A PAGAR: $${total.toLocaleString('es-CO')}*`;
+                        const total =
+                            cart.reduce(
+                                (
+                                    sum,
+                                    item
+                                ) =>
+                                    sum +
+                                    (
+                                        item.price *
+                                        item.quantity
+                                    ),
+                                0
+                            );
 
 
-                    const url =
-                        `https://wa.me/573105500791?text=${encodeURIComponent(message)}`;
+                        message +=
+                            `\n💰 *TOTAL A PAGAR: $${total.toLocaleString('es-CO')}*`;
 
 
-                    cart = [];
+                        const url =
+                            `https://wa.me/573105500791?text=${encodeURIComponent(message)}`;
 
 
-                    saveCartToLocalStorage();
-
-                    updateCartUI();
+                        cart = [];
 
 
-                    checkoutModal.classList.add(
-                        'hidden'
-                    );
+                        saveCartToLocalStorage();
+
+                        updateCartUI();
 
 
-                    checkoutModal.classList.remove(
-                        'flex'
-                    );
+                        checkoutModal.classList.add(
+                            'hidden'
+                        );
 
 
-                    document.body.classList.remove(
-                        'overflow-hidden'
-                    );
+                        checkoutModal.classList.remove(
+                            'flex'
+                        );
 
 
-                    window.open(
-                        url,
-                        '_blank'
-                    );
+                        document.body.classList.remove(
+                            'overflow-hidden'
+                        );
 
-                }
-            );
+
+                        window.open(
+                            url,
+                            '_blank'
+                        );
+
+                    }
+                );
+
+            }
 
         }
 
