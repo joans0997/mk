@@ -149,12 +149,137 @@
 
 
         /* ========================================================= */
-        /* MOBILE GENERAL */
+        /* BOTÓN CARRITO FLOTANTE PC */
         /* ========================================================= */
 
-        #mobileHeaderSearch,
-        #mobileBottomNav {
+        #desktopFloatingCart {
+
             display: none;
+
+        }
+
+
+        @media (min-width: 1024px) {
+
+            #desktopFloatingCart {
+
+                position: fixed;
+
+                right: 18px;
+
+                bottom: 105px;
+
+                width: 48px;
+
+                height: 48px;
+
+                border: 0;
+
+                border-radius: 16px;
+
+                background: #2563eb;
+
+                color: white;
+
+                display: flex;
+
+                align-items: center;
+
+                justify-content: center;
+
+                box-shadow:
+                    0 10px 30px rgba(37,99,235,.30);
+
+                z-index: 45;
+
+                cursor: pointer;
+
+                opacity: 0;
+
+                visibility: hidden;
+
+                transform:
+                    translateY(12px)
+                    scale(.92);
+
+                transition:
+                    opacity .25s ease,
+                    visibility .25s ease,
+                    transform .25s ease,
+                    background .2s ease;
+
+            }
+
+
+            #desktopFloatingCart.visible {
+
+                opacity: 1;
+
+                visibility: visible;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+
+            }
+
+
+            #desktopFloatingCart:hover {
+
+                background: #1d4ed8;
+
+                transform:
+                    translateY(-2px)
+                    scale(1.03);
+
+            }
+
+
+            #desktopFloatingCart i {
+
+                width: 21px;
+
+                height: 21px;
+
+            }
+
+
+            #desktopFloatingCartBadge {
+
+                position: absolute;
+
+                top: -5px;
+
+                right: -5px;
+
+                min-width: 19px;
+
+                height: 19px;
+
+                padding: 0 4px;
+
+                display: flex;
+
+                align-items: center;
+
+                justify-content: center;
+
+                border-radius: 999px;
+
+                background: #ef4444;
+
+                color: #ffffff;
+
+                border: 2px solid white;
+
+                font-size: 8px;
+
+                font-weight: 900;
+
+                line-height: 1;
+
+            }
+
         }
 
 
@@ -361,6 +486,107 @@
 
             }
 
+
+            /* ===================================================== */
+            /* PRODUCTO PC - PRECIO + CONTADOR EN LA MISMA LÍNEA */
+            /* ===================================================== */
+
+            .product-price-row {
+
+                display: flex !important;
+
+                align-items: center !important;
+
+                justify-content: space-between !important;
+
+                width: 100% !important;
+
+                gap: 10px !important;
+
+            }
+
+
+            .product-card-mobile .product-price {
+
+                margin: 0 !important;
+
+                white-space: nowrap !important;
+
+                line-height: 1 !important;
+
+            }
+
+
+            .product-card-mobile .product-quantity-control {
+
+                display: flex !important;
+
+                align-items: center !important;
+
+                justify-content: center !important;
+
+                gap: 4px !important;
+
+                flex-shrink: 0 !important;
+
+                background: #eff6ff !important;
+
+                border: 1px solid #bfdbfe !important;
+
+                border-radius: 9px !important;
+
+                padding: 2px !important;
+
+            }
+
+
+            .product-card-mobile .product-quantity-control button {
+
+                width: 25px !important;
+
+                height: 25px !important;
+
+                min-width: 25px !important;
+
+                border: 0 !important;
+
+                border-radius: 6px !important;
+
+                background: #ffffff !important;
+
+                color: #2563eb !important;
+
+                display: flex !important;
+
+                align-items: center !important;
+
+                justify-content: center !important;
+
+                font-size: 14px !important;
+
+                font-weight: 900 !important;
+
+                cursor: pointer !important;
+
+                padding: 0 !important;
+
+            }
+
+
+            .product-card-mobile .product-quantity-control span {
+
+                min-width: 20px !important;
+
+                text-align: center !important;
+
+                color: #0f172a !important;
+
+                font-size: 11px !important;
+
+                font-weight: 900 !important;
+
+            }
+
         }
 
 
@@ -508,7 +734,7 @@
 
 
             /* ----------------------------------------------------- */
-            /* OCULTAR BUSCADOR MOBILE VIEJO */
+            /* BUSCADOR MOBILE */
             /* ----------------------------------------------------- */
 
             header .pb-3 {
@@ -518,10 +744,6 @@
 
             }
 
-
-            /* ----------------------------------------------------- */
-            /* BUSCADOR ÚNICO AL LADO DEL LOGO */
-            /* ----------------------------------------------------- */
 
             #mobileHeaderSearch {
 
@@ -1439,7 +1661,7 @@
 
 
             /* ----------------------------------------------------- */
-            /* OVERLAY */
+            /* OVERLAY CARRITO */
             /* ----------------------------------------------------- */
 
             #cartOverlay {
@@ -2186,9 +2408,7 @@
                 </div>
 
 
-                <!-- ================================================= -->
                 <!-- BUSCADOR MOBILE -->
-                <!-- ================================================= -->
 
                 <div id="mobileHeaderSearch">
 
@@ -2202,9 +2422,7 @@
                 </div>
 
 
-                <!-- ================================================= -->
                 <!-- BUSCADOR DESKTOP -->
-                <!-- ================================================= -->
 
                 <div class="flex-1 max-w-2xl hidden md:block">
 
@@ -2225,9 +2443,7 @@
                 </div>
 
 
-                <!-- ================================================= -->
                 <!-- CARRITO DESKTOP -->
-                <!-- ================================================= -->
 
                 <div class="flex items-center shrink-0">
 
@@ -2547,6 +2763,23 @@
         </span>
 
     </a>
+
+
+    <!-- ========================================================= -->
+    <!-- BOTÓN CARRITO FLOTANTE PC -->
+    <!-- ========================================================= -->
+
+    <button id="desktopFloatingCart"
+            type="button"
+            aria-label="Abrir carrito">
+
+        <i data-lucide="shopping-cart"></i>
+
+        <span id="desktopFloatingCartBadge">
+            0
+        </span>
+
+    </button>
 
 
     <!-- ========================================================= -->
@@ -3107,8 +3340,8 @@
 
 
         /*
-           Cantidad seleccionada en cada tarjeta.
-           NO se agrega al carrito hasta pulsar Agregar.
+           Cantidad seleccionada en la tarjeta.
+           NO entra al carrito hasta pulsar "Agregar".
         */
 
         const selectedQuantities = {};
@@ -3126,6 +3359,16 @@
         const cartTrigger =
             document.getElementById(
                 'cartTrigger'
+            );
+
+        const desktopFloatingCart =
+            document.getElementById(
+                'desktopFloatingCart'
+            );
+
+        const desktopFloatingCartBadge =
+            document.getElementById(
+                'desktopFloatingCartBadge'
             );
 
         const cartOverlay =
@@ -3224,6 +3467,8 @@
                 setupEventListeners();
 
                 checkStoreStatus();
+
+                updateDesktopFloatingCart();
 
                 if (window.lucide) {
                     lucide.createIcons();
@@ -3820,6 +4065,8 @@
 
                                 <div class="product-bottom pt-3 sm:pt-4 border-t border-slate-100 mt-3 sm:mt-4">
 
+                                    <!-- PRECIO + CONTADOR EN UNA SOLA LÍNEA -->
+
                                     <div class="product-price-row">
 
                                         <span class="product-price text-xs min-[400px]:text-sm sm:text-lg font-extrabold text-slate-900">
@@ -4350,7 +4597,7 @@
 
 
         /* ========================================================= */
-        /* ACTUALIZAR CANTIDAD DEL CARRITO */
+        /* CANTIDAD DIRECTA DEL CARRITO */
         /* ========================================================= */
 
         function updateQuantity(
@@ -4488,6 +4735,16 @@
 
                 mobileCartCounter.textContent =
                     totalCount;
+
+            }
+
+
+            if (desktopFloatingCartBadge) {
+
+                desktopFloatingCartBadge.textContent =
+                    totalCount > 99
+                        ? '99+'
+                        : totalCount;
 
             }
 
@@ -4666,6 +4923,47 @@
 
             if (window.lucide) {
                 lucide.createIcons();
+            }
+
+        }
+
+
+        /* ========================================================= */
+        /* BOTÓN FLOTANTE PC */
+        /* ========================================================= */
+
+        function updateDesktopFloatingCart() {
+
+            if (
+                !desktopFloatingCart ||
+                window.innerWidth < 1024
+            ) {
+
+                return;
+
+            }
+
+
+            const scrollPosition =
+                window.scrollY;
+
+
+            if (
+                scrollPosition > 450
+            ) {
+
+                desktopFloatingCart.classList.add(
+                    'visible'
+                );
+
+            }
+
+            else {
+
+                desktopFloatingCart.classList.remove(
+                    'visible'
+                );
+
             }
 
         }
@@ -4949,10 +5247,117 @@
                     'input',
                     function () {
 
+                        const value =
+                            this.value.trim();
+
+
                         searchQuery =
-                            this.value;
+                            value;
+
 
                         renderProducts();
+
+
+                        /*
+                           Actualiza el subtítulo
+                           mostrando cuántos productos
+                           coinciden.
+                        */
+
+                        const subtitle =
+                            document.getElementById(
+                                'sectionSubtitle'
+                            );
+
+
+                        if (
+                            value.length > 0
+                        ) {
+
+                            const normalizedValue =
+                                normalizeText(
+                                    value
+                                );
+
+
+                            const totalMatches =
+                                products.filter(
+                                    product =>
+                                        normalizeText(
+                                            product.name
+                                        ).includes(
+                                            normalizedValue
+                                        )
+                                ).length;
+
+
+                            if (subtitle) {
+
+                                subtitle.textContent =
+                                    totalMatches > 0
+                                        ? `${totalMatches} producto${totalMatches === 1 ? '' : 's'} encontrado${totalMatches === 1 ? '' : 's'} para "${value}"`
+                                        : `No encontramos productos para "${value}"`;
+
+                            }
+
+
+                            /*
+                               Pequeño scroll hacia la zona
+                               de productos.
+                            */
+
+                            const productsSection =
+                                document.getElementById(
+                                    'productos'
+                                );
+
+
+                            if (productsSection) {
+
+                                setTimeout(
+                                    () => {
+
+                                        const rect =
+                                            productsSection.getBoundingClientRect();
+
+
+                                        const targetPosition =
+                                            window.scrollY +
+                                            rect.top -
+                                            35;
+
+
+                                        window.scrollTo({
+
+                                            top:
+                                                Math.max(
+                                                    0,
+                                                    targetPosition
+                                                ),
+
+                                            behavior:
+                                                'smooth'
+
+                                        });
+
+                                    },
+                                    90
+                                );
+
+                            }
+
+                        }
+
+                        else {
+
+                            if (subtitle) {
+
+                                subtitle.textContent =
+                                    'Explora todo nuestro catálogo disponible';
+
+                            }
+
+                        }
 
                     }
                 );
@@ -5015,7 +5420,7 @@
 
 
             /* ----------------------------------------------------- */
-            /* CARRITO */
+            /* CARRITO HEADER */
             /* ----------------------------------------------------- */
 
             if (cartTrigger) {
@@ -5033,6 +5438,42 @@
 
             }
 
+
+            /* ----------------------------------------------------- */
+            /* CARRITO FLOTANTE PC */
+            /* ----------------------------------------------------- */
+
+            if (desktopFloatingCart) {
+
+                desktopFloatingCart.addEventListener(
+                    'click',
+                    function () {
+
+                        openCartDrawer();
+
+                    }
+                );
+
+            }
+
+
+            /* ----------------------------------------------------- */
+            /* SCROLL PARA BOTÓN FLOTANTE */
+            /* ----------------------------------------------------- */
+
+            window.addEventListener(
+                'scroll',
+                updateDesktopFloatingCart,
+                {
+                    passive:
+                        true
+                }
+            );
+
+
+            /* ----------------------------------------------------- */
+            /* CERRAR CARRITO */
+            /* ----------------------------------------------------- */
 
             if (closeCart) {
 
@@ -5182,7 +5623,7 @@
 
 
             /* ----------------------------------------------------- */
-            /* CLICK FUERA DEL BUSCADOR */
+            /* CLICK FUERA BUSCADOR */
             /* ----------------------------------------------------- */
 
             document.addEventListener(
@@ -5408,11 +5849,6 @@
                         message +=
                             `\n💰 *TOTAL A PAGAR: $${total.toLocaleString('es-CO')}*`;
 
-
-                        /*
-                           Nuevo número WhatsApp:
-                           +57 315 766 6771
-                        */
 
                         const url =
                             `https://wa.me/573157666771?text=${encodeURIComponent(message)}`;
