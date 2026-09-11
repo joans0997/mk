@@ -5517,5 +5517,30 @@ function submitOrder(event) {
 
 </script>
 
+
+<!-- FORCE MERKOMAX WHATSAPP NUMBER -->
+<script>
+(function () {
+  const MERKOMAX_WHATSAPP = '573157666771';
+
+  function forceWhatsAppNumber() {
+    document.querySelectorAll('a[href*="wa.me"]').forEach(function (link) {
+      try {
+        const url = new URL(link.href);
+        const text = url.searchParams.get('text') || 'Hola MerkoMAX, tengo una consulta';
+        link.href = 'https://wa.me/' + MERKOMAX_WHATSAPP + '?text=' + encodeURIComponent(text);
+      } catch (e) {
+        link.href = 'https://wa.me/' + MERKOMAX_WHATSAPP + '?text=' + encodeURIComponent('Hola MerkoMAX, tengo una consulta');
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', forceWhatsAppNumber);
+  window.addEventListener('load', forceWhatsAppNumber);
+  setTimeout(forceWhatsAppNumber, 300);
+  setTimeout(forceWhatsAppNumber, 1500);
+})();
+</script>
+
 </body>
 </html>
