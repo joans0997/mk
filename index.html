@@ -1229,7 +1229,7 @@ button {
     body > a[href*="wa.me"] {
         position: fixed !important;
         right: 20px !important;
-        bottom: 20px !important;
+        bottom: 95px !important;
         left: auto !important;
 
         width: 58px !important;
@@ -1279,6 +1279,21 @@ button {
     @keyframes whatsappFloat {
         0%, 100% { transform: translateY(0); }
         50% { transform: translateY(-5px); }
+    }
+
+    /* Ajuste móvil: mantener WhatsApp claramente por encima del carrito */
+    @media (max-width: 640px) {
+        body > a[href*="wa.me"] {
+            right: 16px !important;
+            bottom: calc(92px + env(safe-area-inset-bottom)) !important;
+            width: 54px !important;
+            height: 54px !important;
+        }
+
+        body > a[href*="wa.me"] svg {
+            width: 28px !important;
+            height: 28px !important;
+        }
     }
 
 
