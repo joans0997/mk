@@ -1486,6 +1486,7 @@ button {
 
     /* =====================================================
        CART CONTENT
+       DISTRIBUCIÓN COMPACTA TIPO ESCRITORIO
     ===================================================== */
 
     #cartContent {
@@ -1499,7 +1500,7 @@ button {
             #ffffff;
 
         padding:
-            12px !important;
+            10px !important;
 
         overflow-y:
             auto !important;
@@ -1513,28 +1514,95 @@ button {
             1px solid #e4eaf0 !important;
 
         border-radius:
-            14px !important;
+            12px !important;
 
         margin-bottom:
-            8px;
+            7px;
+
+        padding:
+            8px !important;
+
+        gap:
+            9px !important;
+
+        min-height:
+            68px;
     }
 
     #cartContent img {
+        width:
+            52px !important;
+
+        height:
+            52px !important;
+
+        flex:
+            0 0 52px !important;
+
         background:
             white !important;
 
         border:
             1px solid #edf1f4;
+
+        border-radius:
+            9px !important;
+
+        padding:
+            3px !important;
+    }
+
+    #cartContent > div > div {
+        min-width:
+            0 !important;
+
+        flex:
+            1 1 auto !important;
     }
 
     #cartContent h5 {
         color:
             var(--brand-blue) !important;
+
+        font-size:
+            10px !important;
+
+        line-height:
+            1.25 !important;
+
+        margin:
+            0 !important;
+
+        overflow:
+            hidden;
+
+        text-overflow:
+            ellipsis;
+
+        white-space:
+            nowrap;
     }
 
     #cartContent p {
         color:
             var(--brand-wine) !important;
+
+        font-size:
+            11px !important;
+
+        line-height:
+            1.2 !important;
+
+        margin-top:
+            2px !important;
+    }
+
+    #cartContent > div > div > div {
+        margin-top:
+            4px !important;
+
+        gap:
+            4px !important;
     }
 
     #cartContent button {
@@ -1543,6 +1611,69 @@ button {
 
         color:
             var(--brand-blue) !important;
+    }
+
+    #cartContent > div > div button {
+        width:
+            23px !important;
+
+        height:
+            23px !important;
+
+        min-width:
+            23px !important;
+
+        padding:
+            0 !important;
+
+        border-radius:
+            6px !important;
+
+        font-size:
+            10px !important;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+    }
+
+    #cartContent > div > div span {
+        min-width:
+            17px;
+
+        text-align:
+            center;
+
+        font-size:
+            10px !important;
+
+        color:
+            var(--brand-blue);
+    }
+
+    #cartContent > div > button:last-child {
+        width:
+            22px !important;
+
+        height:
+            22px !important;
+
+        min-width:
+            22px !important;
+
+        padding:
+            0 !important;
+
+        font-size:
+            10px !important;
+
+        align-self:
+            flex-start;
     }
 
     #cartContent button:hover,
@@ -1638,32 +1769,50 @@ button {
 
 
     /* =====================================================
-       CHECKOUT
+       CHECKOUT MOBILE
+       AHORA ES PARTE NORMAL DE LA PÁGINA
     ===================================================== */
 
     #checkoutModal {
-        align-items:
-            flex-end !important;
+        position:
+            relative !important;
+
+        inset:
+            auto !important;
+
+        width:
+            100% !important;
 
         padding:
+            12px !important;
+
+        margin:
             0 !important;
 
-        z-index:
-            9997 !important;
-
         background:
-            rgba(7,26,43,.78) !important;
+            transparent !important;
 
-        backdrop-filter:
-            none !important;
+        z-index:
+            auto !important;
 
-        -webkit-backdrop-filter:
+        display:
+            block !important;
+
+        align-items:
+            initial !important;
+
+        justify-content:
+            initial !important;
+    }
+
+    #checkoutModal.hidden {
+        display:
             none !important;
     }
 
     #checkoutModal:not(.hidden) {
         display:
-            flex !important;
+            block !important;
     }
 
     .mobile-checkout {
@@ -1671,10 +1820,13 @@ button {
             100% !important;
 
         max-width:
-            100% !important;
+            430px !important;
 
         max-height:
-            94vh !important;
+            none !important;
+
+        margin:
+            0 auto !important;
 
         padding:
             18px
@@ -1685,7 +1837,11 @@ button {
             ) !important;
 
         border-radius:
-            22px 22px 0 0 !important;
+            18px !important;
+
+        box-shadow:
+            0 5px 22px
+            rgba(16,42,67,.10) !important;
     }
 
     .mobile-checkout-grid {
@@ -1759,11 +1915,6 @@ button {
 
         transition:
             transform .25s ease;
-    }
-
-    body.checkout-is-open {
-        overflow:
-            hidden !important;
     }
 
 }
@@ -1849,6 +2000,62 @@ button {
     .product-add {
         font-size:
             8px !important;
+    }
+
+
+    /* CARRITO MUY PEQUEÑO */
+
+    #cartContent {
+        padding:
+            8px !important;
+    }
+
+    #cartContent > div {
+        padding:
+            7px !important;
+
+        gap:
+            7px !important;
+
+        min-height:
+            62px;
+    }
+
+    #cartContent img {
+        width:
+            46px !important;
+
+        height:
+            46px !important;
+
+        flex-basis:
+            46px !important;
+    }
+
+    #cartContent h5 {
+        font-size:
+            9px !important;
+    }
+
+    #cartContent p {
+        font-size:
+            10px !important;
+    }
+
+    #cartContent > div > div > div {
+        margin-top:
+            3px !important;
+    }
+
+    #cartContent > div > div button {
+        width:
+            21px !important;
+
+        height:
+            21px !important;
+
+        min-width:
+            21px !important;
     }
 }
 
@@ -2267,133 +2474,6 @@ body.checkout-is-open {
 
 
 <!-- =========================================================
-     WHATSAPP
-========================================================= -->
-
-<a
-    href="https://wa.me/573105500791?text=Hola%20MerkoMAX,%20tengo%20una%20consulta"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="fixed bottom-5 left-5 z-40 bg-emerald-600 text-white p-3.5 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform">
-
-    <span class="text-lg">
-        💬
-    </span>
-
-</a>
-
-
-<!-- =========================================================
-     CART OVERLAY
-========================================================= -->
-
-<div
-    id="cartOverlay"
-    class="fixed inset-0 bg-slate-900/60 z-50 hidden">
-</div>
-
-
-<!-- =========================================================
-     CART PANEL
-========================================================= -->
-
-<div
-    id="cartPanel"
-    class="mobile-cart-wrapper fixed inset-y-0 right-0 z-50 is-closed">
-
-    <div
-        class="mobile-cart-panel bg-white shadow-2xl flex flex-col">
-
-        <div
-            class="p-3.5 border-b border-slate-100 flex items-center justify-between">
-
-            <h3
-                class="font-bold text-xs flex items-center gap-1">
-
-                🛒 Tu Carrito
-
-            </h3>
-
-            <div
-                class="flex items-center gap-2">
-
-                <button
-                    id="clearCartBtn"
-                    type="button"
-                    onclick="clearCart()"
-                    class="hidden text-red-500 text-[10px] font-semibold bg-red-50 px-2 py-0.5 rounded-md">
-
-                    Vaciar
-
-                </button>
-
-                <button
-                    id="closeCart"
-                    type="button"
-                    class="font-bold p-1">
-
-                    ✕
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div
-            id="cartContent"
-            class="flex-1 overflow-y-auto p-3 space-y-2">
-        </div>
-
-
-        <div
-            class="p-3.5 border-t border-slate-100 space-y-2">
-
-            <div
-                class="flex justify-between font-bold text-xs">
-
-                <span>
-                    Total a pagar
-                </span>
-
-                <span
-                    id="cartTotal"
-                    class="text-sm">
-
-                    $0
-
-                </span>
-
-            </div>
-
-
-            <button
-                id="continueShoppingBtn"
-                type="button">
-
-                ← Seguir comprando
-
-            </button>
-
-
-            <button
-                id="openCheckoutModalBtn"
-                type="button"
-                onclick="openCheckoutModal(); return false;">
-
-                💬 Continuar pedido por WhatsApp
-
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
      CHECKOUT
 ========================================================= -->
 
@@ -2564,6 +2644,133 @@ body.checkout-is-open {
             </button>
 
         </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     WHATSAPP
+========================================================= -->
+
+<a
+    href="https://wa.me/573105500791?text=Hola%20MerkoMAX,%20tengo%20una%20consulta"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="fixed bottom-5 left-5 z-40 bg-emerald-600 text-white p-3.5 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform">
+
+    <span class="text-lg">
+        💬
+    </span>
+
+</a>
+
+
+<!-- =========================================================
+     CART OVERLAY
+========================================================= -->
+
+<div
+    id="cartOverlay"
+    class="fixed inset-0 bg-slate-900/60 z-50 hidden">
+</div>
+
+
+<!-- =========================================================
+     CART PANEL
+========================================================= -->
+
+<div
+    id="cartPanel"
+    class="mobile-cart-wrapper fixed inset-y-0 right-0 z-50 is-closed">
+
+    <div
+        class="mobile-cart-panel bg-white shadow-2xl flex flex-col">
+
+        <div
+            class="p-3.5 border-b border-slate-100 flex items-center justify-between">
+
+            <h3
+                class="font-bold text-xs flex items-center gap-1">
+
+                🛒 Tu Carrito
+
+            </h3>
+
+            <div
+                class="flex items-center gap-2">
+
+                <button
+                    id="clearCartBtn"
+                    type="button"
+                    onclick="clearCart()"
+                    class="hidden text-red-500 text-[10px] font-semibold bg-red-50 px-2 py-0.5 rounded-md">
+
+                    Vaciar
+
+                </button>
+
+                <button
+                    id="closeCart"
+                    type="button"
+                    class="font-bold p-1">
+
+                    ✕
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="cartContent"
+            class="flex-1 overflow-y-auto p-3 space-y-2">
+        </div>
+
+
+        <div
+            class="p-3.5 border-t border-slate-100 space-y-2">
+
+            <div
+                class="flex justify-between font-bold text-xs">
+
+                <span>
+                    Total a pagar
+                </span>
+
+                <span
+                    id="cartTotal"
+                    class="text-sm">
+
+                    $0
+
+                </span>
+
+            </div>
+
+
+            <button
+                id="continueShoppingBtn"
+                type="button">
+
+                ← Seguir comprando
+
+            </button>
+
+
+            <button
+                id="openCheckoutModalBtn"
+                type="button"
+                onclick="goToCheckoutForm(); return false;">
+
+                💬 Continuar pedido por WhatsApp
+
+            </button>
+
+        </div>
 
     </div>
 
@@ -4109,6 +4316,110 @@ function toggleCashDetail() {
 }
 
 
+/* =========================================================
+   NUEVO:
+   EN CELULAR LLEVA AL FORMULARIO DE ABAJO.
+   EN PC CONSERVA EL MODAL.
+========================================================= */
+
+function goToCheckoutForm() {
+
+    if (!cart || cart.length === 0) {
+
+        showToast(
+            "El carrito está vacío"
+        );
+
+        return;
+
+    }
+
+
+    /* SOLO CELULAR */
+
+    if (window.innerWidth <= 640) {
+
+        closeCart();
+
+        setMobileNav("home");
+
+
+        const checkoutModal =
+            document.getElementById(
+                "checkoutModal"
+            );
+
+
+        if (!checkoutModal) {
+            return;
+        }
+
+
+        checkoutModal.classList.remove(
+            "hidden"
+        );
+
+
+        checkoutModal.style.display =
+            "block";
+
+        checkoutModal.style.visibility =
+            "visible";
+
+        checkoutModal.style.opacity =
+            "1";
+
+
+        document.body.classList.remove(
+            "cart-is-open",
+            "checkout-is-open"
+        );
+
+
+        toggleCashDetail();
+
+
+        setTimeout(function() {
+
+            checkoutModal.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+
+            setTimeout(function() {
+
+                const nameInput =
+                    document.getElementById(
+                        "custName"
+                    );
+
+                if (nameInput) {
+
+                    nameInput.focus();
+
+                }
+
+            }, 450);
+
+        }, 100);
+
+
+        return;
+
+    }
+
+
+    /* =====================================================
+       PC:
+       MANTIENE EL MODAL ORIGINAL
+    ===================================================== */
+
+    openCheckoutModal();
+
+}
+
+
 function openCheckoutModal() {
 
     const checkoutModal =
@@ -4407,7 +4718,7 @@ function setupEvents() {
                 event.preventDefault();
                 event.stopPropagation();
 
-                openCheckoutModal();
+                goToCheckoutForm();
 
             }
         );
@@ -4450,6 +4761,7 @@ function setupEvents() {
             function(event) {
 
                 if (
+                    window.innerWidth > 640 &&
                     event.target ===
                     checkoutModal
                 ) {
