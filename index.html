@@ -84,9 +84,6 @@ body {
     background: #f4f6f8;
     color: #1e293b;
     overflow-x: hidden;
-
-    /* IMPORTANTE:
-       evita cualquier estado visual extraño al cargar */
     opacity: 1 !important;
     filter: none !important;
     backdrop-filter: none !important;
@@ -282,11 +279,6 @@ button {
    MODAL / OVERLAY SAFETY
 ========================================================= */
 
-/*
-   Evita que algún estado inicial deje la pantalla
-   oscurecida o desenfocada.
-*/
-
 #cartOverlay,
 #checkoutModal {
     backdrop-filter: none;
@@ -296,6 +288,52 @@ button {
 #cartOverlay.hidden,
 #checkoutModal.hidden {
     display: none !important;
+}
+
+
+/* =========================================================
+   CHECKOUT GLOBAL
+========================================================= */
+
+#checkoutModal {
+    z-index: 9997 !important;
+}
+
+#checkoutModal:not(.hidden) {
+    display: flex !important;
+}
+
+#checkoutModal .mobile-checkout {
+    position: relative;
+}
+
+#openCheckoutModalBtn {
+    width: 100%;
+    min-height: 43px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--brand-wine);
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    box-shadow: 0 6px 14px rgba(127,29,58,.18);
+    transition: .2s ease;
+}
+
+#openCheckoutModalBtn:hover {
+    background: var(--brand-wine-dark);
+}
+
+#openCheckoutModalBtn:active {
+    transform: scale(.98);
+}
+
+.mobile-checkout form button[type="submit"] {
+    background: var(--brand-wine);
+}
+
+.mobile-checkout form button[type="submit"]:hover {
+    background: var(--brand-wine-dark);
 }
 
 
@@ -351,11 +389,8 @@ button {
 
 
     .mobile-header {
-
         width: 100%;
-
         min-height: 112px;
-
         height: auto !important;
 
         padding:
@@ -383,9 +418,7 @@ button {
     ===================================================== */
 
     .mobile-logo {
-
         width: 100%;
-
         min-width: 0;
 
         display:
@@ -401,15 +434,9 @@ button {
     }
 
     .mobile-logo img {
-
-        width:
-            auto !important;
-
-        max-width:
-            190px !important;
-
-        height:
-            43px !important;
+        width: auto !important;
+        max-width: 190px !important;
+        height: 43px !important;
 
         object-fit:
             contain !important;
@@ -433,32 +460,19 @@ button {
     ===================================================== */
 
     .mobile-search {
-
-        width:
-            100% !important;
-
-        max-width:
-            none !important;
-
-        margin:
-            0 !important;
-
-        position:
-            relative !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        position: relative !important;
     }
 
     .mobile-search > div {
-        width:
-            100%;
+        width: 100%;
     }
 
     .mobile-search input {
-
-        width:
-            100%;
-
-        height:
-            42px;
+        width: 100%;
+        height: 42px;
 
         padding:
             0 13px 0 40px !important;
@@ -487,7 +501,6 @@ button {
     }
 
     .mobile-search input:focus {
-
         background: #fff !important;
 
         border-color:
@@ -498,32 +511,17 @@ button {
             rgba(127,29,58,.20);
     }
 
-
     #searchResults {
+        position: absolute !important;
+        top: calc(100% + 7px) !important;
+        left: 0 !important;
+        right: 0 !important;
 
-        position:
-            absolute !important;
+        width: 100% !important;
+        max-height: 300px;
 
-        top:
-            calc(100% + 7px) !important;
-
-        left:
-            0 !important;
-
-        right:
-            0 !important;
-
-        width:
-            100% !important;
-
-        max-height:
-            300px;
-
-        border-radius:
-            14px !important;
-
-        z-index:
-            99999 !important;
+        border-radius: 14px !important;
+        z-index: 99999 !important;
     }
 
 
@@ -532,9 +530,7 @@ button {
     ===================================================== */
 
     .mobile-hero {
-
-        width:
-            100%;
+        width: 100%;
 
         padding:
             14px 12px !important;
@@ -549,7 +545,6 @@ button {
     }
 
     .mobile-hero-grid {
-
         display:
             grid !important;
 
@@ -561,42 +556,25 @@ button {
     }
 
     .mobile-hero h1 {
-
-        font-size:
-            19px !important;
-
-        line-height:
-            1.2 !important;
-
-        max-width:
-            340px;
+        font-size: 19px !important;
+        line-height: 1.2 !important;
+        max-width: 340px;
     }
 
     .mobile-hero p {
-
-        font-size:
-            11px !important;
-
-        line-height:
-            1.4 !important;
-
-        color:
-            #d9e2ec !important;
+        font-size: 11px !important;
+        line-height: 1.4 !important;
+        color: #d9e2ec !important;
     }
 
     .mobile-hero-image {
-
-        width:
-            100%;
-
-        height:
-            125px !important;
+        width: 100%;
+        height: 125px !important;
 
         border-radius:
             14px !important;
 
-        overflow:
-            hidden;
+        overflow: hidden;
 
         border:
             1px solid
@@ -607,12 +585,8 @@ button {
     }
 
     .mobile-hero-image img {
-
-        width:
-            100% !important;
-
-        height:
-            100% !important;
+        width: 100% !important;
+        height: 100% !important;
 
         object-fit:
             contain !important;
@@ -630,9 +604,7 @@ button {
     ===================================================== */
 
     section.py-4 {
-
-        width:
-            100%;
+        width: 100%;
 
         padding:
             10px 0 8px !important;
@@ -645,9 +617,7 @@ button {
     }
 
     .mobile-categories {
-
-        display:
-            flex;
+        display: flex;
 
         gap:
             12px !important;
@@ -660,7 +630,6 @@ button {
     }
 
     .mobile-category-button {
-
         flex:
             0 0 57px;
 
@@ -690,7 +659,6 @@ button {
     }
 
     .mobile-category-icon {
-
         width:
             45px !important;
 
@@ -709,9 +677,7 @@ button {
     }
 
     .mobile-category-button span:last-child {
-
-        width:
-            100%;
+        width: 100%;
 
         font-size:
             8px !important;
@@ -738,16 +704,13 @@ button {
     ===================================================== */
 
     .mobile-main {
-
-        width:
-            100%;
+        width: 100%;
 
         padding:
             12px 9px 20px !important;
     }
 
     #sectionTitle {
-
         font-size:
             15px !important;
 
@@ -756,7 +719,6 @@ button {
     }
 
     #sectionSubtitle {
-
         font-size:
             9px !important;
 
@@ -770,9 +732,7 @@ button {
     ===================================================== */
 
     #productsGrid {
-
-        width:
-            100%;
+        width: 100%;
 
         display:
             grid !important;
@@ -793,7 +753,6 @@ button {
     ===================================================== */
 
     .product-card {
-
         width:
             100% !important;
 
@@ -841,7 +800,6 @@ button {
     ===================================================== */
 
     .product-image {
-
         width:
             100% !important;
 
@@ -874,7 +832,6 @@ button {
     }
 
     .product-image img {
-
         width:
             100% !important;
 
@@ -897,13 +854,10 @@ button {
     ===================================================== */
 
     .product-card > div:not(.product-image) {
-
-        min-width:
-            0;
+        min-width: 0;
     }
 
     .product-name {
-
         display:
             -webkit-box !important;
 
@@ -941,7 +895,6 @@ button {
     ===================================================== */
 
     .product-card .product-price-row {
-
         width:
             100% !important;
 
@@ -974,7 +927,6 @@ button {
     }
 
     .product-price {
-
         font-size:
             12px !important;
 
@@ -994,7 +946,6 @@ button {
     ===================================================== */
 
     .product-quantity {
-
         display:
             flex !important;
 
@@ -1021,7 +972,6 @@ button {
     }
 
     .product-quantity button {
-
         width:
             23px !important;
 
@@ -1057,7 +1007,6 @@ button {
     }
 
     .product-quantity button:active {
-
         background:
             var(--brand-wine) !important;
 
@@ -1066,7 +1015,6 @@ button {
     }
 
     .product-quantity-value {
-
         min-width:
             19px !important;
 
@@ -1089,7 +1037,6 @@ button {
     ===================================================== */
 
     .product-add {
-
         width:
             100% !important;
 
@@ -1121,7 +1068,6 @@ button {
 
     .product-add:hover,
     .product-add:active {
-
         background:
             var(--brand-wine) !important;
 
@@ -1135,7 +1081,6 @@ button {
     ===================================================== */
 
     body > a[href*="wa.me"] {
-
         left:
             auto !important;
 
@@ -1180,7 +1125,6 @@ button {
     ===================================================== */
 
     #mobileBottomNav {
-
         position:
             fixed;
 
@@ -1238,7 +1182,6 @@ button {
     }
 
     #mobileBottomNav button {
-
         position:
             relative;
 
@@ -1283,7 +1226,6 @@ button {
     }
 
     #mobileBottomNav button .nav-icon {
-
         font-size:
             18px;
 
@@ -1292,13 +1234,11 @@ button {
     }
 
     #mobileBottomNav button.active {
-
         color:
             white;
     }
 
     #mobileBottomNav button.active .nav-icon {
-
         color:
             white;
 
@@ -1315,7 +1255,6 @@ button {
     }
 
     .nav-cart-count {
-
         position:
             absolute;
 
@@ -1363,7 +1302,6 @@ button {
     ===================================================== */
 
     #cartOverlay {
-
         position:
             fixed !important;
 
@@ -1397,7 +1335,6 @@ button {
     ===================================================== */
 
     #cartPanel {
-
         position:
             fixed !important;
 
@@ -1450,9 +1387,7 @@ button {
             transform;
     }
 
-
     #cartPanel.is-open {
-
         transform:
             translateX(0) !important;
 
@@ -1466,9 +1401,7 @@ button {
             auto !important;
     }
 
-
     #cartPanel.is-closed {
-
         transform:
             translateX(100%) !important;
 
@@ -1482,9 +1415,7 @@ button {
             none !important;
     }
 
-
     .mobile-cart-panel {
-
         width:
             calc(100vw - 8px) !important;
 
@@ -1523,7 +1454,6 @@ button {
     ===================================================== */
 
     #cartPanel .mobile-cart-panel > div:first-child {
-
         flex:
             0 0 auto;
 
@@ -1545,7 +1475,6 @@ button {
     }
 
     #cartPanel .mobile-cart-panel > div:first-child h3 {
-
         color:
             white !important;
 
@@ -1554,7 +1483,6 @@ button {
     }
 
     #cartPanel #closeCart {
-
         color:
             white !important;
 
@@ -1575,7 +1503,6 @@ button {
     }
 
     #clearCartBtn {
-
         background:
             rgba(255,255,255,.12) !important;
 
@@ -1592,7 +1519,6 @@ button {
     ===================================================== */
 
     #cartContent {
-
         flex:
             1 1 auto !important;
 
@@ -1610,7 +1536,6 @@ button {
     }
 
     #cartContent > div {
-
         background:
             #f7f9fb !important;
 
@@ -1625,7 +1550,6 @@ button {
     }
 
     #cartContent img {
-
         background:
             white !important;
 
@@ -1634,19 +1558,16 @@ button {
     }
 
     #cartContent h5 {
-
         color:
             var(--brand-blue) !important;
     }
 
     #cartContent p {
-
         color:
             var(--brand-wine) !important;
     }
 
     #cartContent button {
-
         border-color:
             #d7e0e8 !important;
 
@@ -1656,7 +1577,6 @@ button {
 
     #cartContent button:hover,
     #cartContent button:active {
-
         background:
             var(--brand-wine) !important;
 
@@ -1670,7 +1590,6 @@ button {
     ===================================================== */
 
     #cartPanel .mobile-cart-panel > div:last-child {
-
         flex:
             0 0 auto;
 
@@ -1695,13 +1614,11 @@ button {
     }
 
     #cartPanel .mobile-cart-panel > div:last-child > .flex {
-
         color:
             var(--brand-blue);
     }
 
     #cartTotal {
-
         color:
             var(--brand-wine) !important;
 
@@ -1715,7 +1632,6 @@ button {
     ===================================================== */
 
     #continueShoppingBtn {
-
         width:
             100%;
 
@@ -1743,7 +1659,6 @@ button {
     }
 
     #continueShoppingBtn:active {
-
         background:
             var(--brand-blue);
 
@@ -1757,7 +1672,6 @@ button {
     ===================================================== */
 
     #checkoutModal {
-
         align-items:
             flex-end !important;
 
@@ -1783,7 +1697,6 @@ button {
     }
 
     .mobile-checkout {
-
         width:
             100% !important;
 
@@ -1806,13 +1719,11 @@ button {
     }
 
     .mobile-checkout-grid {
-
         grid-template-columns:
             1fr !important;
     }
 
     .mobile-checkout h3 {
-
         color:
             var(--brand-blue) !important;
     }
@@ -1820,7 +1731,6 @@ button {
     .mobile-checkout input:focus,
     .mobile-checkout select:focus,
     .mobile-checkout textarea:focus {
-
         border-color:
             var(--brand-wine) !important;
 
@@ -1830,7 +1740,6 @@ button {
     }
 
     .mobile-checkout form button[type="submit"] {
-
         background:
             var(--brand-wine) !important;
     }
@@ -1841,7 +1750,6 @@ button {
     ===================================================== */
 
     #toastContainer {
-
         left:
             12px !important;
 
@@ -1862,7 +1770,6 @@ button {
     }
 
     #toastContainer > div {
-
         background:
             var(--brand-blue-dark) !important;
 
@@ -1874,15 +1781,23 @@ button {
 
     /* =====================================================
        CART OPEN
+       
+       IMPORTANTE:
+       SOLO EL CARRITO OCULTA LA NAV.
+       EL CHECKOUT YA NO USA cart-is-open.
     ===================================================== */
 
     body.cart-is-open #mobileBottomNav {
-
         transform:
             translateY(100%);
 
         transition:
             transform .25s ease;
+    }
+
+    body.checkout-is-open {
+        overflow:
+            hidden !important;
     }
 
 }
@@ -1895,7 +1810,6 @@ button {
 @media (max-width: 360px) {
 
     .mobile-logo img {
-
         max-width:
             170px !important;
 
@@ -1904,13 +1818,11 @@ button {
     }
 
     .mobile-hero-image {
-
         height:
             115px !important;
     }
 
     .mobile-main {
-
         padding-left:
             7px !important;
 
@@ -1919,13 +1831,11 @@ button {
     }
 
     #productsGrid {
-
         gap:
             6px !important;
     }
 
     .product-card {
-
         padding:
             7px !important;
 
@@ -1934,7 +1844,6 @@ button {
     }
 
     .product-image {
-
         height:
             88px !important;
 
@@ -1943,19 +1852,16 @@ button {
     }
 
     .product-name {
-
         font-size:
             9px !important;
     }
 
     .product-price {
-
         font-size:
             11px !important;
     }
 
     .product-quantity button {
-
         width:
             21px !important;
 
@@ -1967,7 +1873,6 @@ button {
     }
 
     .product-quantity-value {
-
         min-width:
             17px !important;
 
@@ -1976,7 +1881,6 @@ button {
     }
 
     .product-add {
-
         font-size:
             8px !important;
     }
@@ -1984,10 +1888,15 @@ button {
 
 
 /* =========================================================
-   BODY CART
+   BODY STATES
 ========================================================= */
 
 body.cart-is-open {
+    overflow:
+        hidden !important;
+}
+
+body.checkout-is-open {
     overflow:
         hidden !important;
 }
@@ -2116,7 +2025,6 @@ body.cart-is-open {
             id="cartTrigger"
             type="button"
             style="display:none;">
-
         </button>
 
     </div>
@@ -2752,12 +2660,6 @@ document.addEventListener(
     "DOMContentLoaded",
     function() {
 
-        /*
-           IMPORTANTE:
-           limpiamos cualquier estado visual extraño
-           antes de cargar los productos.
-        */
-
         document.body.style.opacity = "1";
         document.body.style.filter = "none";
         document.body.style.backdropFilter = "none";
@@ -2771,14 +2673,26 @@ document.addEventListener(
         const panel =
             document.getElementById("cartPanel");
 
+
         if (overlay) {
+
             overlay.classList.add("hidden");
-            overlay.style.display = "none";
+
+            overlay.style.display =
+                "none";
+
         }
 
+
         if (checkout) {
+
             checkout.classList.add("hidden");
+
+            checkout.style.display =
+                "none";
+
         }
+
 
         if (panel) {
 
@@ -2796,11 +2710,15 @@ document.addEventListener(
 
             panel.style.pointerEvents =
                 "none";
+
         }
 
+
         document.body.classList.remove(
-            "cart-is-open"
+            "cart-is-open",
+            "checkout-is-open"
         );
+
 
         loadCartFromLocalStorage();
 
@@ -2839,13 +2757,16 @@ async function fetchProductsFromSheet() {
             await fetch(SHEETDB_API);
 
         if (!response.ok) {
+
             throw new Error(
                 "Error conectando con SheetDB"
             );
+
         }
 
         const data =
             await response.json();
+
 
         products =
             data.map(function(item) {
@@ -2876,12 +2797,6 @@ async function fetchProductsFromSheet() {
                             .replace(/[^0-9]/g, "")
                         ) || 0,
 
-                    /*
-                       oldPrice SE CONSERVA EN LOS DATOS
-                       por compatibilidad con SheetDB,
-                       pero YA NO SE MUESTRA.
-                    */
-
                     oldPrice:
                         item.oldPrice
                             ? parseFloat(
@@ -2904,6 +2819,7 @@ async function fetchProductsFromSheet() {
 
             });
 
+
         renderProducts();
 
     } catch(error) {
@@ -2912,6 +2828,7 @@ async function fetchProductsFromSheet() {
             "Error cargando productos:",
             error
         );
+
 
         document.getElementById(
             "productsGrid"
@@ -2959,26 +2876,25 @@ function changeProductQuantity(id, delta) {
     let next =
         current + Number(delta || 0);
 
+
     if (next < 1) {
         next = 1;
     }
-
-    /*
-       Evitamos cantidades absurdamente grandes
-       por errores de toque.
-    */
 
     if (next > 99) {
         next = 99;
     }
 
+
     selectedQuantities[id] =
         next;
+
 
     const quantityElement =
         document.getElementById(
             `productQty-${id}`
         );
+
 
     if (quantityElement) {
 
@@ -3085,6 +3001,7 @@ function renderProducts() {
             const selected =
                 getSelectedQuantity(p.id);
 
+
             return `
 
                 <article
@@ -3154,10 +3071,6 @@ function renderProducts() {
 
                         </h3>
 
-
-                        <!-- =================================
-                             PRECIO + CONTADOR
-                        ================================== -->
 
                         <div
                             class="product-price-row">
@@ -3255,14 +3168,17 @@ function filterCategory(category) {
 
     searchQuery = "";
 
+
     const input =
         document.getElementById(
             "searchInput"
         );
 
+
     if (input) {
         input.value = "";
     }
+
 
     closeSearchResults();
 
@@ -3324,6 +3240,7 @@ function goHome() {
             "searchInput"
         );
 
+
     if (input) {
         input.value = "";
     }
@@ -3332,6 +3249,8 @@ function goHome() {
     closeSearchResults();
 
     closeCart();
+
+    closeCheckout();
 
 
     const title =
@@ -3349,6 +3268,7 @@ function goHome() {
         title.textContent =
             "Nuestros Productos";
     }
+
 
     if (subtitle) {
         subtitle.textContent =
@@ -3380,6 +3300,8 @@ function openMobileSearch() {
 
     closeCart();
 
+    closeCheckout();
+
 
     const header =
         document.getElementById("top");
@@ -3406,8 +3328,11 @@ function openMobileSearch() {
 
             input.focus();
 
+
             if (input.value.trim()) {
+
                 updateSearchResults();
+
             }
 
         }
@@ -3605,6 +3530,7 @@ function selectSearchProduct(id) {
                             ".product-name"
                         );
 
+
                     return (
                         name &&
                         normalizeText(
@@ -3644,7 +3570,9 @@ function closeSearchResults() {
             "searchResults"
         );
 
+
     if (!results) return;
+
 
     results.classList.remove("show");
 
@@ -3672,6 +3600,7 @@ function loadCartFromLocalStorage() {
             cart =
                 JSON.parse(saved);
 
+
             if (!Array.isArray(cart)) {
                 cart = [];
             }
@@ -3696,6 +3625,7 @@ function saveCart() {
         "merkomax_cart",
         JSON.stringify(cart)
     );
+
 
     updateCartUI();
 
@@ -3800,6 +3730,7 @@ function removeFromCart(id) {
             return item.id !== id;
         });
 
+
     saveCart();
 
 }
@@ -3844,6 +3775,7 @@ function updateCartUI() {
         document.getElementById(
             "cartCounter"
         );
+
 
     if (cartCounter) {
         cartCounter.textContent = count;
@@ -3928,6 +3860,7 @@ function updateCartUI() {
         if (totalElement) {
             totalElement.textContent = "$0";
         }
+
 
         return;
 
@@ -4054,6 +3987,8 @@ function updateCartUI() {
 
 function openMobileCart() {
 
+    closeCheckout();
+
     setMobileNav("cart");
 
     closeSearchResults();
@@ -4081,10 +4016,13 @@ function openCart() {
 
 
     if (!panel || !overlay) {
+
         console.error(
             "No se encontró cartPanel o cartOverlay"
         );
+
         return;
+
     }
 
 
@@ -4206,6 +4144,8 @@ function continueShopping() {
 
     closeCart();
 
+    closeCheckout();
+
     setMobileNav("home");
 
     showToast(
@@ -4255,9 +4195,11 @@ function setMobileNav(active) {
 
 
     if (button) {
+
         button.classList.add(
             "active"
         );
+
     }
 
 }
@@ -4273,6 +4215,7 @@ function showToast(message) {
         document.getElementById(
             "toastContainer"
         );
+
 
     if (!container) return;
 
@@ -4329,6 +4272,156 @@ function toggleCashDetail() {
         payment.value === "Efectivo"
             ? "block"
             : "none";
+
+}
+
+
+/* =========================================================
+   OPEN CHECKOUT
+========================================================= */
+
+function openCheckoutModal() {
+
+    const checkoutModal =
+        document.getElementById(
+            "checkoutModal"
+        );
+
+
+    if (!checkoutModal) {
+
+        console.error(
+            "No se encontró checkoutModal"
+        );
+
+        return;
+
+    }
+
+
+    if (!cart || cart.length === 0) {
+
+        showToast(
+            "El carrito está vacío"
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Cerramos completamente el carrito.
+       IMPORTANTE:
+       esto NO afecta checkout-is-open.
+    */
+
+    closeCart();
+
+
+    /*
+       Abrimos el modal.
+    */
+
+    checkoutModal.classList.remove(
+        "hidden"
+    );
+
+
+    checkoutModal.style.display =
+        "flex";
+
+    checkoutModal.style.visibility =
+        "visible";
+
+    checkoutModal.style.opacity =
+        "1";
+
+    checkoutModal.style.zIndex =
+        "9997";
+
+
+    /*
+       Estado independiente del checkout.
+    */
+
+    document.body.classList.add(
+        "checkout-is-open"
+    );
+
+
+    toggleCashDetail();
+
+
+    /*
+       Enfocamos el primer campo.
+    */
+
+    setTimeout(function() {
+
+        const nameInput =
+            document.getElementById(
+                "custName"
+            );
+
+        if (nameInput) {
+            nameInput.focus();
+        }
+
+    }, 150);
+
+}
+
+
+/* =========================================================
+   CLOSE CHECKOUT
+========================================================= */
+
+function closeCheckout() {
+
+    const checkoutModal =
+        document.getElementById(
+            "checkoutModal"
+        );
+
+
+    if (!checkoutModal) return;
+
+
+    checkoutModal.classList.add(
+        "hidden"
+    );
+
+
+    checkoutModal.style.display =
+        "none";
+
+    checkoutModal.style.visibility =
+        "hidden";
+
+    checkoutModal.style.opacity =
+        "0";
+
+
+    document.body.classList.remove(
+        "checkout-is-open"
+    );
+
+
+    /*
+       La navegación móvil vuelve a estar
+       completamente disponible.
+    */
+
+    if (cart.length > 0) {
+
+        setMobileNav("cart");
+
+    } else {
+
+        setMobileNav("home");
+
+    }
 
 }
 
@@ -4452,6 +4545,12 @@ function setupEvents() {
 
                 closeCart();
 
+                if (cart.length > 0) {
+                    setMobileNav("cart");
+                } else {
+                    setMobileNav("home");
+                }
+
             }
         );
 
@@ -4472,9 +4571,17 @@ function setupEvents() {
 
         overlay.addEventListener(
             "click",
-            function() {
+            function(event) {
+
+                event.preventDefault();
 
                 closeCart();
+
+                if (cart.length > 0) {
+                    setMobileNav("cart");
+                } else {
+                    setMobileNav("home");
+                }
 
             }
         );
@@ -4496,7 +4603,9 @@ function setupEvents() {
 
         continueButton.addEventListener(
             "click",
-            function() {
+            function(event) {
+
+                event.preventDefault();
 
                 continueShopping();
 
@@ -4508,6 +4617,9 @@ function setupEvents() {
 
     /* =====================================================
        CHECKOUT
+       
+       Usamos una función directa y protegida
+       para evitar problemas con el listener.
     ===================================================== */
 
     const checkoutButton =
@@ -4515,55 +4627,17 @@ function setupEvents() {
             "openCheckoutModalBtn"
         );
 
-    const checkoutModal =
-        document.getElementById(
-            "checkoutModal"
-        );
 
-
-    if (
-        checkoutButton &&
-        checkoutModal
-    ) {
+    if (checkoutButton) {
 
         checkoutButton.addEventListener(
             "click",
-            function() {
+            function(event) {
 
-                if (cart.length === 0) {
+                event.preventDefault();
+                event.stopPropagation();
 
-                    showToast(
-                        "El carrito está vacío"
-                    );
-
-                    return;
-
-                }
-
-
-                /*
-                   Cerramos el carrito primero
-                   y luego abrimos el formulario.
-                */
-
-                closeCart();
-
-
-                checkoutModal.classList.remove(
-                    "hidden"
-                );
-
-
-                checkoutModal.style.display =
-                    "flex";
-
-
-                document.body.classList.add(
-                    "cart-is-open"
-                );
-
-
-                toggleCashDetail();
+                openCheckoutModal();
 
             }
         );
@@ -4575,31 +4649,21 @@ function setupEvents() {
        CLOSE CHECKOUT
     ===================================================== */
 
-    const closeCheckout =
+    const closeCheckoutButton =
         document.getElementById(
             "closeCheckoutModal"
         );
 
 
-    if (
-        closeCheckout &&
-        checkoutModal
-    ) {
+    if (closeCheckoutButton) {
 
-        closeCheckout.addEventListener(
+        closeCheckoutButton.addEventListener(
             "click",
-            function() {
+            function(event) {
 
-                checkoutModal.classList.add(
-                    "hidden"
-                );
+                event.preventDefault();
 
-                checkoutModal.style.display =
-                    "none";
-
-                document.body.classList.remove(
-                    "cart-is-open"
-                );
+                closeCheckout();
 
             }
         );
@@ -4610,6 +4674,12 @@ function setupEvents() {
     /* =====================================================
        CLICK OUTSIDE CHECKOUT
     ===================================================== */
+
+    const checkoutModal =
+        document.getElementById(
+            "checkoutModal"
+        );
+
 
     if (checkoutModal) {
 
@@ -4622,16 +4692,7 @@ function setupEvents() {
                     checkoutModal
                 ) {
 
-                    checkoutModal.classList.add(
-                        "hidden"
-                    );
-
-                    checkoutModal.style.display =
-                        "none";
-
-                    document.body.classList.remove(
-                        "cart-is-open"
-                    );
+                    closeCheckout();
 
                 }
 
@@ -4670,30 +4731,17 @@ function setupEvents() {
         function(event) {
 
             if (
-                event.key === "Escape"
+                event.key !== "Escape"
             ) {
-
-                closeSearchResults();
-
-                closeCart();
-
-
-                if (checkoutModal) {
-
-                    checkoutModal.classList.add(
-                        "hidden"
-                    );
-
-                    checkoutModal.style.display =
-                        "none";
-
-                }
-
-                document.body.classList.remove(
-                    "cart-is-open"
-                );
-
+                return;
             }
+
+
+            closeSearchResults();
+
+            closeCart();
+
+            closeCheckout();
 
         }
     );
@@ -4710,11 +4758,33 @@ function submitOrder(event) {
     event.preventDefault();
 
 
-    if (cart.length === 0) {
+    if (!cart || cart.length === 0) {
 
         showToast(
             "El carrito está vacío"
         );
+
+        return;
+
+    }
+
+
+    const form =
+        document.getElementById(
+            "checkoutForm"
+        );
+
+
+    /*
+       Validación nativa del formulario.
+    */
+
+    if (
+        form &&
+        !form.checkValidity()
+    ) {
+
+        form.reportValidity();
 
         return;
 
@@ -4797,7 +4867,7 @@ function submitOrder(event) {
         "\n📦 *PRODUCTOS:*\n";
 
 
-    cart.forEach(function(item,index) {
+    cart.forEach(function(item, index) {
 
         message +=
             `${index + 1}. ${item.name} x${item.quantity} - $${(
@@ -4809,7 +4879,7 @@ function submitOrder(event) {
 
 
     const total =
-        cart.reduce(function(sum,item) {
+        cart.reduce(function(sum, item) {
 
             return (
                 sum +
@@ -4819,7 +4889,7 @@ function submitOrder(event) {
                 )
             );
 
-        },0);
+        }, 0);
 
 
     message +=
@@ -4827,18 +4897,31 @@ function submitOrder(event) {
 
 
     /*
-       Abre WhatsApp con el pedido completo.
+       IMPORTANTE:
+       No usamos window.open().
+       
+       En algunos celulares el navegador
+       bloquea esa ventana.
+
+       window.location.href abre WhatsApp
+       directamente en la misma pestaña.
     */
 
-    window.open(
-        `https://wa.me/573105500791?text=${encodeURIComponent(message)}`,
-        "_blank"
-    );
+    const whatsappUrl =
+        `https://wa.me/573105500791?text=${encodeURIComponent(message)}`;
 
 
     /*
-       Después de enviar:
-       limpiamos carrito y formulario.
+       Guardamos una copia temporal antes
+       de limpiar el carrito.
+    */
+
+    const orderUrl =
+        whatsappUrl;
+
+
+    /*
+       Limpiamos el carrito.
     */
 
     cart = [];
@@ -4846,25 +4929,30 @@ function submitOrder(event) {
     saveCart();
 
 
-    document
-        .getElementById(
-            "checkoutModal"
-        )
-        .classList
-        .add("hidden");
+    /*
+       Cerramos checkout.
+    */
+
+    closeCheckout();
 
 
-    document
-        .getElementById(
-            "checkoutModal"
-        )
-        .style
-        .display = "none";
-
+    /*
+       Dejamos la navegación móvil
+       completamente limpia.
+    */
 
     document.body.classList.remove(
-        "cart-is-open"
+        "cart-is-open",
+        "checkout-is-open"
     );
+
+
+    /*
+       Abrimos WhatsApp.
+    */
+
+    window.location.href =
+        orderUrl;
 
 }
 
