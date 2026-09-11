@@ -11,8 +11,9 @@
             theme: {
                 extend: {
                     colors: {
-                        wine: {
-                            50: '#fdf2f4', 600: '#be2d4e', 700: '#9f203c', 950: '#400a17',
+                        brand: {
+                            red: '#e30613',
+                            dark: '#1e293b'
                         }
                     }
                 }
@@ -26,128 +27,121 @@
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="text-slate-800 antialiased pb-20">
+<body class="text-slate-800 antialiased pb-24">
 
-    <!-- TOP APP BAR -->
-    <header class="sticky top-0 z-40 bg-white border-b border-slate-100 shadow-xs">
-        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-2">
-            <!-- LOGO -->
+    <!-- TOP BAR ESTILO D1 -->
+    <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
             <div class="flex items-center gap-2 cursor-pointer" onclick="resetToHome()">
-                <img src="logo.png" alt="MerkoMAX" class="h-10 w-auto object-contain">
+                <img src="logo.png" alt="MerkoMAX" class="h-9 w-auto object-contain">
             </div>
 
-            <!-- SEARCH BAR CENTRAL -->
-            <div class="flex-1 max-w-md mx-2">
+            <div class="flex-1 max-w-xl">
                 <div class="relative">
                     <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm">🔍</span>
-                    <input type="text" id="searchInput" placeholder="Buscar productos..." 
-                           class="w-full pl-10 pr-4 py-2 bg-slate-100 border-0 rounded-full text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-600 outline-none">
+                    <input type="text" id="searchInput" placeholder="¿Qué estás buscando?" 
+                           class="w-full pl-10 pr-4 py-2 bg-slate-100 border border-transparent rounded-full text-xs font-medium focus:bg-white focus:border-red-600 outline-none transition-all">
                 </div>
             </div>
 
-            <!-- CART ICON BUTTON -->
-            <button id="cartTrigger" class="relative bg-slate-100 p-2.5 rounded-full hover:bg-slate-200 transition-all flex items-center justify-center">
-                <span class="text-base">🛒</span>
-                <span id="cartCounter" class="absolute -top-1 -right-1 bg-wine-700 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-sm">0</span>
+            <button id="cartTrigger" class="relative bg-red-50 text-red-600 px-3 py-2 rounded-full hover:bg-red-100 transition-all flex items-center gap-1.5 font-bold text-xs">
+                <span>🛒</span>
+                <span id="cartCounter" class="bg-red-600 text-white text-[10px] px-1.5 py-0.2 rounded-full">0</span>
             </button>
         </div>
     </header>
 
     <!-- BANNER HERO -->
-    <section class="bg-gradient-to-r from-wine-950 via-slate-900 to-blue-950 text-white py-8 px-4">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-6 items-center">
-            <div class="space-y-3 text-center md:text-left">
-                <span class="bg-white/10 text-wine-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">⚡ Cimitarra Express</span>
-                <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight">Todo lo que necesitas, directo a tu casa.</h1>
-                <p class="text-slate-300 text-xs md:text-sm">Calidad garantizada, precios bajos y entregas rápidas.</p>
+    <section class="bg-gradient-to-r from-slate-900 via-slate-800 to-red-950 text-white py-6 px-4">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-4 items-center">
+            <div class="space-y-2 text-center md:text-left">
+                <span class="bg-red-600/30 text-red-300 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider">⚡ Cimitarra Express</span>
+                <h1 class="text-xl md:text-3xl font-extrabold tracking-tight">Todo lo que necesitas, directo a tu casa.</h1>
+                <p class="text-slate-300 text-xs">Calidad garantizada, precios bajos y entregas rápidas.</p>
             </div>
-            <div class="rounded-2xl overflow-hidden shadow-lg border border-slate-700/50">
-                <img src="banner.jpeg" alt="Banner" class="w-full h-40 md:h-56 object-cover">
+            <div class="rounded-2xl overflow-hidden shadow-lg border border-slate-700">
+                <img src="banner.jpeg" alt="Banner" class="w-full h-36 md:h-48 object-cover">
             </div>
         </div>
     </section>
 
-    <!-- CATEGORÍAS CÍRCULOS (Estilo App Moderna) -->
-    <section class="py-6 max-w-7xl mx-auto px-4">
-        <h3 class="text-sm font-bold text-slate-900 mb-4 flex items-center gap-1.5">
-            <span>✨</span> Categorías Populares
-        </h3>
-        <div class="flex gap-4 overflow-x-auto pb-3 hide-scrollbar">
+    <!-- CATEGORÍAS CÍRCULOS -->
+    <section class="py-4 max-w-7xl mx-auto px-4">
+        <div class="flex gap-4 overflow-x-auto pb-2 hide-scrollbar">
             <button onclick="filterCategory('todos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
-                <div class="w-16 h-16 rounded-full bg-slate-900 text-white flex items-center justify-center text-xl shadow-md group-hover:scale-105 transition-all">🌐</div>
+                <div class="w-14 h-14 rounded-full bg-slate-900 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🌐</div>
                 <span class="text-[11px] font-semibold text-slate-700">Todos</span>
             </button>
             <button onclick="filterCategory('mas-vendidos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
-                <div class="w-16 h-16 rounded-full bg-amber-500 text-white flex items-center justify-center text-xl shadow-md group-hover:scale-105 transition-all">🔥</div>
+                <div class="w-14 h-14 rounded-full bg-amber-500 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🔥</div>
                 <span class="text-[11px] font-semibold text-slate-700">Top Ventas</span>
             </button>
             <button onclick="filterCategory('combos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
-                <div class="w-16 h-16 rounded-full bg-wine-700 text-white flex items-center justify-center text-xl shadow-md group-hover:scale-105 transition-all">📦</div>
+                <div class="w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">📦</div>
                 <span class="text-[11px] font-semibold text-slate-700">Combos</span>
             </button>
             <button onclick="filterCategory('despensa')" class="flex flex-col items-center gap-1.5 shrink-0 group">
-                <div class="w-16 h-16 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xl shadow-sm group-hover:scale-105 transition-all">🛒</div>
+                <div class="w-14 h-14 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🛒</div>
                 <span class="text-[11px] font-semibold text-slate-700">Despensa</span>
             </button>
             <button onclick="filterCategory('frescos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
-                <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl shadow-sm group-hover:scale-105 transition-all">🍎</div>
+                <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🍎</div>
                 <span class="text-[11px] font-semibold text-slate-700">Frutas</span>
             </button>
             <button onclick="filterCategory('lacteos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
-                <div class="w-16 h-16 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center text-xl shadow-sm group-hover:scale-105 transition-all">🥛</div>
+                <div class="w-14 h-14 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🥛</div>
                 <span class="text-[11px] font-semibold text-slate-700">Lácteos</span>
             </button>
             <button onclick="filterCategory('aseo')" class="flex flex-col items-center gap-1.5 shrink-0 group">
-                <div class="w-16 h-16 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-xl shadow-sm group-hover:scale-105 transition-all">✨</div>
+                <div class="w-14 h-14 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">✨</div>
                 <span class="text-[11px] font-semibold text-slate-700">Aseo</span>
             </button>
         </div>
     </section>
 
-    <!-- SECCIÓN PRODUCTOS -->
-    <main class="max-w-7xl mx-auto px-4 pb-12 space-y-4">
-        <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+    <!-- GRILLA DE PRODUCTOS ESTILO D1 (2 Columnas estrictas en móvil) -->
+    <main class="max-w-7xl mx-auto px-3 pb-12 space-y-3">
+        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
             <div>
-                <h2 id="sectionTitle" class="text-lg font-bold text-slate-900">Nuestros Productos</h2>
-                <p id="sectionSubtitle" class="text-slate-500 text-[11px]">Catálogo actualizado en tiempo real</p>
+                <h2 id="sectionTitle" class="text-sm font-extrabold text-slate-900">Nuestros Productos</h2>
+                <p id="sectionSubtitle" class="text-slate-500 text-[10px]">Catálogo en tiempo real</p>
             </div>
         </div>
 
-        <!-- GRILLA DE 2 COLUMNAS ESTILO TARJETA MODERNA -->
-        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;" id="productsGrid" class="sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-6">
-            <div style="grid-column: span 2;" class="py-12 text-center">
-                <div class="w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
+        <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            <div class="col-span-2 py-12 text-center">
+                <div class="w-6 h-6 border-2 border-red-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
                 <p class="text-xs text-slate-500 mt-2">Cargando productos...</p>
             </div>
         </div>
     </main>
 
-    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <!-- BOTÓN WHATSAPP FLOTANTE -->
     <a href="https://wa.me/573105500791?text=Hola%20MerkoMAX,%20tengo%20una%20consulta" target="_blank" 
-       class="fixed bottom-6 left-6 z-40 bg-emerald-600 text-white p-3.5 rounded-full shadow-xl flex items-center justify-center hover:scale-110 transition-transform">
-        <span class="text-xl">💬</span>
+       class="fixed bottom-5 left-5 z-40 bg-emerald-600 text-white p-3.5 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform">
+        <span class="text-lg">💬</span>
     </a>
 
     <!-- CART DRAWER -->
     <div id="cartOverlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden"></div>
     <div id="cartPanel" class="fixed inset-y-0 right-0 max-w-full flex pl-10 z-50 transform translate-x-full transition-transform duration-300">
         <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
-            <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
-                <h3 class="font-bold text-sm text-slate-900 flex items-center gap-1.5"><span>🛒</span> Tu Carrito</h3>
+            <div class="p-3.5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+                <h3 class="font-bold text-xs text-slate-900 flex items-center gap-1"><span>🛒</span> Tu Carrito</h3>
                 <div class="flex items-center gap-2">
-                    <button id="clearCartBtn" onclick="clearCart()" class="hidden text-red-500 text-[11px] font-semibold bg-red-50 px-2 py-1 rounded-md">Vaciar</button>
+                    <button id="clearCartBtn" onclick="clearCart()" class="hidden text-red-500 text-[10px] font-semibold bg-red-50 px-2 py-0.5 rounded-md">Vaciar</button>
                     <button id="closeCart" class="text-slate-400 hover:text-slate-600 font-bold p-1">✕</button>
                 </div>
             </div>
 
-            <div id="cartContent" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
+            <div id="cartContent" class="flex-1 overflow-y-auto p-3 space-y-2"></div>
 
-            <div class="p-4 border-t border-slate-100 bg-slate-50 space-y-3">
-                <div class="flex justify-between font-bold text-sm">
+            <div class="p-3.5 border-t border-slate-100 bg-slate-50 space-y-2">
+                <div class="flex justify-between font-bold text-xs">
                     <span>Total a pagar</span>
-                    <span id="cartTotal" class="text-blue-600 text-base">$0</span>
+                    <span id="cartTotal" class="text-red-600 text-sm">$0</span>
                 </div>
-                <button id="openCheckoutModalBtn" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl shadow-md text-xs">
+                <button id="openCheckoutModalBtn" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl shadow-xs text-xs">
                     Continuar Pedido por WhatsApp ➔
                 </button>
             </div>
@@ -155,42 +149,42 @@
     </div>
 
     <!-- MODAL CHECKOUT -->
-    <div id="checkoutModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-            <button id="closeCheckoutModal" class="absolute top-4 right-4 text-slate-400 font-bold text-sm">✕</button>
-            <h3 class="text-base font-extrabold text-slate-900">📍 Datos para tu Entrega</h3>
-            <form id="checkoutForm" class="space-y-3 text-xs">
+    <div id="checkoutModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3">
+        <div class="bg-white rounded-2xl max-w-md w-full p-4 space-y-3 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button id="closeCheckoutModal" class="absolute top-3 right-3 text-slate-400 font-bold text-xs">✕</button>
+            <h3 class="text-xs font-extrabold text-slate-900">📍 Datos para tu Entrega</h3>
+            <form id="checkoutForm" class="space-y-2.5 text-xs">
                 <div>
-                    <label class="block font-bold text-slate-700 mb-1">Nombre Completo *</label>
-                    <input type="text" id="custName" required placeholder="Ej. Maria Perez" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600">
+                    <label class="block font-bold text-slate-700 mb-0.5">Nombre Completo *</label>
+                    <input type="text" id="custName" required placeholder="Ej. Maria Perez" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
                 </div>
                 <div class="grid grid-cols-2 gap-2">
                     <div>
-                        <label class="block font-bold text-slate-700 mb-1">Barrio *</label>
-                        <input type="text" id="custNeighborhood" required placeholder="Ej. El Centro" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600">
+                        <label class="block font-bold text-slate-700 mb-0.5">Barrio *</label>
+                        <input type="text" id="custNeighborhood" required placeholder="Ej. El Centro" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
                     </div>
                     <div>
-                        <label class="block font-bold text-slate-700 mb-1">Dirección *</label>
-                        <input type="text" id="custAddress" required placeholder="Ej. Cra 5 # 8-12" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600">
+                        <label class="block font-bold text-slate-700 mb-0.5">Dirección *</label>
+                        <input type="text" id="custAddress" required placeholder="Ej. Cra 5 # 8-12" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
                     </div>
                 </div>
                 <div>
-                    <label class="block font-bold text-slate-700 mb-1">Método de Pago *</label>
-                    <select id="custPayment" onchange="toggleCashDetail()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600">
+                    <label class="block font-bold text-slate-700 mb-0.5">Método de Pago *</label>
+                    <select id="custPayment" onchange="toggleCashDetail()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
                         <option value="Efectivo">Efectivo contra entrega</option>
                         <option value="Nequi / Daviplata">Nequi / Daviplata</option>
                         <option value="Datáfono">Datáfono</option>
                     </select>
                 </div>
                 <div id="cashDetailBox">
-                    <label class="block font-bold text-slate-700 mb-1">¿Con cuánto dinero cancelas?</label>
-                    <input type="text" id="custCashAmount" placeholder="Ej. Con $50.000 o Exacto" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600">
+                    <label class="block font-bold text-slate-700 mb-0.5">¿Con cuánto dinero cancelas?</label>
+                    <input type="text" id="custCashAmount" placeholder="Ej. Con $50.000 o Exacto" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
                 </div>
                 <div>
-                    <label class="block font-bold text-slate-700 mb-1">Notas (Opcional)</label>
-                    <textarea id="custNotes" rows="2" placeholder="Instrucciones adicionales..." class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600"></textarea>
+                    <label class="block font-bold text-slate-700 mb-0.5">Notas (Opcional)</label>
+                    <textarea id="custNotes" rows="2" placeholder="Instrucciones adicionales..." class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600"></textarea>
                 </div>
-                <button type="submit" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-md text-xs mt-2">
+                <button type="submit" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-xs text-xs mt-1">
                     💬 Enviar Pedido a WhatsApp
                 </button>
             </form>
@@ -198,7 +192,7 @@
     </div>
 
     <!-- TOAST -->
-    <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+    <div id="toastContainer" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
     <!-- SCRIPT -->
     <script>
@@ -247,24 +241,26 @@
             }
 
             grid.innerHTML = filtered.map(p => `
-                <div class="bg-white rounded-2xl p-3 border border-slate-100 shadow-xs flex flex-col justify-between relative group hover:shadow-md transition-all">
-                    ${p.category === 'combos' ? '<span class="absolute top-2.5 left-2.5 z-10 bg-wine-700 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">COMBO</span>' : ''}
+                <div class="bg-white rounded-2xl p-3 border border-slate-100 shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-all">
+                    <!-- Icono de check verde superior derecho estilo D1 -->
+                    <div class="absolute top-2.5 right-2.5 z-10 bg-emerald-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shadow-xs">✓</div>
+                    
+                    ${p.category === 'combos' ? '<span class="absolute top-2.5 left-2.5 z-10 bg-red-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">COMBO</span>' : ''}
                     ${p.isBestSeller && p.category !== 'combos' ? '<span class="absolute top-2.5 left-2.5 z-10 bg-amber-500 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">TOP</span>' : ''}
 
                     <div>
-                        <div class="h-32 w-full rounded-xl overflow-hidden bg-slate-50 mb-2.5 flex items-center justify-center">
+                        <div class="h-32 w-full rounded-xl overflow-hidden bg-slate-50 mb-2 flex items-center justify-center">
                             <img src="${p.image}" alt="${p.name}" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
                         </div>
-                        <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wide">${p.category}</span>
-                        <h3 class="font-bold text-slate-900 text-xs line-clamp-2 mt-0.5">${p.name}</h3>
+                        <h3 class="font-bold text-slate-900 text-xs line-clamp-2 mt-1 h-8 leading-tight">${p.name}</h3>
                     </div>
 
-                    <div class="pt-2.5 border-t border-slate-50 mt-2.5 space-y-2">
-                        <div class="flex items-baseline gap-1.5">
-                            <span class="text-sm font-extrabold text-slate-900">$${p.price.toLocaleString('es-CO')}</span>
-                            ${p.oldPrice ? `<span class="text-[10px] text-slate-400 line-through">$${p.oldPrice.toLocaleString('es-CO')}</span>` : ''}
+                    <div class="pt-2 border-t border-slate-50 mt-2 space-y-2">
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-xs font-extrabold text-slate-900">$${p.price.toLocaleString('es-CO')}</span>
+                            ${p.oldPrice ? `<span class="text-[9px] text-slate-400 line-through">$${p.oldPrice.toLocaleString('es-CO')}</span>` : ''}
                         </div>
-                        <button onclick="addToCart(${p.id})" class="w-full bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white font-bold py-2 rounded-xl text-xs transition-colors flex items-center justify-center gap-1">
+                        <button onclick="addToCart(${p.id})" class="w-full bg-red-50 hover:bg-red-600 text-red-600 hover:text-white font-bold py-2 rounded-xl text-[11px] transition-colors flex items-center justify-center gap-1">
                             <span>+ Agregar</span>
                         </button>
                     </div>
@@ -329,15 +325,15 @@
             }
 
             content.innerHTML = cart.map(i => `
-                <div class="flex items-center gap-3 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                    <img src="${i.image}" class="w-12 h-12 object-cover rounded-lg bg-white shrink-0">
+                <div class="flex items-center gap-2.5 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                    <img src="${i.image}" class="w-10 h-10 object-cover rounded-lg bg-white shrink-0">
                     <div class="flex-1 min-w-0">
-                        <h5 class="font-bold text-slate-900 text-xs truncate">${i.name}</h5>
-                        <p class="text-blue-600 font-extrabold text-xs">$${(i.price * i.quantity).toLocaleString('es-CO')}</p>
+                        <h5 class="font-bold text-slate-900 text-[11px] truncate">${i.name}</h5>
+                        <p class="text-red-600 font-extrabold text-[11px]">$${(i.price * i.quantity).toLocaleString('es-CO')}</p>
                         <div class="flex items-center gap-2 mt-1">
-                            <button onclick="updateQty(${i.id}, -1)" class="w-5 h-5 bg-white border rounded text-xs font-bold">-</button>
-                            <span class="text-xs font-bold">${i.quantity}</span>
-                            <button onclick="updateQty(${i.id}, 1)" class="w-5 h-5 bg-white border rounded text-xs font-bold">+</button>
+                            <button onclick="updateQty(${i.id}, -1)" class="w-5 h-5 bg-white border rounded text-[10px] font-bold">-</button>
+                            <span class="text-[11px] font-bold">${i.quantity}</span>
+                            <button onclick="updateQty(${i.id}, 1)" class="w-5 h-5 bg-white border rounded text-[10px] font-bold">+</button>
                         </div>
                     </div>
                     <button onclick="removeFromCart(${i.id})" class="text-slate-400 hover:text-red-600 text-xs font-bold p-1">✕</button>
@@ -351,7 +347,7 @@
         function showToast(msg) {
             const container = document.getElementById('toastContainer');
             const t = document.createElement('div');
-            t.className = "bg-slate-900 text-white text-xs font-semibold px-3.5 py-2.5 rounded-xl shadow-lg";
+            t.className = "bg-slate-900 text-white text-[11px] font-semibold px-3 py-2 rounded-xl shadow-lg";
             t.textContent = msg;
             container.appendChild(t);
             setTimeout(() => t.remove(), 2500);
