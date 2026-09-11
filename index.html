@@ -22,512 +22,58 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; }
-        html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
-        img { max-width: 100%; }
-        button, input, select, textarea { max-width: 100%; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Responsive fixes */
         @media (max-width: 640px) {
-            body { padding-bottom: 70px; }
-
-            .mobile-header {
-                height: auto !important;
-                min-height: 64px;
-                padding-top: 10px !important;
-                padding-bottom: 10px !important;
-                flex-wrap: wrap;
-            }
-
-            .mobile-logo { flex: 0 0 auto; }
-            .mobile-logo img { height: 34px !important; }
-
-            .mobile-cart { flex: 0 0 auto; }
-            .mobile-search {
-                order: 3;
-                flex: 1 0 100% !important;
-                max-width: none !important;
-                width: 100%;
-            }
-
-            .mobile-hero {
-                padding-top: 18px !important;
-                padding-bottom: 18px !important;
-            }
-
-            .mobile-hero-grid { grid-template-columns: 1fr !important; }
-            .mobile-hero-image img { height: 150px !important; }
-
-            .mobile-categories {
-                gap: 12px !important;
-                padding-left: 2px;
-                padding-right: 2px;
-            }
-
-            .mobile-category-button { min-width: 64px; }
-            .mobile-category-icon {
-                width: 52px !important;
-                height: 52px !important;
-                font-size: 16px !important;
-            }
-
-            .mobile-main { padding-left: 10px !important; padding-right: 10px !important; }
-
-            .mobile-products-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            header > div {
                 gap: 8px !important;
+                padding-left: 10px !important;
+                padding-right: 10px !important;
             }
-
-            .product-card {
+            header > div > div:first-child {
+                flex: 0 0 auto;
+            }
+            header > div > div:nth-child(2) {
+                flex: 1 1 auto;
                 min-width: 0;
-                padding: 9px !important;
-                border-radius: 16px !important;
+                max-width: none;
             }
-
-            .product-image { height: 118px !important; border-radius: 11px !important; }
-            .product-name {
-                font-size: 11px !important;
-                height: 32px !important;
-                overflow: hidden;
+            header > div > div:nth-child(2) input {
+                padding-left: 14px !important;
             }
-
-            .product-price { font-size: 12px !important; }
-            .product-old-price { font-size: 8px !important; }
-            .product-add { padding-top: 9px !important; padding-bottom: 9px !important; font-size: 10px !important; }
-
-            .mobile-cart-panel {
-                width: min(92vw, 390px) !important;
-                max-width: 92vw !important;
+            header > div > button {
+                flex: 0 0 auto;
             }
-
-            .mobile-cart-wrapper {
-                padding-left: 0 !important;
-                width: min(92vw, 390px) !important;
-            }
-
-            .mobile-checkout {
-                width: 100% !important;
-                max-width: 100% !important;
-                max-height: 94vh !important;
-                padding: 16px !important;
-                border-radius: 18px !important;
-            }
-
-            .mobile-checkout-grid { grid-template-columns: 1fr !important; }
-
-            #toastContainer {
-                left: 10px !important;
-                right: 10px !important;
-                bottom: 12px !important;
-                align-items: center;
-            }
-
-            #toastContainer > div { max-width: calc(100vw - 20px); text-align: center; }
-
-            #cartOverlay { width: 100vw; }
-        }
-
-        @media (min-width: 641px) and (max-width: 900px) {
-            .mobile-products-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-            }
-        }
-
-        @supports (padding-bottom: env(safe-area-inset-bottom)) {
-            body { padding-bottom: calc(70px + env(safe-area-inset-bottom)); }
-        }
-
-        /* =========================================================
-           MERKOMAX — MOBILE APP EXPERIENCE
-           ========================================================= */
-        @media (max-width: 640px) {
-            body {
-                background: #f4f6f8;
-                padding-bottom: calc(82px + env(safe-area-inset-bottom));
-            }
-
-            /* App-like top bar */
-            header {
-                background: rgba(255,255,255,.96) !important;
-                backdrop-filter: blur(14px);
-                -webkit-backdrop-filter: blur(14px);
-                box-shadow: 0 1px 10px rgba(15,23,42,.06) !important;
-            }
-
-            .mobile-header {
-                min-height: 62px;
-                height: 62px !important;
-                padding: 9px 12px !important;
-                gap: 8px !important;
-                flex-wrap: nowrap !important;
-            }
-
-            .mobile-logo {
-                flex: 0 0 auto !important;
-            }
-
-            .mobile-logo img {
+            header img {
                 height: 36px !important;
             }
-
-            .mobile-search {
-                margin-top: 0 !important;
-                flex: 1 1 auto !important;
-                width: auto !important;
-                max-width: none !important;
-                order: initial !important;
+            section .rounded-2xl img {
+                height: 176px !important;
+                object-fit: cover;
+                object-position: center 45%;
             }
-
-            .mobile-search input {
-                height: 42px;
-                padding-left: 14px !important;
-                padding-right: 14px !important;
-                border: 1px solid #e2e8f0 !important;
-                background: #f1f5f9 !important;
-                font-size: 13px !important;
-                border-radius: 13px !important;
-            }
-
-            .mobile-search input:focus {
-                background: #fff !important;
-                border-color: #e30613 !important;
-                box-shadow: 0 0 0 3px rgba(227,6,19,.08);
-            }
-
-            #cartTrigger {
-                display: none !important;
-                min-width: 44px;
-                height: 42px;
-                padding: 0 10px !important;
-                border-radius: 13px !important;
-                justify-content: center;
-                box-shadow: 0 2px 7px rgba(227,6,19,.08);
-            }
-
-            #cartTrigger > span:first-child {
-                font-size: 18px;
-            }
-
-            /* Compact hero */
-            .mobile-hero {
-                padding: 16px 12px 14px !important;
-                background: linear-gradient(145deg,#0f172a 0%,#1e293b 58%,#7f1d1d 100%) !important;
-            }
-
-            .mobile-hero-grid {
-                gap: 12px !important;
-            }
-
-            .mobile-hero-grid > div:first-child {
-                text-align: left !important;
-            }
-
-            .mobile-hero h1 {
-                font-size: 20px !important;
-                line-height: 1.18 !important;
-                max-width: 330px;
-            }
-
-            .mobile-hero p {
-                font-size: 11px !important;
-                line-height: 1.45;
-                max-width: 330px;
-            }
-
-            .mobile-hero-image {
-                border-radius: 14px !important;
-            }
-
-            .mobile-hero-image img {
-                height: 150px !important;
-                object-fit: cover !important;
-                object-position: center 40% !important;
-                transform: scale(1.10);
-            }
-
-            /* Category rail */
-            section.py-4 {
-                padding-top: 12px !important;
-                padding-bottom: 9px !important;
-                background: #fff;
-                border-bottom: 1px solid #eef2f7;
-            }
-
-            .mobile-categories {
-                gap: 15px !important;
-                padding: 0 3px 4px !important;
-            }
-
-            .mobile-category-button {
-                min-width: 58px;
-            }
-
-            .mobile-category-icon {
-                width: 48px !important;
-                height: 48px !important;
-                font-size: 15px !important;
-                border: 1px solid rgba(15,23,42,.04);
-                box-shadow: 0 2px 7px rgba(15,23,42,.06) !important;
-            }
-
-            .mobile-category-button span:last-child {
-                font-size: 9px !important;
-                white-space: nowrap;
-            }
-
-            /* Products header */
-            .mobile-main {
-                padding: 13px 10px 20px !important;
-            }
-
-            .mobile-main > div:first-child {
-                padding-bottom: 9px !important;
-                margin-bottom: 2px;
-            }
-
-            #sectionTitle {
-                font-size: 15px !important;
-            }
-
-            #sectionSubtitle {
-                font-size: 9px !important;
-            }
-
-            /* App product cards */
-            .mobile-products-grid {
-                grid-template-columns: repeat(2,minmax(0,1fr)) !important;
-                gap: 9px !important;
-            }
-
-            .product-card {
-                padding: 9px !important;
-                border-radius: 15px !important;
-                border: 1px solid #e9edf2 !important;
-                box-shadow: 0 2px 9px rgba(15,23,42,.055) !important;
-                overflow: hidden;
-            }
-
-            .product-card:active {
-                transform: scale(.985);
-            }
-
-            .product-image {
-                height: 128px !important;
-                margin-bottom: 8px !important;
-                border-radius: 11px !important;
-                background: #f8fafc !important;
-            }
-
-            .product-image img {
-                object-fit: contain !important;
-                padding: 5px;
-            }
-
-            .product-name {
-                font-size: 11px !important;
-                line-height: 1.25 !important;
-                height: 29px !important;
-                margin-top: 2px !important;
-            }
-
-            .product-price {
-                font-size: 13px !important;
-                letter-spacing: -.2px;
-            }
-
-            .product-old-price {
-                font-size: 8px !important;
-            }
-
-            .product-add {
-                min-height: 34px;
-                padding: 7px 5px !important;
-                border-radius: 10px !important;
-                font-size: 10px !important;
-            }
-
-            .product-card .absolute.top-2\.5.right-2\.5 {
-                top: 8px !important;
-                right: 8px !important;
-                width: 21px !important;
-                height: 21px !important;
-            }
-
-            /* Floating WhatsApp */
-            body > a[href*="wa.me"] {
-                left: auto !important;
-                right: 14px !important;
-                bottom: 79px !important;
-                width: 50px;
-                height: 50px;
-                padding: 0 !important;
-                border-radius: 16px !important;
-                box-shadow: 0 7px 18px rgba(5,150,105,.25) !important;
-            }
-
-            body > a[href*="wa.me"] span {
-                font-size: 19px !important;
-            }
-
-            /* Mobile bottom navigation */
-            #mobileBottomNav {
-                position: fixed;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                z-index: 45;
-                height: calc(64px + env(safe-area-inset-bottom));
-                padding: 7px 20px env(safe-area-inset-bottom);
-                display: flex;
-                align-items: flex-start;
-                justify-content: space-around;
-                background: rgba(255,255,255,.97);
-                backdrop-filter: blur(15px);
-                -webkit-backdrop-filter: blur(15px);
-                border-top: 1px solid #e5e7eb;
-                box-shadow: 0 -5px 18px rgba(15,23,42,.06);
-            }
-
-            #mobileBottomNav button {
-                width: 76px;
-                height: 52px;
-                border: 0;
-                background: transparent;
-                color: #64748b;
-                font-size: 9px;
-                font-weight: 700;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 2px;
-            }
-
-            #mobileBottomNav button .nav-icon {
-                font-size: 18px;
-                line-height: 20px;
-            }
-
-            #mobileBottomNav button.active {
-                color: #e30613;
-            }
-
-            #mobileBottomNav .nav-cart-wrap {
-                position: relative;
-            }
-
-            #mobileBottomNav .nav-cart-count {
-                position: absolute;
-                top: -1px;
-                right: 12px;
-                min-width: 15px;
-                height: 15px;
-                padding: 0 4px;
-                border-radius: 99px;
-                background: #e30613;
-                color: white;
-                font-size: 8px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            /* Cart drawer */
-            .mobile-cart-wrapper {
-                padding-left: 0 !important;
-                width: min(100vw,410px) !important;
-            }
-
-            .mobile-cart-panel {
-                width: 100% !important;
-                max-width: 100% !important;
-                border-radius: 20px 0 0 20px;
-            }
-
-            #cartContent {
-                padding: 12px !important;
-            }
-
-            /* Checkout sheet */
-            #checkoutModal {
-                align-items: flex-end !important;
-                padding: 0 !important;
-            }
-
-            .mobile-checkout {
-                width: 100% !important;
-                max-width: 100% !important;
-                max-height: 94vh !important;
-                border-radius: 22px 22px 0 0 !important;
-                padding: 18px 15px calc(18px + env(safe-area-inset-bottom)) !important;
-            }
-
-            .mobile-checkout-grid {
-                grid-template-columns: 1fr !important;
-            }
-
-            /* Toast */
-            #toastContainer {
-                left: 12px !important;
-                right: 12px !important;
-                bottom: 76px !important;
-                align-items: center;
-            }
-
-            #toastContainer > div {
-                max-width: calc(100vw - 24px);
-                text-align: center;
-                border-radius: 12px;
-                padding: 10px 13px;
-            }
-        }
-
-        @media (min-width: 641px) {
-            #mobileBottomNav { display: none !important; }
         }
     </style>
 </head>
-
 <body class="text-slate-800 antialiased pb-24">
 
-    <!-- NAVEGACIÓN INFERIOR — SOLO MÓVIL -->
-    <nav id="mobileBottomNav" class="md:hidden">
-        <button id="mobileHomeBtn" class="active" onclick="resetToHome(); setMobileNav('home')">
-            <span class="nav-icon">⌂</span>
-            <span>Inicio</span>
-        </button>
-
-        <button onclick="document.getElementById('searchInput').focus(); setMobileNav('search')">
-            <span class="nav-icon">⌕</span>
-            <span>Buscar</span>
-        </button>
-
-        <button class="nav-cart-wrap" onclick="document.getElementById('cartTrigger').click(); setMobileNav('cart')">
-            <span class="nav-icon">🛒</span>
-            <span>Carrito</span>
-            <span id="mobileNavCartCounter" class="nav-cart-count">0</span>
-        </button>
-    </nav>
-
-    <!-- TOP BAR -->
+    <!-- TOP BAR ESTILO D1 -->
     <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-xs">
-        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3 mobile-header">
-
-            <div class="flex items-center gap-2 cursor-pointer mobile-logo" onclick="resetToHome()">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="resetToHome()">
                 <img src="logo.png" alt="MerkoMAX" class="h-9 w-auto object-contain">
             </div>
 
-            <div class="flex-1 max-w-xl mobile-search">
+            <div class="flex-1 max-w-xl">
                 <div class="relative">
-                    <input type="text" id="searchInput" placeholder="¿Qué estás buscando?"
+                    <input type="text" id="searchInput" placeholder="¿Qué estás buscando?" 
                            class="w-full pl-4 pr-4 py-2 bg-slate-100 border border-transparent rounded-full text-xs font-medium focus:bg-white focus:border-red-600 outline-none transition-all">
                 </div>
             </div>
 
-            <button id="cartTrigger" class="mobile-cart relative bg-red-50 text-red-600 px-3 py-2 rounded-full hover:bg-red-100 transition-all flex items-center gap-1.5 font-bold text-xs">
+            <button id="cartTrigger" class="relative bg-red-50 text-red-600 px-3 py-2 rounded-full hover:bg-red-100 transition-all flex items-center gap-1.5 font-bold text-xs">
                 <span>🛒</span>
                 <span id="cartCounter" class="bg-red-600 text-white text-[10px] px-1.5 py-0.2 rounded-full">0</span>
             </button>
@@ -535,290 +81,151 @@
     </header>
 
     <!-- BANNER HERO -->
-    <section class="mobile-hero bg-gradient-to-r from-slate-900 via-slate-800 to-red-950 text-white py-6 px-4">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-4 items-center mobile-hero-grid">
-
+    <section class="bg-gradient-to-r from-slate-900 via-slate-800 to-red-950 text-white py-6 px-4">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-4 items-center">
             <div class="space-y-2 text-center md:text-left">
-                <span class="bg-red-600/30 text-red-300 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider">
-                    ⚡ Cimitarra Express
-                </span>
-
-                <h1 class="text-xl md:text-3xl font-extrabold tracking-tight">
-                    Todo lo que necesitas, directo a tu casa.
-                </h1>
-
-                <p class="text-slate-300 text-xs">
-                    Calidad garantizada, precios bajos y entregas rápidas.
-                </p>
+                <span class="bg-red-600/30 text-red-300 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider">⚡ Cimitarra Express</span>
+                <h1 class="text-xl md:text-3xl font-extrabold tracking-tight">Todo lo que necesitas, directo a tu casa.</h1>
+                <p class="text-slate-300 text-xs">Calidad garantizada, precios bajos y entregas rápidas.</p>
             </div>
-
-            <div class="mobile-hero-image rounded-2xl overflow-hidden shadow-lg border border-slate-700">
+            <div class="rounded-2xl overflow-hidden shadow-lg border border-slate-700">
                 <img src="banner.jpeg" alt="Banner" class="w-full h-36 md:h-48 object-cover">
             </div>
         </div>
     </section>
 
-    <!-- CATEGORÍAS -->
+    <!-- CATEGORÍAS CÍRCULOS -->
     <section class="py-4 max-w-7xl mx-auto px-4">
-        <div class="flex gap-4 overflow-x-auto pb-2 hide-scrollbar mobile-categories">
-
-            <button class="mobile-category-button" onclick="filterCategory('todos')">
-                <div class="mobile-category-icon w-14 h-14 rounded-full bg-slate-900 text-white flex items-center justify-center text-lg shadow-sm">
-                    🌐
-                </div>
+        <div class="flex gap-4 overflow-x-auto pb-2 hide-scrollbar">
+            <button onclick="filterCategory('todos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="w-14 h-14 rounded-full bg-slate-900 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🌐</div>
                 <span class="text-[11px] font-semibold text-slate-700">Todos</span>
             </button>
-
-            <button class="mobile-category-button" onclick="filterCategory('mas-vendidos')">
-                <div class="mobile-category-icon w-14 h-14 rounded-full bg-amber-500 text-white flex items-center justify-center text-lg shadow-sm">
-                    🔥
-                </div>
+            <button onclick="filterCategory('mas-vendidos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="w-14 h-14 rounded-full bg-amber-500 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🔥</div>
                 <span class="text-[11px] font-semibold text-slate-700">Top Ventas</span>
             </button>
-
-            <button class="mobile-category-button" onclick="filterCategory('combos')">
-                <div class="mobile-category-icon w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center text-lg shadow-sm">
-                    📦
-                </div>
+            <button onclick="filterCategory('combos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">📦</div>
                 <span class="text-[11px] font-semibold text-slate-700">Combos</span>
             </button>
-
-            <button class="mobile-category-button" onclick="filterCategory('despensa')">
-                <div class="mobile-category-icon w-14 h-14 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-lg shadow-sm">
-                    🛒
-                </div>
+            <button onclick="filterCategory('despensa')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="w-14 h-14 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🛒</div>
                 <span class="text-[11px] font-semibold text-slate-700">Despensa</span>
             </button>
-
-            <button class="mobile-category-button" onclick="filterCategory('frescos')">
-                <div class="mobile-category-icon w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg shadow-sm">
-                    🍎
-                </div>
+            <button onclick="filterCategory('frescos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🍎</div>
                 <span class="text-[11px] font-semibold text-slate-700">Frutas</span>
             </button>
-
-            <button class="mobile-category-button" onclick="filterCategory('lacteos')">
-                <div class="mobile-category-icon w-14 h-14 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center text-lg shadow-sm">
-                    🥛
-                </div>
+            <button onclick="filterCategory('lacteos')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="w-14 h-14 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">🥛</div>
                 <span class="text-[11px] font-semibold text-slate-700">Lácteos</span>
             </button>
-
-            <button class="mobile-category-button" onclick="filterCategory('aseo')">
-                <div class="mobile-category-icon w-14 h-14 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-lg shadow-sm">
-                    ✨
-                </div>
+            <button onclick="filterCategory('aseo')" class="flex flex-col items-center gap-1.5 shrink-0 group">
+                <div class="w-14 h-14 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-all">✨</div>
                 <span class="text-[11px] font-semibold text-slate-700">Aseo</span>
             </button>
-
         </div>
     </section>
 
-    <!-- PRODUCTOS -->
-    <main class="max-w-7xl mx-auto px-3 pb-12 space-y-3 mobile-main">
-
+    <!-- GRILLA DE PRODUCTOS ESTILO D1 (2 Columnas estrictas en móvil) -->
+    <main class="max-w-7xl mx-auto px-3 pb-12 space-y-3">
         <div class="flex items-center justify-between border-b border-slate-200 pb-2">
             <div>
-                <h2 id="sectionTitle" class="text-sm font-extrabold text-slate-900">
-                    Nuestros Productos
-                </h2>
-
-                <p id="sectionSubtitle" class="text-slate-500 text-[10px]">
-                    Catálogo en tiempo real
-                </p>
+                <h2 id="sectionTitle" class="text-sm font-extrabold text-slate-900">Nuestros Productos</h2>
+                <p id="sectionSubtitle" class="text-slate-500 text-[10px]">Catálogo en tiempo real</p>
             </div>
         </div>
 
-        <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mobile-products-grid">
+        <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             <div class="col-span-2 py-12 text-center">
                 <div class="w-6 h-6 border-2 border-red-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
                 <p class="text-xs text-slate-500 mt-2">Cargando productos...</p>
             </div>
         </div>
-
     </main>
 
-    <!-- WHATSAPP -->
-    <a href="https://wa.me/573105500791?text=Hola%20MerkoMAX,%20tengo%20una%20consulta"
-       target="_blank"
+    <!-- BOTÓN WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/573105500791?text=Hola%20MerkoMAX,%20tengo%20una%20consulta" target="_blank" 
        class="fixed bottom-5 left-5 z-40 bg-emerald-600 text-white p-3.5 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform">
         <span class="text-lg">💬</span>
     </a>
 
-    <!-- CART -->
+    <!-- CART DRAWER -->
     <div id="cartOverlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden"></div>
-
-    <div id="cartPanel" class="mobile-cart-wrapper fixed inset-y-0 right-0 max-w-full flex pl-10 z-50 transform translate-x-full transition-transform duration-300">
-
-        <div class="mobile-cart-panel w-screen max-w-md bg-white shadow-2xl flex flex-col">
-
+    <div id="cartPanel" class="fixed inset-y-0 right-0 max-w-full flex pl-10 z-50 transform translate-x-full transition-transform duration-300">
+        <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
             <div class="p-3.5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
-
-                <h3 class="font-bold text-xs text-slate-900 flex items-center gap-1">
-                    <span>🛒</span> Tu Carrito
-                </h3>
-
+                <h3 class="font-bold text-xs text-slate-900 flex items-center gap-1"><span>🛒</span> Tu Carrito</h3>
                 <div class="flex items-center gap-2">
-
-                    <button id="clearCartBtn"
-                            onclick="clearCart()"
-                            class="hidden text-red-500 text-[10px] font-semibold bg-red-50 px-2 py-0.5 rounded-md">
-                        Vaciar
-                    </button>
-
-                    <button id="closeCart"
-                            class="text-slate-400 hover:text-slate-600 font-bold p-1">
-                        ✕
-                    </button>
-
+                    <button id="clearCartBtn" onclick="clearCart()" class="hidden text-red-500 text-[10px] font-semibold bg-red-50 px-2 py-0.5 rounded-md">Vaciar</button>
+                    <button id="closeCart" class="text-slate-400 hover:text-slate-600 font-bold p-1">✕</button>
                 </div>
             </div>
 
             <div id="cartContent" class="flex-1 overflow-y-auto p-3 space-y-2"></div>
 
             <div class="p-3.5 border-t border-slate-100 bg-slate-50 space-y-2">
-
                 <div class="flex justify-between font-bold text-xs">
                     <span>Total a pagar</span>
                     <span id="cartTotal" class="text-red-600 text-sm">$0</span>
                 </div>
-
-                <button id="openCheckoutModalBtn"
-                        type="button"
-                        onclick="openCheckoutForm()"
-                        class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl shadow-xs text-xs">
+                <button id="openCheckoutModalBtn" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl shadow-xs text-xs">
                     Continuar Pedido por WhatsApp ➔
                 </button>
-
             </div>
         </div>
     </div>
 
-    <!-- CHECKOUT -->
+    <!-- MODAL CHECKOUT -->
     <div id="checkoutModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3">
-
-        <div class="mobile-checkout bg-white rounded-2xl max-w-md w-full p-4 space-y-3 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-
-            <button id="closeCheckoutModal"
-                    class="absolute top-3 right-3 text-slate-500 hover:text-slate-800 font-bold text-sm p-2">
-                ✕
-            </button>
-
-            <h3 class="text-xs font-extrabold text-slate-900">
-                📍 Datos para tu Entrega
-            </h3>
-
+        <div class="bg-white rounded-2xl max-w-md w-full p-4 space-y-3 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button id="closeCheckoutModal" class="absolute top-3 right-3 text-slate-400 font-bold text-xs">✕</button>
+            <h3 class="text-xs font-extrabold text-slate-900">📍 Datos para tu Entrega</h3>
             <form id="checkoutForm" class="space-y-2.5 text-xs">
-
                 <div>
-                    <label class="block font-bold text-slate-700 mb-0.5">
-                        Nombre Completo *
-                    </label>
-
-                    <input type="text"
-                           id="custName"
-                           required
-                           placeholder="Ej. Maria Perez"
-                           class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
+                    <label class="block font-bold text-slate-700 mb-0.5">Nombre Completo *</label>
+                    <input type="text" id="custName" required placeholder="Ej. Maria Perez" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
                 </div>
-
-                <div class="grid grid-cols-2 gap-2 mobile-checkout-grid">
-
+                <div class="grid grid-cols-2 gap-2">
                     <div>
-                        <label class="block font-bold text-slate-700 mb-0.5">
-                            Barrio *
-                        </label>
-
-                        <input type="text"
-                               id="custNeighborhood"
-                               required
-                               placeholder="Ej. El Centro"
-                               class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
+                        <label class="block font-bold text-slate-700 mb-0.5">Barrio *</label>
+                        <input type="text" id="custNeighborhood" required placeholder="Ej. El Centro" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
                     </div>
-
                     <div>
-                        <label class="block font-bold text-slate-700 mb-0.5">
-                            Dirección *
-                        </label>
-
-                        <input type="text"
-                               id="custAddress"
-                               required
-                               placeholder="Ej. Cra 5 # 8-12"
-                               class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
+                        <label class="block font-bold text-slate-700 mb-0.5">Dirección *</label>
+                        <input type="text" id="custAddress" required placeholder="Ej. Cra 5 # 8-12" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
                     </div>
-
                 </div>
-
                 <div>
-                    <label class="block font-bold text-slate-700 mb-0.5">
-                        Método de Pago *
-                    </label>
-
-                    <select id="custPayment"
-                            onchange="toggleCashDetail()"
-                            class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
-
-                        <option value="Efectivo">
-                            Efectivo contra entrega
-                        </option>
-
-                        <option value="Nequi / Daviplata">
-                            Nequi / Daviplata
-                        </option>
-
-                        <option value="Datáfono">
-                            Datáfono
-                        </option>
-
+                    <label class="block font-bold text-slate-700 mb-0.5">Método de Pago *</label>
+                    <select id="custPayment" onchange="toggleCashDetail()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
+                        <option value="Efectivo">Efectivo contra entrega</option>
+                        <option value="Nequi / Daviplata">Nequi / Daviplata</option>
+                        <option value="Datáfono">Datáfono</option>
                     </select>
                 </div>
-
                 <div id="cashDetailBox">
-
-                    <label class="block font-bold text-slate-700 mb-0.5">
-                        ¿Con cuánto dinero cancelas?
-                    </label>
-
-                    <input type="text"
-                           id="custCashAmount"
-                           placeholder="Ej. Con $50.000 o Exacto"
-                           class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
-
+                    <label class="block font-bold text-slate-700 mb-0.5">¿Con cuánto dinero cancelas?</label>
+                    <input type="text" id="custCashAmount" placeholder="Ej. Con $50.000 o Exacto" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600">
                 </div>
-
                 <div>
-
-                    <label class="block font-bold text-slate-700 mb-0.5">
-                        Notas (Opcional)
-                    </label>
-
-                    <textarea id="custNotes"
-                              rows="2"
-                              placeholder="Instrucciones adicionales..."
-                              class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600"></textarea>
-
+                    <label class="block font-bold text-slate-700 mb-0.5">Notas (Opcional)</label>
+                    <textarea id="custNotes" rows="2" placeholder="Instrucciones adicionales..." class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-red-600"></textarea>
                 </div>
-
-                <button type="submit"
-                        class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-xs text-xs mt-1">
+                <button type="submit" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-xs text-xs mt-1">
                     💬 Enviar Pedido a WhatsApp
                 </button>
-
             </form>
         </div>
     </div>
 
     <!-- TOAST -->
-    <div id="toastContainer"
-         class="fixed bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none">
-    </div>
+    <div id="toastContainer" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
     <!-- SCRIPT -->
     <script>
-
         const SHEETDB_API = "https://sheetdb.io/api/v1/15hpacliqdaw2";
-
         let products = [];
         let cart = [];
         let currentCategory = 'todos';
@@ -831,601 +238,218 @@
         });
 
         async function fetchProductsFromSheet() {
-
             try {
-
                 const res = await fetch(SHEETDB_API);
                 const data = await res.json();
-
                 products = data.map(item => ({
-
                     id: Number(item.id) || Math.random(),
-
                     name: item.name || 'Producto',
-
-                    category: item.category
-                        ? item.category.trim().toLowerCase()
-                        : 'despensa',
-
-                    price: parseFloat(
-                        String(item.price || '0')
-                        .replace(/\./g, '')
-                        .replace(/[^0-9]/g, '')
-                    ) || 0,
-
-                    oldPrice: item.oldPrice
-                        ? parseFloat(
-                            String(item.oldPrice)
-                            .replace(/\./g, '')
-                            .replace(/[^0-9]/g, '')
-                        )
-                        : null,
-
-                    isBestSeller:
-                        String(item.isBestSeller).toUpperCase() === 'TRUE',
-
-                    image:
-                        item.image ||
-                        'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80'
-
+                    category: item.category ? item.category.trim().toLowerCase() : 'despensa',
+                    price: parseFloat(String(item.price || '0').replace(/\./g, '').replace(/[^0-9]/g, '')) || 0,
+                    oldPrice: item.oldPrice ? parseFloat(String(item.oldPrice).replace(/\./g, '').replace(/[^0-9]/g, '')) : null,
+                    isBestSeller: String(item.isBestSeller).toUpperCase() === 'TRUE',
+                    image: item.image || 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80'
                 }));
-
                 renderProducts();
-
             } catch (e) {
-
-                document.getElementById('productsGrid').innerHTML =
-                    `<p class="text-xs text-red-500 text-center col-span-2">
-                        Error cargando productos.
-                    </p>`;
-
+                document.getElementById('productsGrid').innerHTML = `<p class="text-xs text-red-500 text-center col-span-2">Error cargando productos.</p>`;
             }
-
         }
 
         function renderProducts() {
-
             const grid = document.getElementById('productsGrid');
-
             const filtered = products.filter(p => {
-
-                const matchCat =
-                    currentCategory === 'todos'
-                        ? true
-                        : currentCategory === 'mas-vendidos'
-                            ? p.isBestSeller
-                            : p.category === currentCategory;
-
-                const matchSearch =
-                    p.name
-                        .toLowerCase()
-                        .includes(searchQuery.toLowerCase());
-
+                const matchCat = currentCategory === 'todos' ? true : currentCategory === 'mas-vendidos' ? p.isBestSeller : p.category === currentCategory;
+                const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase());
                 return matchCat && matchSearch;
-
             });
 
             if (filtered.length === 0) {
-
-                grid.innerHTML =
-                    `<p class="text-xs text-slate-500 text-center col-span-2 py-8">
-                        No se encontraron productos.
-                    </p>`;
-
+                grid.innerHTML = `<p class="text-xs text-slate-500 text-center col-span-2 py-8">No se encontraron productos.</p>`;
                 return;
             }
 
             grid.innerHTML = filtered.map(p => `
-
-                <div class="product-card bg-white rounded-2xl p-3 border border-slate-100 shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-all">
-
-                    <div class="absolute top-2.5 right-2.5 z-10 bg-emerald-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shadow-xs">
-                        ✓
-                    </div>
-
-                    ${p.category === 'combos'
-                        ? '<span class="absolute top-2.5 left-2.5 z-10 bg-red-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">COMBO</span>'
-                        : ''}
-
-                    ${p.isBestSeller && p.category !== 'combos'
-                        ? '<span class="absolute top-2.5 left-2.5 z-10 bg-amber-500 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">TOP</span>'
-                        : ''}
+                <div class="bg-white rounded-2xl p-3 border border-slate-100 shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-all">
+                    <!-- Icono de check verde superior derecho estilo D1 -->
+                    <div class="absolute top-2.5 right-2.5 z-10 bg-emerald-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shadow-xs">✓</div>
+                    
+                    ${p.category === 'combos' ? '<span class="absolute top-2.5 left-2.5 z-10 bg-red-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">COMBO</span>' : ''}
+                    ${p.isBestSeller && p.category !== 'combos' ? '<span class="absolute top-2.5 left-2.5 z-10 bg-amber-500 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">TOP</span>' : ''}
 
                     <div>
-
-                        <div class="product-image h-32 w-full rounded-xl overflow-hidden bg-slate-50 mb-2 flex items-center justify-center">
-
-                            <img src="${p.image}"
-                                 alt="${p.name}"
-                                 class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
-
+                        <div class="h-32 w-full rounded-xl overflow-hidden bg-slate-50 mb-2 flex items-center justify-center">
+                            <img src="${p.image}" alt="${p.name}" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
                         </div>
-
-                        <h3 class="product-name font-bold text-slate-900 text-xs line-clamp-2 mt-1 h-8 leading-tight">
-                            ${p.name}
-                        </h3>
-
+                        <h3 class="font-bold text-slate-900 text-xs line-clamp-2 mt-1 h-8 leading-tight">${p.name}</h3>
                     </div>
 
                     <div class="pt-2 border-t border-slate-50 mt-2 space-y-2">
-
                         <div class="flex items-baseline gap-1">
-
-                            <span class="product-price text-xs font-extrabold text-slate-900">
-                                $${p.price.toLocaleString('es-CO')}
-                            </span>
-
-                            ${p.oldPrice
-                                ? `<span class="product-old-price text-[9px] text-slate-400 line-through">
-                                    $${p.oldPrice.toLocaleString('es-CO')}
-                                   </span>`
-                                : ''}
-
+                            <span class="text-xs font-extrabold text-slate-900">$${p.price.toLocaleString('es-CO')}</span>
+                            ${p.oldPrice ? `<span class="text-[9px] text-slate-400 line-through">$${p.oldPrice.toLocaleString('es-CO')}</span>` : ''}
                         </div>
-
-                        <button onclick="addToCart(${p.id})"
-                                class="product-add w-full bg-red-50 hover:bg-red-600 text-red-600 hover:text-white font-bold py-2 rounded-xl text-[11px] transition-colors flex items-center justify-center gap-1">
-
+                        <button onclick="addToCart(${p.id})" class="w-full bg-red-50 hover:bg-red-600 text-red-600 hover:text-white font-bold py-2 rounded-xl text-[11px] transition-colors flex items-center justify-center gap-1">
                             <span>+ Agregar</span>
-
                         </button>
-
                     </div>
-
                 </div>
-
             `).join('');
-
         }
 
         function filterCategory(cat) {
-
             currentCategory = cat;
-
-            document.getElementById('sectionTitle').textContent =
-                cat === 'todos'
-                    ? "Nuestros Productos"
-                    : cat.toUpperCase();
-
-            document.getElementById('sectionSubtitle').textContent =
-                `Mostrando categoría: ${cat}`;
-
+            document.getElementById('sectionTitle').textContent = cat === 'todos' ? "Nuestros Productos" : cat.toUpperCase();
+            document.getElementById('sectionSubtitle').textContent = `Mostrando categoría: ${cat}`;
             renderProducts();
-
         }
 
         function loadCartFromLocalStorage() {
-
             const saved = localStorage.getItem('merkomax_cart');
-
-            if (saved) {
-
-                try {
-                    cart = JSON.parse(saved);
-                } catch(e) {
-                    cart = [];
-                }
-
-            }
-
+            if (saved) { try { cart = JSON.parse(saved); } catch(e) { cart = []; } }
             updateCartUI();
-
         }
 
         function saveCart() {
-
-            localStorage.setItem(
-                'merkomax_cart',
-                JSON.stringify(cart)
-            );
-
+            localStorage.setItem('merkomax_cart', JSON.stringify(cart));
             updateCartUI();
-
         }
 
         function addToCart(id) {
-
             const p = products.find(x => x.id === id);
-
             if (!p) return;
-
             const item = cart.find(x => x.id === id);
-
-            if (item)
-                item.quantity++;
-            else
-                cart.push({
-                    ...p,
-                    quantity: 1
-                });
-
+            if (item) item.quantity++;
+            else cart.push({ ...p, quantity: 1 });
             saveCart();
-
             showToast(`¡Agregado: ${p.name}!`);
-
         }
 
         function updateQty(id, delta) {
-
             const item = cart.find(x => x.id === id);
-
             if (!item) return;
-
             item.quantity += delta;
-
-            if (item.quantity <= 0)
-                cart = cart.filter(x => x.id !== id);
-
+            if (item.quantity <= 0) cart = cart.filter(x => x.id !== id);
             saveCart();
-
         }
 
         function removeFromCart(id) {
-
             cart = cart.filter(x => x.id !== id);
-
             saveCart();
-
         }
 
         function clearCart() {
-
-            if (confirm("¿Vaciar carrito?")) {
-
-                cart = [];
-
-                saveCart();
-
-            }
-
-        }
-
-        function setMobileNav(active) {
-
-            document
-                .querySelectorAll('#mobileBottomNav button')
-                .forEach(btn => btn.classList.remove('active'));
-
-            const target =
-                document.querySelector(
-                    active === 'home'
-                        ? '#mobileHomeBtn'
-                        : active === 'search'
-                            ? '#mobileBottomNav button:nth-child(2)'
-                            : '#mobileBottomNav button:nth-child(3)'
-                );
-
-            if (target)
-                target.classList.add('active');
-
+            if (confirm("¿Vaciar carrito?")) { cart = []; saveCart(); }
         }
 
         function updateCartUI() {
-
-            const cartCount =
-                cart.reduce(
-                    (a, b) => a + b.quantity,
-                    0
-                );
-
-            document.getElementById('cartCounter').textContent =
-                cartCount;
-
-            const mobileCounter =
-                document.getElementById('mobileNavCartCounter');
-
-            if (mobileCounter) {
-
-                mobileCounter.textContent = cartCount;
-
-                mobileCounter.style.display =
-                    cartCount > 0
-                        ? 'flex'
-                        : 'none';
-
-            }
-
-            document.getElementById('clearCartBtn').style.display =
-                cart.length > 0
-                    ? 'block'
-                    : 'none';
-
-            const content =
-                document.getElementById('cartContent');
-
+            document.getElementById('cartCounter').textContent = cart.reduce((a, b) => a + b.quantity, 0);
+            document.getElementById('clearCartBtn').style.display = cart.length > 0 ? 'block' : 'none';
+            
+            const content = document.getElementById('cartContent');
             if (cart.length === 0) {
-
-                content.innerHTML =
-                    `<div class="text-center py-12 text-slate-400 text-xs">
-                        Tu carrito está vacío
-                    </div>`;
-
-                document.getElementById('cartTotal').textContent =
-                    '$0';
-
+                content.innerHTML = `<div class="text-center py-12 text-slate-400 text-xs">Tu carrito está vacío</div>`;
+                document.getElementById('cartTotal').textContent = '$0';
                 return;
             }
 
             content.innerHTML = cart.map(i => `
-
                 <div class="flex items-center gap-2.5 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-
-                    <img src="${i.image}"
-                         class="w-10 h-10 object-cover rounded-lg bg-white shrink-0">
-
+                    <img src="${i.image}" class="w-10 h-10 object-cover rounded-lg bg-white shrink-0">
                     <div class="flex-1 min-w-0">
-
-                        <h5 class="font-bold text-slate-900 text-[11px] truncate">
-                            ${i.name}
-                        </h5>
-
-                        <p class="text-red-600 font-extrabold text-[11px]">
-                            $${(i.price * i.quantity).toLocaleString('es-CO')}
-                        </p>
-
+                        <h5 class="font-bold text-slate-900 text-[11px] truncate">${i.name}</h5>
+                        <p class="text-red-600 font-extrabold text-[11px]">$${(i.price * i.quantity).toLocaleString('es-CO')}</p>
                         <div class="flex items-center gap-2 mt-1">
-
-                            <button onclick="updateQty(${i.id}, -1)"
-                                    class="w-5 h-5 bg-white border rounded text-[10px] font-bold">
-                                -
-                            </button>
-
-                            <span class="text-[11px] font-bold">
-                                ${i.quantity}
-                            </span>
-
-                            <button onclick="updateQty(${i.id}, 1)"
-                                    class="w-5 h-5 bg-white border rounded text-[10px] font-bold">
-                                +
-                            </button>
-
+                            <button onclick="updateQty(${i.id}, -1)" class="w-5 h-5 bg-white border rounded text-[10px] font-bold">-</button>
+                            <span class="text-[11px] font-bold">${i.quantity}</span>
+                            <button onclick="updateQty(${i.id}, 1)" class="w-5 h-5 bg-white border rounded text-[10px] font-bold">+</button>
                         </div>
-
                     </div>
-
-                    <button onclick="removeFromCart(${i.id})"
-                            class="text-slate-400 hover:text-red-600 text-xs font-bold p-1">
-                        ✕
-                    </button>
-
+                    <button onclick="removeFromCart(${i.id})" class="text-slate-400 hover:text-red-600 text-xs font-bold p-1">✕</button>
                 </div>
-
             `).join('');
 
-            const total =
-                cart.reduce(
-                    (a, b) => a + (b.price * b.quantity),
-                    0
-                );
-
-            document.getElementById('cartTotal').textContent =
-                `$${total.toLocaleString('es-CO')}`;
-
+            const total = cart.reduce((a, b) => a + (b.price * b.quantity), 0);
+            document.getElementById('cartTotal').textContent = `$${total.toLocaleString('es-CO')}`;
         }
 
         function showToast(msg) {
-
-            const container =
-                document.getElementById('toastContainer');
-
-            const t =
-                document.createElement('div');
-
-            t.className =
-                "bg-slate-900 text-white text-[11px] font-semibold px-3 py-2 rounded-xl shadow-lg";
-
+            const container = document.getElementById('toastContainer');
+            const t = document.createElement('div');
+            t.className = "bg-slate-900 text-white text-[11px] font-semibold px-3 py-2 rounded-xl shadow-lg";
             t.textContent = msg;
-
             container.appendChild(t);
-
             setTimeout(() => t.remove(), 2500);
-
         }
 
         function toggleCashDetail() {
-
-            const pay =
-                document.getElementById('custPayment').value;
-
-            document.getElementById('cashDetailBox').style.display =
-                pay === 'Efectivo'
-                    ? 'block'
-                    : 'none';
-
-        }
-
-        /* NUEVO: abrir directamente el formulario */
-        function openCheckoutForm() {
-
-            if (cart.length === 0) {
-
-                showToast('El carrito está vacío');
-
-                return;
-            }
-
-            document
-                .getElementById('cartPanel')
-                .classList.add('translate-x-full');
-
-            document
-                .getElementById('cartOverlay')
-                .classList.add('hidden');
-
-            const checkoutModal =
-                document.getElementById('checkoutModal');
-
-            checkoutModal.classList.remove('hidden');
-            checkoutModal.classList.add('flex');
-
+            const pay = document.getElementById('custPayment').value;
+            document.getElementById('cashDetailBox').style.display = pay === 'Efectivo' ? 'block' : 'none';
         }
 
         function resetToHome() {
-
             filterCategory('todos');
-
             document.getElementById('searchInput').value = '';
-
             searchQuery = '';
-
         }
 
         function setupEvents() {
-
-            const search =
-                document.getElementById('searchInput');
-
+            const search = document.getElementById('searchInput');
             search.addEventListener('input', (e) => {
-
                 searchQuery = e.target.value;
-
                 renderProducts();
-
-                setMobileNav('search');
-
             });
 
-            const cartTrigger =
-                document.getElementById('cartTrigger');
-
-            const cartPanel =
-                document.getElementById('cartPanel');
-
-            const cartOverlay =
-                document.getElementById('cartOverlay');
-
-            const closeCart =
-                document.getElementById('closeCart');
+            const cartTrigger = document.getElementById('cartTrigger');
+            const cartPanel = document.getElementById('cartPanel');
+            const cartOverlay = document.getElementById('cartOverlay');
+            const closeCart = document.getElementById('closeCart');
 
             const toggleCart = (open) => {
-
-                cartPanel.classList.toggle(
-                    'translate-x-full',
-                    !open
-                );
-
-                cartOverlay.classList.toggle(
-                    'hidden',
-                    !open
-                );
-
+                cartPanel.classList.toggle('translate-x-full', !open);
+                cartOverlay.classList.toggle('hidden', !open);
             };
 
-            cartTrigger.addEventListener(
-                'click',
-                () => toggleCart(true)
-            );
+            cartTrigger.addEventListener('click', () => toggleCart(true));
+            closeCart.addEventListener('click', () => toggleCart(false));
+            cartOverlay.addEventListener('click', () => toggleCart(false));
 
-            closeCart.addEventListener(
-                'click',
-                () => toggleCart(false)
-            );
+            const checkoutModal = document.getElementById('checkoutModal');
+            document.getElementById('openCheckoutModalBtn').addEventListener('click', () => {
+                if (cart.length === 0) { showToast('El carrito está vacío'); return; }
+                toggleCart(false);
+                checkoutModal.classList.remove('hidden');
+            });
+            document.getElementById('closeCheckoutModal').addEventListener('click', () => checkoutModal.classList.add('hidden'));
 
-            cartOverlay.addEventListener(
-                'click',
-                () => toggleCart(false)
-            );
+            document.getElementById('checkoutForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('custName').value.trim();
+                const neighborhood = document.getElementById('custNeighborhood').value.trim();
+                const address = document.getElementById('custAddress').value.trim();
+                const payment = document.getElementById('custPayment').value;
+                const cash = document.getElementById('custCashAmount').value.trim();
+                const notes = document.getElementById('custNotes').value.trim();
 
-            const checkoutModal =
-                document.getElementById('checkoutModal');
+                let msg = `🛒 *PEDIDO - MERKOMAX NIMAR*\n\n`;
+                msg += `👤 *Cliente:* ${name}\n📍 *Barrio:* ${neighborhood}\n🏠 *Dirección:* ${address}\n💳 *Pago:* ${payment}\n`;
+                if (payment === 'Efectivo' && cash) msg += `💵 *Cambio para:* ${cash}\n`;
+                if (notes) msg += `📝 *Notas:* ${notes}\n`;
+                msg += `\n📦 *PRODUCTOS:*\n`;
 
-            document
-                .getElementById('closeCheckoutModal')
-                .addEventListener(
-                    'click',
-                    () => checkoutModal.classList.add('hidden')
-                );
-
-            document
-                .getElementById('checkoutForm')
-                .addEventListener('submit', (e) => {
-
-                    e.preventDefault();
-
-                    const name =
-                        document
-                            .getElementById('custName')
-                            .value
-                            .trim();
-
-                    const neighborhood =
-                        document
-                            .getElementById('custNeighborhood')
-                            .value
-                            .trim();
-
-                    const address =
-                        document
-                            .getElementById('custAddress')
-                            .value
-                            .trim();
-
-                    const payment =
-                        document
-                            .getElementById('custPayment')
-                            .value;
-
-                    const cash =
-                        document
-                            .getElementById('custCashAmount')
-                            .value
-                            .trim();
-
-                    const notes =
-                        document
-                            .getElementById('custNotes')
-                            .value
-                            .trim();
-
-                    let msg =
-                        `🛒 *PEDIDO - MERKOMAX NIMAR*\n\n`;
-
-                    msg +=
-                        `👤 *Cliente:* ${name}\n` +
-                        `📍 *Barrio:* ${neighborhood}\n` +
-                        `🏠 *Dirección:* ${address}\n` +
-                        `💳 *Pago:* ${payment}\n`;
-
-                    if (payment === 'Efectivo' && cash)
-                        msg += `💵 *Cambio para:* ${cash}\n`;
-
-                    if (notes)
-                        msg += `📝 *Notas:* ${notes}\n`;
-
-                    msg += `\n📦 *PRODUCTOS:*\n`;
-
-                    cart.forEach((i, idx) => {
-
-                        msg +=
-                            `${idx + 1}. ${i.name} x${i.quantity} - $${(i.price * i.quantity).toLocaleString('es-CO')}\n`;
-
-                    });
-
-                    const total =
-                        cart.reduce(
-                            (a, b) =>
-                                a + (b.price * b.quantity),
-                            0
-                        );
-
-                    msg +=
-                        `\n💰 *TOTAL: $${total.toLocaleString('es-CO')}*`;
-
-                    /* REDIRECCIÓN CORREGIDA */
-                    window.location.href =
-                        `https://wa.me/573105500791?text=${encodeURIComponent(msg)}`;
-
-                    cart = [];
-
-                    saveCart();
-
-                    checkoutModal.classList.add('hidden');
-
+                cart.forEach((i, idx) => {
+                    msg += `${idx + 1}. ${i.name} x${i.quantity} - $${(i.price * i.quantity).toLocaleString('es-CO')}\n`;
                 });
 
+                const total = cart.reduce((a, b) => a + (b.price * b.quantity), 0);
+                msg += `\n💰 *TOTAL: $${total.toLocaleString('es-CO')}*`;
+
+                window.location.href = `https://wa.me/573105500791?text=${encodeURIComponent(msg)}`;
+                cart = [];
+                saveCart();
+                checkoutModal.classList.add('hidden');
+            });
         }
-
     </script>
-
 </body>
 </html>
