@@ -1,38 +1,24 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
     <title>
         Supermercado MerkoMAX NIMAR - Tu Supermercado Digital en Cimitarra
     </title>
-
     <link rel="icon"
           type="image/png"
           href="logo.png">
-
-
     <!-- ========================================================= -->
     <!-- TAILWIND -->
     <!-- ========================================================= -->
-
     <script src="https://cdn.tailwindcss.com"></script>
-
     <script>
-
         tailwind.config = {
-
             theme: {
-
                 extend: {
-
                     colors: {
-
                         wine: {
                             50: '#fdf2f4',
                             100: '#fbe6e9',
@@ -46,2668 +32,304 @@
                             900: '#721d32',
                             950: '#400a17'
                         }
-
                     }
-
                 }
-
             }
-
         }
-
     </script>
-
-
     <!-- ========================================================= -->
     <!-- LUCIDE -->
     <!-- ========================================================= -->
-
     <script src="https://unpkg.com/lucide@latest"></script>
-
-
     <!-- ========================================================= -->
     <!-- FUENTE -->
     <!-- ========================================================= -->
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
           rel="stylesheet">
-
-
     <!-- ========================================================= -->
     <!-- ESTILOS -->
     <!-- ========================================================= -->
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            width: 100%;
-        }
-
-        img {
-            max-width: 100%;
-        }
-
-        button,
-        a,
-        input,
-        select,
-        textarea {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .break-anywhere {
-            overflow-wrap: anywhere;
-        }
-
-
-        /* ========================================================= */
-        /* WHATSAPP */
-        /* ========================================================= */
-
-        .whatsapp-float {
-            animation: whatsappPulse 2.5s infinite;
-        }
-
-        @keyframes whatsappPulse {
-
-            0% {
-                box-shadow:
-                    0 0 0 0 rgba(16, 185, 129, .45);
-            }
-
-            70% {
-                box-shadow:
-                    0 0 0 12px rgba(16, 185, 129, 0);
-            }
-
-            100% {
-                box-shadow:
-                    0 0 0 0 rgba(16, 185, 129, 0);
-            }
-
-        }
-
-
-        /* ========================================================= */
-        /* MOBILE GENERAL */
-        /* ========================================================= */
-
-        #mobileHeaderSearch,
-        #mobileBottomNav {
-            display: none;
-        }
-
-
-        /* ========================================================= */
-        /* BOTÓN CARRITO FLOTANTE PC */
-        /* ========================================================= */
-
-        #desktopFloatingCart {
-            display: none;
-        }
-
-
-        @media (min-width: 1024px) {
-
-            #desktopFloatingCart {
-
-                position: fixed;
-
-                right: 18px;
-
-                bottom: 105px;
-
-                width: 48px;
-
-                height: 48px;
-
-                border: 0;
-
-                border-radius: 16px;
-
-                background: #2563eb;
-
-                color: white;
-
-                display: flex;
-
-                align-items: center;
-
-                justify-content: center;
-
-                box-shadow:
-                    0 10px 30px rgba(37,99,235,.30);
-
-                z-index: 45;
-
-                cursor: pointer;
-
-                opacity: 0;
-
-                visibility: hidden;
-
-                transform:
-                    translateY(12px)
-                    scale(.92);
-
-                transition:
-                    opacity .25s ease,
-                    visibility .25s ease,
-                    transform .25s ease,
-                    background .2s ease;
-
-            }
-
-
-            #desktopFloatingCart.visible {
-
-                opacity: 1;
-
-                visibility: visible;
-
-                transform:
-                    translateY(0)
-                    scale(1);
-
-            }
-
-
-            #desktopFloatingCart:hover {
-
-                background: #1d4ed8;
-
-                transform:
-                    translateY(-2px)
-                    scale(1.03);
-
-            }
-
-
-            #desktopFloatingCart i {
-
-                width: 21px;
-
-                height: 21px;
-
-            }
-
-
-            #desktopFloatingCartBadge {
-
-                position: absolute;
-
-                top: -5px;
-
-                right: -5px;
-
-                min-width: 19px;
-
-                height: 19px;
-
-                padding: 0 4px;
-
-                display: flex;
-
-                align-items: center;
-
-                justify-content: center;
-
-                border-radius: 999px;
-
-                background: #ef4444;
-
-                color: #ffffff;
-
-                border: 2px solid white;
-
-                font-size: 8px;
-
-                font-weight: 900;
-
-                line-height: 1;
-
-            }
-
-        }
-
-
-        /* ========================================================= */
-        /* CARRITO PC - MINIMALISTA */
-        /* ========================================================= */
-
-        @media (min-width: 640px) {
-
-            #cartContent .mobile-cart-item {
-
-                display: flex !important;
-
-                align-items: center !important;
-
-                gap: 12px !important;
-
-                padding: 10px !important;
-
-                background: #ffffff !important;
-
-                border: 1px solid #dbeafe !important;
-
-                border-radius: 14px !important;
-
-                box-shadow:
-                    0 3px 10px rgba(30,64,175,.05) !important;
-
-                position: relative !important;
-
-            }
-
-
-            #cartContent .mobile-cart-item img {
-
-                width: 54px !important;
-
-                height: 54px !important;
-
-                min-width: 54px !important;
-
-                max-width: 54px !important;
-
-                object-fit: contain !important;
-
-                padding: 4px !important;
-
-                background: #f8fafc !important;
-
-                border-radius: 10px !important;
-
-                flex-shrink: 0 !important;
-
-            }
-
-
-            #cartContent .mobile-cart-item > div {
-
-                min-width: 0 !important;
-
-                flex: 1 1 auto !important;
-
-            }
-
-
-            #cartContent .mobile-cart-item h5 {
-
-                font-size: 12px !important;
-
-                line-height: 1.3 !important;
-
-                font-weight: 700 !important;
-
-                color: #0f172a !important;
-
-                margin: 0 !important;
-
-            }
-
-
-            #cartContent .mobile-cart-item p {
-
-                font-size: 11px !important;
-
-                line-height: 1.2 !important;
-
-                color: #2563eb !important;
-
-                font-weight: 800 !important;
-
-                margin-top: 3px !important;
-
-            }
-
-
-            #cartContent .mobile-cart-item .cart-quantity-control {
-
-                display: flex !important;
-
-                align-items: center !important;
-
-                gap: 5px !important;
-
-                margin-top: 6px !important;
-
-            }
-
-
-            #cartContent .mobile-cart-item .cart-quantity-control button {
-
-                width: 27px !important;
-
-                height: 27px !important;
-
-                min-width: 27px !important;
-
-                border: 1px solid #bfdbfe !important;
-
-                border-radius: 7px !important;
-
-                background: #eff6ff !important;
-
-                color: #2563eb !important;
-
-                display: flex !important;
-
-                align-items: center !important;
-
-                justify-content: center !important;
-
-                font-size: 14px !important;
-
-                font-weight: 900 !important;
-
-                padding: 0 !important;
-
-                cursor: pointer !important;
-
-            }
-
-
-            #cartContent .mobile-cart-item .cart-quantity-control span {
-
-                min-width: 24px !important;
-
-                text-align: center !important;
-
-                font-size: 11px !important;
-
-                font-weight: 900 !important;
-
-                color: #0f172a !important;
-
-            }
-
-
-            #cartContent .mobile-cart-item .remove-cart-item {
-
-                width: 28px !important;
-
-                height: 28px !important;
-
-                min-width: 28px !important;
-
-                padding: 0 !important;
-
-                border: 0 !important;
-
-                border-radius: 8px !important;
-
-                background: #fef2f2 !important;
-
-                color: #ef4444 !important;
-
-                display: flex !important;
-
-                align-items: center !important;
-
-                justify-content: center !important;
-
-                position: absolute !important;
-
-                right: 8px !important;
-
-                top: 8px !important;
-
-                cursor: pointer !important;
-
-            }
-
-
-            #cartContent .mobile-cart-item .remove-cart-item i {
-
-                width: 14px !important;
-
-                height: 14px !important;
-
-            }
-
-
-            #cartContent {
-                gap: 10px !important;
-            }
-
-
-            /* ===================================================== */
-            /* PRODUCTO PC - PRECIO + CONTADOR */
-            /* ===================================================== */
-
-            .product-price-row {
-
-                display: flex !important;
-
-                align-items: center !important;
-
-                justify-content: space-between !important;
-
-                width: 100% !important;
-
-                gap: 10px !important;
-
-            }
-
-
-            .product-card-mobile .product-price {
-
-                margin: 0 !important;
-
-                white-space: nowrap !important;
-
-                line-height: 1 !important;
-
-            }
-
-
-            .product-card-mobile .product-quantity-control {
-
-                display: flex !important;
-
-                align-items: center !important;
-
-                justify-content: center !important;
-
-                gap: 4px !important;
-
-                flex-shrink: 0 !important;
-
-                background: #eff6ff !important;
-
-                border: 1px solid #bfdbfe !important;
-
-                border-radius: 9px !important;
-
-                padding: 2px !important;
-
-            }
-
-
-            .product-card-mobile .product-quantity-control button {
-
-                width: 25px !important;
-
-                height: 25px !important;
-
-                min-width: 25px !important;
-
-                border: 0 !important;
-
-                border-radius: 6px !important;
-
-                background: #ffffff !important;
-
-                color: #2563eb !important;
-
-                display: flex !important;
-
-                align-items: center !important;
-
-                justify-content: center !important;
-
-                font-size: 14px !important;
-
-                font-weight: 900 !important;
-
-                cursor: pointer !important;
-
-                padding: 0 !important;
-
-            }
-
-
-            .product-card-mobile .product-quantity-control span {
-
-                min-width: 20px !important;
-
-                text-align: center !important;
-
-                color: #0f172a !important;
-
-                font-size: 11px !important;
-
-                font-weight: 900 !important;
-
-            }
-
-        }
-
-
-        /* ========================================================= */
-        /* CELULAR */
-        /* ========================================================= */
-
-        @media (max-width: 639px) {
-
-            body {
-
-                padding-bottom:
-                    calc(
-                        68px +
-                        env(safe-area-inset-bottom)
-                    );
-
-                background:
-                    #f8fafc;
-
-            }
-
-
-            #topAnnouncement {
-                display: none !important;
-            }
-
-
-            header {
-
-                background:
-                    #ffffff !important;
-
-                border-bottom:
-                    1px solid #dbeafe !important;
-
-                box-shadow:
-                    0 3px 14px rgba(30,64,175,.08) !important;
-
-            }
-
-
-            header > div {
-                position: relative;
-            }
-
-
-            header > div > div:first-child {
-
-                min-height:
-                    78px !important;
-
-                height:
-                    78px !important;
-
-                padding:
-                    0 !important;
-
-                display:
-                    flex !important;
-
-                align-items:
-                    center !important;
-
-                gap:
-                    8px !important;
-
-            }
-
-
-            #logoContainer {
-
-                width:
-                    42% !important;
-
-                min-width:
-                    118px !important;
-
-                height:
-                    78px !important;
-
-                display:
-                    flex !important;
-
-                align-items:
-                    center !important;
-
-                justify-content:
-                    flex-start !important;
-
-                flex-shrink:
-                    0 !important;
-
-                z-index:
-                    5;
-
-            }
-
-
-            #logoContainer img {
-
-                height:
-                    69px !important;
-
-                width:
-                    auto !important;
-
-                max-width:
-                    100% !important;
-
-                object-fit:
-                    contain !important;
-
-            }
-
-
-            #cartTrigger {
-                display: none !important;
-            }
-
-
-            header .pb-3 {
-                display: none !important;
-            }
-
-
-            #mobileHeaderSearch {
-
-                display:
-                    block !important;
-
-                position:
-                    relative !important;
-
-                flex:
-                    1 1 auto !important;
-
-                min-width:
-                    0 !important;
-
-                margin-right:
-                    5px !important;
-
-                z-index:
-                    20 !important;
-
-            }
-
-
-            #searchInputMobile {
-
-                display:
-                    block !important;
-
-                width:
-                    100% !important;
-
-                height:
-                    43px !important;
-
-                padding:
-                    0 12px !important;
-
-                background:
-                    #f8fbff !important;
-
-                border:
-                    1px solid #bfdbfe !important;
-
-                border-radius:
-                    13px !important;
-
-                color:
-                    #0f172a !important;
-
-                font-size:
-                    11px !important;
-
-                font-weight:
-                    600 !important;
-
-                outline:
-                    none !important;
-
-                box-shadow:
-                    0 2px 8px rgba(37,99,235,.05) !important;
-
-            }
-
-
-            #searchInputMobile::placeholder {
-                color: #64748b !important;
-            }
-
-
-            #searchInputMobile:focus {
-
-                background: #ffffff !important;
-
-                border-color: #2563eb !important;
-
-                box-shadow:
-                    0 0 0 3px rgba(37,99,235,.10) !important;
-
-            }
-
-
-            #mobileSearchResults {
-
-                position:
-                    absolute !important;
-
-                left:
-                    0 !important;
-
-                right:
-                    0 !important;
-
-                top:
-                    48px !important;
-
-                width:
-                    100% !important;
-
-                max-height:
-                    330px !important;
-
-                overflow-y:
-                    auto !important;
-
-                background:
-                    #ffffff !important;
-
-                border:
-                    1px solid #bfdbfe !important;
-
-                border-radius:
-                    16px !important;
-
-                box-shadow:
-                    0 15px 35px rgba(15,23,42,.16) !important;
-
-                display:
-                    none !important;
-
-                z-index:
-                    99999 !important;
-
-            }
-
-
-            #mobileSearchResults.active {
-                display: block !important;
-            }
-
-
-            .mobile-search-item {
-
-                display: flex !important;
-
-                align-items: center !important;
-
-                gap: 9px !important;
-
-                min-height: 62px !important;
-
-                padding: 9px 10px !important;
-
-                background: #ffffff !important;
-
-                border-bottom:
-                    1px solid #eef2f7 !important;
-
-            }
-
-
-            .mobile-search-item img {
-
-                width:
-                    42px !important;
-
-                height:
-                    42px !important;
-
-                min-width:
-                    42px !important;
-
-                object-fit:
-                    contain !important;
-
-                background:
-                    #f8fafc !important;
-
-                border-radius:
-                    9px !important;
-
-            }
-
-
-            .mobile-search-item-info {
-
-                flex:
-                    1 !important;
-
-                min-width:
-                    0 !important;
-
-            }
-
-
-            .mobile-search-item-name {
-
-                color:
-                    #0f172a !important;
-
-                font-size:
-                    11px !important;
-
-                line-height:
-                    1.25 !important;
-
-                font-weight:
-                    700 !important;
-
-            }
-
-
-            .mobile-search-item-price {
-
-                color:
-                    #2563eb !important;
-
-                font-size:
-                    11px !important;
-
-                font-weight:
-                    800 !important;
-
-                margin-top:
-                    3px !important;
-
-            }
-
-
-            /* ===================================================== */
-            /* HERO */
-            /* ===================================================== */
-
-            .mobile-hero {
-
-                padding-top:
-                    25px !important;
-
-                padding-bottom:
-                    24px !important;
-
-                background:
-                    linear-gradient(
-                        135deg,
-                        #2563eb 0%,
-                        #3b82f6 48%,
-                        #60a5fa 100%
-                    ) !important;
-
-            }
-
-
-            .mobile-hero h1,
-            .mobile-hero h1 span,
-            .mobile-hero p {
-
-                color:
-                    #ffffff !important;
-
-            }
-
-
-            .mobile-hero > div.relative.z-10 > div.grid > div:first-child > div:first-child {
-
-                display:
-                    none !important;
-
-            }
-
-
-            .mobile-hero .hero-buttons {
-                display: none !important;
-            }
-
-
-            .mobile-hero > div.relative.z-10 > div.grid {
-                gap: 26px !important;
-            }
-
-
-            #heroBannerCard {
-
-                width:
-                    100vw !important;
-
-                margin-left:
-                    calc(50% - 50vw) !important;
-
-                margin-right:
-                    calc(50% - 50vw) !important;
-
-            }
-
-
-            #heroBannerCard > div:first-child {
-
-                background:
-                    linear-gradient(
-                        135deg,
-                        rgba(37,99,235,.7),
-                        rgba(96,165,250,.5)
-                    ) !important;
-
-                opacity:
-                    .55 !important;
-
-            }
-
-
-            #heroBannerCard > div:nth-child(2) {
-
-                background:
-                    rgba(15,23,42,.25) !important;
-
-                border:
-                    1px solid rgba(255,255,255,.30) !important;
-
-                padding:
-                    5px !important;
-
-                border-radius:
-                    20px !important;
-
-            }
-
-
-            .mobile-hero-img {
-
-                width:
-                    100% !important;
-
-                height:
-                    275px !important;
-
-                min-height:
-                    275px !important;
-
-                max-height:
-                    275px !important;
-
-                object-fit:
-                    cover !important;
-
-                object-position:
-                    center 18% !important;
-
-                border-radius:
-                    16px !important;
-
-            }
-
-
-            #heroBannerCard .absolute.bottom-4,
-            #heroBannerCard .absolute.bottom-6 {
-
-                background:
-                    rgba(15,23,42,.75) !important;
-
-                border-color:
-                    rgba(255,255,255,.15) !important;
-
-            }
-
-
-            #heroBannerCard p {
-                color: #ffffff !important;
-            }
-
-
-            #heroBannerCard span {
-                background: #2563eb !important;
-            }
-
-
-            /* ===================================================== */
-            /* CATEGORÍAS */
-            /* ===================================================== */
-
-            #categoriesContainer {
-
-                gap:
-                    6px !important;
-
-                padding-bottom:
-                    5px !important;
-
-            }
-
-
-            #categoriesContainer .category-btn {
-
-                background:
-                    #ffffff !important;
-
-                color:
-                    #475569 !important;
-
-                border:
-                    1px solid #dbeafe !important;
-
-                border-radius:
-                    999px !important;
-
-                padding:
-                    8px 13px !important;
-
-                font-size:
-                    10px !important;
-
-                font-weight:
-                    700 !important;
-
-                box-shadow:
-                    none !important;
-
-            }
-
-
-            #categoriesContainer .category-btn i {
-                display: none !important;
-            }
-
-
-            #categoriesContainer .category-selected {
-
-                background:
-                    #2563eb !important;
-
-                color:
-                    #ffffff !important;
-
-                border-color:
-                    #2563eb !important;
-
-            }
-
-
-            /* ===================================================== */
-            /* PRODUCTOS */
-            /* ===================================================== */
-
-            #productsGrid {
-
-                display:
-                    grid !important;
-
-                grid-template-columns:
-                    repeat(2, minmax(0, 1fr)) !important;
-
-                gap:
-                    10px !important;
-
-                width:
-                    100% !important;
-
-            }
-
-
-            .product-card-mobile {
-
-                display:
-                    flex !important;
-
-                flex-direction:
-                    column !important;
-
-                width:
-                    100% !important;
-
-                min-width:
-                    0 !important;
-
-                padding:
-                    8px !important;
-
-                background:
-                    #ffffff !important;
-
-                border:
-                    1px solid #dbeafe !important;
-
-                border-radius:
-                    15px !important;
-
-                box-shadow:
-                    0 3px 12px rgba(30,64,175,.07) !important;
-
-            }
-
-
-            .product-image-mobile {
-
-                width:
-                    100% !important;
-
-                height:
-                    105px !important;
-
-                min-height:
-                    105px !important;
-
-                max-height:
-                    105px !important;
-
-                margin:
-                    0 0 8px 0 !important;
-
-                padding:
-                    5px !important;
-
-                background:
-                    #f8fafc !important;
-
-                border-radius:
-                    11px !important;
-
-                overflow:
-                    hidden !important;
-
-            }
-
-
-            .product-image-mobile img {
-
-                width:
-                    100% !important;
-
-                height:
-                    100% !important;
-
-                object-fit:
-                    contain !important;
-
-                object-position:
-                    center !important;
-
-            }
-
-
-            .product-category-mobile {
-
-                display:
-                    block !important;
-
-                height:
-                    10px !important;
-
-                margin-bottom:
-                    3px !important;
-
-                color:
-                    #64748b !important;
-
-                font-size:
-                    7px !important;
-
-                line-height:
-                    1.1 !important;
-
-                overflow:
-                    hidden !important;
-
-                white-space:
-                    nowrap !important;
-
-                text-overflow:
-                    ellipsis !important;
-
-            }
-
-
-            .product-card-title {
-
-                display:
-                    block !important;
-
-                height:
-                    30px !important;
-
-                min-height:
-                    30px !important;
-
-                max-height:
-                    30px !important;
-
-                margin:
-                    0 !important;
-
-                color:
-                    #0f172a !important;
-
-                font-size:
-                    10.5px !important;
-
-                line-height:
-                    1.4 !important;
-
-                font-weight:
-                    700 !important;
-
-                overflow:
-                    hidden !important;
-
-            }
-
-
-            .product-card-mobile .product-bottom {
-
-                display:
-                    block !important;
-
-                padding:
-                    7px 0 0 !important;
-
-                margin:
-                    7px 0 0 !important;
-
-                border-top:
-                    1px solid #eef2f7 !important;
-
-            }
-
-
-            .product-price-row {
-
-                display:
-                    flex !important;
-
-                align-items:
-                    center !important;
-
-                justify-content:
-                    space-between !important;
-
-                gap:
-                    6px !important;
-
-                width:
-                    100% !important;
-
-            }
-
-
-            .product-card-mobile .product-price {
-
-                color:
-                    #2563eb !important;
-
-                font-size:
-                    13px !important;
-
-                line-height:
-                    20px !important;
-
-                font-weight:
-                    900 !important;
-
-                white-space:
-                    nowrap !important;
-
-            }
-
-
-            .product-quantity-control {
-
-                display:
-                    flex !important;
-
-                align-items:
-                    center !important;
-
-                justify-content:
-                    center !important;
-
-                gap:
-                    4px !important;
-
-                flex-shrink:
-                    0 !important;
-
-                background:
-                    #eff6ff !important;
-
-                border:
-                    1px solid #bfdbfe !important;
-
-                border-radius:
-                    9px !important;
-
-                padding:
-                    2px !important;
-
-            }
-
-
-            .product-quantity-control button {
-
-                width:
-                    23px !important;
-
-                height:
-                    23px !important;
-
-                min-width:
-                    23px !important;
-
-                border:
-                    0 !important;
-
-                border-radius:
-                    6px !important;
-
-                display:
-                    flex !important;
-
-                align-items:
-                    center !important;
-
-                justify-content:
-                    center !important;
-
-                background:
-                    #ffffff !important;
-
-                color:
-                    #2563eb !important;
-
-                font-size:
-                    14px !important;
-
-                line-height:
-                    1 !important;
-
-                font-weight:
-                    900 !important;
-
-            }
-
-
-            .product-quantity-control span {
-
-                min-width:
-                    18px !important;
-
-                text-align:
-                    center !important;
-
-                color:
-                    #0f172a !important;
-
-                font-size:
-                    10px !important;
-
-                font-weight:
-                    900 !important;
-
-            }
-
-
-            .product-card-mobile .add-product-btn {
-
-                width:
-                    100% !important;
-
-                height:
-                    31px !important;
-
-                min-height:
-                    31px !important;
-
-                margin-top:
-                    7px !important;
-
-                padding:
-                    0 5px !important;
-
-                background:
-                    #2563eb !important;
-
-                color:
-                    #ffffff !important;
-
-                border:
-                    0 !important;
-
-                border-radius:
-                    9px !important;
-
-                display:
-                    flex !important;
-
-                align-items:
-                    center !important;
-
-                justify-content:
-                    center !important;
-
-                gap:
-                    4px !important;
-
-                font-size:
-                    9px !important;
-
-                font-weight:
-                    800 !important;
-
-            }
-
-
-            .product-card-mobile .add-product-btn i {
-
-                width:
-                    13px !important;
-
-                height:
-                    13px !important;
-
-            }
-
-
-            /* ===================================================== */
-            /* WHATSAPP */
-            /* ===================================================== */
-
-            .whatsapp-float {
-
-                width:
-                    50px !important;
-
-                height:
-                    50px !important;
-
-                padding:
-                    0 !important;
-
-                display:
-                    flex !important;
-
-                align-items:
-                    center !important;
-
-                justify-content:
-                    center !important;
-
-                bottom:
-                    calc(
-                        80px +
-                        env(safe-area-inset-bottom)
-                    ) !important;
-
-                left:
-                    auto !important;
-
-                right:
-                    14px !important;
-
-                z-index:
-                    35 !important;
-
-            }
-
-
-            /* ===================================================== */
-            /* CARRITO */
-            /* ===================================================== */
-
-            #cartOverlay {
-
-                z-index:
-                    90 !important;
-
-                background:
-                    rgba(15,23,42,.65) !important;
-
-                backdrop-filter:
-                    blur(5px);
-
-                -webkit-backdrop-filter:
-                    blur(5px);
-
-            }
-
-
-            #cartPanel {
-
-                position:
-                    fixed !important;
-
-                inset:
-                    0 !important;
-
-                width:
-                    100vw !important;
-
-                max-width:
-                    none !important;
-
-                height:
-                    100dvh !important;
-
-                display:
-                    flex !important;
-
-                align-items:
-                    center !important;
-
-                justify-content:
-                    center !important;
-
-                padding:
-                    16px !important;
-
-                z-index:
-                    95 !important;
-
-                transform:
-                    translateX(100%) !important;
-
-                transition:
-                    transform .28s ease !important;
-
-            }
-
-
-            #cartPanel.cart-open {
-
-                transform:
-                    translateX(0) !important;
-
-            }
-
-
-            #cartPanel > div {
-
-                width:
-                    100% !important;
-
-                max-width:
-                    410px !important;
-
-                height:
-                    min(82dvh, 680px) !important;
-
-                min-height:
-                    0 !important;
-
-                border-radius:
-                    24px !important;
-
-                overflow:
-                    hidden !important;
-
-                box-shadow:
-                    0 25px 70px rgba(15,23,42,.28) !important;
-
-            }
-
-
-            #cartPanel > div > div:first-child {
-
-                padding:
-                    15px !important;
-
-                background:
-                    #f8fafc !important;
-
-                border-bottom:
-                    1px solid #dbeafe !important;
-
-            }
-
-
-            #cartContent {
-
-                padding:
-                    12px !important;
-
-                overflow-y:
-                    auto !important;
-
-            }
-
-
-            .mobile-cart-item {
-
-                display:
-                    flex !important;
-
-                align-items:
-                    flex-start !important;
-
-                gap:
-                    10px !important;
-
-                position:
-                    relative !important;
-
-                padding:
-                    10px !important;
-
-                background:
-                    #ffffff !important;
-
-                border:
-                    1px solid #dbeafe !important;
-
-                border-radius:
-                    14px !important;
-
-                box-shadow:
-                    0 3px 10px rgba(30,64,175,.05) !important;
-
-            }
-
-
-            .mobile-cart-item img {
-
-                width:
-                    58px !important;
-
-                height:
-                    58px !important;
-
-                min-width:
-                    58px !important;
-
-                object-fit:
-                    contain !important;
-
-                border-radius:
-                    11px !important;
-
-                background:
-                    #f8fafc !important;
-
-            }
-
-
-            .mobile-cart-item h5 {
-
-                font-size:
-                    11px !important;
-
-                line-height:
-                    1.3 !important;
-
-                padding-right:
-                    20px !important;
-
-            }
-
-
-            .mobile-cart-item p {
-
-                color:
-                    #2563eb !important;
-
-                font-size:
-                    11px !important;
-
-                font-weight:
-                    900 !important;
-
-            }
-
-
-            .mobile-cart-item .cart-quantity-control {
-
-                display:
-                    flex !important;
-
-                align-items:
-                    center !important;
-
-                gap:
-                    6px !important;
-
-                margin-top:
-                    7px !important;
-
-            }
-
-
-            .mobile-cart-item .cart-quantity-control button {
-
-                width:
-                    28px !important;
-
-                height:
-                    28px !important;
-
-                min-width:
-                    28px !important;
-
-                border:
-                    1px solid #bfdbfe !important;
-
-                background:
-                    #eff6ff !important;
-
-                color:
-                    #2563eb !important;
-
-                border-radius:
-                    8px !important;
-
-                display:
-                    flex !important;
-
-                align-items:
-                    center !important;
-
-                justify-content:
-                    center !important;
-
-                font-size:
-                    15px !important;
-
-                font-weight:
-                    900 !important;
-
-            }
-
-
-            .mobile-cart-item .cart-quantity-control span {
-
-                min-width:
-                    25px !important;
-
-                text-align:
-                    center !important;
-
-                font-size:
-                    12px !important;
-
-                font-weight:
-                    900 !important;
-
-            }
-
-
-            .mobile-cart-item .remove-cart-item {
-
-                position:
-                    absolute !important;
-
-                top:
-                    7px !important;
-
-                right:
-                    7px !important;
-
-                width:
-                    29px !important;
-
-                height:
-                    29px !important;
-
-                padding:
-                    0 !important;
-
-                border:
-                    0 !important;
-
-                border-radius:
-                    8px !important;
-
-                background:
-                    #fef2f2 !important;
-
-                color:
-                    #ef4444 !important;
-
-                display:
-                    flex !important;
-
-                align-items:
-                    center !important;
-
-                justify-content:
-                    center !important;
-
-            }
-
-
-            #cartPanel > div > div:last-child {
-
-                padding:
-                    13px !important;
-
-                background:
-                    #f8fafc !important;
-
-                border-top:
-                    1px solid #dbeafe !important;
-
-                gap:
-                    8px !important;
-
-            }
-
-
-            #cartTotal {
-                color: #2563eb !important;
-            }
-
-
-            .cart-action-secondary {
-
-                width:
-                    100% !important;
-
-                min-height:
-                    42px !important;
-
-                border:
-                    1px solid #bfdbfe !important;
-
-                background:
-                    #ffffff !important;
-
-                color:
-                    #2563eb !important;
-
-                border-radius:
-                    12px !important;
-
-                font-size:
-                    11px !important;
-
-                font-weight:
-                    800 !important;
-
-            }
-
-
-            #openCheckoutModalBtn {
-
-                width:
-                    100% !important;
-
-                min-height:
-                    45px !important;
-
-                background:
-                    #2563eb !important;
-
-                border-radius:
-                    12px !important;
-
-                box-shadow:
-                    0 5px 15px rgba(37,99,235,.20) !important;
-
-            }
-
-
-            /* ===================================================== */
-            /* MENÚ INFERIOR */
-            /* ===================================================== */
-
-            #mobileBottomNav {
-
-                position:
-                    fixed !important;
-
-                left:
-                    0 !important;
-
-                right:
-                    0 !important;
-
-                bottom:
-                    0 !important;
-
-                width:
-                    100% !important;
-
-                height:
-                    calc(
-                        68px +
-                        env(safe-area-inset-bottom)
-                    ) !important;
-
-                display:
-                    grid !important;
-
-                grid-template-columns:
-                    repeat(3,1fr) !important;
-
-                padding-bottom:
-                    env(safe-area-inset-bottom) !important;
-
-                background:
-                    rgba(255,255,255,.98) !important;
-
-                border-top:
-                    1px solid #dbeafe !important;
-
-                box-shadow:
-                    0 -5px 20px rgba(30,64,175,.10) !important;
-
-                backdrop-filter:
-                    blur(15px);
-
-                z-index:
-                    80 !important;
-
-            }
-
-
-            .mobile-nav-button {
-
-                height:
-                    68px !important;
-
-                border:
-                    0 !important;
-
-                background:
-                    transparent !important;
-
-                display:
-                    flex !important;
-
-                flex-direction:
-                    column !important;
-
-                align-items:
-                    center !important;
-
-                justify-content:
-                    center !important;
-
-                gap:
-                    3px !important;
-
-                color:
-                    #64748b !important;
-
-                font-size:
-                    9px !important;
-
-                font-weight:
-                    700 !important;
-
-                position:
-                    relative !important;
-
-            }
-
-
-            .mobile-nav-button i {
-
-                width:
-                    21px !important;
-
-                height:
-                    21px !important;
-
-            }
-
-
-            .mobile-nav-button.active {
-                color: #2563eb !important;
-            }
-
-
-            .mobile-nav-button.active::before {
-
-                content:
-                    '' !important;
-
-                position:
-                    absolute !important;
-
-                top:
-                    0 !important;
-
-                width:
-                    30px !important;
-
-                height:
-                    3px !important;
-
-                background:
-                    #2563eb !important;
-
-                border-radius:
-                    0 0 5px 5px !important;
-
-            }
-
-
-            #mobileCartCounter {
-
-                position:
-                    absolute !important;
-
-                top:
-                    13px !important;
-
-                margin-left:
-                    26px !important;
-
-                width:
-                    17px !important;
-
-                height:
-                    17px !important;
-
-                display:
-                    flex !important;
-
-                align-items:
-                    center !important;
-
-                justify-content:
-                    center !important;
-
-                border-radius:
-                    50% !important;
-
-                background:
-                    #2563eb !important;
-
-                color:
-                    white !important;
-
-                border:
-                    2px solid white !important;
-
-                font-size:
-                    7px !important;
-
-                font-weight:
-                    900 !important;
-
-            }
-
-        }
-
-
-        /* ========================================================= */
-        /* MUY PEQUEÑOS */
-        /* ========================================================= */
-
-        @media (max-width: 380px) {
-
-            #logoContainer {
-
-                width:
-                    40% !important;
-
-                min-width:
-                    112px !important;
-
-            }
-
-
-            #logoContainer img {
-
-                height:
-                    62px !important;
-
-            }
-
-
-            #searchInputMobile {
-
-                height:
-                    40px !important;
-
-                font-size:
-                    10px !important;
-
-            }
-
-
-            .mobile-hero-img {
-
-                height:
-                    235px !important;
-
-                min-height:
-                    235px !important;
-
-                max-height:
-                    235px !important;
-
-            }
-
-
-            #productsGrid {
-                gap: 8px !important;
-            }
-
-
-            .product-card-mobile {
-                padding: 7px !important;
-            }
-
-
-            .product-image-mobile {
-
-                height:
-                    94px !important;
-
-                min-height:
-                    94px !important;
-
-                max-height:
-                    94px !important;
-
-            }
-
-
-            .product-card-title {
-                font-size: 10px !important;
-            }
-
-
-            .product-card-mobile .product-price {
-                font-size: 12px !important;
-            }
-
-        }
-
-    </style>
-
+<link rel="stylesheet" href="assets/css/store.css">
+<link rel="stylesheet" href="assets/css/catalog.css">
+<meta name="description" content="Haz tu mercado en MerkoMAX NIMAR, Cimitarra. Busca productos, arma tu carrito y envía tu pedido por WhatsApp.">
 </head>
-
-
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-600 selection:text-white">
-
-
     <!-- ========================================================= -->
     <!-- BARRA SUPERIOR -->
     <!-- ========================================================= -->
-
     <div id="topAnnouncement"
          class="bg-blue-950 text-blue-100 text-[10px] sm:text-xs py-2 px-3 sm:px-4">
-
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
-
             <div class="flex items-center gap-2 min-w-0">
-
                 <span class="inline-block w-2 h-2 shrink-0 rounded-full bg-blue-400 animate-pulse"></span>
-
                 <span class="truncate">
                     ¡Envíos <strong>GRATIS</strong> en todo Cimitarra!
                 </span>
-
             </div>
-
-
             <div id="storeStatusBadge"
                  class="hidden sm:flex items-center gap-1.5 bg-blue-900/60 px-2.5 py-0.5 rounded-full border border-blue-700/50 shrink-0">
             </div>
-
         </div>
-
     </div>
-
-
     <!-- ========================================================= -->
     <!-- HEADER -->
     <!-- ========================================================= -->
-
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
-
         <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-
             <div class="min-h-[76px] sm:min-h-[96px] lg:h-28 flex items-center justify-between gap-2 sm:gap-4">
-
-
                 <!-- LOGO -->
-
                 <div id="logoContainer"
                      class="flex items-center cursor-pointer shrink-0 group transition-transform"
                      onclick="resetToHomeWithAnimation()">
-
                     <img src="logo.png"
                          alt="Supermercado MerkoMAX NIMAR"
                          class="h-16 sm:h-20 lg:h-24 w-auto object-contain transition-all duration-300 group-hover:scale-105 group-hover:rotate-1">
-
                 </div>
-
-
                 <!-- BUSCADOR MOBILE -->
-
                 <div id="mobileHeaderSearch">
-
                     <input type="text"
                            id="searchInputMobile"
                            placeholder="Buscar productos..."
                            autocomplete="off">
-
                     <div id="mobileSearchResults"></div>
-
                 </div>
-
-
                 <!-- BUSCADOR DESKTOP -->
-
                 <div class="flex-1 max-w-2xl hidden md:block">
-
                     <div class="relative">
-
                         <i data-lucide="search"
                            class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
                         </i>
-
                         <input type="text"
                                id="searchInput"
                                placeholder="Busca arroz, leche, aceite, frutas..."
                                class="w-full pl-12 pr-4 py-3 bg-slate-100 border-0 rounded-2xl text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 transition-all outline-none font-medium placeholder:text-slate-400"
                                autocomplete="off">
-
                     </div>
-
                 </div>
-
-
                 <!-- CARRITO PC -->
-
                 <div class="flex items-center shrink-0">
-
                     <button id="cartTrigger"
                             type="button"
                             class="relative bg-blue-50 hover:bg-blue-100 active:scale-95 text-blue-800 px-3 sm:px-4 py-2.5 sm:py-3 rounded-2xl font-semibold text-sm transition-all flex items-center gap-2">
-
                         <i data-lucide="shopping-cart"
                            class="w-5 h-5 text-blue-600">
                         </i>
-
                         <span class="hidden sm:inline">
                             Mi Carrito
                         </span>
-
                         <span id="cartCounter"
                               class="bg-wine-700 text-white text-[10px] sm:text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shadow-md shadow-wine-700/30">
                             0
                         </span>
-
                     </button>
-
                 </div>
-
             </div>
-
         </div>
-
     </header>
-
-
     <!-- ========================================================= -->
     <!-- HERO -->
     <!-- ========================================================= -->
-
     <section class="mobile-hero relative overflow-hidden bg-gradient-to-br from-wine-950 via-slate-900 to-blue-950 text-white py-10 sm:py-12 lg:py-16">
-
         <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]">
         </div>
-
-
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
             <div class="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
-
-
                 <div class="space-y-5 sm:space-y-6 text-center lg:text-left">
-
-
                     <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight drop-shadow-sm">
-
                         Mercado fresco y de calidad,
-
                         <span class="text-wine-400 underline decoration-wine-500/50 underline-offset-4">
                             directo a tu hogar.
                         </span>
-
                     </h1>
-
-
                     <p class="text-slate-300 text-sm sm:text-base lg:text-lg max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
-
                         Haz tu mercado online con los mejores precios,
                         ofertas exclusivas y combos ahorro listos para pedir.
-
                     </p>
-
+<a class="market-cta" href="#productos">Explorar productos <span aria-hidden="true">→</span></a>
+<div class="shopping-steps"><span>1. Elige tus productos</span><span>2. Revisa tu carrito</span><span>3. Pide por WhatsApp</span></div>
                 </div>
-
-
                 <!-- FOTO PERSONAS -->
-
                 <div id="heroBannerCard"
                      class="relative group">
-
                     <div class="w-full h-full bg-gradient-to-tr from-blue-500 to-blue-300 rounded-3xl opacity-30 blur-2xl absolute inset-0">
                     </div>
-
-
                     <div class="relative bg-slate-900/80 border border-slate-700/60 p-2 sm:p-3 rounded-3xl backdrop-blur-xl shadow-2xl overflow-hidden">
-
                         <img src="banner.jpeg"
                              alt="Equipo Supermercado MerkoMAX NIMAR"
                              class="mobile-hero-img w-full h-[250px] sm:h-[350px] lg:h-[450px] object-cover object-[center_15%] rounded-2xl shadow-md transition-transform duration-500 group-hover:scale-[1.02]">
-
-
                         <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 bg-slate-900/90 backdrop-blur-md px-3 sm:px-4 py-2.5 sm:py-3 rounded-2xl border border-slate-700/50 flex items-center justify-between gap-3 shadow-lg">
-
                             <div class="min-w-0">
-
                                 <p class="text-[10px] sm:text-xs font-bold text-white truncate">
                                     ¡Atendido por sus propios dueños!
                                 </p>
-
                                 <p class="text-[9px] sm:text-[11px] text-slate-300 truncate">
                                     Comprometidos con el servicio en Cimitarra
                                 </p>
-
                             </div>
-
-
                             <span class="bg-blue-600 text-white p-2 rounded-xl shadow-md shrink-0">
-
                                 <i data-lucide="heart"
                                    class="w-4 h-4 fill-white">
                                 </i>
-
                             </span>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
-
     <!-- ========================================================= -->
     <!-- CONTENIDO -->
     <!-- ========================================================= -->
-
     <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8 sm:space-y-10">
-
-
         <!-- CATEGORÍAS -->
-
         <section>
-
             <div class="flex items-center justify-between mb-4">
-
                 <h3 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
-
                     <i data-lucide="grid"
                        class="w-5 h-5 text-blue-600">
                     </i>
-
                     Categorías
-
                 </h3>
-
             </div>
-
-
             <div class="flex gap-2 sm:gap-3 overflow-x-auto pb-2 hide-scrollbar"
                  id="categoriesContainer">
-
-
                 <button onclick="filterCategory('todos')"
                         data-category="todos"
                         class="category-btn category-selected whitespace-nowrap bg-slate-900 text-white px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl font-medium text-xs sm:text-sm transition-all shadow-sm flex items-center gap-2 shrink-0">
-
                     <i data-lucide="layers"
                        class="w-4 h-4">
                     </i>
-
                     Todos
-
                 </button>
-
-
                 <button onclick="filterCategory('mas-vendidos')"
                         data-category="mas-vendidos"
                         class="category-btn whitespace-nowrap bg-amber-500 hover:bg-amber-600 text-white px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl font-bold text-xs sm:text-sm transition-all shadow-sm flex items-center gap-2 shrink-0">
-
                     <i data-lucide="flame"
                        class="w-4 h-4">
                     </i>
-
                     Lo más vendido
-
                 </button>
-
-
                 <button onclick="filterCategory('combos')"
                         data-category="combos"
                         class="category-btn whitespace-nowrap bg-wine-700 hover:bg-wine-800 text-white px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl font-bold text-xs sm:text-sm transition-all shadow-sm flex items-center gap-2 shrink-0">
-
                     <i data-lucide="package"
                        class="w-4 h-4">
                     </i>
-
                     Combos Ahorro
-
                 </button>
-
-
                 <button onclick="filterCategory('despensa')"
                         data-category="despensa"
                         class="category-btn whitespace-nowrap bg-white hover:bg-slate-100 text-slate-600 px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl font-medium text-xs sm:text-sm transition-all border border-slate-200/60 shadow-sm flex items-center gap-2 shrink-0">
-
                     <i data-lucide="shopping-bag"
                        class="w-4 h-4">
                     </i>
-
                     Despensa
-
                 </button>
-
-
                 <button onclick="filterCategory('frescos')"
                         data-category="frescos"
                         class="category-btn whitespace-nowrap bg-white hover:bg-slate-100 text-slate-600 px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl font-medium text-xs sm:text-sm transition-all border border-slate-200/60 shadow-sm flex items-center gap-2 shrink-0">
-
                     <i data-lucide="apple"
                        class="w-4 h-4">
                     </i>
-
                     Frutas y Verduras
-
                 </button>
-
-
                 <button onclick="filterCategory('lacteos')"
                         data-category="lacteos"
                         class="category-btn whitespace-nowrap bg-white hover:bg-slate-100 text-slate-600 px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl font-medium text-xs sm:text-sm transition-all border border-slate-200/60 shadow-sm flex items-center gap-2 shrink-0">
-
                     <i data-lucide="milk"
                        class="w-4 h-4">
                     </i>
-
                     Lácteos y Huevos
-
                 </button>
-
-
                 <button onclick="filterCategory('aseo')"
                         data-category="aseo"
                         class="category-btn whitespace-nowrap bg-white hover:bg-slate-100 text-slate-600 px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl font-medium text-xs sm:text-sm transition-all border border-slate-200/60 shadow-sm flex items-center gap-2 shrink-0">
-
                     <i data-lucide="sparkles"
                        class="w-4 h-4">
                     </i>
-
                     Aseo del Hogar
-
                 </button>
-
             </div>
-
         </section>
-
-
         <!-- PRODUCTOS -->
-
         <section id="productos"
                  class="space-y-5 sm:space-y-6 scroll-mt-32">
-
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200/60 pb-4">
-
                 <div>
-
                     <h2 id="sectionTitle"
                         class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-
                         Nuestros Productos
-
                     </h2>
-
-
                     <p id="sectionSubtitle"
                        class="text-slate-500 text-xs sm:text-sm mt-1">
-
-                        Cargando inventario desde Google Sheets...
-
+                        Cargando catálogo…
                     </p>
-
                 </div>
-
             </div>
-
-
-            <div id="productsGrid"
+            <div class="catalog-toolbar">
+    <span id="catalogCount" role="status" aria-live="polite">Preparando productos…</span>
+    <label for="catalogSort">Ordenar <select id="catalogSort"><option value="recommended">Recomendados</option><option value="price-asc">Menor precio</option><option value="price-desc">Mayor precio</option><option value="name">Nombre A–Z</option></select></label>
+</div>
+<div id="productsGrid" aria-busy="true"
                  class="grid grid-cols-1 min-[400px]:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-6">
-
                 <div class="col-span-full py-16 text-center space-y-3">
-
                     <div class="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto">
                     </div>
-
                     <p class="text-sm font-semibold text-slate-600">
                         Actualizando productos en vivo...
                     </p>
-
                 </div>
-
             </div>
-
         </section>
-
     </main>
-
-
     <!-- ========================================================= -->
     <!-- WHATSAPP -->
     <!-- ========================================================= -->
-
     <a href="https://wa.me/573157666771?text=Hola%20MerkoMAX,%20tengo%20una%20consulta%20sobre%20un%20producto"
        target="_blank"
        rel="noopener noreferrer"
        class="whatsapp-float fixed bottom-6 left-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white p-3.5 rounded-full shadow-2xl flex items-center gap-2 transition-all hover:scale-110 border-2 border-white">
-
         <i data-lucide="message-circle"
            class="w-6 h-6">
         </i>
-
         <span class="hidden md:inline font-bold text-xs pr-1">
             ¿Dudas? Chatea con nosotros
         </span>
-
     </a>
-
-
     <!-- ========================================================= -->
     <!-- BOTÓN CARRITO FLOTANTE PC -->
     <!-- ========================================================= -->
-
     <button id="desktopFloatingCart"
             type="button"
             aria-label="Abrir carrito">
-
         <i data-lucide="shopping-cart"></i>
-
         <span id="desktopFloatingCartBadge">
             0
         </span>
-
     </button>
-
-
     <!-- ========================================================= -->
     <!-- FOOTER -->
     <!-- ========================================================= -->
-
     <footer class="bg-slate-900 text-slate-400 mt-16 sm:mt-20 border-t border-slate-800">
-
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
-
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-
-
                 <div class="space-y-4">
-
                     <div class="flex items-center gap-3">
-
                         <img src="logo.png"
                              alt="Supermercado MerkoMAX NIMAR"
                              class="h-12 w-auto object-contain bg-white/10 p-1.5 rounded-xl">
-
                     </div>
-
-
                     <p class="text-xs text-slate-400 leading-relaxed">
-
                         Tu supermercado de confianza en Cimitarra.
                         Llevamos los mejores productos frescos y de canasta
                         familiar hasta la puerta de tu casa.
-
                     </p>
-
                 </div>
-
-
                 <div>
-
                     <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">
                         Categorías
                     </h4>
-
-
                     <ul class="space-y-2 text-xs">
-
                         <li>
                             <a href="#productos"
                                onclick="filterCategory('combos')"
@@ -2715,7 +337,6 @@
                                 Combos Ahorro
                             </a>
                         </li>
-
                         <li>
                             <a href="#productos"
                                onclick="filterCategory('despensa')"
@@ -2723,7 +344,6 @@
                                 Despensa
                             </a>
                         </li>
-
                         <li>
                             <a href="#productos"
                                onclick="filterCategory('frescos')"
@@ -2731,7 +351,6 @@
                                 Frutas y Verduras
                             </a>
                         </li>
-
                         <li>
                             <a href="#productos"
                                onclick="filterCategory('lacteos')"
@@ -2739,3451 +358,318 @@
                                 Lácteos y Huevos
                             </a>
                         </li>
-
                     </ul>
-
                 </div>
-
-
                 <div>
-
                     <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">
                         Contacto
                     </h4>
-
-
                     <ul class="space-y-3 text-xs">
-
                         <li class="flex items-center gap-2">
-
                             <i data-lucide="map-pin"
                                class="w-4 h-4 text-blue-500 shrink-0">
                             </i>
-
                             Cimitarra, Santander
-
                         </li>
-
-
                         <li class="flex items-center gap-2">
-
                             <i data-lucide="phone"
                                class="w-4 h-4 text-blue-500 shrink-0">
                             </i>
-
                             +57 315 766 6771
-
                         </li>
-
-
                         <li class="flex items-start gap-2">
-
                             <i data-lucide="clock"
                                class="w-4 h-4 text-blue-500 shrink-0 mt-0.5">
                             </i>
-
                             <span>
                                 Lunes a Domingo:<br>
                                 7:00 AM - 8:00 PM
                             </span>
-
                         </li>
-
                     </ul>
-
                 </div>
-
-
                 <div>
-
                     <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">
                         Forma de Pago
                     </h4>
-
-
                     <p class="text-xs text-slate-400 leading-relaxed mb-3">
-
                         Paga contra entrega en efectivo, Nequi, Daviplata
                         o datáfono al recibir tu pedido.
-
                     </p>
-
-
                     <div class="inline-flex items-center gap-2 bg-blue-950 border border-blue-800 text-blue-300 text-xs px-3 py-1.5 rounded-xl font-semibold">
-
                         <i data-lucide="check-circle-2"
                            class="w-4 h-4 text-wine-400">
                         </i>
-
                         Pago 100% Seguro
-
                     </div>
-
                 </div>
-
             </div>
-
-
             <div class="border-t border-slate-800 pt-6 text-center text-[10px] sm:text-xs text-slate-500">
-
                 &copy; 2026 Supermercado MerkoMAX NIMAR Cimitarra.
                 Todos los derechos reservados.
-
             </div>
-
         </div>
-
     </footer>
-
-
     <!-- ========================================================= -->
     <!-- CARRITO -->
     <!-- ========================================================= -->
-
     <div id="cartOverlay"
          class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden">
     </div>
-
-
     <div id="cartPanel"
          class="fixed inset-y-0 right-0 w-full sm:max-w-md flex z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
-
         <div class="w-full bg-white shadow-2xl flex flex-col min-h-0">
-
-
             <!-- CABECERA -->
-
             <div class="p-4 sm:p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50/50 shrink-0">
-
                 <div class="flex items-center gap-3 min-w-0">
-
                     <div class="bg-blue-600 text-white p-2 rounded-xl shrink-0">
-
                         <i data-lucide="shopping-cart"
                            class="w-5 h-5">
                         </i>
-
                     </div>
-
-
                     <div class="min-w-0">
-
                         <h3 class="font-bold text-slate-900">
                             Tu Carrito
                         </h3>
-
                         <p class="text-[10px] sm:text-xs text-slate-500 truncate">
                             Revisa tus productos seleccionados
                         </p>
-
                     </div>
-
                 </div>
-
-
                 <div class="flex items-center gap-1 sm:gap-2 shrink-0">
-
                     <button id="clearCartBtn"
                             type="button"
                             onclick="clearCart()"
                             title="Vaciar carrito"
                             class="hidden text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 p-2 rounded-xl transition-colors text-xs font-semibold items-center gap-1">
-
                         <i data-lucide="trash-2"
                            class="w-4 h-4">
                         </i>
-
                         <span class="hidden sm:inline">
                             Vaciar
                         </span>
-
                     </button>
-
-
                     <button id="closeCart"
                             type="button"
                             class="p-2 text-slate-400 hover:text-slate-600 rounded-xl hover:bg-slate-100 transition-colors">
-
                         <i data-lucide="x"
                            class="w-5 h-5">
                         </i>
-
                     </button>
-
                 </div>
-
             </div>
-
-
             <!-- CONTENIDO -->
-
             <div id="cartContent"
                  class="flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 space-y-4">
             </div>
-
-
             <!-- FOOTER -->
-
             <div class="p-4 sm:p-6 border-t border-slate-100 bg-slate-50/50 space-y-3 shrink-0">
-
                 <div class="flex justify-between text-base font-bold text-slate-900">
-
                     <span>
                         Total a pagar
                     </span>
-
                     <span id="cartTotal"
                           class="text-blue-600 text-lg">
                         $0
                     </span>
-
                 </div>
-
-
                 <button id="continueShoppingBtn"
                         type="button"
                         class="cart-action-secondary w-full bg-white border border-blue-200 text-blue-600 font-bold py-3 rounded-2xl">
-
                     Seguir comprando
-
                 </button>
-
-
                 <button id="openCheckoutModalBtn"
                         type="button"
                         class="w-full bg-emerald-600 hover:bg-emerald-500 active:scale-[.98] text-white font-bold py-3.5 rounded-2xl shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-2">
-
                     <i data-lucide="message-circle"
                        class="w-5 h-5">
                     </i>
-
                     <span>
                         Continuar pedido por WhatsApp
                     </span>
-
                 </button>
-
             </div>
-
         </div>
-
     </div>
-
-
     <!-- ========================================================= -->
     <!-- CHECKOUT -->
     <!-- ========================================================= -->
-
     <div id="checkoutModal"
          class="fixed inset-0 bg-slate-900/70 backdrop-blur-md z-[100] hidden items-center justify-center p-3 sm:p-4">
-
         <div class="bg-white rounded-3xl max-w-lg w-full p-5 sm:p-8 space-y-5 sm:space-y-6 shadow-2xl relative overflow-y-auto">
-
             <button id="closeCheckoutModal"
                     type="button"
                     class="absolute top-4 right-4 sm:top-5 sm:right-5 text-slate-400 hover:text-slate-600 p-1">
-
                 <i data-lucide="x"
                    class="w-6 h-6">
                 </i>
-
             </button>
-
-
             <div class="space-y-1 pr-8">
-
                 <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 flex items-center gap-2">
-
                     <i data-lucide="map-pin"
                        class="w-6 h-6 text-blue-600 shrink-0">
                     </i>
-
                     Datos para tu Entrega
-
                 </h3>
-
-
                 <p class="text-[10px] sm:text-xs text-slate-500">
-
                     Completa tus datos para enviarte el pedido por WhatsApp.
-
                 </p>
-
             </div>
-
-
             <form id="checkoutForm"
                   class="space-y-4 text-xs">
-
-
                 <!-- NOMBRE -->
-
                 <div>
-
                     <label class="block font-bold text-slate-700 mb-1">
                         Nombre Completo *
                     </label>
-
                     <input type="text"
                            id="custName"
                            required
                            placeholder="Ej. Maria Perez"
                            class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600 font-medium">
-
                 </div>
-
-
                 <!-- DIRECCIÓN -->
-
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-
                     <div>
-
                         <label class="block font-bold text-slate-700 mb-1">
                             Barrio *
                         </label>
-
                         <input type="text"
                                id="custNeighborhood"
                                required
                                placeholder="Ej. El Centro"
                                class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600 font-medium">
-
                     </div>
-
-
                     <div>
-
                         <label class="block font-bold text-slate-700 mb-1">
                             Dirección / Casa *
                         </label>
-
                         <input type="text"
                                id="custAddress"
                                required
                                placeholder="Ej. Cra 5 # 8-12"
                                class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600 font-medium">
-
                     </div>
-
                 </div>
-
-
                 <!-- PAGO -->
-
                 <div>
-
                     <label class="block font-bold text-slate-700 mb-1">
                         Método de Pago *
                     </label>
-
                     <select id="custPayment"
                             onchange="toggleCashDetail()"
                             class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600 font-medium">
-
                         <option value="Efectivo">
                             Efectivo contra entrega
                         </option>
-
                         <option value="Nequi / Daviplata">
                             Nequi / Daviplata
                         </option>
-
                         <option value="Datáfono">
                             Datáfono (Tarjeta Débito/Crédito)
                         </option>
-
                     </select>
-
                 </div>
-
-
                 <!-- ================================================= -->
                 <!-- EFECTIVO + DEVUELTA -->
                 <!-- ================================================= -->
-
                 <div id="cashDetailBox">
-
                     <label class="block font-bold text-slate-700 mb-1">
                         ¿Con cuánto dinero vas a pagar?
                     </label>
-
                     <input type="text"
                            id="custCashAmount"
                            inputmode="numeric"
                            placeholder="Ej. 100000"
                            class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600 font-medium">
-
-
                     <!-- DEVUELTA -->
-
                     <div id="cashChangeBox"
                          class="hidden mt-3 bg-blue-50 border border-blue-200 rounded-xl p-3">
-
                         <div class="flex items-center justify-between gap-3">
-
                             <span class="text-xs font-bold text-slate-600">
                                 Tu devuelta:
                             </span>
-
                             <span id="cashChangeAmount"
                                   class="text-base font-extrabold text-blue-700">
                                 $0
                             </span>
-
                         </div>
-
-
                         <p id="cashChangeMessage"
                            class="text-[10px] text-slate-500 mt-1">
                         </p>
-
                     </div>
-
                 </div>
-
-
                 <!-- NOTAS -->
-
                 <div>
-
                     <label class="block font-bold text-slate-700 mb-1">
                         Notas adicionales (Opcional)
                     </label>
-
                     <textarea id="custNotes"
                               rows="2"
                               placeholder="Ej. Timbrar en el segundo piso..."
                               class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-600 font-medium resize-none"></textarea>
-
                 </div>
-
-
                 <!-- ENVIAR -->
-
                 <button type="submit"
                         class="w-full bg-emerald-600 hover:bg-emerald-500 active:scale-[.98] text-white font-extrabold py-4 rounded-2xl shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-2 text-sm">
-
                     <i data-lucide="message-circle"
                        class="w-5 h-5">
                     </i>
-
                     <span>
                         Enviar Pedido a WhatsApp
                     </span>
-
                 </button>
-
             </form>
-
         </div>
-
     </div>
-
-
     <!-- ========================================================= -->
     <!-- TOAST -->
     <!-- ========================================================= -->
-
     <div id="toastContainer"
          class="fixed bottom-5 right-5 z-[120] flex flex-col gap-2 pointer-events-none">
     </div>
-
-
     <!-- ========================================================= -->
     <!-- MENÚ INFERIOR MOBILE -->
     <!-- ========================================================= -->
-
     <nav id="mobileBottomNav">
-
         <button type="button"
                 class="mobile-nav-button active"
                 id="mobileHomeButton"
                 onclick="mobileGoHome()">
-
             <i data-lucide="home"></i>
-
             <span>
                 Inicio
             </span>
-
         </button>
-
-
         <button type="button"
                 class="mobile-nav-button"
                 id="mobileSearchButton"
                 onclick="mobileGoSearch()">
-
             <i data-lucide="search"></i>
-
             <span>
                 Buscar
             </span>
-
         </button>
-
-
         <button type="button"
                 class="mobile-nav-button"
                 id="mobileCartButton"
                 onclick="openMobileCart()">
-
             <span class="relative flex items-center justify-center">
-
                 <i data-lucide="shopping-cart"></i>
-
                 <span id="mobileCartCounter">
                     0
                 </span>
-
             </span>
-
             <span>
                 Carrito
             </span>
-
         </button>
-
     </nav>
-
-
     <!-- ========================================================= -->
     <!-- JAVASCRIPT -->
     <!-- ========================================================= -->
-
-    <script>
-
-        /* ========================================================= */
-        /* CONFIGURACIÓN */
-        /* ========================================================= */
-
-        const SHEETDB_API =
-            "https://sheetdb.io/api/v1/15hpacliqdaw2";
-
-
-        let products = [];
-
-        let cart = [];
-
-        let currentCategory =
-            'todos';
-
-        let searchQuery =
-            '';
-
-
-        /*
-           Cantidad seleccionada en la tarjeta.
-           NO entra al carrito hasta pulsar Agregar.
-        */
-
-        const selectedQuantities = {};
-
-
-        /* ========================================================= */
-        /* ELEMENTOS */
-        /* ========================================================= */
-
-        const productsGrid =
-            document.getElementById(
-                'productsGrid'
-            );
-
-        const cartTrigger =
-            document.getElementById(
-                'cartTrigger'
-            );
-
-        const desktopFloatingCart =
-            document.getElementById(
-                'desktopFloatingCart'
-            );
-
-        const desktopFloatingCartBadge =
-            document.getElementById(
-                'desktopFloatingCartBadge'
-            );
-
-        const cartOverlay =
-            document.getElementById(
-                'cartOverlay'
-            );
-
-        const cartPanel =
-            document.getElementById(
-                'cartPanel'
-            );
-
-        const closeCart =
-            document.getElementById(
-                'closeCart'
-            );
-
-        const cartCounter =
-            document.getElementById(
-                'cartCounter'
-            );
-
-        const mobileCartCounter =
-            document.getElementById(
-                'mobileCartCounter'
-            );
-
-        const cartContent =
-            document.getElementById(
-                'cartContent'
-            );
-
-        const cartTotal =
-            document.getElementById(
-                'cartTotal'
-            );
-
-        const clearCartBtn =
-            document.getElementById(
-                'clearCartBtn'
-            );
-
-        const searchInput =
-            document.getElementById(
-                'searchInput'
-            );
-
-        const searchInputMobile =
-            document.getElementById(
-                'searchInputMobile'
-            );
-
-        const mobileSearchResults =
-            document.getElementById(
-                'mobileSearchResults'
-            );
-
-        const openCheckoutModalBtn =
-            document.getElementById(
-                'openCheckoutModalBtn'
-            );
-
-        const continueShoppingBtn =
-            document.getElementById(
-                'continueShoppingBtn'
-            );
-
-        const checkoutModal =
-            document.getElementById(
-                'checkoutModal'
-            );
-
-        const closeCheckoutModal =
-            document.getElementById(
-                'closeCheckoutModal'
-            );
-
-        const checkoutForm =
-            document.getElementById(
-                'checkoutForm'
-            );
-
-
-        /* ========================================================= */
-        /* DOM READY */
-        /* ========================================================= */
-
-        document.addEventListener(
-            'DOMContentLoaded',
-            () => {
-
-                loadCartFromLocalStorage();
-
-                fetchProductsFromSheet();
-
-                setupEventListeners();
-
-                checkStoreStatus();
-
-                updateDesktopFloatingCart();
-
-                if (window.lucide) {
-                    lucide.createIcons();
-                }
-
-            }
-        );
-
-
-        /* ========================================================= */
-        /* NORMALIZAR TEXTO */
-        /* ========================================================= */
-
-        function normalizeText(text) {
-
-            return String(text || '')
-                .toLowerCase()
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, '')
-                .trim();
-
-        }
-
-
-        /* ========================================================= */
-        /* CANTIDAD SELECCIONADA */
-        /* ========================================================= */
-
-        function getSelectedQuantity(productId) {
-
-            const id =
-                Number(productId);
-
-
-            if (
-                !selectedQuantities[id] ||
-                selectedQuantities[id] < 1
-            ) {
-
-                selectedQuantities[id] =
-                    1;
-
-            }
-
-
-            return selectedQuantities[id];
-
-        }
-
-
-        function changeSelectedQuantity(
-            productId,
-            delta
-        ) {
-
-            const id =
-                Number(productId);
-
-
-            const current =
-                getSelectedQuantity(id);
-
-
-            const newQuantity =
-                Math.max(
-                    1,
-                    current + Number(delta)
-                );
-
-
-            selectedQuantities[id] =
-                newQuantity;
-
-
-            const quantityElement =
-                document.getElementById(
-                    `selectedQty-${id}`
-                );
-
-
-            if (quantityElement) {
-
-                quantityElement.textContent =
-                    newQuantity;
-
-            }
-
-        }
-
-
-        /* ========================================================= */
-        /* AGREGAR CANTIDAD SELECCIONADA */
-        /* ========================================================= */
-
-        function addSelectedQuantityToCart(
-            productId
-        ) {
-
-            const product =
-                products.find(
-                    p =>
-                        Number(p.id) ===
-                        Number(productId)
-                );
-
-
-            if (!product) {
-                return;
-            }
-
-
-            const quantity =
-                getSelectedQuantity(
-                    productId
-                );
-
-
-            const existing =
-                cart.find(
-                    item =>
-                        Number(item.id) ===
-                        Number(productId)
-                );
-
-
-            if (existing) {
-
-                existing.quantity =
-                    Number(existing.quantity || 0) +
-                    quantity;
-
-            }
-
-            else {
-
-                cart.push({
-
-                    ...product,
-
-                    quantity:
-                        quantity
-
-                });
-
-            }
-
-
-            saveCartToLocalStorage();
-
-            updateCartUI();
-
-
-            selectedQuantities[
-                Number(productId)
-            ] = 1;
-
-
-            renderProducts();
-
-
-            showToast(
-                `${quantity} ${
-                    quantity === 1
-                        ? 'unidad agregada'
-                        : 'unidades agregadas'
-                }: ${product.name}`
-            );
-
-        }
-
-
-        /* ========================================================= */
-        /* GUARDAR CARRITO */
-        /* ========================================================= */
-
-        function saveCartToLocalStorage() {
-
-            localStorage.setItem(
-                'merkomax_cart',
-                JSON.stringify(cart)
-            );
-
-        }
-
-
-        /* ========================================================= */
-        /* CARGAR CARRITO */
-        /* ========================================================= */
-
-        function loadCartFromLocalStorage() {
-
-            const savedCart =
-                localStorage.getItem(
-                    'merkomax_cart'
-                );
-
-
-            if (savedCart) {
-
-                try {
-
-                    cart =
-                        JSON.parse(
-                            savedCart
-                        );
-
-
-                    if (
-                        !Array.isArray(cart)
-                    ) {
-
-                        cart = [];
-
-                    }
-
-                }
-
-                catch (error) {
-
-                    cart = [];
-
-                }
-
-            }
-
-
-            updateCartUI();
-
-        }
-
-
-        /* ========================================================= */
-        /* PRODUCTOS */
-        /* ========================================================= */
-
-        async function fetchProductsFromSheet() {
-
-            try {
-
-                const response =
-                    await fetch(
-                        SHEETDB_API
-                    );
-
-
-                if (!response.ok) {
-
-                    throw new Error(
-                        `HTTP ${response.status}`
-                    );
-
-                }
-
-
-                const data =
-                    await response.json();
-
-
-                products =
-                    data.map(item => {
-
-                        const cleanPrice =
-                            parseFloat(
-                                String(
-                                    item.price || '0'
-                                )
-                                .replace(/\./g, '')
-                                .replace(/[^0-9]/g, '')
-                            ) || 0;
-
-
-                        return {
-
-                            id:
-                                Number(item.id) ||
-                                Math.random(),
-
-                            name:
-                                item.name ||
-                                'Producto sin nombre',
-
-                            category:
-                                item.category
-                                    ? item.category
-                                        .trim()
-                                        .toLowerCase()
-                                    : 'despensa',
-
-                            price:
-                                cleanPrice,
-
-                            isOffer:
-                                String(
-                                    item.isOffer
-                                ).toUpperCase() ===
-                                'TRUE',
-
-                            isBestSeller:
-                                String(
-                                    item.isBestSeller
-                                ).toUpperCase() ===
-                                'TRUE',
-
-                            image:
-                                item.image ||
-                                'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80'
-
-                        };
-
-                    });
-
-
-                renderProducts();
-
-            }
-
-            catch (error) {
-
-                console.error(error);
-
-
-                productsGrid.innerHTML = `
-
-                    <div class="col-span-full py-16 text-center px-4">
-
-                        <div class="bg-red-50 text-red-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
-
-                            <i data-lucide="alert-triangle"
-                               class="w-8 h-8">
-                            </i>
-
-                        </div>
-
-                        <h3 class="text-lg font-bold text-slate-800">
-                            No se pudieron cargar los productos
-                        </h3>
-
-                        <p class="text-sm text-slate-500 mt-1">
-                            Revisa la conexión con SheetDB.
-                        </p>
-
-                    </div>
-
-                `;
-
-
-                if (window.lucide) {
-                    lucide.createIcons();
-                }
-
-            }
-
-        }
-
-
-        /* ========================================================= */
-        /* HORARIO */
-        /* ========================================================= */
-
-        function checkStoreStatus() {
-
-            const badge =
-                document.getElementById(
-                    'storeStatusBadge'
-                );
-
-
-            if (!badge) {
-                return;
-            }
-
-
-            const hour =
-                new Date().getHours();
-
-
-            if (
-                hour >= 7 &&
-                hour < 20
-            ) {
-
-                badge.innerHTML = `
-
-                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-
-                    <span class="text-emerald-300 font-bold">
-                        🟢 Abierto
-                    </span>
-
-                `;
-
-            }
-
-            else {
-
-                badge.innerHTML = `
-
-                    <span class="w-2 h-2 rounded-full bg-red-400"></span>
-
-                    <span class="text-red-300 font-bold">
-                        🔴 Cerrado
-                    </span>
-
-                `;
-
-            }
-
-        }
-
-
-        /* ========================================================= */
-        /* RENDER PRODUCTOS */
-        /* ========================================================= */
-
-        function renderProducts() {
-
-            const normalizedSearch =
-                normalizeText(
-                    searchQuery
-                );
-
-
-            const filtered =
-                products.filter(
-                    product => {
-
-                        let matchesCategory;
-
-
-                        if (
-                            currentCategory ===
-                            'todos'
-                        ) {
-
-                            matchesCategory =
-                                true;
-
-                        }
-
-                        else if (
-                            currentCategory ===
-                            'mas-vendidos'
-                        ) {
-
-                            matchesCategory =
-                                product.isBestSeller;
-
-                        }
-
-                        else {
-
-                            matchesCategory =
-                                product.category ===
-                                currentCategory;
-
-                        }
-
-
-                        const productName =
-                            normalizeText(
-                                product.name
-                            );
-
-
-                        const matchesSearch =
-                            !normalizedSearch ||
-                            productName.includes(
-                                normalizedSearch
-                            );
-
-
-                        return (
-                            matchesCategory &&
-                            matchesSearch
-                        );
-
-                    }
-                );
-
-
-            if (
-                filtered.length === 0
-            ) {
-
-                productsGrid.innerHTML = `
-
-                    <div class="col-span-full py-16 text-center px-4">
-
-                        <div class="bg-slate-100 text-slate-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
-
-                            <i data-lucide="search-x"
-                               class="w-8 h-8">
-                            </i>
-
-                        </div>
-
-                        <h3 class="text-lg font-bold text-slate-800">
-                            No se encontraron productos
-                        </h3>
-
-                        <p class="text-sm text-slate-500 mt-1">
-                            Intenta con otra palabra.
-                        </p>
-
-                    </div>
-
-                `;
-
-
-                if (window.lucide) {
-                    lucide.createIcons();
-                }
-
-                return;
-
-            }
-
-
-            productsGrid.innerHTML =
-
-                filtered.map(
-                    product => {
-
-                        const selectedQuantity =
-                            getSelectedQuantity(
-                                product.id
-                            );
-
-
-                        return `
-
-                            <div class="product-card-mobile bg-white rounded-2xl sm:rounded-3xl p-2.5 sm:p-4 border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between relative group min-w-0">
-
-
-                                ${
-                                    product.category === 'combos'
-
-                                    ? `
-
-                                        <span class="absolute top-3 left-3 z-10 bg-wine-700 text-white font-black text-[8px] sm:text-[10px] px-2 py-1 rounded-full uppercase tracking-wider shadow-md">
-
-                                            COMBO
-
-                                        </span>
-
-                                    `
-
-                                    : product.isBestSeller
-
-                                    ? `
-
-                                        <span class="absolute top-3 left-3 z-10 bg-amber-500 text-white font-black text-[8px] sm:text-[10px] px-2 py-1 rounded-full uppercase tracking-wider shadow-md">
-
-                                            TOP
-
-                                        </span>
-
-                                    `
-
-                                    : ''
-
-                                }
-
-
-                                <div class="product-image-mobile h-36 min-[400px]:h-32 sm:h-44 w-full rounded-xl sm:rounded-2xl overflow-hidden bg-slate-50 flex items-center justify-center mb-3 sm:mb-4 relative">
-
-                                    <img
-                                        src="${product.image}"
-                                        alt="${product.name}"
-                                        loading="lazy"
-                                        class="object-contain h-full w-full"
-                                        onerror="this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80'"
-                                    >
-
-                                </div>
-
-
-                                <div class="min-w-0">
-
-                                    <span class="product-category-mobile text-[8px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-wider">
-
-                                        ${product.category}
-
-                                    </span>
-
-
-                                    <h3 class="product-card-title font-bold text-slate-900 text-[11px] min-[400px]:text-xs sm:text-base leading-snug line-clamp-2 break-anywhere">
-
-                                        ${product.name}
-
-                                    </h3>
-
-                                </div>
-
-
-                                <div class="product-bottom pt-3 sm:pt-4 border-t border-slate-100 mt-3 sm:mt-4">
-
-                                    <div class="product-price-row">
-
-                                        <span class="product-price text-xs min-[400px]:text-sm sm:text-lg font-extrabold text-slate-900">
-
-                                            $${product.price.toLocaleString('es-CO')}
-
-                                        </span>
-
-
-                                        <div class="product-quantity-control">
-
-                                            <button
-                                                type="button"
-                                                onclick="changeSelectedQuantity(${product.id}, -1)"
-                                                aria-label="Disminuir cantidad">
-
-                                                −
-
-                                            </button>
-
-
-                                            <span id="selectedQty-${product.id}">
-
-                                                ${selectedQuantity}
-
-                                            </span>
-
-
-                                            <button
-                                                type="button"
-                                                onclick="changeSelectedQuantity(${product.id}, 1)"
-                                                aria-label="Aumentar cantidad">
-
-                                                +
-
-                                            </button>
-
-                                        </div>
-
-                                    </div>
-
-
-                                    <button
-                                        type="button"
-                                        onclick="addSelectedQuantityToCart(${product.id})"
-                                        class="add-product-btn w-full bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold py-2.5 sm:py-3 px-2 sm:px-4 rounded-xl sm:rounded-2xl transition-all flex items-center justify-center gap-1.5 text-[10px] sm:text-sm shadow-sm">
-
-                                        <i data-lucide="plus"
-                                           class="w-3.5 h-3.5 sm:w-4 sm:h-4">
-                                        </i>
-
-                                        <span>
-                                            Agregar
-                                        </span>
-
-                                    </button>
-
-                                </div>
-
-                            </div>
-
-                        `;
-
-                    }
-                ).join('');
-
-
-            if (window.lucide) {
-                lucide.createIcons();
-            }
-
-        }
-
-
-        /* ========================================================= */
-        /* BÚSQUEDA MOBILE */
-        /* ========================================================= */
-
-        function renderMobileSearchResults(query) {
-
-            if (!mobileSearchResults) {
-                return;
-            }
-
-
-            const q =
-                normalizeText(
-                    query
-                );
-
-
-            if (!q) {
-
-                mobileSearchResults.classList.remove(
-                    'active'
-                );
-
-                mobileSearchResults.innerHTML =
-                    '';
-
-                return;
-
-            }
-
-
-            const results =
-                products.filter(
-                    product => {
-
-                        const name =
-                            normalizeText(
-                                product.name
-                            );
-
-
-                        const category =
-                            normalizeText(
-                                product.category
-                            );
-
-
-                        return (
-                            name.includes(q) ||
-                            category.includes(q)
-                        );
-
-                    }
-                );
-
-
-            if (
-                results.length === 0
-            ) {
-
-                mobileSearchResults.innerHTML = `
-
-                    <div class="p-5 text-center">
-
-                        <i data-lucide="search-x"
-                           class="w-6 h-6 text-slate-300 mx-auto mb-2">
-                        </i>
-
-                        <p class="text-xs font-semibold text-slate-500">
-                            No encontramos productos para "${query}"
-                        </p>
-
-                    </div>
-
-                `;
-
-            }
-
-            else {
-
-                mobileSearchResults.innerHTML = `
-
-                    <div class="px-4 py-2 text-[10px] font-extrabold uppercase tracking-wider text-blue-700 bg-blue-50 border-b border-blue-100">
-
-                        ${results.length}
-                        producto${results.length === 1 ? '' : 's'}
-                        encontrado${results.length === 1 ? '' : 's'}
-
-                    </div>
-
-                    ${
-                        results.map(
-                            product => `
-
-                                <div
-                                    class="mobile-search-item"
-                                    onclick="selectSearchProduct(${product.id})">
-
-                                    <img
-                                        src="${product.image}"
-                                        alt="${product.name}"
-                                        onerror="this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80'"
-                                    >
-
-
-                                    <div class="mobile-search-item-info">
-
-                                        <div class="mobile-search-item-name">
-                                            ${product.name}
-                                        </div>
-
-
-                                        <div class="mobile-search-item-price">
-
-                                            $${product.price.toLocaleString('es-CO')}
-
-                                        </div>
-
-                                    </div>
-
-
-                                    <i data-lucide="chevron-right"
-                                       class="w-4 h-4 text-slate-300 shrink-0">
-                                    </i>
-
-                                </div>
-
-                            `
-                        ).join('')
-                    }
-
-                `;
-
-            }
-
-
-            mobileSearchResults.classList.add(
-                'active'
-            );
-
-
-            if (window.lucide) {
-                lucide.createIcons();
-            }
-
-        }
-
-
-        function selectSearchProduct(
-            productId
-        ) {
-
-            const product =
-                products.find(
-                    p =>
-                        p.id ===
-                        productId
-                );
-
-
-            if (!product) {
-                return;
-            }
-
-
-            searchQuery =
-                product.name;
-
-
-            if (searchInputMobile) {
-
-                searchInputMobile.value =
-                    product.name;
-
-            }
-
-
-            if (searchInput) {
-
-                searchInput.value =
-                    product.name;
-
-            }
-
-
-            mobileSearchResults.classList.remove(
-                'active'
-            );
-
-
-            renderProducts();
-
-
-            setMobileNavActive(
-                'mobileSearchButton'
-            );
-
-
-            document
-                .getElementById(
-                    'productos'
-                )
-                .scrollIntoView({
-
-                    behavior:
-                        'smooth',
-
-                    block:
-                        'start'
-
-                });
-
-        }
-
-
-        /* ========================================================= */
-        /* CATEGORÍAS */
-        /* ========================================================= */
-
-        function filterCategory(
-            category
-        ) {
-
-            currentCategory =
-                category;
-
-
-            document
-                .querySelectorAll(
-                    '.category-btn'
-                )
-                .forEach(
-                    btn => {
-
-                        btn.classList.remove(
-                            'category-selected'
-                        );
-
-                    }
-                );
-
-
-            const selectedButton =
-                document.querySelector(
-                    `.category-btn[data-category="${category}"]`
-                );
-
-
-            if (selectedButton) {
-
-                selectedButton.classList.add(
-                    'category-selected'
-                );
-
-            }
-
-
-            const title =
-                document.getElementById(
-                    'sectionTitle'
-                );
-
-
-            const subtitle =
-                document.getElementById(
-                    'sectionSubtitle'
-                );
-
-
-            if (
-                category ===
-                'todos'
-            ) {
-
-                title.textContent =
-                    'Nuestros Productos';
-
-                subtitle.textContent =
-                    'Explora todo nuestro catálogo disponible';
-
-            }
-
-            else if (
-                category ===
-                'mas-vendidos'
-            ) {
-
-                title.textContent =
-                    'Lo más vendido';
-
-                subtitle.textContent =
-                    'Los favoritos de nuestros clientes';
-
-            }
-
-            else if (
-                category ===
-                'combos'
-            ) {
-
-                title.textContent =
-                    'Combos Ahorro';
-
-                subtitle.textContent =
-                    'Lleva más pagando menos';
-
-            }
-
-            else {
-
-                title.textContent =
-                    category.charAt(0).toUpperCase() +
-                    category.slice(1);
-
-                subtitle.textContent =
-                    `Productos en la categoría ${category}`;
-
-            }
-
-
-            renderProducts();
-
-
-            document
-                .getElementById(
-                    'productos'
-                )
-                .scrollIntoView({
-
-                    behavior:
-                        'smooth',
-
-                    block:
-                        'start'
-
-                });
-
-        }
-
-
-        /* ========================================================= */
-        /* ABRIR CARRITO */
-        /* ========================================================= */
-
-        function openCartDrawer() {
-
-            if (
-                !cartPanel ||
-                !cartOverlay
-            ) {
-                return;
-            }
-
-
-            updateCartUI();
-
-
-            if (
-                window.innerWidth <= 639
-            ) {
-
-                cartPanel.classList.add(
-                    'cart-open'
-                );
-
-                cartPanel.style.transform =
-                    'translateX(0)';
-
-            }
-
-            else {
-
-                cartPanel.classList.remove(
-                    'translate-x-full'
-                );
-
-                cartPanel.style.transform =
-                    'translateX(0)';
-
-            }
-
-
-            cartOverlay.classList.remove(
-                'hidden'
-            );
-
-
-            document.body.classList.add(
-                'overflow-hidden'
-            );
-
-        }
-
-
-        /* ========================================================= */
-        /* CERRAR CARRITO */
-        /* ========================================================= */
-
-        function closeCartDrawer() {
-
-            if (
-                !cartPanel ||
-                !cartOverlay
-            ) {
-                return;
-            }
-
-
-            if (
-                window.innerWidth <= 639
-            ) {
-
-                cartPanel.classList.remove(
-                    'cart-open'
-                );
-
-                cartPanel.style.transform =
-                    'translateX(100%)';
-
-            }
-
-            else {
-
-                cartPanel.classList.add(
-                    'translate-x-full'
-                );
-
-                cartPanel.style.transform =
-                    'translateX(100%)';
-
-            }
-
-
-            cartOverlay.classList.add(
-                'hidden'
-            );
-
-
-            document.body.classList.remove(
-                'overflow-hidden'
-            );
-
-        }
-
-
-        /* ========================================================= */
-        /* CARRITO MOBILE */
-        /* ========================================================= */
-
-        function openMobileCart() {
-
-            setMobileNavActive(
-                'mobileCartButton'
-            );
-
-
-            openCartDrawer();
-
-        }
-
-
-        /* ========================================================= */
-        /* ACTUALIZAR CANTIDAD DEL CARRITO */
-        /* ========================================================= */
-
-        function updateQuantity(
-            productId,
-            delta
-        ) {
-
-            const item =
-                cart.find(
-                    item =>
-                        Number(item.id) ===
-                        Number(productId)
-                );
-
-
-            if (!item) {
-                return;
-            }
-
-
-            item.quantity =
-                Number(item.quantity || 0) +
-                Number(delta);
-
-
-            if (
-                item.quantity <= 0
-            ) {
-
-                cart =
-                    cart.filter(
-                        cartItem =>
-                            Number(cartItem.id) !==
-                            Number(productId)
-                    );
-
-            }
-
-
-            saveCartToLocalStorage();
-
-            updateCartUI();
-
-            renderProducts();
-
-
-            /*
-               Si el checkout ya estaba abierto,
-               actualizamos también la devuelta.
-            */
-
-            if (
-                checkoutModal &&
-                !checkoutModal.classList.contains(
-                    'hidden'
-                )
-            ) {
-
-                updateCashChange();
-
-            }
-
-        }
-
-
-        /* ========================================================= */
-        /* ELIMINAR */
-        /* ========================================================= */
-
-        function removeFromCart(
-            productId
-        ) {
-
-            cart =
-                cart.filter(
-                    item =>
-                        Number(item.id) !==
-                        Number(productId)
-                );
-
-
-            saveCartToLocalStorage();
-
-            updateCartUI();
-
-            renderProducts();
-
-
-            if (
-                checkoutModal &&
-                !checkoutModal.classList.contains(
-                    'hidden'
-                )
-            ) {
-
-                updateCashChange();
-
-            }
-
-        }
-
-
-        /* ========================================================= */
-        /* VACIAR */
-        /* ========================================================= */
-
-        function clearCart() {
-
-            if (
-                cart.length === 0
-            ) {
-
-                return;
-
-            }
-
-
-            if (
-                confirm(
-                    '¿Estás seguro de vaciar todo el carrito?'
-                )
-            ) {
-
-                cart = [];
-
-                saveCartToLocalStorage();
-
-                updateCartUI();
-
-                renderProducts();
-
-            }
-
-        }
-
-
-        /* ========================================================= */
-        /* ACTUALIZAR INTERFAZ CARRITO */
-        /* ========================================================= */
-
-        function updateCartUI() {
-
-            const totalCount =
-                cart.reduce(
-                    (
-                        total,
-                        item
-                    ) =>
-                        total +
-                        Number(item.quantity || 0),
-                    0
-                );
-
-
-            if (cartCounter) {
-
-                cartCounter.textContent =
-                    totalCount;
-
-            }
-
-
-            if (mobileCartCounter) {
-
-                mobileCartCounter.textContent =
-                    totalCount;
-
-            }
-
-
-            if (desktopFloatingCartBadge) {
-
-                desktopFloatingCartBadge.textContent =
-                    totalCount > 99
-                        ? '99+'
-                        : totalCount;
-
-            }
-
-
-            if (
-                cart.length > 0
-            ) {
-
-                clearCartBtn.classList.remove(
-                    'hidden'
-                );
-
-                clearCartBtn.classList.add(
-                    'flex'
-                );
-
-            }
-
-            else {
-
-                clearCartBtn.classList.add(
-                    'hidden'
-                );
-
-                clearCartBtn.classList.remove(
-                    'flex'
-                );
-
-            }
-
-
-            if (
-                cart.length === 0
-            ) {
-
-                cartContent.innerHTML = `
-
-                    <div class="text-center py-16 space-y-3">
-
-                        <div class="bg-blue-50 text-blue-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-
-                            <i data-lucide="shopping-cart"
-                               class="w-8 h-8">
-                            </i>
-
-                        </div>
-
-                        <h4 class="font-bold text-slate-800">
-                            Tu carrito está vacío
-                        </h4>
-
-                        <p class="text-xs text-slate-500 max-w-xs mx-auto">
-                            Explora nuestro catálogo y agrega productos.
-                        </p>
-
-                    </div>
-
-                `;
-
-
-                cartTotal.textContent =
-                    '$0';
-
-
-                if (window.lucide) {
-                    lucide.createIcons();
-                }
-
-                return;
-
-            }
-
-
-            cartContent.innerHTML =
-
-                cart.map(
-                    item => `
-
-                        <div class="mobile-cart-item">
-
-                            <img
-                                src="${item.image}"
-                                alt="${item.name}"
-                                onerror="this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80'"
-                            >
-
-
-                            <div class="flex-1 min-w-0 pr-7">
-
-                                <h5 class="font-bold text-slate-900 text-xs leading-snug break-anywhere">
-
-                                    ${item.name}
-
-                                </h5>
-
-
-                                <p class="text-blue-600 font-extrabold text-xs mt-1">
-
-                                    $${(
-                                        item.price *
-                                        item.quantity
-                                    ).toLocaleString('es-CO')}
-
-                                </p>
-
-
-                                <div class="cart-quantity-control">
-
-                                    <button
-                                        type="button"
-                                        onclick="updateQuantity(${item.id}, -1)"
-                                        aria-label="Disminuir">
-
-                                        −
-
-                                    </button>
-
-
-                                    <span>
-
-                                        ${item.quantity}
-
-                                    </span>
-
-
-                                    <button
-                                        type="button"
-                                        onclick="updateQuantity(${item.id}, 1)"
-                                        aria-label="Aumentar">
-
-                                        +
-
-                                    </button>
-
-                                </div>
-
-                            </div>
-
-
-                            <button
-                                type="button"
-                                onclick="removeFromCart(${item.id})"
-                                title="Eliminar producto"
-                                class="remove-cart-item">
-
-                                <i data-lucide="trash-2"
-                                   class="w-4 h-4">
-                                </i>
-
-                            </button>
-
-                        </div>
-
-                    `
-                ).join('');
-
-
-            const total =
-                calculateCartTotal();
-
-
-            cartTotal.textContent =
-                `$${total.toLocaleString('es-CO')}`;
-
-
-            if (window.lucide) {
-                lucide.createIcons();
-            }
-
-        }
-
-
-        /* ========================================================= */
-        /* TOTAL CARRITO */
-        /* ========================================================= */
-
-        function calculateCartTotal() {
-
-            return cart.reduce(
-                (
-                    sum,
-                    item
-                ) =>
-                    sum +
-                    (
-                        Number(item.price) *
-                        Number(item.quantity)
-                    ),
-                0
-            );
-
-        }
-
-
-        /* ========================================================= */
-        /* EFECTIVO */
-        /* ========================================================= */
-
-        function parseCashAmount(value) {
-
-            return Number(
-                String(value || '')
-                    .replace(/\./g, '')
-                    .replace(/,/g, '')
-                    .replace(/[^0-9]/g, '')
-            ) || 0;
-
-        }
-
-
-        function updateCashChange() {
-
-            const payment =
-                document.getElementById(
-                    'custPayment'
-                )?.value;
-
-
-            const cashInput =
-                document.getElementById(
-                    'custCashAmount'
-                );
-
-
-            const changeBox =
-                document.getElementById(
-                    'cashChangeBox'
-                );
-
-
-            const changeAmount =
-                document.getElementById(
-                    'cashChangeAmount'
-                );
-
-
-            const changeMessage =
-                document.getElementById(
-                    'cashChangeMessage'
-                );
-
-
-            if (
-                !cashInput ||
-                !changeBox ||
-                !changeAmount ||
-                !changeMessage
-            ) {
-                return;
-            }
-
-
-            if (
-                payment !==
-                'Efectivo'
-            ) {
-
-                changeBox.classList.add(
-                    'hidden'
-                );
-
-                return;
-
-            }
-
-
-            const cashGiven =
-                parseCashAmount(
-                    cashInput.value
-                );
-
-
-            const total =
-                calculateCartTotal();
-
-
-            if (
-                cashGiven <= 0
-            ) {
-
-                changeBox.classList.add(
-                    'hidden'
-                );
-
-                return;
-
-            }
-
-
-            /*
-               Dinero insuficiente.
-            */
-
-            if (
-                cashGiven < total
-            ) {
-
-                const missing =
-                    total -
-                    cashGiven;
-
-
-                changeBox.classList.remove(
-                    'hidden'
-                );
-
-
-                changeAmount.textContent =
-                    '$0';
-
-
-                changeAmount.classList.remove(
-                    'text-blue-700'
-                );
-
-
-                changeAmount.classList.add(
-                    'text-red-600'
-                );
-
-
-                changeMessage.textContent =
-                    `Te faltan $${missing.toLocaleString('es-CO')} para completar el pago.`;
-
-
-                return;
-
-            }
-
-
-            /*
-               Pago exacto o con devuelta.
-            */
-
-            const change =
-                cashGiven -
-                total;
-
-
-            changeBox.classList.remove(
-                'hidden'
-            );
-
-
-            changeAmount.textContent =
-                `$${change.toLocaleString('es-CO')}`;
-
-
-            changeAmount.classList.remove(
-                'text-red-600'
-            );
-
-
-            changeAmount.classList.add(
-                'text-blue-700'
-            );
-
-
-            if (
-                change === 0
-            ) {
-
-                changeMessage.textContent =
-                    'Pago exacto. No debes recibir devuelta.';
-
-            }
-
-            else {
-
-                changeMessage.textContent =
-                    `El cliente recibirá $${change.toLocaleString('es-CO')} de devuelta.`;
-
-            }
-
-        }
-
-
-        /* ========================================================= */
-        /* MOSTRAR / OCULTAR EFECTIVO */
-        /* ========================================================= */
-
-        function toggleCashDetail() {
-
-            const payment =
-                document.getElementById(
-                    'custPayment'
-                )?.value;
-
-
-            const box =
-                document.getElementById(
-                    'cashDetailBox'
-                );
-
-
-            if (!box) {
-                return;
-            }
-
-
-            if (
-                payment ===
-                'Efectivo'
-            ) {
-
-                box.style.display =
-                    'block';
-
-
-                updateCashChange();
-
-            }
-
-            else {
-
-                box.style.display =
-                    'none';
-
-            }
-
-        }
-
-
-        /* ========================================================= */
-        /* BOTÓN CARRITO FLOTANTE PC */
-        /* ========================================================= */
-
-        function updateDesktopFloatingCart() {
-
-            if (
-                !desktopFloatingCart ||
-                window.innerWidth < 1024
-            ) {
-
-                return;
-
-            }
-
-
-            const scrollPosition =
-                window.scrollY;
-
-
-            if (
-                scrollPosition > 450
-            ) {
-
-                desktopFloatingCart.classList.add(
-                    'visible'
-                );
-
-            }
-
-            else {
-
-                desktopFloatingCart.classList.remove(
-                    'visible'
-                );
-
-            }
-
-        }
-
-
-        /* ========================================================= */
-        /* INICIO MOBILE */
-        /* ========================================================= */
-
-        function mobileGoHome() {
-
-            setMobileNavActive(
-                'mobileHomeButton'
-            );
-
-
-            currentCategory =
-                'todos';
-
-
-            searchQuery =
-                '';
-
-
-            if (searchInputMobile) {
-
-                searchInputMobile.value =
-                    '';
-
-            }
-
-
-            if (searchInput) {
-
-                searchInput.value =
-                    '';
-
-            }
-
-
-            if (mobileSearchResults) {
-
-                mobileSearchResults.classList.remove(
-                    'active'
-                );
-
-                mobileSearchResults.innerHTML =
-                    '';
-
-            }
-
-
-            renderProducts();
-
-
-            window.scrollTo({
-
-                top:
-                    0,
-
-                behavior:
-                    'smooth'
-
-            });
-
-        }
-
-
-        /* ========================================================= */
-        /* BUSCAR MOBILE */
-        /* ========================================================= */
-
-        function mobileGoSearch() {
-
-            setMobileNavActive(
-                'mobileSearchButton'
-            );
-
-
-            if (!searchInputMobile) {
-                return;
-            }
-
-
-            searchInputMobile.scrollIntoView({
-
-                behavior:
-                    'smooth',
-
-                block:
-                    'center'
-
-            });
-
-
-            setTimeout(
-                () => {
-
-                    searchInputMobile.focus({
-                        preventScroll:
-                            true
-                    });
-
-
-                    if (
-                        searchInputMobile.value.trim()
-                    ) {
-
-                        renderMobileSearchResults(
-                            searchInputMobile.value
-                        );
-
-                    }
-
-                },
-                350
-            );
-
-        }
-
-
-        /* ========================================================= */
-        /* MENÚ ACTIVO */
-        /* ========================================================= */
-
-        function setMobileNavActive(
-            id
-        ) {
-
-            document
-                .querySelectorAll(
-                    '.mobile-nav-button'
-                )
-                .forEach(
-                    button =>
-                        button.classList.remove(
-                            'active'
-                        )
-                );
-
-
-            const active =
-                document.getElementById(
-                    id
-                );
-
-
-            if (active) {
-
-                active.classList.add(
-                    'active'
-                );
-
-            }
-
-        }
-
-
-        /* ========================================================= */
-        /* LOGO */
-        /* ========================================================= */
-
-        function resetToHomeWithAnimation() {
-
-            mobileGoHome();
-
-        }
-
-
-        /* ========================================================= */
-        /* TOAST */
-        /* ========================================================= */
-
-        function showToast(
-            message
-        ) {
-
-            const container =
-                document.getElementById(
-                    'toastContainer'
-                );
-
-
-            const toast =
-                document.createElement(
-                    'div'
-                );
-
-
-            toast.className =
-                "bg-slate-900 text-white text-xs font-semibold px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2";
-
-
-            toast.innerHTML = `
-
-                <i data-lucide="check-circle"
-                   class="w-4 h-4 text-emerald-400">
-                </i>
-
-                <span>
-                    ${message}
-                </span>
-
-            `;
-
-
-            container.appendChild(
-                toast
-            );
-
-
-            if (window.lucide) {
-                lucide.createIcons();
-            }
-
-
-            setTimeout(
-                () => {
-
-                    toast.remove();
-
-                },
-                2800
-            );
-
-        }
-
-
-        /* ========================================================= */
-        /* EVENTOS */
-        /* ========================================================= */
-
-        function setupEventListeners() {
-
-
-            /* ----------------------------------------------------- */
-            /* BUSCADOR PC */
-            /* ----------------------------------------------------- */
-
-            if (searchInput) {
-
-                searchInput.addEventListener(
-                    'input',
-                    function () {
-
-                        const value =
-                            this.value.trim();
-
-
-                        searchQuery =
-                            value;
-
-
-                        renderProducts();
-
-
-                        const subtitle =
-                            document.getElementById(
-                                'sectionSubtitle'
-                            );
-
-
-                        if (
-                            value.length > 0
-                        ) {
-
-                            const normalizedValue =
-                                normalizeText(
-                                    value
-                                );
-
-
-                            const totalMatches =
-                                products.filter(
-                                    product =>
-                                        normalizeText(
-                                            product.name
-                                        ).includes(
-                                            normalizedValue
-                                        )
-                                ).length;
-
-
-                            if (subtitle) {
-
-                                subtitle.textContent =
-                                    totalMatches > 0
-                                        ? `${totalMatches} producto${totalMatches === 1 ? '' : 's'} encontrado${totalMatches === 1 ? '' : 's'} para "${value}"`
-                                        : `No encontramos productos para "${value}"`;
-
-                            }
-
-
-                            const productsSection =
-                                document.getElementById(
-                                    'productos'
-                                );
-
-
-                            if (productsSection) {
-
-                                setTimeout(
-                                    () => {
-
-                                        const rect =
-                                            productsSection.getBoundingClientRect();
-
-
-                                        const targetPosition =
-                                            window.scrollY +
-                                            rect.top -
-                                            35;
-
-
-                                        window.scrollTo({
-
-                                            top:
-                                                Math.max(
-                                                    0,
-                                                    targetPosition
-                                                ),
-
-                                            behavior:
-                                                'smooth'
-
-                                        });
-
-                                    },
-                                    90
-                                );
-
-                            }
-
-                        }
-
-                        else {
-
-                            if (subtitle) {
-
-                                subtitle.textContent =
-                                    'Explora todo nuestro catálogo disponible';
-
-                            }
-
-                        }
-
-                    }
-                );
-
-            }
-
-
-            /* ----------------------------------------------------- */
-            /* BUSCADOR MOBILE */
-            /* ----------------------------------------------------- */
-
-            if (searchInputMobile) {
-
-                searchInputMobile.addEventListener(
-                    'input',
-                    function () {
-
-                        const value =
-                            this.value;
-
-
-                        searchQuery =
-                            value;
-
-
-                        renderProducts();
-
-                        renderMobileSearchResults(
-                            value
-                        );
-
-
-                        setMobileNavActive(
-                            'mobileSearchButton'
-                        );
-
-                    }
-                );
-
-
-                searchInputMobile.addEventListener(
-                    'focus',
-                    function () {
-
-                        if (
-                            this.value.trim()
-                        ) {
-
-                            renderMobileSearchResults(
-                                this.value
-                            );
-
-                        }
-
-                    }
-                );
-
-            }
-
-
-            /* ----------------------------------------------------- */
-            /* CARRITO PC */
-            /* ----------------------------------------------------- */
-
-            if (cartTrigger) {
-
-                cartTrigger.addEventListener(
-                    'click',
-                    function (event) {
-
-                        event.preventDefault();
-
-                        openCartDrawer();
-
-                    }
-                );
-
-            }
-
-
-            /* ----------------------------------------------------- */
-            /* CARRITO FLOTANTE PC */
-            /* ----------------------------------------------------- */
-
-            if (desktopFloatingCart) {
-
-                desktopFloatingCart.addEventListener(
-                    'click',
-                    function () {
-
-                        openCartDrawer();
-
-                    }
-                );
-
-            }
-
-
-            /* ----------------------------------------------------- */
-            /* SCROLL */
-            /* ----------------------------------------------------- */
-
-            window.addEventListener(
-                'scroll',
-                updateDesktopFloatingCart,
-                {
-                    passive: true
-                }
-            );
-
-
-            /* ----------------------------------------------------- */
-            /* CERRAR CARRITO */
-            /* ----------------------------------------------------- */
-
-            if (closeCart) {
-
-                closeCart.addEventListener(
-                    'click',
-                    closeCartDrawer
-                );
-
-            }
-
-
-            if (cartOverlay) {
-
-                cartOverlay.addEventListener(
-                    'click',
-                    closeCartDrawer
-                );
-
-            }
-
-
-            /* ----------------------------------------------------- */
-            /* SEGUIR COMPRANDO */
-            /* ----------------------------------------------------- */
-
-            if (continueShoppingBtn) {
-
-                continueShoppingBtn.addEventListener(
-                    'click',
-                    function () {
-
-                        closeCartDrawer();
-
-                    }
-                );
-
-            }
-
-
-            /* ----------------------------------------------------- */
-            /* CHECKOUT */
-            /* ----------------------------------------------------- */
-
-            if (openCheckoutModalBtn) {
-
-                openCheckoutModalBtn.addEventListener(
-                    'click',
-                    () => {
-
-                        if (
-                            cart.length === 0
-                        ) {
-
-                            showToast(
-                                'Tu carrito está vacío'
-                            );
-
-                            return;
-
-                        }
-
-
-                        closeCartDrawer();
-
-
-                        checkoutModal.classList.remove(
-                            'hidden'
-                        );
-
-
-                        checkoutModal.classList.add(
-                            'flex'
-                        );
-
-
-                        document.body.classList.add(
-                            'overflow-hidden'
-                        );
-
-
-                        toggleCashDetail();
-
-                    }
-                );
-
-            }
-
-
-            /* ----------------------------------------------------- */
-            /* EFECTIVO EN TIEMPO REAL */
-            /* ----------------------------------------------------- */
-
-            const custCashAmount =
-                document.getElementById(
-                    'custCashAmount'
-                );
-
-
-            if (custCashAmount) {
-
-                custCashAmount.addEventListener(
-                    'input',
-                    updateCashChange
-                );
-
-            }
-
-
-            /* ----------------------------------------------------- */
-            /* CAMBIO DE MÉTODO DE PAGO */
-            /* ----------------------------------------------------- */
-
-            const custPayment =
-                document.getElementById(
-                    'custPayment'
-                );
-
-
-            if (custPayment) {
-
-                custPayment.addEventListener(
-                    'change',
-                    () => {
-
-                        toggleCashDetail();
-
-                    }
-                );
-
-            }
-
-
-            /* ----------------------------------------------------- */
-            /* CERRAR CHECKOUT */
-            /* ----------------------------------------------------- */
-
-            if (closeCheckoutModal) {
-
-                closeCheckoutModal.addEventListener(
-                    'click',
-                    () => {
-
-                        checkoutModal.classList.add(
-                            'hidden'
-                        );
-
-
-                        checkoutModal.classList.remove(
-                            'flex'
-                        );
-
-
-                        document.body.classList.remove(
-                            'overflow-hidden'
-                        );
-
-                    }
-                );
-
-            }
-
-
-            if (checkoutModal) {
-
-                checkoutModal.addEventListener(
-                    'click',
-                    event => {
-
-                        if (
-                            event.target ===
-                            checkoutModal
-                        ) {
-
-                            checkoutModal.classList.add(
-                                'hidden'
-                            );
-
-
-                            checkoutModal.classList.remove(
-                                'flex'
-                            );
-
-
-                            document.body.classList.remove(
-                                'overflow-hidden'
-                            );
-
-                        }
-
-                    }
-                );
-
-            }
-
-
-            /* ----------------------------------------------------- */
-            /* CLICK FUERA BUSCADOR */
-            /* ----------------------------------------------------- */
-
-            document.addEventListener(
-                'click',
-                event => {
-
-                    if (
-                        mobileSearchResults &&
-                        searchInputMobile
-                    ) {
-
-                        const insideResults =
-                            mobileSearchResults.contains(
-                                event.target
-                            );
-
-
-                        const isInput =
-                            event.target ===
-                            searchInputMobile;
-
-
-                        if (
-                            !insideResults &&
-                            !isInput
-                        ) {
-
-                            mobileSearchResults.classList.remove(
-                                'active'
-                            );
-
-                        }
-
-                    }
-
-                }
-            );
-
-
-            /* ----------------------------------------------------- */
-            /* ESC */
-            /* ----------------------------------------------------- */
-
-            document.addEventListener(
-                'keydown',
-                event => {
-
-                    if (
-                        event.key ===
-                        'Escape'
-                    ) {
-
-                        closeCartDrawer();
-
-
-                        checkoutModal.classList.add(
-                            'hidden'
-                        );
-
-
-                        checkoutModal.classList.remove(
-                            'flex'
-                        );
-
-
-                        document.body.classList.remove(
-                            'overflow-hidden'
-                        );
-
-
-                        if (mobileSearchResults) {
-
-                            mobileSearchResults.classList.remove(
-                                'active'
-                            );
-
-                        }
-
-                    }
-
-                }
-            );
-
-
-            /* ----------------------------------------------------- */
-            /* WHATSAPP */
-            /* ----------------------------------------------------- */
-
-            if (checkoutForm) {
-
-                checkoutForm.addEventListener(
-                    'submit',
-                    event => {
-
-                        event.preventDefault();
-
-
-                        const name =
-                            document
-                                .getElementById(
-                                    'custName'
-                                )
-                                .value
-                                .trim();
-
-
-                        const neighborhood =
-                            document
-                                .getElementById(
-                                    'custNeighborhood'
-                                )
-                                .value
-                                .trim();
-
-
-                        const address =
-                            document
-                                .getElementById(
-                                    'custAddress'
-                                )
-                                .value
-                                .trim();
-
-
-                        const payment =
-                            document
-                                .getElementById(
-                                    'custPayment'
-                                )
-                                .value;
-
-
-                        const cashAmountInput =
-                            document
-                                .getElementById(
-                                    'custCashAmount'
-                                );
-
-
-                        const cashAmount =
-                            cashAmountInput
-                                ? cashAmountInput.value.trim()
-                                : '';
-
-
-                        const notes =
-                            document
-                                .getElementById(
-                                    'custNotes'
-                                )
-                                .value
-                                .trim();
-
-
-                        /*
-                           TOTAL DEL PEDIDO
-                        */
-
-                        const total =
-                            calculateCartTotal();
-
-
-                        /*
-                           VALIDACIÓN EFECTIVO
-                        */
-
-                        let cashGiven =
-                            0;
-
-                        let change =
-                            0;
-
-
-                        if (
-                            payment ===
-                            'Efectivo'
-                        ) {
-
-                            cashGiven =
-                                parseCashAmount(
-                                    cashAmount
-                                );
-
-
-                            if (
-                                cashGiven <= 0
-                            ) {
-
-                                showToast(
-                                    'Indica con cuánto dinero vas a pagar'
-                                );
-
-                                if (cashAmountInput) {
-                                    cashAmountInput.focus();
-                                }
-
-                                return;
-
-                            }
-
-
-                            if (
-                                cashGiven <
-                                total
-                            ) {
-
-                                const missing =
-                                    total -
-                                    cashGiven;
-
-
-                                showToast(
-                                    `Faltan $${missing.toLocaleString('es-CO')} para completar el pago`
-                                );
-
-
-                                updateCashChange();
-
-                                return;
-
-                            }
-
-
-                            change =
-                                cashGiven -
-                                total;
-
-                        }
-
-
-                        /* ================================================= */
-                        /* MENSAJE WHATSAPP */
-                        /* ================================================= */
-
-                        let message =
-                            `🛒 *NUEVO PEDIDO - MERKOMAX NIMAR*\n\n`;
-
-
-                        message +=
-                            `👤 *Cliente:* ${name}\n`;
-
-
-                        message +=
-                            `📍 *Barrio:* ${neighborhood}\n`;
-
-
-                        message +=
-                            `🏠 *Dirección:* ${address}\n`;
-
-
-                        message +=
-                            `💳 *Método de Pago:* ${payment}\n`;
-
-
-                        if (
-                            payment ===
-                            'Efectivo'
-                        ) {
-
-                            message +=
-                                `💵 *Paga con:* $${cashGiven.toLocaleString('es-CO')}\n`;
-
-
-                            message +=
-                                `💰 *Devuelta:* $${change.toLocaleString('es-CO')}\n`;
-
-                        }
-
-
-                        if (
-                            notes
-                        ) {
-
-                            message +=
-                                `📝 *Notas:* ${notes}\n`;
-
-                        }
-
-
-                        message +=
-                            `\n📦 *DETALLE DEL PEDIDO:*\n`;
-
-
-                        cart.forEach(
-                            (item, index) => {
-
-                                const subtotal =
-                                    Number(item.price) *
-                                    Number(item.quantity);
-
-
-                                message +=
-                                    `${index + 1}. ${item.name} x${item.quantity} - $${subtotal.toLocaleString('es-CO')}\n`;
-
-                            }
-                        );
-
-
-                        message +=
-                            `\n💰 *TOTAL A PAGAR: $${total.toLocaleString('es-CO')}*`;
-
-
-                        /*
-                           NUEVO WHATSAPP:
-                           +57 315 766 6771
-                        */
-
-                        const url =
-                            `https://wa.me/573157666771?text=${encodeURIComponent(message)}`;
-
-
-                        /*
-                           Vaciar carrito después
-                           de generar correctamente
-                           el pedido.
-                        */
-
-                        cart = [];
-
-
-                        saveCartToLocalStorage();
-
-                        updateCartUI();
-
-                        renderProducts();
-
-
-                        checkoutModal.classList.add(
-                            'hidden'
-                        );
-
-
-                        checkoutModal.classList.remove(
-                            'flex'
-                        );
-
-
-                        document.body.classList.remove(
-                            'overflow-hidden'
-                        );
-
-
-                        window.open(
-                            url,
-                            '_blank'
-                        );
-
-                    }
-                );
-
-            }
-
-        }
-
-    </script>
-
+    <script src="assets/js/config.js" defer></script>
+<script src="assets/js/catalog.js" defer></script>
+<script src="assets/js/store.js" defer></script>
 </body>
-
 </html>
