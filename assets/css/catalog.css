@@ -11,8 +11,8 @@ body { background:#f7f8fa; color:var(--market-ink); }
 #catalogCount { font-size:13px; font-weight:700; color:#721d32; }
 #productsGrid { align-items:stretch; }
 #productsGrid .product-card-mobile { border-radius:20px; padding:16px; box-shadow:0 3px 14px #17233405; }
-#productsGrid .product-image-mobile { background:#f8fafc; height:180px; padding:12px; }
-#productsGrid .product-card-title { font-size:15px; line-height:1.45; min-height:44px; }
+#productsGrid .product-image-mobile { background:#f8fafc; height:180px; min-height:0; max-height:none; padding:12px; }
+#productsGrid .product-card-title { font-size:15px; line-height:1.45; min-height:44px; height:auto; max-height:none; }
 #productsGrid .product-category-mobile { font-size:10px; letter-spacing:.07em; }
 #productsGrid .product-price { font-size:20px; }
 #productsGrid .add-product-btn { background:#851e36; font-size:14px; min-height:44px; border-radius:12px; }
@@ -30,8 +30,8 @@ body { background:#f7f8fa; color:var(--market-ink); }
  .shopping-steps { justify-content:center; font-size:11px; }
  #productsGrid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
  #productsGrid .product-card-mobile { padding:10px; border-radius:16px; }
- #productsGrid .product-image-mobile { height:128px; padding:8px; }
- #productsGrid .product-card-title { font-size:13px; min-height:38px; }
+ #productsGrid .product-image-mobile { height:128px; min-height:0; max-height:none; padding:8px; }
+ #productsGrid .product-card-title { font-size:13px; min-height:38px; height:auto; max-height:none; }
  #productsGrid .product-price { font-size:17px; }
  #productsGrid .product-price-row { display:flex; flex-wrap:wrap; gap:8px; }
  #productsGrid .add-product-btn { font-size:12px; }

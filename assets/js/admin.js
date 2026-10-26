@@ -2,7 +2,7 @@
 const config = window.MERKOMAX_CONFIG;
 const $ = id => document.getElementById(id);
 let token = null, rows = [], current = null, previewUrl = null;
-const categories = {despensa:'Despensa',frescos:'Frescos',lacteos:'Lácteos',aseo:'Aseo',combos:'Combos'};
+const categories = {despensa:'Despensa',frescos:'Frescos',lacteos:'Lácteos',aseo:'Aseo',combos:'Combos',bebidas:'Bebidas',panaderia:'Panadería',viveres:'Víveres'};
 for (const [value,label] of Object.entries(categories)) $('category').add(new Option(label,value));
 const message = text => { $('status').textContent = text; };
 function clearSession() {
@@ -61,7 +61,7 @@ $('photo').onchange = () => {
 };
 $('productForm').addEventListener('submit', async event => {
   event.preventDefault(); $('saveProduct').disabled = true; message('Guardando producto…');
-  let uploaded = null, saved = false;
+  let uploaded = null, saved = false, saveAttempted = false;
   try {
     const item = {name:$('name').value.trim(),category:$('category').value,price:Number($('price').value),active:$('active').checked,is_offer:$('offer').checked,is_best_seller:$('bestseller').checked};
     if (!item.name || !Number.isFinite(item.price) || item.price <= 0) throw new Error('Revisa el nombre y el precio.');
@@ -72,13 +72,15 @@ $('productForm').addEventListener('submit', async event => {
       await request(`/storage/v1/object/${config.imageBucket}/${uploaded}`, {method:'POST',headers:{'Content-Type':file.type},body:file});
       item.image_path = uploaded; item.image_url = `${config.supabaseUrl}/storage/v1/object/public/${config.imageBucket}/${uploaded}`;
     }
-    await request(`/rest/v1/products${current ? `?id=eq.${current.id}` : ''}`, {method:current?'PATCH':'POST',headers:{'Content-Type':'application/json',Prefer:'return=minimal'},body:JSON.stringify(item)});
+    saveAttempted = true;
+    const result = await request(`/rest/v1/products${current ? `?id=eq.${current.id}` : ''}`, {method:current?'PATCH':'POST',headers:{'Content-Type':'application/json',Prefer:'return=representation'},body:JSON.stringify(item)});
+    if (!Array.isArray(result) || result.length !== 1) throw new Error('No se guardó el producto. Comprueba tus permisos y recarga la lista.');
     saved = true;
     // Keep prior objects until an owner-reviewed cleanup: they may be shared by imported products.
     select(); await refresh(); message('Producto guardado.');
   } catch (error) {
-    if (uploaded && !saved) { try { await request(`/storage/v1/object/${config.imageBucket}`,{method:'DELETE',headers:{'Content-Type':'application/json'},body:JSON.stringify({prefixes:[uploaded]})}); } catch {} }
-    message(saved ? 'El producto se guardó, pero no pudimos actualizar la lista. Recarga la página.' : error.message);
+    if (uploaded && !saveAttempted) { try { await request(`/storage/v1/object/${config.imageBucket}`,{method:'DELETE',headers:{'Content-Type':'application/json'},body:JSON.stringify({prefixes:[uploaded]})}); } catch {} }
+    message(saved ? 'El producto se guardó, pero no pudimos actualizar la lista. Recarga la página.' : saveAttempted ? error.message + ' Revisa la lista antes de reintentar: la conexión pudo interrumpirse después del guardado.' : error.message);
   } finally { $('saveProduct').disabled = false; }
 });
 if (!config.supabaseUrl || !config.supabasePublishableKey) { $('login').hidden = true; message('Panel preparado. Falta conectar y configurar la base de datos para empezar a cargar productos.'); }

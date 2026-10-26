@@ -1,6 +1,16 @@
 # MerkoMAX NIMAR
 
-Tienda estática compatible con GitHub Pages. Pedidos por WhatsApp. No procesa pagos ni confirma stock.
+Tienda estática compatible con GitHub Pages, con catálogo en Supabase y pedidos por WhatsApp. No procesa pagos ni reserva inventario.
+
+## Estado actual
+
+- Proyecto Supabase: `merkomax` (`zdfvasdecacaixfarqmw`), organización `joans0997's Org`, región `us-east-1`.
+- Se importaron los 100 productos de SheetDB manteniendo IDs, nombres, categorías, precios y enlaces de imágenes. Suma de precios al importar: COP 1.134.700. Hay 12 URLs de imagen distintas; varias fotos son genéricas y deben revisarse con el propietario.
+- Tabla `public.products` creada con RLS y permisos explícitos. Lectura pública solo de activos. Escritura restringida a `app_metadata.role = catalog_admin`.
+- Bucket público `product-images` creado: JPG, PNG y WebP, máximo 5 MB. Escritura restringida al administrador. Las imágenes de productos están destinadas a ser públicas.
+- `assets/js/config.js` usa Supabase y contiene únicamente la clave publishable pública. No publicar claves secretas, service_role, contraseñas ni tokens de sesión.
+- Falta designar y configurar la cuenta administradora con el propietario. No existe una contraseña predeterminada. Las pruebas reales de login y de subida autorizada necesitan esa cuenta.
+- Los cambios de la web se preparan en la propuesta de GitHub; la existencia del proyecto Supabase no implica que `main` o GitHub Pages ya se hayan actualizado.
 
 ## Ejecutar y comprobar
 
@@ -11,45 +21,42 @@ node --check assets/js/store.js
 node --check assets/js/admin.js
 ```
 
-Abrir http://localhost:8000. Administración: `/admin.html`.
+Abrir http://localhost:8000. Panel: `/admin.html`.
 
 ## Estructura
 
-- `index.html`: tienda y checkout existente.
-- `assets/css/store.css`: estilos existentes extraídos.
-- `assets/css/catalog.css`: mejoras del catálogo y accesibilidad.
+- `index.html`: tienda y checkout.
+- `assets/css/store.css`: estilos heredados extraídos.
+- `assets/css/catalog.css`: mejoras de catálogo, móvil y accesibilidad.
 - `assets/js/store.js`: navegación, búsqueda, carrito y pedido.
-- `assets/js/catalog.js`: fuente de datos, validación y salida HTML segura.
+- `assets/js/catalog.js`: acceso a datos, validación y escape HTML.
 - `assets/js/config.js`: configuración pública.
-- `admin.html`, `assets/js/admin.js`: panel autenticado para crear/editar productos y subir fotos.
-- `supabase/migrations`: esquema y permisos PostgreSQL.
+- `admin.html`, `assets/js/admin.js`: editor autenticado y subida de imágenes.
+- `supabase/migrations`: historial aplicado en el proyecto remoto. Versiones alineadas con el servidor.
+- `scripts/export-catalog.cjs`: exportación de la fuente anterior, sin modificaciones remotas.
 
-## Estado de integración
+## Cuenta administradora
 
-La tienda sigue usando SheetDB hasta completar y verificar la migración. El esquema SQL y el panel están preparados, pero **no equivalen a una base de datos desplegada**. Requiere conectar un proyecto Supabase. No se han importado ni inventado productos.
+1. Confirmar con el propietario el correo de la persona autorizada.
+2. Crear/invitar esa cuenta mediante Supabase Authentication. El propietario establece su contraseña de forma privada; no enviarla por chat ni guardarla en GitHub.
+3. Asignar `app_metadata.role = catalog_admin` mediante administración del servidor. Nunca usar `user_metadata` para permisos. Si se modifica el rol, cerrar sesión e iniciar nuevamente para renovar las credenciales.
+4. Probar inicio de sesión, alta de producto, edición, ocultar/activar y subida de foto. Verificar la visualización en la tienda y luego retirar solo los productos de prueba.
 
-## Activación de Supabase
+El panel mantiene la sesión solo en memoria: al recargar pide iniciar sesión nuevamente. No ofrece registro público ni autoasignación de permisos. Para cargar una foto: abrir el producto, elegir archivo y guardar. Se conserva la imagen anterior si no se selecciona otra. Una foto reemplazada se conserva en Storage hasta revisar que ningún producto la use, para evitar borrar imágenes compartidas.
 
-1. Crear o seleccionar el proyecto correcto en la cuenta del propietario.
-2. Aplicar `supabase/migrations/202610260001_catalog.sql` una sola vez mediante migraciones.
-3. Crear mediante Storage API o dashboard el bucket público `product-images`, con límite de 5 MB y tipos permitidos `image/jpeg`, `image/png`, `image/webp`. Las fotos son públicas; las escrituras requieren administrador.
-4. Crear/invitar la cuenta administradora en Authentication y asignar **desde servidor/administración** `app_metadata.role = catalog_admin`. No se debe usar `user_metadata`. Ningún visitante se puede otorgar este rol.
-5. Añadir URL del proyecto y clave **publishable** (o anon pública) a `assets/js/config.js`. Nunca publicar contraseñas, secret keys ni service_role. El panel mantiene el token de sesión solo en memoria; tras recargar se vuelve a iniciar sesión.
-6. Importar el catálogo real de SheetDB (ver script abajo), manteniendo IDs para compatibilidad con carritos. Mapear `isOffer` → `is_offer`, `isBestSeller` → `is_best_seller`, `image` → `image_url`. Ajustar la secuencia después de importar IDs explícitos:
-   `select setval(pg_get_serial_sequence('public.products','id'), coalesce((select max(id) from public.products),1), exists(select 1 from public.products));`
-7. Verificar lectura pública de activos, acceso denegado a escrituras anónimas y de usuarios normales, y CRUD/subidas del administrador. Probar foto inválida, sesión vencida y error de red.
-8. Cambiar `provider` a `supabase` solo después de comparar conteos y precios y probar tienda/panel contra la base real.
+## Datos y fotos
 
-El catálogo admite aproximadamente 100 productos sin paginación (límite de lectura 1000). Cada producto tiene una foto principal; el archivo se guarda en Storage y la URL/ruta en PostgreSQL. El reemplazo de fotos conserva el archivo anterior para evitar romper productos importados que compartan imagen; revisar objetos sin referencias antes de eliminarlos mediante Storage API. Las fotos pendientes muestran un marcador neutral.
+Cada producto tiene ID, nombre, categoría, precio COP, una foto principal (URL y ruta), banderas de oferta/destacado, visibilidad y fechas. Los archivos nuevos se guardan en Storage y las referencias en PostgreSQL. Las fotos importadas siguen apuntando al proveedor original; no se afirma que esos archivos ya se hayan copiado a Storage.
 
-## Exportar catálogo existente
+El catálogo está preparado para unos 100 productos (lectura máxima 1000). Si crece más, implementar paginación. No hay control de stock. La disponibilidad y el importe final se confirman por WhatsApp.
 
-`node scripts/export-catalog.cjs > catalog-import.json`
+## Verificación de base de datos
 
-Revisar los datos antes de importar. El script no escribe a Supabase ni cambia la fuente activa. Para cargar el JSON utilizar una herramienta administrativa autenticada o transformar a CSV para Table Editor. No subir claves secretas al repositorio.
+- Comparación REST de los 100 registros con la exportación: todos los campos importados coinciden.
+- Escritura de productos y subida de fotos sin sesión: rechazadas.
+- Pruebas transaccionales con roles: lectura pública excluye ocultos; usuario común no puede escribir; `user_metadata` no otorga privilegios; administrador puede editar ocultos. Filas de prueba revertidas.
+- Asesor de seguridad: sin hallazgos. Se corrigieron avisos de rendimiento en políticas. El índice de categoría puede figurar sin uso en un catálogo recién creado; se conserva para crecimiento.
+- Chromium: catálogo real con 100 productos, carrito y ordenación; capturas revisadas en computador y móvil de 390 px, sin errores JavaScript ni desbordamiento horizontal.
+- Pendiente: prueba completa con la cuenta administradora real, especialmente autenticación y subida autorizada de imágenes.
 
-## Alcance y verificaciones pendientes
-
-Se conserva el checkout original y sus dependencias Tailwind/Lucide por CDN. La separación de archivos es una primera refactorización; todavía existen manejadores inline y estilos heredados. Un siguiente paso puede reemplazar el CDN de Tailwind por un build versionado. Validar horario comercial (actualmente 07–20 en America/Bogota), disponibilidad y entrega con el propietario.
-
-La base de datos necesita pruebas reales de políticas/auth/storage después de conectar Supabase. Las pruebas unitarias no sustituyen esta validación. No cambiar la fuente de producción antes de completarla.
+Se conserva el checkout y Tailwind/Lucide por CDN. La separación de archivos es una primera refactorización; aún existen manejadores inline y estilos heredados. Confirmar con el propietario el horario comercial (07–20, America/Bogota), las condiciones de entrega y las fotos.
