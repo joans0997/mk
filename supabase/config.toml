@@ -1,0 +1,2 @@
+[functions.catalog-owner-setup]
+verify_jwt = true
