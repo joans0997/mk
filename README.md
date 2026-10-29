@@ -9,14 +9,15 @@ Tienda estática compatible con GitHub Pages, con catálogo en Supabase y pedido
 - Tabla `public.products` creada con RLS y permisos explícitos. Lectura pública solo de activos. Escritura restringida a `app_metadata.role = catalog_admin`.
 - Bucket público `product-images` creado: JPG, PNG y WebP, máximo 5 MB. Escritura restringida al administrador. Las imágenes de productos están destinadas a ser públicas.
 - `assets/js/config.js` usa Supabase y contiene únicamente la clave publishable pública. No publicar claves secretas, service_role, contraseñas ni tokens de sesión.
-- Falta designar y configurar la cuenta administradora con el propietario. No existe una contraseña predeterminada. Las pruebas reales de login y de subida autorizada necesitan esa cuenta.
+- La cuenta administradora designada por el propietario está creada en Supabase Auth con el rol catalog_admin, pendiente de aceptar su enlace privado y establecer contraseña. No existe una contraseña predeterminada ni se guardan credenciales en este repositorio.
 - Los cambios de la web se preparan en la propuesta de GitHub; la existencia del proyecto Supabase no implica que `main` o GitHub Pages ya se hayan actualizado.
 
 ## Ejecutar y comprobar
 
 ```sh
 python -m http.server 8000
-node --test tests/catalog.test.cjs
+npm ci
+npm test
 node --check assets/js/store.js
 node --check assets/js/admin.js
 ```
@@ -37,12 +38,13 @@ Abrir http://localhost:8000. Panel: `/admin.html`.
 
 ## Cuenta administradora
 
-1. Confirmar con el propietario el correo de la persona autorizada.
-2. Crear/invitar esa cuenta mediante Supabase Authentication. El propietario establece su contraseña de forma privada; no enviarla por chat ni guardarla en GitHub.
-3. Asignar `app_metadata.role = catalog_admin` mediante administración del servidor. Nunca usar `user_metadata` para permisos. Si se modifica el rol, cerrar sesión e iniciar nuevamente para renovar las credenciales.
-4. Probar inicio de sesión, alta de producto, edición, ocultar/activar y subida de foto. Verificar la visualización en la tienda y luego retirar solo los productos de prueba.
+La cuenta se aprovisionó mediante la API administrativa de Supabase. El enlace privado se entrega al propietario en la conversación, nunca se guarda en GitHub. Abrir ese enlace muestra el formulario para establecer una contraseña de al menos 12 caracteres. La credencial se elimina del historial de la URL al abrir la página y solo se usa al enviar el formulario. Después se cierra la sesión de activación y se inicia normalmente con correo y contraseña.
 
-El panel mantiene la sesión solo en memoria: al recargar pide iniciar sesión nuevamente. No ofrece registro público ni autoasignación de permisos. Para cargar una foto: abrir el producto, elegir archivo y guardar. Se conserva la imagen anterior si no se selecciona otra. Una foto reemplazada se conserva en Storage hasta revisar que ningún producto la use, para evitar borrar imágenes compartidas.
+El enlace es personal, de un solo uso y tiene vencimiento. Si vence, el propietario debe solicitar un enlace nuevo por el canal administrativo. No hay registro público ni autoasignación de permisos. El acceso depende de app_metadata controlado por el servidor.
+
+La función temporal `catalog-owner-setup` fue reemplazada inmediatamente por una respuesta 410 sin privilegios y con verificación JWT activada. El código conservado en el repositorio es únicamente esa versión deshabilitada.
+
+El panel mantiene la sesión solo en memoria: al recargar pide iniciar sesión nuevamente. Para cargar una foto: abrir el producto, elegir archivo y guardar. Se conserva la imagen anterior si no se selecciona otra. Una foto reemplazada se conserva en Storage hasta revisar que ningún producto la use.
 
 ## Datos y fotos
 
@@ -57,6 +59,7 @@ El catálogo está preparado para unos 100 productos (lectura máxima 1000). Si 
 - Pruebas transaccionales con roles: lectura pública excluye ocultos; usuario común no puede escribir; `user_metadata` no otorga privilegios; administrador puede editar ocultos. Filas de prueba revertidas.
 - Asesor de seguridad: sin hallazgos. Se corrigieron avisos de rendimiento en políticas. El índice de categoría puede figurar sin uso en un catálogo recién creado; se conserva para crecimiento.
 - Chromium: catálogo real con 100 productos, carrito y ordenación; capturas revisadas en computador y móvil de 390 px, sin errores JavaScript ni desbordamiento horizontal.
-- Pendiente: prueba completa con la cuenta administradora real, especialmente autenticación y subida autorizada de imágenes.
+- Activación comprobada con API simulada: contraseña repetida, credencial inválida/vencida, actualización correcta y reintento tras error de red sin consumir el enlace dos veces.
+- Pendiente del propietario: aceptar su enlace, iniciar sesión con la contraseña elegida y comprobar la primera subida de una foto real.
 
 Se conserva el checkout y Tailwind/Lucide por CDN. La separación de archivos es una primera refactorización; aún existen manejadores inline y estilos heredados. Confirmar con el propietario el horario comercial (07–20, America/Bogota), las condiciones de entrega y las fotos.

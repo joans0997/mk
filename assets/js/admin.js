@@ -84,3 +84,53 @@ $('productForm').addEventListener('submit', async event => {
   } finally { $('saveProduct').disabled = false; }
 });
 if (!config.supabaseUrl || !config.supabasePublishableKey) { $('login').hidden = true; message('Panel preparado. Falta conectar y configurar la base de datos para empezar a cargar productos.'); }
+
+// The activation credential lives only in memory; remove it from browser history.
+const activationParams = new URLSearchParams(location.hash.slice(1));
+let activationHash = activationParams.get('token_hash');
+const activationType = activationParams.get('type');
+if (activationHash) {
+  history.replaceState(null, '', location.pathname + location.search);
+  if (['invite', 'recovery'].includes(activationType)) {
+    $('login').hidden = true;
+    $('activateAccount').hidden = false;
+    message('');
+  } else {
+    activationHash = null;
+    message('El enlace de activación no es válido. Solicita uno nuevo.');
+  }
+}
+$('activateAccount').addEventListener('submit', async event => {
+  event.preventDefault();
+  const password = $('newPassword').value;
+  if (password.length < 12 || password !== $('confirmPassword').value) {
+    message('Escribe la misma contraseña en ambos campos, con al menos 12 caracteres.');
+    return;
+  }
+  $('activateButton').disabled = true;
+  message('Activando tu acceso…');
+  try {
+    if (!token) {
+      if (!activationHash) throw new Error('Solicita un nuevo enlace de activación.');
+      const session = await request('/auth/v1/verify', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({token_hash: activationHash, type: activationType})
+      });
+      if (session.user?.app_metadata?.role !== 'catalog_admin') throw new Error('Esta cuenta no tiene acceso al catálogo.');
+      token = session.access_token;
+      activationHash = null;
+    }
+    await request('/auth/v1/user', {
+      method: 'PUT', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({password})
+    });
+    try { await request('/auth/v1/logout', {method: 'POST'}); } catch {}
+    $('activateAccount').reset();
+    $('activateAccount').hidden = true;
+    clearSession();
+    message('Contraseña guardada. Ya puedes entrar con tu correo y tu nueva contraseña.');
+    $('email').focus();
+  } catch (error) {
+    message(error.message + ' Si el enlace venció o ya se usó, solicita uno nuevo.');
+  } finally { $('activateButton').disabled = false; }
+});
